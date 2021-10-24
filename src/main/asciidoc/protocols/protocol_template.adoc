@@ -1,27 +1,35 @@
-= Protokoll Gruppe XX
+= Protocol Group 05
 
-Treffen am XX.XX.20XX
+Meeting at the 17.10.2021
 
-Ort:      Ort des Treffens +
-Beginn:   xx:xx Uhr +
-Ende:     xx:xx Uhr
+Place: SLUB       +
+Start:   15:00 Uhr +
+End:     16.30 Uhr
 
-__Schriftführer:__
+__Person that will write:__ Franz Nolasco
 
-*Nächstes Treffen:* +
+Next Meeting :* +
 XX.XX.20XX, xx:xx Uhr, Ort des nächsten Treffens
 
-__Teilnehmer:__
+__Participants:__
 //Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
 
-- Teilnehmer 1
-- Teilnehmer 2
-- ...
+- Franz 
+- Conrad 
+- Aleksei
+- Philipp
+- Cornelius
+- Ege
 
-== Bemerkungen
-Verwarnungen, besondere Vorfälle, Organisatorisches, wichtige getroffene Entscheidungen
+== Remarks
+- In the last meeting we met each other only four of us , becuase the other two couldn’t be present in that day .
+- The Diagramms in UML are going to be priority for all of us.
+- We talked also about what we could change in the code of Guestbook. 
+- The GUI draft is going to be started in the next meeting. 
+- The day that we could meet every week is not decided yet.
+- We talked also of the organizational part of the group ( Tasks that each of us need to do for the project ).
 
-== Retrospektive des letzten Sprints
+== Retrospective of the last sprint
 *Issue referenziert die Issue ID von GitHub*
 // Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
 
@@ -33,11 +41,10 @@ Verwarnungen, besondere Vorfälle, Organisatorisches, wichtige getroffene Entsch
 |===
 
 
-== Aktueller Stand
-Anmerkungen und Kritik zum aktuellen Stand der Software, den Diagrammen und den
-Dokumenten.
+== Current Status
+Each of us had made the changes in the code of guestbook as we told, since now we haven’t started doing the task itself, but in the next meeting that problem will be solved.
 
-== Planung des nächsten Sprints
+== Planning of the next sprint
 *Issue referenziert die Issue ID von GitHub*
 
 // See http://asciidoctor.org/docs/user-manual/=tables
