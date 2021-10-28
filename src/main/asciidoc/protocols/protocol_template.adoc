@@ -254,7 +254,7 @@ __Participants:__
 
 
 == Current Status
-In this last two meeting we have accomplished all the given tasks for this week and the extension of the code Videoshop have been started and it will be done till sunday. The code of Festival manager it will be started in the next meeting and we are going to see if we can make some extensions in the class diagramm that we have already made, since now we have not any problem.
+In this last two meeting we have accomplished all the given tasks for this week and the extension of the code Videoshop have been started and it will be done till sunday. The code of Festival manager will be started in the next meeting and in the process of doing taht , we are going to see if we can make some extensions in the class diagramm that we have already made, since now we don’t have any problem but some questions about the time recording.
 
 == Planning of the next sprint
 *Issue referenziert die Issue ID von GitHub*
