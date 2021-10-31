@@ -142,6 +142,8 @@ image:models/analysis/sequenzDiagram.png[]
 === Muss-Kriterien
 Was das zu erstellende Programm auf alle Fälle leisten muss.
 
+* Benutzerfreundliche Software.
+
 * Die passende Location muss gebucht werden. Doppelbuchungen vermeiden.
 
 * Locationunterteilung. Jeder Teil (Camping-, Park-, Catering- und Stage-Bereiche) hat maximale Besucherzahl.
@@ -172,6 +174,12 @@ Diese Gegenstände werden von externen Anbietern gemietet.)
 
 === Kann-Kriterien
 Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
+
+* Das System hat einen Kalender für die Kunden, um die Tickets für die anstehenden Fevtivals buchen zu können.
+
+* Das System ausrechnet und bietet Rabatte für die Stammkunden.
+
+* Rundmail mit den Infos über die Festivals
 
 [[_nicht_funktionale_anforderungen]]
 == Nicht-Funktionale Anforderungen
