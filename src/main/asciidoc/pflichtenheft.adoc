@@ -141,6 +141,33 @@ image:models/analysis/sequenzDiagram.png[]
 
 === Muss-Kriterien
 Was das zu erstellende Programm auf alle Fälle leisten muss.
+* Die passende Location muss gebucht werden. Doppelbuchungen vermeiden.
+* Locationunterteilung. Jeder Teil (Camping-, Park-, Catering- und Stage-Bereiche) hat maximale Besucherzahl.
+* "Line - up"
+- Angebote bei verschiedenen Künstlern einholen.
+- Speiseplan für jede Bühne
+- Buchungen von Sicherheitspersonal (mindestens einer pro 100 Besuchern), Bedienungen an den Cateringständen, Bühnentechniker (Anzahl wird durch die Band bestimmt), Veranstaltungsleiter.
+-
+* Visualisierung des Geländes.
+* Festivalanpassungen. (Bühnenpositionierung, Toilettenbestückung und Cateringstände, bestimmte Bereiche sperren. 
+Diese Gegenstände werden von externen Anbietern gemietet.)
+* Automatische Kostenaufstellung. (Kosten für Mieten, Gagen, Personal und Sonstigem aufgelisten und aggregieren.)
+* Verkaufsmitarbeiter können Tickets verkaufen und ausdrucken.
+* Tickets haben ein Barcode bzw. eine eindeutige Nummer. Vermeiden,dass verschiedene Personen das Gelände mit derselben Karte betreten.
+* Cateringpersonal kann sich an entsprechenden Terminals am Verkaufsstand mit gültigem Login anmelden.
+* System soll die Möglichkeit bieten, Getränke und Speisen auswählen und abrechnen. Bei wenigem Bestand bekommt Festivalleiter eine Mitteilung.
+* An dem Terminal von Festivalleiter sind zu sehen:
+- Lagerbestand. Möglichkeit,Nachbestellungen zu tätigen. 
+- Aktuelle Besucherzahlen.
+- Nachrichen von anderen Mitarbeitern.
+- Verkaufszahlen des Caterings.
+- Aktuelle Bühnenbelegung.
+* Alle Benurzer können Spielplan sowie Plan des Geländes für alle Tage sehen
+* Manager verteilt Logins an Mitarbeiter.
+* Manager sieht, wer momentan angemeldet ist.
+* Manager ruft die betriebswirtschaftlichen Daten ab. (Ausgaben, Umsatz, usw.). Das muss grafisch visualisiert sein.
+
+
 
 === Kann-Kriterien
 Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
@@ -285,28 +312,11 @@ image::models/analysis/klassenDiagram.png[]
 === Klassen und Enumerationen
 Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Klassen/Enumerationen dar. Jede Klasse und Enumeration wird in Form eines Glossars textuell beschrieben. Zusätzlich werden eventuellen Konsistenz- und Formatierungsregeln aufgeführt.
 
+// See http://asciidoctor.org/docs/user-manual/#tables
 [options="header"]
 |===
-|Klasse/Enumeration |Beschreibung
-|Festival	    | Zentrale Klasse
-|Festivalleiter	| Leiter eines einzelnen Festivals
-|Manager		| Als Administrator registrierter Benutzer
-|Personal	    | Angestellte, welche vom Festivalleiter oder Manager für Festivals gebucht.
-|Band		    | Angestellte. Werden vom Festivalleiter oder Manager für Festivals gebucht werden können
-|Location	    | Ort, an dem das Festival stattfindet
-|Gegenstaende   | Orte/Plätze auf einem Festival
-|Buehne         | Möglicher Ort an einer Location
-|Campingplatz   | Möglicher Ort an einer Location
-|Cateringstand  | Möglicher Ort an einer Location
-|Parkplatz      | Möglicher Ort an einer Location
-|Ticket		    | Produkt. wird vor dem Festival verkauft
-|Tageskarte	    | Basis version eines Tickets
-|CampingTicket	| Möglliche Erweiterung eines Tickets
-|Abendkasse	    | Möglichkeit Tickets nach dem Vorverkauf zu erwerben
-|Lager		    | Hier werden die Lebensmittel aufbewahrt
-|Lebensmittel	| Produkt. Wird während dem Festival verkauft
-|Getraenke	    | Mögliche Art eines Lebensmittels im Lager
-|Speisen		| Mögliche Art eines Lebensmittels im Lager
+|Klasse/Enumeration |Beschreibung |
+|…                  |…            |
 |===
 
 == Akzeptanztestfälle
