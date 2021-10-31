@@ -9,6 +9,7 @@
 |0.1     | In Arbeit   | 27.10.2021          | Autor       | Initiale Version
 |===
 
+[[_inhaltsverzeichnis]]
 == Inhaltsverzeichnis
 
 * <<_inhaltsverzeichnis>>
@@ -57,7 +58,7 @@
 
 ** <<_klassendiagramm>>
 
-** <<_klassen_und_enummerationen>>
+** <<_klassen_und_enumerationen>>
 
 * <<_akzeptanztestfälle>>
 
@@ -65,13 +66,16 @@
 
 * <<_offene_punkte>>
 
+[[_zusammenfassung]]
 == Zusammenfassung
 Eine kurze Beschreibung des Dokuments. Wenige Absätze.
 
+[[_aufgabenstellung_und_zielsetzung]]
 == Aufgabenstellung und Zielsetzung
 Text aus Aufgabenstellung kopieren und ggfs. präzisieren.
 Insbesondere ergänzen, welche Ziele mit dem Abschluss des Projektes erreicht werden sollen.
 
+[[_produktnutzung]]
 == Produktnutzung
 In welchem Kontext soll das System später genutzt werden? Welche Rahmenbedingungen gelten?
 Zusätzlich kurze Einleitung für fachfremde Personen
@@ -80,9 +84,28 @@ Zusätzlich kurze Einleitung für fachfremde Personen
 == Interessensgruppen (Stakeholders)
 Welche realen und juristischen Personen(-gruppen) haben Einfluss auf die Anforderungen im Projekt?
 
+[cols="1h, 4"]
+|===
+|Interessengruppen |Anforderungen
+|Kunde a|* gute Übersicht über bestehende Festivals
+* einfacher Bestellvorgang
+|Cateringpersonal a|* einfaches und intuitives Auswählen und Abrechnen von Speisen und Getränken
+|Sicherheitspersonal a|* Zugriff auf ein Nachrichtensystem
+|Ticketverkäufer a|* einfache bedienbares Ticketsystem 
+|Festivalleiter a|* Lagerübersicht mit Nachbestellungen
+* aktuelle Informationen über das Festival sollen einsehbar sein
+* laufende Finanzübersicht
+|Management a|* Verwaltung von Personal und Zugangsdaten
+* Übersicht über betriebswirtschaftliche Daten
+|Planungsteam a|* Auswahl an Locations und Künstlern
+* laufende Finanzbersichte während des Planungsprozesses
+* Ticketbegrenzung und Preiseinstellung
+|===
+
 [[_systemgrenze]]
 == Systemgrenze und Top-Level-Architektur
 
+[[_kontextdiagramm]]
 === Kontextdiagramm
 
 image::models/analysis/contextDiagram.png[]
@@ -93,8 +116,10 @@ image::models/analysis/contextDiagram.png[]
 
 image::models/analysis/topLevelDiagram.png[]
 
+[[_anwendungsfälle]]
 == Anwendungsfälle
 
+[[_akteure]]
 === Akteure
 
 Akteure sind die Benutzer des Software-Systems oder Nachbarsysteme, welche darauf zugreifen. Dokumentieren Sie die Akteure in einer Tabelle. Diese Tabelle gibt einen Überblick über die Akteure und beschreibt sie kurz. Die Tabelle hat also mindestens zwei Spalten (Akteur Name und Kommentar).
@@ -137,17 +162,21 @@ Sequenzdiagramme:
 
 image:models/analysis/sequenzDiagram.png[]
 
+[[_funktionale_anforderungen]]
 == Funktionale Anforderungen
 
+[[_muss_kriterien]]
 === Muss-Kriterien
 Was das zu erstellende Programm auf alle Fälle leisten muss.
 
+[[_kann_kriterien]]
 === Kann-Kriterien
 Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
 
 [[_nicht_funktionale_anforderungen]]
 == Nicht-Funktionale Anforderungen
 
+[[_qualitätsziele]]
 === Qualitätsziele
 
 Die folgende Tabelle zeigt,
@@ -171,6 +200,7 @@ während in den folgenden Spalten ein "x" zur Kennzeichnung der Priorität verwe
 Beschreiben Sie Nicht-Funktionale Anforderungen, welche dazu dienen, die zuvor definierten Qualitätsziele zu erreichen.
 Achten Sie darauf, dass deren Erfüllung (mindestens theoretisch) messbar sein muss.
 
+[[_gui_prototyp]]
 == GUI Prototyp
 
 
@@ -267,6 +297,7 @@ image::models/analysis/Uebergangsdiagram.png[]
 Erstellen Sie ein Übersichtsdiagramm, das das Zusammenspiel Ihrer Masken zur Laufzeit darstellt. Also mit welchen Aktionen zwischen den Masken navigiert wird.
 //Die nachfolgende Abbildung zeigt eine an die Pinnwand gezeichnete Dialoglandkarte. Ihre Karte sollte zusätzlich die Buttons/Funktionen darstellen, mit deren Hilfe Sie zwischen den Masken navigieren.
 
+[[_dialogbeschreibung]]
 === Dialogbeschreibung
 Für jeden Dialog:
 
@@ -275,6 +306,7 @@ Für jeden Dialog:
 3. Maskenelemente (Ein/Ausgabefelder, Aktionen wie Buttons, Listen, …)
 4. Evtl. Maskendetails, spezielle Widgets
 
+[[_datenmodell]]
 == Datenmodell
 
 [[_klassendiagramm]]
@@ -282,6 +314,7 @@ Für jeden Dialog:
 
 image::models/analysis/klassenDiagram.png[]
 
+[[_klassen_und_enumerationen]]
 === Klassen und Enumerationen
 Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Klassen/Enumerationen dar. Jede Klasse und Enumeration wird in Form eines Glossars textuell beschrieben. Zusätzlich werden eventuellen Konsistenz- und Formatierungsregeln aufgeführt.
 
@@ -292,6 +325,7 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 |…                  |…            |
 |===
 
+[[_akzeptanztestfälle]]
 == Akzeptanztestfälle
 
 :Pre: Vorraussetzung(en)
@@ -622,11 +656,12 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 - Event(Event1) benötigt MindestanzahlSecurity(30)
 |===
 
-
+[[_glossar]]
 == Glossar
 Sämtliche Begriffe, die innerhalb des Projektes verwendet werden und deren gemeinsames Verständnis aller beteiligten Stakeholder essentiell ist, sollten hier aufgeführt werden.
 Insbesondere Begriffe der zu implementierenden Domäne wurden bereits beschrieben, jedoch gibt es meist mehr Begriffe, die einer Beschreibung bedürfen. +
 Beispiel: Was bedeutet "Kunde"? Ein Nutzer des Systems? Der Kunde des Projektes (Auftraggeber)?
 
+[[_offene_punkte]]
 == Offene Punkte
 Offene Punkte werden entweder direkt in der Spezifikation notiert. Wenn das Pflichtenheft zum finalen Review vorgelegt wird, sollte es keine offenen Punkte mehr geben.
