@@ -141,6 +141,7 @@ image:models/analysis/sequenzDiagram.png[]
 
 === Muss-Kriterien
 Was das zu erstellende Programm auf alle Fälle leisten muss.
+
 * Die passende Location muss gebucht werden. Doppelbuchungen vermeiden.
 
 * Locationunterteilung. Jeder Teil (Camping-, Park-, Catering- und Stage-Bereiche) hat maximale Besucherzahl.
