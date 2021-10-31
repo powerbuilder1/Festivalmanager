@@ -99,7 +99,8 @@ Das Management hat ein eigenes Terminal in welchem Diagramme und Statisiken übe
 Der Festivalmanager hat eine Übersicht über Nachrichten bezüglich des Festivals sowie eine Übersicht über den Lagerberstand. Außerdem kann dieser Nachbestellungen tätigen.
 In dieser Übersicht sind auch aktuelle Zahlen zu Besucherzahlen sowie Verkaufszahlen des Caterings sowie Informationen zur aktuellen Bühnenbelegung.
 
-
+Die Ticketverkäufer vor Ort haben ein eigenes Terminal, in dem sie Tickets für die Abendkasse verkaufen könnnen. Damit nicht zu viele Personen auf dem Festival sind gibt es eine
+automatische Beschränkung. Desweiteren sind Ticketverkäufer in der Lage Tickets am Einlass zu validieren. Dafür gibt es eine Datenbank, die die Bestellungen speichert und validieren kann.
 
 
 
