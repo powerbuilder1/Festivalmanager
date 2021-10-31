@@ -68,17 +68,50 @@
 
 [[_zusammenfassung]]
 == Zusammenfassung
-Eine kurze Beschreibung des Dokuments. Wenige Absätze.
+Dies ist das Pflichtenheft für das SWT-Projet "Festivalmanager".
+
+Der Festivalmanager ist eine Webanwendung, über welche Festivals geplant und verwaltet werden können.
+
+Desweiteren sollen Nutzergruppen wie Cateringpersonal, Planungspersonal, Festivalleiter und Manager zugriff auf das System haben um ihren Funktionen zu erfüllen.
+Das Cateringpersonal soll ein eigenes Terminal erhalten über welches sie Essen und Trinken abrechnen können.
+Das Planungspersonal kann Festivals erstellen. Dazu gibt es eine Location und Terminal Auswahl, sowie die Möglichkeit Bands zu buchen.
+Zusätzlich gibt es die Möglichkeit die Location zu planen und Cateringstände, Toiletten und Bühnen zu platzieren.
+Der Festivalleiter hat ein Terminal in dem er die aktuellen Statistiken über das Festival sieht. Er hat zudem die Fähigkeit Lagerbestände aufzufrischen.
+Es gibt ein Ticketsystem, welches Online und vor Ort benutzt wird. Dieses stellt Tickets nach einem Kauf aus und kann diese verifizieren.
+Der Manager kann betriebswirtschaftliche Daten abrufen sowie angemeldete Mitarbeiter sehen.
+
+
 
 [[_aufgabenstellung_und_zielsetzung]]
 == Aufgabenstellung und Zielsetzung
-Text aus Aufgabenstellung kopieren und ggfs. präzisieren.
-Insbesondere ergänzen, welche Ziele mit dem Abschluss des Projektes erreicht werden sollen.
+
+Die Planungsabteilung soll Termine und Locations festlegen könnnen. Somit brauchen sie eine Vorauswahl sowie die Möglichkeit diese Auswahl zu erweiter beziehungsweise zu ändern.
+Die Terminvergabe muss abgestimmt sein, sodass keine Doppeltbuchung möglich ist. Da jede Location nur bestimmt viel Platz hat muss sichergestellt werden das es nur eine bestimmte Anzahl an Tickets
+gibt. In Verbindung dazu müssen pro 100 Personem mindestens eine Person des Sicherheitspersonals anwesend sein. Dies muss in der Planung berrücksichtig und durch das System sichergestellt werden.
+Um den Besuchern einen angenehmen Aufenthalt zu ermöglichen soll das Planungsteam in der Lage sein Toiletten sowie Cateringstände platzieren zu können.
+Ein weiter Teil der Planung besteht darin Angebote von Künstlern einzuholen, welche durch eine Vorauswahl, die bearbeitet werden kann, ermöglicht wird.
+
+Das Cateringpersonal hat eigene Terminals, welche mit dem Lagersystem interagieren. Dies geschieht indem das Cateringpersonal Essen bzw. Getränke zu einer Abrechnung hinzufügen und diese dann,
+nach Kundenbestätigung, abschicken.
+
+Das Management hat ein eigenes Terminal in welchem Diagramme und Statisiken über die betriebswirtschaftlichen Daten des Festivals zu sehen sind. Desweiternen hat dieses eine Übersicht über alle angemeldeten Mitarbeiter. Diese Mitarbeiter können durch das Management erstellt und verwaltet werden. Der Manager ist dafür zuständig das Festival zu erstellen.
+
+Der Festivalmanager hat eine Übersicht über Nachrichten bezüglich des Festivals sowie eine Übersicht über den Lagerberstand. Außerdem kann dieser Nachbestellungen tätigen.
+In dieser Übersicht sind auch aktuelle Zahlen zu Besucherzahlen sowie Verkaufszahlen des Caterings sowie Informationen zur aktuellen Bühnenbelegung.
+
+
+
+
+
+
 
 [[_produktnutzung]]
 == Produktnutzung
-In welchem Kontext soll das System später genutzt werden? Welche Rahmenbedingungen gelten?
-Zusätzlich kurze Einleitung für fachfremde Personen
+Der Festivalmanager ist eine all-umfassende Softwarelösung um Festivals zu erstellen, zu planen, zu leiten, sowie Tickets für diese zu Verkaufen.
+
+Die Rahmenbedingungen für dieses System sind, dass es im Browser laufen kann und somit einfach zugänglich ist.
+Desweiteren soll der Festivalmanager zweisprachig angeboten werden mit einer Möglichkeit weiter Sprachen hinzuzufügen.
+
 
 [[_interessengruppen]]
 == Interessensgruppen (Stakeholders)
@@ -198,7 +231,7 @@ Diese Gegenstände werden von externen Anbietern gemietet.)
 * Manager ruft die betriebswirtschaftlichen Daten ab. (Ausgaben, Umsatz, usw.). Das muss grafisch visualisiert sein.
 
 
-
+[[_kann_kriterien]]
 === Kann-Kriterien
 Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
 
