@@ -169,9 +169,44 @@ image:models/analysis/sequenzDiagram.png[]
 === Muss-Kriterien
 Was das zu erstellende Programm auf alle Fälle leisten muss.
 
-[[_kann_kriterien]]
+* Benutzerfreundliche Software.
+
+* Die passende Location muss gebucht werden. Doppelbuchungen vermeiden.
+
+* Locationunterteilung. Jeder Teil (Camping-, Park-, Catering- und Stage-Bereiche) hat maximale Besucherzahl.
+* "Line - up"
+- Angebote bei verschiedenen Künstlern einholen.
+- Speiseplan für jede Bühne
+- Buchungen von Sicherheitspersonal (mindestens einer pro 100 Besuchern), Bedienungen an den Cateringständen, Bühnentechniker (Anzahl wird durch die Band bestimmt), Veranstaltungsleiter.
+* Visualisierung des Geländes.
+* Festivalanpassungen. (Bühnenpositionierung, Toilettenbestückung und Cateringstände, bestimmte Bereiche sperren. 
+Diese Gegenstände werden von externen Anbietern gemietet.)
+* Automatische Kostenaufstellung. (Kosten für Mieten, Gagen, Personal und Sonstigem aufgelisten und aggregieren.)
+* Verkaufsmitarbeiter können Tickets verkaufen und ausdrucken.
+* Tickets haben ein Barcode bzw. eine eindeutige Nummer. Vermeiden,dass verschiedene Personen das Gelände mit derselben Karte betreten.
+* Cateringpersonal kann sich an entsprechenden Terminals am Verkaufsstand mit gültigem Login anmelden.
+* System soll die Möglichkeit bieten, Getränke und Speisen auswählen und abrechnen. Bei wenigem Bestand bekommt Festivalleiter eine Mitteilung.
+* An dem Terminal von Festivalleiter sind zu sehen:
+- Lagerbestand. Möglichkeit,Nachbestellungen zu tätigen. 
+- Aktuelle Besucherzahlen.
+- Nachrichen von anderen Mitarbeitern.
+- Verkaufszahlen des Caterings.
+- Aktuelle Bühnenbelegung.
+* Alle Benurzer können Spielplan sowie Plan des Geländes für alle Tage sehen
+* Manager verteilt Logins an Mitarbeiter.
+* Manager sieht, wer momentan angemeldet ist.
+* Manager ruft die betriebswirtschaftlichen Daten ab. (Ausgaben, Umsatz, usw.). Das muss grafisch visualisiert sein.
+
+
+
 === Kann-Kriterien
 Anforderungen die das Programm leisten können soll, aber für den korrekten Betrieb entbehrlich sind.
+
+* Das System hat einen Kalender für die Kunden, um die Tickets für die anstehenden Fevtivals buchen zu können.
+
+* Das System ausrechnet und bietet Rabatte für die Stammkunden.
+
+* Rundmail mit den Infos über die Festivals
 
 [[_nicht_funktionale_anforderungen]]
 == Nicht-Funktionale Anforderungen
