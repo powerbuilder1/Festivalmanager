@@ -353,11 +353,28 @@ image::models/analysis/klassenDiagram.png[]
 === Klassen und Enumerationen
 Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Klassen/Enumerationen dar. Jede Klasse und Enumeration wird in Form eines Glossars textuell beschrieben. Zusätzlich werden eventuellen Konsistenz- und Formatierungsregeln aufgeführt.
 
-// See http://asciidoctor.org/docs/user-manual/#tables
 [options="header"]
 |===
-|Klasse/Enumeration |Beschreibung |
-|…                  |…            |
+|Klasse/Enumeration |Beschreibung
+|Festival	    | Zentrale Klasse
+|Festivalleiter	| Leiter eines einzelnen Festivals
+|Manager		| Als Administrator registrierter Benutzer
+|Personal	    | Angestellte, welche vom Festivalleiter oder Manager für Festivals gebucht.
+|Band		    | Angestellte. Werden vom Festivalleiter oder Manager für Festivals gebucht werden können
+|Location	    | Ort, an dem das Festival stattfindet
+|Gegenstaende   | Orte/Plätze auf einem Festival
+|Buehne         | Möglicher Ort an einer Location
+|Campingplatz   | Möglicher Ort an einer Location
+|Cateringstand  | Möglicher Ort an einer Location
+|Parkplatz      | Möglicher Ort an einer Location
+|Ticket		    | Produkt. wird vor dem Festival verkauft
+|Tageskarte	    | Basis version eines Tickets
+|CampingTicket	| Möglliche Erweiterung eines Tickets
+|Abendkasse	    | Möglichkeit Tickets nach dem Vorverkauf zu erwerben
+|Lager		    | Hier werden die Lebensmittel aufbewahrt
+|Lebensmittel	| Produkt. Wird während dem Festival verkauft
+|Getraenke	    | Mögliche Art eines Lebensmittels im Lager
+|Speisen		| Mögliche Art eines Lebensmittels im Lager
 |===
 
 [[_akzeptanztestfälle]]
