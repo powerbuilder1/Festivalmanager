@@ -91,7 +91,20 @@ Anforderungen die das Programm leisten können soll, aber für den korrekten Bet
 
 === Qualitätsziele
 
-Dokumentieren Sie in einer Tabelle die Qualitätsziele, welche das System erreichen soll, sowie deren Priorität.
+Die folgende Tabelle zeigt,
+welche Qualitätsansprüche in welchem Umfang erfüllt werden müssen.
+Die erste Spalte listet die Qualitätsanforderungen auf,
+während in den folgenden Spalten ein "x" zur Kennzeichnung der Priorität verwendet wird.
+
+1 = nicht wichtig --- 5 = sehr wichtig
+[options="header", cols="3h, ^1, ^1, ^1, ^1, ^1"]
+|===
+|Qualitätsziel             | 1 | 2 | 3 | 4 | 5
+|Instandhaltung            |   |   |   | x |
+|Erweiterbarkeit           |   |   |   | x |
+|Benutzer Feundlichkeit    |   |   |   |   | x
+|Sicherheit                |   |   |   | x |
+|===
 
 === Konkrete Nicht-Funktionale Anforderungen
 
