@@ -141,13 +141,12 @@ image:models/analysis/sequenzDiagram.png[]
 
 === Muss-Kriterien
 Was das zu erstellende Programm auf alle Fälle leisten muss.
-* Die passende Location muss gebucht werden. Doppelbuchungen vermeiden.
+| Die passende Location muss gebucht werden. Doppelbuchungen vermeiden.
 * Locationunterteilung. Jeder Teil (Camping-, Park-, Catering- und Stage-Bereiche) hat maximale Besucherzahl.
 * "Line - up"
 - Angebote bei verschiedenen Künstlern einholen.
 - Speiseplan für jede Bühne
 - Buchungen von Sicherheitspersonal (mindestens einer pro 100 Besuchern), Bedienungen an den Cateringständen, Bühnentechniker (Anzahl wird durch die Band bestimmt), Veranstaltungsleiter.
--
 * Visualisierung des Geländes.
 * Festivalanpassungen. (Bühnenpositionierung, Toilettenbestückung und Cateringstände, bestimmte Bereiche sperren. 
 Diese Gegenstände werden von externen Anbietern gemietet.)
