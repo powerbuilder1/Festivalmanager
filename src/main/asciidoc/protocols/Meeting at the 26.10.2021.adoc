@@ -1,0 +1,50 @@
+Meeting at the 26.10.2021
+
+Place: SLUB       +
+Start:   18:00 Uhr +
+End:     20:23 Uhr
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* +
+27.10.2021, 13:00 Uhr, Discord
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+- Cornelius
+
+== Remarks
+- In this meeting we sorted out the tasks of videoshop and now everyone knows which thing they need to do 
+- We also started doing the scratch of the GUI , given the circunstances that the meeting was digital it was created a google Jamborad, in which this scratch was created ( We took references of the GUI of Videoshop and also some other pages )
+- A little scratch in html of the GUI is in process
+- We talked also about some organizational things of the project
+
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+Each of us had started doing their respective task in the code of Videoshope and also the GUI sratch is fast done and Conrad volunteerd by doing a simple scratch of the GUI in html, it was decided that in the next meeting ( 27.10.2021) we are going to start doing the Analysis Model of "Festival manager" and also it would be discussed the requirements of the project.
+
+== Planning of the next sprint
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
