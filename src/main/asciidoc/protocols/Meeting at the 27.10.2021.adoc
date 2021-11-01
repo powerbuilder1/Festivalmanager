@@ -1,0 +1,51 @@
+Meeting at the 27.10.2021
+
+Place: Discord       +
+Start:   13:00 Uhr +
+End:     21:00
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* +
+28.10.2021, 16:40 Uhr, BBB
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+- Cornelius
+
+== Remarks
+ - In these meeting we have accomplished all the tasks that have been given by the tutor: 
+    - Record and discussion of the requierements of the project" festival manager)
+    - The scratch of the GUI has been already done in HTML
+    - The different types of Diagramms (Context Diagramm , Top level architecture, Use-case diagramm, Class diagram and also the sequence diagram ) have been also     already made, some of them looks kind of messy because the UML Software that we have used to do them was kind of bad.
+    - The acceptance test cases have been also already written
+    
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+In this last two meeting we have accomplished all the given tasks for this week and the extension of the code Videoshop have been started and it will be done till sunday. The code of Festival manager will be started in the next meeting and in the process of doing taht , we are going to see if we can make some extensions in the class diagramm that we have already made, since now we don’t have any problem but some questions about the time recording.
+
+== Planning of the next sprint
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
