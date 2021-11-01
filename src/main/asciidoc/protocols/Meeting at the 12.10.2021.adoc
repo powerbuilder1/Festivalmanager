@@ -1,0 +1,52 @@
+Meeting at the 12.10.2021
+
+Place: BBB       +
+Start:   17:00 Uhr +
+End:     18:30 Uhr
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* +
+17.10.2021, 15:00 Uhr, SLUB
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+- Cornelius
+- Ege
+
+== Remarks
+- We met our tutor and he explained us the basic things about the project that we are going to do
+- Java sprint and also HTML are kind of important to learn
+- The tutor suggested us to make a group of whatsapp or discord ( Thing that we already done)
+- We decided to have the meeting with the tutor every week at Thursday
+- A task have been given ( Changes in the code of Guestbook )
+
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+We made a group of Whatsapp and we decided to meet at sunday to discuss about further of the project and also discuss about what we could change in the code of Guestbook.
+
+== Planning of the next sprint
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
