@@ -18,6 +18,7 @@ __Participants:__
 - Philipp
 - Cornelius
 - Ege
+- Tom (Tutor)
 
 == Remarks
 - We met our tutor and he explained us the basic things about the project that we are going to do
