@@ -194,7 +194,25 @@ Die typischen Anwendungsfälle (Anlegen, Ändern, Löschen) können zu einem ein
 
 Sequenzdiagramme:
 
-image:models/analysis/sequenzDiagram.png[]
+image::models/analysis/images/sequenz/1.png[]
+
+image::models/analysis/images/sequenz/2.png[]
+
+image::models/analysis/images/sequenz/3.png[]
+
+image::models/analysis/images/sequenz/4.png[]
+
+image::models/analysis/images/sequenz/5.png[]
+
+image::models/analysis/images/sequenz/6.png[]
+
+image::models/analysis/images/sequenz/7.png[]
+
+image::models/analysis/images/sequenz/8.png[]
+
+image::models/analysis/images/sequenz/9.png[]
+
+image::models/analysis/images/sequenz/10.png[]
 
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
@@ -357,7 +375,7 @@ image::models/analysis/images/uebergang/terminal_manager_main.png[]
 
 Übersicht des Managers über Mitarbeiter und die Finanzen
 
-image::models/analysis/Uebergangsdiagram.png[]
+image::models/analysis/Dialoglandkarte.png[]
 
 Übergangsdiagramm
 
