@@ -6,7 +6,14 @@
 [cols="1, 1, 1, 1, 4"]
 |===
 |Version | Status      | Bearbeitungsdatum   | Autoren(en) |  Vermerk
-|0.1     | In Arbeit   | 27.10.2021          | Autor       | Initiale Version
+|0.1     | In Arbeit   | 27.10.2021          | Cornelius, Philipp, Franz, Aleksey, Conrad       | Initiale Version
+|0.2     | In Arbeit   | 28.10.2021          | Conrad       | Gui-Bilder hinzugefügt
+|0.3     | In Arbeit   | 31.10.2021          | Conrad       | Inhalstverzeichnis
+|0.4     | In Arbeit   | 31.10.2021          | Aleksey       | Kann- / Muss-Kriterien
+|0.5     | In Arbeit   | 31.10.2021          | Philipp, Franz, Aleksey, Conrad       | stackholder & überarbeitete Diagramme
+|0.6     | In Arbeit   | 31.10.2021          | Conrad       | Zusammenfassung & Aufgabenstellung und Zielsetzung
+|0.7     | In Arbeit   | 3.11.2021          | Franz, Aleksey, Conrad       | Sequenzdiagramme
+|0.8     | In Arbeit   | 3.11.2021          | Philipp, Conrad       | Überarbeitete Diagramme, Versionen, Anwendungsfallbeschreibung, Dialogbeschreibung
 |===
 
 [[_inhaltsverzeichnis]]
@@ -51,8 +58,6 @@
 * <<_gui_prototyp>>
 
 ** <<_dialoglandkarte>>
-
-** <<_dialogbeschreibung>>
 
 * <<_datenmodell>>
 
@@ -187,32 +192,49 @@ image::models/analysis/useCaseDiagram.png[]
 
 [[_anwendungsfallbeschreibung]]
 === Anwendungsfallbeschreibungen
-Dieser Unterabschnitt beschreibt die Anwendungsfälle. In dieser Beschreibung müssen noch nicht alle Sonderfälle und Varianten berücksichtigt werden. Schwerpunkt ist es, die wichtigsten Anwendungsfälle des Systems zu finden. Wichtig sind solche Anwendungsfälle, die für den Auftraggeber, den Nutzer den größten Nutzen bringen.
-Für komplexere Anwendungsfälle ein UML-Sequenzdiagramm ergänzen.
-Einfache Anwendungsfälle mit einem Absatz beschreiben.
-Die typischen Anwendungsfälle (Anlegen, Ändern, Löschen) können zu einem einzigen zusammengefasst werden.
-
-Sequenzdiagramme:
 
 image::models/analysis/images/sequenz/1.png[]
 
+Der Manager soll eine Festivalleiter sowie das Cateringpersonal zu einem Festival hinzufügen können. Diese kann der Manager aus einer Liste auswählen.
+
 image::models/analysis/images/sequenz/2.png[]
+
+Der Kunde soll in der Lage sein ein Festivalticket kaufen zu können. Dazu gibt es eine Auswahl an Tickets sowie ein Feld für die Anzahl.
 
 image::models/analysis/images/sequenz/3.png[]
 
+Der Festivalleiter kann auf das Lager zugreifen und Nachbestellungen tätigen. Dazu wird ihm eine Tabelle mit den Produkten angezeigt mit einem zugehörigem Feld, in welchem der Leiter die Menge angeben kann die nachbestellt werden soll. Diese wird dann dem Lager hinzugefügt.
+
 image::models/analysis/images/sequenz/4.png[]
+
+Bei der Vergabe der Parkpätze sollen diese gesperrt werden, wenn sie benutzt werden.
 
 image::models/analysis/images/sequenz/5.png[]
 
+Bei der Vergabe der Campingplätze sollen diese gesperrt werden, wenn sie benutzt werden.
+
 image::models/analysis/images/sequenz/6.png[]
+
+Der Manager kann ein Festival anlegen. Dafür hat er eine Form in welche er den Namen des Festivals eintragen kann.
+Das Planungsteam kann dann eine Band buchen. Dazu gibt es eine Liste, welche alle Bandnamen enthält und erweitert werden kann.
+Zusätzlich kann das Planungsteam auch eine Location buchen, welche ebenfalls in einer List enthalten ist, die erweitert werden kann.
 
 image::models/analysis/images/sequenz/7.png[]
 
+Das Cateringpersonal kann nachdem eine Bestellung eingegangen ist diese abbuchen. Dabei werden die Lebensmittel aus dem Lager entfernt. 
+Bei der Abbuchung wird der Preis und die Bestellung angezeigt.
+
 image::models/analysis/images/sequenz/8.png[]
+
+Eine Location kann gebucht werden. Dabei wird sie gemietet.
 
 image::models/analysis/images/sequenz/9.png[]
 
+Eine Bühne wird gesperrt. 
+
 image::models/analysis/images/sequenz/10.png[]
+
+Ein Cateringstand wird gesperrt.
 
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
@@ -295,85 +317,141 @@ image::models/analysis/images/uebergang/index.png[]
 
 Index
 
+Die Hauptseite behinhaltet eine Liste von Festivals.
+Diese sind dann mit der Detailseite des Festivals verlinkt.
+
 image::models/analysis/images/uebergang/login_login.png[]
 
 Login
+
+Die Loginseite ermöglicht es, sich anzumelden.
+Dafür gibt es ein Eingabefeld für den Benutzernamen und ein Passwort.
 
 image::models/analysis/images/uebergang/login_register.png[]
 
 Register
 
+Die Registerseite ermöglicht es, sich zu registrieren.
+Dafür gibt es ein Eingabefeld für den Benutzernamen und ein Passwort, sowie für die Addresse und die E-Mailaddresse.
+
 image::models/analysis/images/uebergang/festival_buy.png[]
 
 Festival Tickets kaufen
+
+Die Festival-Tickets-kaufen Seite ermöglicht es, Tickets für das ausgewählte Festival zu kaufen.
+Hier gibt es eine Auswahl an unterschiedlichen Tickets, sowie ein Feld für die Anzahl der Tickets.
 
 image::models/analysis/images/uebergang/festival_festival.png[]
 
 Festival Details
 
+Auf der Detailseite des Festivals werden die Details des Festivals angezeigt.
+Dies beinhaltet eine kurze Beschreibung, die Zeit, das Lineup sowie einen Verweis auf die Kaufseite. 
+
+
 image::models/analysis/images/uebergang/planning_addlineup.png[]
 
 Line Up hinzufügen / Ändern
+
+Auf der Lineup-Ändern/Hinzufügen-Seite kann man das Lineup ändern.
+Dazu gibt es eine Auswahlt an Zeiten, eine Auswahl an Bühnen sowie eine Auswahl an Bands.
+Um keine Doppeltbuchung zu ermöglichen werden nur Bands angezeigt die zu der Zeit noch frei sind.
 
 image::models/analysis/images/uebergang/planning_costs.png[]
 
 Kosten während der Planung
 
+Die Seite Koste-Planung zeigt die Kosten während der Planung an.
+Dies beinhaltet Fix-Kosten wie Essen und Getränke sowie Variable-Kosten wie die Anzahl der Tickets.
+
 image::models/analysis/images/uebergang/planning_editstaff.png[]
 
 Personalbelegung ändern
+
+Die Seite Personalbelegung-Ändern ermöglicht es, die Personalbelegung zu ändern.
+Dafür gibt es eine Auswahl an Personal-Accounts, welche eine Festival hinzugefügt werden können.
+Diese werden dann in einer Liste angezeigt.
 
 image::models/analysis/images/uebergang/planning_festivals.png[]
 
 Liste aktueller Festivals
 
+Die Seite Liste-Aktueller-Festivals zeigt die aktuellen Festivals an, welche ein Planer gerade plant.
+Dies beinhaltet eine Liste mit den Festivals, sowie einen Verweis auf das jeweilige Festival um es weiter zu planen oder zu bearbeiten.
+
 image::models/analysis/images/uebergang/planning_lineup.png[]
 
 Line Up in Tabellenformat
+
+Die Seite Line-Up zeigt das aktuelle LineUp in einer Tabellen-Form an.
 
 image::models/analysis/images/uebergang/planning_main.png[]
 
 Übersicht und Verlinkung der einzelnen Planungsphasen
 
+Die Seite Planungsphasen zeigt eine Übersicht der einzelnen Planungsphasen an, sowie einen Verweis auf die jeweilige Planungsphase.
+
 image::models/analysis/images/uebergang/planning_phase1.png[]
 
 Termin- und Locationauswahl
+
+Die Seite Termin-und-Locationauswahl ermöglicht es, festzulegen, wann ein Festival stattfinden soll, sowie auf welcher Location.
 
 image::models/analysis/images/uebergang/planning_positionierung.png[]
 
 Positionierung der einzelnen Bereiche mit Lageplan
 
+Die Seite Positionierung soll es ermöglichen Bereiche zu positionieren, sowie einen Lageplan zu erstellen.
+Dazu kann man entweder ein Bild hochladen oder Sperrblöcke verschieben.
+
 image::models/analysis/images/uebergang/planning_ticketprice.png[]
 
 Ticketpreise ändern
+
+Die Seite ermöglicht es die Ticketpreise für ein Festival zu ändern. Dazu gibt es jeweils ein Eingabefeld für den Preis.
 
 image::models/analysis/images/uebergang/terminal_catering_main.png[]
 
 Hauptterminal des Cateringpersonals
 
+Das Hauptterminal des Cateringpersonals zeigt eine Übersicht aller verfügbaren Speisen und Getränke an.
+Hier können die Speisen und Getränke einer Bestellung hinzugefügt werden.
+
 image::models/analysis/images/uebergang/terminal_catering_buy.png[]
 
 Hinzufügen eines Artikels (Essen/Trinke) mit Menge
+
+Hier kann die Menge eines Artikels für eine Bestellung festgelegt werden.
 
 image::models/analysis/images/uebergang/terminal_catering_checkout.png[]
 
 Abrechnung/Abbuchung einer Bestellung
 
+Die Seite der Catering-Abrechnung ermöglicht es eine Bestellung abzubuchen, sowie vorher eine Übersicht über die Bestellung zu haben.
+
 image::models/analysis/images/uebergang/terminal_director_stock.png[]
 
 Lagerbestandsübersicht des Festivalleiters
+
+Diese Seite ermöglciht es dem Festivalleiter den Lagerbestand in einer Tabelle anzeigen zu lassen. Zusätzlich kann er über zugehörige Felder Artikel nachbestellen.
 
 image::models/analysis/images/uebergang/terminal_director_dashboard.png[]
 
 Übersicht über den Umsatz, Nachrichten, aktuelle Bühnenbelegung und die aktuellen Besucherzahlen
 
+Die Dashboard-Seite zeigt dem Leiter aktuelle Informationen über den Umsatz, die Nachrichten, die aktuelle Bühnenbelegung und die aktuelle Besucherzahlen an.
+
 image::models/analysis/images/uebergang/terminal_free_free.png[]
 
 Freies Terminal mit Lageplan und Lineup
 
+Die Seite zeigt dem Festivalbesucher vor Ort den Lageplan und das LineUp an.
+
 image::models/analysis/images/uebergang/terminal_manager_main.png[]
 
 Übersicht des Managers über Mitarbeiter und die Finanzen
+
+Diese Seite zeigt dem Manager eine Übersicht über alle Mitarbeiter und die Finanzen an.
 
 image::models/analysis/Dialoglandkarte.png[]
 
@@ -383,15 +461,6 @@ image::models/analysis/Dialoglandkarte.png[]
 === Überblick: Dialoglandkarte
 Erstellen Sie ein Übersichtsdiagramm, das das Zusammenspiel Ihrer Masken zur Laufzeit darstellt. Also mit welchen Aktionen zwischen den Masken navigiert wird.
 //Die nachfolgende Abbildung zeigt eine an die Pinnwand gezeichnete Dialoglandkarte. Ihre Karte sollte zusätzlich die Buttons/Funktionen darstellen, mit deren Hilfe Sie zwischen den Masken navigieren.
-
-[[_dialogbeschreibung]]
-=== Dialogbeschreibung
-Für jeden Dialog:
-
-1. Kurze textuelle Dialogbeschreibung eingefügt: Was soll der jeweilige Dialog? Was kann man damit tun? Überblick?
-2. Maskenentwürfe (Screenshot, Mockup)
-3. Maskenelemente (Ein/Ausgabefelder, Aktionen wie Buttons, Listen, …)
-4. Evtl. Maskendetails, spezielle Widgets
 
 [[_datenmodell]]
 == Datenmodell
