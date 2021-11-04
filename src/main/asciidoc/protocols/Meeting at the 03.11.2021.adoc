@@ -1,8 +1,8 @@
 Meeting at the 28.10.2021
 
-Place: BBB       +
-Start:   16:40 Uhr +
-End:     18:30
+Place: Trefftzbau       +
+Start:   11:10 Uhr +
+End:     13:00
 
 __Person that will write:__ Franz Nolasco
 
@@ -16,15 +16,13 @@ __Participants:__
 - Conrad 
 - Aleksey
 - Philipp
-- Cornelius
-- Tom ( Tutor) 
 
 == Remarks
-- In this meeting we described and also explained all the process that we have made during the last week to the tutor ( For example the diagramms, the scratch of the GUI, etc)
-- He gave us some tips that we could use to make look better our Diagramms and make them more understandable 
-- Our tasks of Videoshop were given to the tutor , and those are going to be ready till Sunday.
-- We discussed about what are we going to do further in the project.
-- Some mistakes in the Specification book need to be solved, and also it needs to be completed.
+- In this short meeting , we accomplished to complete the specification book.
+- The tasks of the project itself have been splitted in five parts ( Each one is responsible for the Backend and also the Frontend of his part)
+- The skeleton of the project will be started in the next meeting
+- We made some changes in the dialog map ,and also we extended a little bit of out class diagramm
+- All diagramms have been made again and right now are more clearer
    
 == Retrospective of the last sprint
 *Issue referenziert die Issue ID von GitHub*
@@ -39,7 +37,8 @@ __Participants:__
 
 
 == Current Status
-Since now we have made a great progrees of the project , with the class diagramm it will be much easier to start doing the code of the Project. The task of videoshop will be till sunday complete. 
+Sadly one of our group couldn’t continue with the project , and sadly he left us, but we managed to split the tasks equally. Each one of us will start doing a srcatch 
+of the tasks , and we have discussed the strategy that are we goin to use in git to make it work.
 
 == Planning of the next sprint
 *Issue referenziert die Issue ID von GitHub*
