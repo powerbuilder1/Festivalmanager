@@ -1,0 +1,51 @@
+Meeting at the 28.10.2021
+
+Place: Trefftzbau       +
+Start:   11:10 Uhr +
+End:     13:00
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* +
+
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+
+== Remarks
+- In this short meeting , we accomplished to complete the specification book.
+- The tasks of the project itself have been splitted in five parts ( Each one is responsible for the Backend and also the Frontend of his part)
+- The skeleton of the project will be started in the next meeting
+- We made some changes in the dialog map ,and also we extended a little bit of out class diagramm
+- All diagramms have been made again and right now are more clearer
+   
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+Sadly one of our group couldn’t continue with the project , and sadly he left us, but we managed to split the tasks equally. Each one of us will start doing a srcatch 
+of the tasks , and we have discussed the strategy that are we goin to use in git to make it work.
+
+== Planning of the next sprint
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
