@@ -1,6 +1,6 @@
 Meeting at the 28.10.2021
 
-Place: Discord       +
+Place: BBB       +
 Start:   16:40 Uhr +
 End:     18:30
 
@@ -20,6 +20,11 @@ __Participants:__
 - Tom ( Tutor) 
 
 == Remarks
+- In this meeting we described and also explained all the process that we have made during the last week to the tutor ( For example the diagramms, the scratch of the GUI, etc)
+- He gave us some tips that we could use to make look better our Diagramms and make them more understandable 
+- Our tasks of Videoshop were given to the tutor , and those are going to be ready till Sunday.
+- We discussed about what are we going to do further in the project.
+- Some mistakes in the Specification book need to be solved, and also it needs to be completed.
    
 == Retrospective of the last sprint
 *Issue referenziert die Issue ID von GitHub*
@@ -34,6 +39,7 @@ __Participants:__
 
 
 == Current Status
+Since now we have made a great progrees of the project , with the class diagramm it will be much easier to start doing the code of the Project. The task of videoshop will be till sunday complete. 
 
 == Planning of the next sprint
 *Issue referenziert die Issue ID von GitHub*
