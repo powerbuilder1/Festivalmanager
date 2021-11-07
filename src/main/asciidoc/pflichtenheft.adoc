@@ -552,6 +552,52 @@ _Produktbestand einsehen_:
 |Functional Requirements    |<<F0010>>
 |===
 
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Band/ Artist buchen
+|Description                |Das Planungsteam will eine Band / einen Künstler buchen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Band/ Artist buchen_: Das Planungsteam will eine Band / einen Künstler buchen.
+|Precondition(s)           a|
+_Band/ Artist buchen_: Der Benutzer ist als Planungsteammitglied angemeldet.
+
+|Essential Steps           a|
+_Band/ Artist buchen_: 
+    1. Der Benutzer geht auf den Reiter "Planung"
+    2. Der Benutzer wählt eine Band / einen Künstler aus
+    3. Der Benutzer wählt eine Zeitraum aus
+    4. Der Benutzer klickt auf "Buchen"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Verfügbare Bands / Artists einsehen
+|Description                |Das Planungsteam will die verfügbaren Bands / Artists einsehen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Verfügbare Bands / Artists einsehen_: Das Planungsteam will die verfügbaren Bands / Artists einsehen.
+|Precondition(s)           a|
+_Verfügbare Bands / Artists einsehen_: Der Benutzer ist als Planungsteammitglied angemeldet.
+
+|Essential Steps           a|
+_Verfügbare Bands / Artists einsehen_: 
+    1. Der Benutzer geht auf den Reiter "Planung"
+    2. Der Benutzer wählt eine Band / einen Künstler aus
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+
+
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
 
@@ -1141,3 +1187,4 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 - Event(Event1) hat MindestanzahlSecusity(30)
 |{Event}      a|Planungsmitarbeiter legt SecurityPersonal(25) fest für Event(Event1)
 |{Result}     a|
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
