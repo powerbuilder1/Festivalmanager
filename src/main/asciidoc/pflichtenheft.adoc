@@ -360,67 +360,27 @@ _Nachricht an Personal senden_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC200]]
 |===
-|ID                         |**<<UC0011>>**
-|Name                       |Personal Account erstellen
-|Description                |Der Manager erstellt einen Personal Account.
+|ID                         |**<<UC200>>**
+|Name                       |Festival anlegen
+|Description                |Der Manager legt ein Festival an.
 |Actors                     |Manager
 |Trigger                    |
-_Personal Account erstellen_: Der Manager will einen Personal Account erstellen.
+_Festival anlegen_: Der Manager will ein Festival anlegen.
 |Precondition(s)           a|
-_Personal Account erstellen_: Der Benutzer ist als Manager angemeldet. Der Personal Account exisitert noch nicht.
+_Festival anlegen_: Der Benutzer ist als Manager angemeldet.
 
 |Essential Steps           a|
-_Personal Account erstellen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-    2. Der Manager klickt auf "Neuen Personal Account erstellen"
-    3. Der Manager wählt einen Benutzernamen aus
-    4. Der Manager wählt ein Passwort ein
-    5. Der Manager wählt eine Rolle aus
-    6. Der Manager drückt auf "Erstellen"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Angemeldetes Personal Account einsehen
-|Description                |Der Manager will das angemeldete Personal sehen.
-|Actors                     |Manager
-|Trigger                    |
-_Angemeldetes Personal Account einsehen_: Der Manager will das angemeldete Personal sehen.
-|Precondition(s)           a|
-_Angemeldetes Personal Account einsehen_: Der Benutzer ist als Manager angemeldet.
-
-|Essential Steps           a|
-_Angemeldetes Personal Account einsehen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Personal Account löschen
-|Description                |Der Manager will einen Personal Account löschen.
-|Actors                     |Manager
-|Trigger                    |
-_Personal Account löschen_: Der Manager will einen Personal Account löschen.
-|Precondition(s)           a|
-_Personal Account löschen_: Der Benutzer ist als Manager angemeldet. Der Personal Account existiert.
-
-|Essential Steps           a|
-_Personal Account löschen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-    2. Der Manager wählt einen Personal Account aus
-    3. Der Manager drückt auf "Löschen"
+_Festival anlegen_: 
+    1. Der Manager geht auf den Reiter "Planung"
+    2. Der Manager wählt "Erstellen" aus
+    3. Der Manager wählt Location aus [UC201]
+    4. Der Manager wählt Artists (Bands) aus [UC202]
+    5. Der Manager wählt das Personal aus (aus den bereits erstellten Personal Accounts) [UC203]
+    6. Der Manager konfiguriert die Tickets [UC204]
+    7. Der Manager legt den benötigten Lagerbestand fest [UC205]
+    8. Der Manager erstellt einen Spielplan [UC206]
 
 |Extensions                 |-
 |Functional Requirements    |<<F0010>>
@@ -1230,4 +1190,16 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 - Event(Event1) hat MindestanzahlSecusity(30)
 |{Event}      a|Planungsmitarbeiter legt SecurityPersonal(25) fest für Event(Event1)
 |{Result}     a|
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+- Fehlermeldung: MindestanzahlSecrity nicht erfüllt
+- Event(Event1) benötigt MindestanzahlSecurity(30)
+|===
+
+[[_glossar]]
+== Glossar
+Sämtliche Begriffe, die innerhalb des Projektes verwendet werden und deren gemeinsames Verständnis aller beteiligten Stakeholder essentiell ist, sollten hier aufgeführt werden.
+Insbesondere Begriffe der zu implementierenden Domäne wurden bereits beschrieben, jedoch gibt es meist mehr Begriffe, die einer Beschreibung bedürfen. +
+Beispiel: Was bedeutet "Kunde"? Ein Nutzer des Systems? Der Kunde des Projektes (Auftraggeber)?
+
+[[_offene_punkte]]
+== Offene Punkte
+Offene Punkte werden entweder direkt in der Spezifikation notiert. Wenn das Pflichtenheft zum finalen Review vorgelegt wird, sollte es keine offenen Punkte mehr geben.
