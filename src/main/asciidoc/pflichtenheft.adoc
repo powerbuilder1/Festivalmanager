@@ -360,243 +360,31 @@ _Nachricht an Personal senden_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC200]]
 |===
-|ID                         |**<<UC0011>>**
-|Name                       |Personal Account erstellen
-|Description                |Der Manager erstellt einen Personal Account.
+|ID                         |**<<UC200>>**
+|Name                       |Festival anlegen
+|Description                |Der Manager legt ein Festival an.
 |Actors                     |Manager
 |Trigger                    |
-_Personal Account erstellen_: Der Manager will einen Personal Account erstellen.
+_Festival anlegen_: Der Manager will ein Festival anlegen.
 |Precondition(s)           a|
-_Personal Account erstellen_: Der Benutzer ist als Manager angemeldet. Der Personal Account exisitert noch nicht.
+_Festival anlegen_: Der Benutzer ist als Manager angemeldet.
 
 |Essential Steps           a|
-_Personal Account erstellen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-    2. Der Manager klickt auf "Neuen Personal Account erstellen"
-    3. Der Manager wählt einen Benutzernamen aus
-    4. Der Manager wählt ein Passwort ein
-    5. Der Manager wählt eine Rolle aus
-    6. Der Manager drückt auf "Erstellen"
+_Festival anlegen_: 
+    1. Der Manager geht auf den Reiter "Planung"
+    2. Der Manager wählt "Erstellen" aus
+    3. Der Manager wählt Location aus [UC201]
+    4. Der Manager wählt Artists (Bands) aus [UC202]
+    5. Der Manager wählt das Personal aus (aus den bereits erstellten Personal Accounts) [UC203]
+    6. Der Manager konfiguriert die Tickets [UC204]
+    7. Der Manager legt den benötigten Lagerbestand fest [UC205]
+    8. Der Manager erstellt einen Spielplan [UC206]
 
 |Extensions                 |-
 |Functional Requirements    |<<F0010>>
 |===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Angemeldetes Personal Account einsehen
-|Description                |Der Manager will das angemeldete Personal sehen.
-|Actors                     |Manager
-|Trigger                    |
-_Angemeldetes Personal Account einsehen_: Der Manager will das angemeldete Personal sehen.
-|Precondition(s)           a|
-_Angemeldetes Personal Account einsehen_: Der Benutzer ist als Manager angemeldet.
-
-|Essential Steps           a|
-_Angemeldetes Personal Account einsehen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Personal Account löschen
-|Description                |Der Manager will einen Personal Account löschen.
-|Actors                     |Manager
-|Trigger                    |
-_Personal Account löschen_: Der Manager will einen Personal Account löschen.
-|Precondition(s)           a|
-_Personal Account löschen_: Der Benutzer ist als Manager angemeldet. Der Personal Account existiert.
-
-|Essential Steps           a|
-_Personal Account löschen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-    2. Der Manager wählt einen Personal Account aus
-    3. Der Manager drückt auf "Löschen"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Personal Kosten einsehen
-|Description                |Der Manager will die Kosten des Personals sehen.
-|Actors                     |Manager
-|Trigger                    |
-_Personal Kosten einsehen_: Der Manager will die Kosten des Personals sehen.
-|Precondition(s)           a|
-_Personal Kosten einsehen_: Der Benutzer ist als Manager angemeldet.
-
-|Essential Steps           a|
-_Personal Kosten einsehen_: 
-    1. Der Manager geht auf den Reiter "Personal"
-    2. Der Manager wählt "Kosten" aus
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Mindest Personal kalkulieren
-|Description                |Der Manager will will die Mindestanzahl an Sicherheitspersonal wissen.
-|Actors                     |Manager
-|Trigger                    |
-_Mindest Personal kalkulieren_: Der Manager will die Mindestanzahl an Sicherheitspersonal wissen.
-|Precondition(s)           a|
-_Mindest Personal kalkulieren_: Der Benutzer ist als Manager angemeldet.
-
-|Essential Steps           a|
-_Mindest Personal kalkulieren_: 
-    1. Der Manager geht auf den Reiter "Personal"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Produkte nachbestellen
-|Description                |Der Festivalleiter will ein Produkt nachbestellen.
-|Actors                     |Festivalleiter
-|Trigger                    |
-_Produkte nachbestellen_: Der Festivalleiter will ein Produkt nachbestellen.
-|Precondition(s)           a|
-_Produkte nachbestellen_: Der Benutzer ist als Festivalleiter angemeldet.
-
-|Essential Steps           a|
-_Produkte nachbestellen_: 
-    1. Der Festivalleiter geht auf den Reiter "Lager"
-    2. Der Festivalleiter wählt ein Produkt aus
-    3. Der Festivalleiter wählt eine Menge aus
-    4. Der Festivalleiter drückt auf "Nachbestellen"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Verkaufszahlen einsehen
-|Description                |Der Festivalleiter will die Verkaufszahlen einsehen.
-|Actors                     |Festivalleiter
-|Trigger                    |
-_Verkaufszahlen einsehen_: Der Festivalleiter will die Verkaufszahlen einsehen.
-|Precondition(s)           a|
-_Verkaufszahlen einsehen_: Der Benutzer ist als Festivalleiter angemeldet.
-
-|Essential Steps           a|
-_Verkaufszahlen einsehen_: 
-    1. Der Festivalleiter geht auf den Reiter "Verkauf"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Umsatz einsehen
-|Description                |Der Festivalleiter will den Umsatz einsehen.
-|Actors                     |Festivalleiter
-|Trigger                    |
-_Umsatz einsehen_: Der Festivalleiter will den Umsatz einsehen.
-|Precondition(s)           a|
-_Umsatz einsehen_: Der Benutzer ist als Festivalleiter angemeldet.
-
-|Essential Steps           a|
-_Umsatz einsehen_: 
-    1. Der Festivalleiter geht auf den Reiter "Umsatz"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Produktbestand einsehen
-|Description                |Der Festivalleiter den Produktbestand einsehen.
-|Actors                     |Festivalleiter
-|Trigger                    |
-_Produktbestand einsehen_: Der Festivalleiter will den Produkbestand einesehen.
-|Precondition(s)           a|
-_Produktbestand einsehen_: Der Benutzer ist als Festivalleiter angemeldet.
-
-|Essential Steps           a|
-_Produktbestand einsehen_: 
-    1. Der Festivalleiter geht auf den Reiter "Lager"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Band/ Artist buchen
-|Description                |Das Planungsteam will eine Band / einen Künstler buchen.
-|Actors                     |Festivalleiter
-|Trigger                    |
-_Band/ Artist buchen_: Das Planungsteam will eine Band / einen Künstler buchen.
-|Precondition(s)           a|
-_Band/ Artist buchen_: Der Benutzer ist als Planungsteammitglied angemeldet.
-
-|Essential Steps           a|
-_Band/ Artist buchen_: 
-    1. Der Benutzer geht auf den Reiter "Planung"
-    2. Der Benutzer wählt eine Band / einen Künstler aus
-    3. Der Benutzer wählt eine Zeitraum aus
-    4. Der Benutzer klickt auf "Buchen"
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-[cols="1h, 3"]
-[[UC0010]]
-|===
-|ID                         |**<<UC0011>>**
-|Name                       |Verfügbare Bands / Artists einsehen
-|Description                |Das Planungsteam will die verfügbaren Bands / Artists einsehen.
-|Actors                     |Festivalleiter
-|Trigger                    |
-_Verfügbare Bands / Artists einsehen_: Das Planungsteam will die verfügbaren Bands / Artists einsehen.
-|Precondition(s)           a|
-_Verfügbare Bands / Artists einsehen_: Der Benutzer ist als Planungsteammitglied angemeldet.
-
-|Essential Steps           a|
-_Verfügbare Bands / Artists einsehen_: 
-    1. Der Benutzer geht auf den Reiter "Planung"
-    2. Der Benutzer wählt eine Band / einen Künstler aus
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
-
-
 
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
@@ -1187,4 +975,16 @@ Dieser Abschnitt stellt eine Vereinigung von Glossar und der Beschreibung von Kl
 - Event(Event1) hat MindestanzahlSecusity(30)
 |{Event}      a|Planungsmitarbeiter legt SecurityPersonal(25) fest für Event(Event1)
 |{Result}     a|
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+- Fehlermeldung: MindestanzahlSecrity nicht erfüllt
+- Event(Event1) benötigt MindestanzahlSecurity(30)
+|===
+
+[[_glossar]]
+== Glossar
+Sämtliche Begriffe, die innerhalb des Projektes verwendet werden und deren gemeinsames Verständnis aller beteiligten Stakeholder essentiell ist, sollten hier aufgeführt werden.
+Insbesondere Begriffe der zu implementierenden Domäne wurden bereits beschrieben, jedoch gibt es meist mehr Begriffe, die einer Beschreibung bedürfen. +
+Beispiel: Was bedeutet "Kunde"? Ein Nutzer des Systems? Der Kunde des Projektes (Auftraggeber)?
+
+[[_offene_punkte]]
+== Offene Punkte
+Offene Punkte werden entweder direkt in der Spezifikation notiert. Wenn das Pflichtenheft zum finalen Review vorgelegt wird, sollte es keine offenen Punkte mehr geben.
