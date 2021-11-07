@@ -236,6 +236,130 @@ image::models/analysis/images/sequenz/10.png[]
 
 Ein Cateringstand wird gesperrt.
 
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0010>>**
+|Name                       |Login/Logout
+|Description                |Ein Benutzer soll in der Lage sein sich anmelden zu können um die Funktionen des Systems nutzen zu können. Dies wird mit dem Abbmelden rückgängig gemacht.
+|Actors                     |Benutzer
+|Trigger                    |
+_Login_: Ein Benutzer will "versteckte" Funktionen des Systems nutzen.
+
+_Logout_: Der Benutzer will sich abmelden.
+|Precondition(s)           a|
+_Login_: Der Benuter ist nicht angemeldet.
+
+_Logout_: Der Benutzer ist angemeldet.
+|Essential Steps           a|
+_Login_:
+
+    1. Der Benutzer klickt auf "Anmelden"
+    2. Der Benutzer gibt seine Daten ein
+    3. Der Benutzer drückt auf "Anmelden"
+
+_Logout_:
+
+    1. Der Benutzer klickt auf "Abmelden"
+    2. Der Benutzer wird abgemeldet und gelangt auf die Hauptseite
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Registrierung
+|Description                |Ein Benutzer soll in der Lage sein einen Benutzeraccount zu erstellen.
+|Actors                     |Benutzer
+|Trigger                    |
+_Registrierung_: Ein Benutzer will einen Benutzeraccount erstellen.
+|Precondition(s)           a|
+_Registrierung_: Der Benutzer existiert noch nicht.
+
+|Essential Steps           a|
+_Registrierung_: 
+
+    1. Der Benutzer klickt auf "Registrieren"
+    2. Der Benutzer gibt seine Daten ein
+    3. Der Benutzer drückt auf "Registrieren"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Nachricht senden
+|Description                |Ein Benutzer will eine Nachricht senden
+|Actors                     |Benutzer
+|Trigger                    |
+_Nachricht senden_: Ein Benutzer will eine Nachricht senden.
+|Precondition(s)           a|
+_Nachricht senden_: Der Benutzer ist angemeldet. Der Empfänger existiert.
+
+|Essential Steps           a|
+_Nachricht senden_: 
+
+    1. Der Benutzer klickt auf "Nachricht senden"
+    2. Der Benutzer wählt den Empfänger aus
+    3. Der Benutzer gibt eine Nachricht ein
+    4. Der Benitzer drückt auf "Senden"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Alle Nachrichten anzeigen
+|Description                |Der Festivalleiter will alle Nachrichten sehen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Alle Nachrichten anzeigen_: Der Festivalleiter will alle Nachrichten sehen.
+|Precondition(s)           a|
+_Alle Nachrichten anzeigen_: Der Benutzer ist als Festivalleiter angemeldet.
+
+|Essential Steps           a|
+_Alle Nachrichten anzeigen_: 
+
+    1. Der Festivalleiter geht auf den Reiter "Nachtichten"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Nachricht an Personal senden
+|Description                |Der Festivalleiter will eine Nachricht an das Personal senden.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Nachricht an Personal senden_: Der Festivalleiter will eine Nachrichten an das Personal senden.
+|Precondition(s)           a|
+_Nachricht an Personal senden_: Der Benutzer ist als Festivalleiter angemeldet.
+
+|Essential Steps           a|
+_Nachricht an Personal senden_: 
+
+    1. Der Festivalleiter geht auf den Reiter "Nachtichten"
+    2. Der Festivalleiter wählt einen Empfänger aus
+    3. Der Festivalleiter gibt eine Nachricht ein
+    4. Der Festivalleiter drückt auf "Senden"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
 
