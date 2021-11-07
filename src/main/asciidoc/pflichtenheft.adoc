@@ -386,6 +386,27 @@ _Festival anlegen_:
 |Functional Requirements    |<<F0010>>
 |===
 
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC700>>**
+|Name                       |Festival Übersicht
+|Description                |Ein benutzer hat zugriff auf eine Festivalübersicht
+|Actors                     |Benutzer
+|Trigger                    |
+_Festival Übersicht anschauen_: Der Benutzer will die zurzeit verfügbaren Festivals einsehen.
+|Precondition(s)           a|
+_Festival Übersicht anschauen_: benötigt keine besonderen Vorbedingungen (selbst unauthentifizierte Benutzer können die Übersicht einsehen)
+
+|Essential Steps           a|
+_Festival Übersicht anschauen_: 
+    1. Der Benutzer geht auf die index Seite (localhost:8080) oder klickt auf das Logo der Webseite in der Navigationsleiste falls der Benutzer bereits auf einer anderen Route auf der Webseite ist.
+    2. Benutzer wird eine Liste mit den aktuell verfügbaren Festival angezeigt sowie Informationen wie z.B. Datum [UC701], LineUp [UC702], verfügbare Tickets [UC703], Spielplan [UC704]
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
 
