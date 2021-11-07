@@ -467,6 +467,90 @@ _Mindest Personal kalkulieren_:
 |Functional Requirements    |<<F0010>>
 |===
 
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Produkte nachbestellen
+|Description                |Der Festivalleiter will ein Produkt nachbestellen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Produkte nachbestellen_: Der Festivalleiter will ein Produkt nachbestellen.
+|Precondition(s)           a|
+_Produkte nachbestellen_: Der Benutzer ist als Festivalleiter angemeldet.
+
+|Essential Steps           a|
+_Produkte nachbestellen_: 
+    1. Der Festivalleiter geht auf den Reiter "Lager"
+    2. Der Festivalleiter wählt ein Produkt aus
+    3. Der Festivalleiter wählt eine Menge aus
+    4. Der Festivalleiter drückt auf "Nachbestellen"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Verkaufszahlen einsehen
+|Description                |Der Festivalleiter will die Verkaufszahlen einsehen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Verkaufszahlen einsehen_: Der Festivalleiter will die Verkaufszahlen einsehen.
+|Precondition(s)           a|
+_Verkaufszahlen einsehen_: Der Benutzer ist als Festivalleiter angemeldet.
+
+|Essential Steps           a|
+_Verkaufszahlen einsehen_: 
+    1. Der Festivalleiter geht auf den Reiter "Verkauf"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Umsatz einsehen
+|Description                |Der Festivalleiter will den Umsatz einsehen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Umsatz einsehen_: Der Festivalleiter will den Umsatz einsehen.
+|Precondition(s)           a|
+_Umsatz einsehen_: Der Benutzer ist als Festivalleiter angemeldet.
+
+|Essential Steps           a|
+_Umsatz einsehen_: 
+    1. Der Festivalleiter geht auf den Reiter "Umsatz"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+
+[cols="1h, 3"]
+[[UC0010]]
+|===
+|ID                         |**<<UC0011>>**
+|Name                       |Produktbestand einsehen
+|Description                |Der Festivalleiter den Produktbestand einsehen.
+|Actors                     |Festivalleiter
+|Trigger                    |
+_Produktbestand einsehen_: Der Festivalleiter will den Produkbestand einesehen.
+|Precondition(s)           a|
+_Produktbestand einsehen_: Der Benutzer ist als Festivalleiter angemeldet.
+
+|Essential Steps           a|
+_Produktbestand einsehen_: 
+    1. Der Festivalleiter geht auf den Reiter "Lager"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
 
 [[_funktionale_anforderungen]]
 == Funktionale Anforderungen
