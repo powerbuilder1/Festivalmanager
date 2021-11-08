@@ -237,9 +237,9 @@ image::models/analysis/images/sequenz/10.png[]
 Ein Cateringstand wird gesperrt.
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC900]]
 |===
-|ID                         |**<<UC0010>>**
+|ID                         |**<<UC900>>**
 |Name                       |Login/Logout
 |Description                |Ein Benutzer soll in der Lage sein sich anmelden zu können um die Funktionen des Systems nutzen zu können. Dies wird mit dem Abbmelden rückgängig gemacht.
 |Actors                     |Benutzer
@@ -268,9 +268,9 @@ _Logout_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC910]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC910>>**
 |Name                       |Registrierung
 |Description                |Ein Benutzer soll in der Lage sein einen Benutzeraccount zu erstellen.
 |Actors                     |Benutzer
@@ -291,9 +291,117 @@ _Registrierung_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC100]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC100>>**
+|Name                       |Personal Account erstellen
+|Description                |Der Manager erstellt einen Personal Account.
+|Actors                     |Manager
+|Trigger                    |
+_Personal Account erstellen_: Der Manager will einen Personal Account erstellen.
+|Precondition(s)           a|
+_Personal Account erstellen_: Der Benutzer ist als Manager angemeldet. Der Personal Account exisitert noch nicht.
+
+|Essential Steps           a|
+_Personal Account erstellen_: 
+    1. Der Manager geht auf den Reiter "Personal"
+    2. Der Manager klickt auf "Neuen Personal Account erstellen"
+    3. Der Manager wählt einen Benutzernamen aus
+    4. Der Manager wählt ein Passwort ein
+    5. Der Manager wählt eine Rolle aus
+    6. Der Manager drückt auf "Erstellen"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC130]]
+|===
+|ID                         |**<<UC130>>**
+|Name                       |Angemeldetes Personal Account einsehen
+|Description                |Der Manager will das angemeldete Personal sehen.
+|Actors                     |Manager
+|Trigger                    |
+_Angemeldetes Personal Account einsehen_: Der Manager will das angemeldete Personal sehen.
+|Precondition(s)           a|
+_Angemeldetes Personal Account einsehen_: Der Benutzer ist als Manager angemeldet.
+
+|Essential Steps           a|
+_Angemeldetes Personal Account einsehen_: 
+    1. Der Manager geht auf den Reiter "Personal"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC110]]
+|===
+|ID                         |**<<UC110>>**
+|Name                       |Personal Account löschen
+|Description                |Der Manager will einen Personal Account löschen.
+|Actors                     |Manager
+|Trigger                    |
+_Personal Account löschen_: Der Manager will einen Personal Account löschen.
+|Precondition(s)           a|
+_Personal Account löschen_: Der Benutzer ist als Manager angemeldet. Der Personal Account existiert.
+
+|Essential Steps           a|
+_Personal Account löschen_: 
+    1. Der Manager geht auf den Reiter "Personal"
+    2. Der Manager wählt einen Personal Account aus
+    3. Der Manager drückt auf "Löschen"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC120]]
+|===
+|ID                         |**<<UC120>>**
+|Name                       |Personal Kosten einsehen
+|Description                |Der Manager will die Kosten des Personals sehen.
+|Actors                     |Manager
+|Trigger                    |
+_Personal Kosten einsehen_: Der Manager will die Kosten des Personals sehen.
+|Precondition(s)           a|
+_Personal Kosten einsehen_: Der Benutzer ist als Manager angemeldet.
+
+|Essential Steps           a|
+_Personal Kosten einsehen_: 
+    1. Der Manager geht auf den Reiter "Personal"
+    2. Der Manager wählt "Kosten" aus
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC140]]
+|===
+|ID                         |**<<UC140>>**
+|Name                       |Mindest Personal kalkulieren
+|Description                |Der Manager will will die Mindestanzahl an Sicherheitspersonal wissen.
+|Actors                     |Manager
+|Trigger                    |
+_Mindest Personal kalkulieren_: Der Manager will die Mindestanzahl an Sicherheitspersonal wissen.
+|Precondition(s)           a|
+_Mindest Personal kalkulieren_: Der Benutzer ist als Manager angemeldet.
+
+|Essential Steps           a|
+_Mindest Personal kalkulieren_: 
+    1. Der Manager geht auf den Reiter "Personal"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+[cols="1h, 3"]
+[[UC800]]
+|===
+|ID                         |**<<UC800>>**
 |Name                       |Nachricht senden
 |Description                |Ein Benutzer will eine Nachricht senden
 |Actors                     |Benutzer
@@ -315,9 +423,9 @@ _Nachricht senden_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC810]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC810>>**
 |Name                       |Alle Nachrichten anzeigen
 |Description                |Der Festivalleiter will alle Nachrichten sehen.
 |Actors                     |Festivalleiter
@@ -336,9 +444,9 @@ _Alle Nachrichten anzeigen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC802]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC802>>**
 |Name                       |Nachricht an Personal senden
 |Description                |Der Festivalleiter will eine Nachricht an das Personal senden.
 |Actors                     |Festivalleiter
@@ -359,37 +467,11 @@ _Nachricht an Personal senden_:
 |Functional Requirements    |<<F0010>>
 |===
 
-[cols="1h, 3"]
-[[UC200]]
-|===
-|ID                         |**<<UC200>>**
-|Name                       |Festival anlegen
-|Description                |Der Manager legt ein Festival an.
-|Actors                     |Manager
-|Trigger                    |
-_Festival anlegen_: Der Manager will ein Festival anlegen.
-|Precondition(s)           a|
-_Festival anlegen_: Der Benutzer ist als Manager angemeldet.
-
-|Essential Steps           a|
-_Festival anlegen_: 
-    1. Der Manager geht auf den Reiter "Planung"
-    2. Der Manager wählt "Erstellen" aus
-    3. Der Manager wählt Location aus [UC201]
-    4. Der Manager wählt Artists (Bands) aus [UC202]
-    5. Der Manager wählt das Personal aus (aus den bereits erstellten Personal Accounts) [UC203]
-    6. Der Manager konfiguriert die Tickets [UC204]
-    7. Der Manager legt den benötigten Lagerbestand fest [UC205]
-    8. Der Manager erstellt einen Spielplan [UC206]
-
-|Extensions                 |-
-|Functional Requirements    |<<F0010>>
-|===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC120]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC120>>**
 |Name                       |Personal Kosten einsehen
 |Description                |Der Manager will die Kosten des Personals sehen.
 |Actors                     |Manager
@@ -408,9 +490,9 @@ _Personal Kosten einsehen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC140]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC140>>**
 |Name                       |Mindest Personal kalkulieren
 |Description                |Der Manager will will die Mindestanzahl an Sicherheitspersonal wissen.
 |Actors                     |Manager
@@ -428,9 +510,9 @@ _Mindest Personal kalkulieren_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC000]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC000>>**
 |Name                       |Produkte nachbestellen
 |Description                |Der Festivalleiter will ein Produkt nachbestellen.
 |Actors                     |Festivalleiter
@@ -451,9 +533,9 @@ _Produkte nachbestellen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC030]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC030>>**
 |Name                       |Verkaufszahlen einsehen
 |Description                |Der Festivalleiter will die Verkaufszahlen einsehen.
 |Actors                     |Festivalleiter
@@ -472,9 +554,9 @@ _Verkaufszahlen einsehen_:
 
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC040]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC040>>**
 |Name                       |Umsatz einsehen
 |Description                |Der Festivalleiter will den Umsatz einsehen.
 |Actors                     |Festivalleiter
@@ -493,9 +575,9 @@ _Umsatz einsehen_:
 
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC020]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC020>>**
 |Name                       |Produktbestand einsehen
 |Description                |Der Festivalleiter den Produktbestand einsehen.
 |Actors                     |Festivalleiter
@@ -513,9 +595,9 @@ _Produktbestand einsehen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC400]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC400>>**
 |Name                       |Band/ Artist buchen
 |Description                |Das Planungsteam will eine Band / einen Künstler buchen.
 |Actors                     |Planungsteam
@@ -536,9 +618,9 @@ _Band/ Artist buchen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC510]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC510>>**
 |Name                       |Verfügbare Bands / Artists einsehen
 |Description                |Das Planungsteam will die verfügbaren Bands / Artists einsehen.
 |Actors                     |Planungsteam
@@ -557,9 +639,9 @@ _Verfügbare Bands / Artists einsehen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC400]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC400>>**
 |Name                       |Location buchen
 |Description                |Das Planungsteam will eine Location buchen.
 |Actors                     |Planungsteam
@@ -580,9 +662,9 @@ _Location buchen_:
 |===
 
 [cols="1h, 3"]
-[[UC0010]]
+[[UC410]]
 |===
-|ID                         |**<<UC0011>>**
+|ID                         |**<<UC410>>**
 |Name                       |Verfügbare Locations einsehen
 |Description                |Das Planungsteam will die verfügbaren Locations einsehen.
 |Actors                     |Planungsteam
@@ -647,6 +729,54 @@ _Festival Übersicht anschauen_:
 |Functional Requirements    |<<F0010>>
 |===
 
+
+[cols="1h, 3"]
+[[UC301]]
+|===
+|ID                         |**<<UC301>>**
+|Name                       |Ticketpreis festlegen
+|Description                |Der Manager kann den Ticketpreis festlegen
+|Actors                     |Manager
+|Trigger                    |
+_Ticketpreis festlegen_: Der Manager will den Ticketpreis festlegen.
+|Precondition(s)           a|
+_Ticketpreis festlegen_: Der Benutzer ist als Manager angemeldet.
+
+|Essential Steps           a|
+_Ticketpreis festlegen_: 
+    1. Der Manager geht auf den Reiter "Planung"
+    2. Der Manager wählt ein Festival aus
+    3. Der Manager wählt ein Ticket aus
+    4. Der Manager wählt den Ticketpreis aus
+    5. Der Manager klickt auf "Speichern"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
+
+
+[cols="1h, 3"]
+[[UC310]]
+|===
+|ID                         |**<<UC310>>**
+|Name                       |Ticket kaufen
+|Description                |Ein Kunde will ein Ticket kaufen
+|Actors                     |Kunde
+|Trigger                    |
+_Ticket kaufen_: Der Kunde will ein Ticket kaufen.
+|Precondition(s)           a|
+_Ticket kaufen_: Der Benutzer ist als Kunde angemeldet.
+
+|Essential Steps           a|
+_Ticket kaufen_: 
+    1. Der Kunde geht auf den Reiter "Festivals"
+    2. Der Kunde wählt ein Festival aus
+    3. Der Kunde wählt ein Ticket aus
+    4. Der Kunde klickt auf "Kaufen"
+
+|Extensions                 |-
+|Functional Requirements    |<<F0010>>
+|===
 
 
 [[_funktionale_anforderungen]]
