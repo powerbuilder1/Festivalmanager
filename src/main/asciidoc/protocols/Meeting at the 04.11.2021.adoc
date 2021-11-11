@@ -1,0 +1,54 @@
+Meeting at the 04.11.2021
+
+Place: BBB
+Start:   16:40 Uhr +
+End:     18:00
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* +
+
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+- Cornelius
+- Tom (tutor)
+
+== Remarks
+- The tutor had told us about our respective code that we wrote for videshop, he gave us some advices about what we need to improve in Git , for example mor commits 
+and things like that.
+- We discussed about the tasks that we need to accomplish till our next meeting.
+- The tutor gave us his verdict of our specification book and also the problems that we need to solve in it . This task will be solved till this sunday
+- Till the next meeting the scratches of all the classes of our code "Festical Manager" need to be done and also some unitcases of them.
+- We talked about the details of the developer's document 
+
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+The code of videoshop is already done and it was really helpfull to understand about the framework that we are going to use for our project, we have already finished the first version
+of our specification book , that throughout the next weeks will be improved and also extended , we have decided to meet the next week , and at the time each of us have started doing our respective 
+prototypes. Since now we don’t have any problems whatsoever. 
+== Planning of the next sprint
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
