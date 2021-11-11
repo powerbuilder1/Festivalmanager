@@ -50,5 +50,6 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-031  |AW030 Ticket           |Ticket kaufen            |Benutzer will "0" Tickets kaufen    |NullPointerException
 |I-040  |AW040 LineUp           |Band in LineUp hinzufügen             |FestivalManager vergiss ein Stage oder ein PerformanceHour zu der Band zu geben   |IllegalArgumentException
 |I-041  |AW040 LineUp           |Lineup zu Festival verbinden             |FestivalManager vergiss das Lineup mit der gewünschte Festival zu verbinden    |Fehlermeldung
-
+|I-050  |AW050 Personal erstellen |Manager ist eingeloggt           |gültige Daten              |Personal wird erstellt   
+|I-051  |AW050 Personal löschen   |Manager ist eingeloggt          |Klich auf den Button "Löschen"                              |Personal wird gelöscht
 |===
