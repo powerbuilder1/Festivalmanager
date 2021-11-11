@@ -1,0 +1,50 @@
+Meeting at the 09.11.2021
+
+Place: Trefftzbau
+Start:   13:40 Uhr +
+End:     15:00
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* 12.11.2021
+
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+
+
+== Remarks
+- The prototypes of our project have been started and til thursday they will be finished ( very basic scratch , that will help us to start )
+- We made a sequence diagramm of the class Festival
+- We discussed about some problems with the framework
+- We talked also about the respective classes that each package needs to have in order that our code will work in the right way 
+- We planned also future meetings
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+The developer's document have been started and also each of our respective class diagramms, since now we have already made only one sequence diagrammn , and also we started coding the 
+task itself "Festival manager" ( right now that we are only five in teh groupr is a little bit more stressful, but we are managing to do it ) and till thursday the basic skeleton of it 
+will be finished. 
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
