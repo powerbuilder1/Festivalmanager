@@ -32,9 +32,19 @@
 
 === Entwurfsentscheidungen
 * Verwendete Muster
+- Spring: dient zur Strukturierung der Webapplikation
+- SalesPoint: dient zur Simulation des Business-Prozesse
+- Thymeleaf: Eine moderne serverseitige Java-Templating-Engine für Web- und Offline-Umgebungen, die HTML, XML, JavaScript, CSS und sogar Nur-Text verarbeiten kann.
+- Singleton: es darf nur einen "Boss" geben
+
 * Persistenz
+SalesPoint und Spring übernehmen die Datenbanken zur Datenspeicherung. Beim PersonalManagement und bei der Buchungsverwaltung nutzen wir CrudRepositories. "Spring Data" ist das Modul, das die Komponente  unseres Systems regelt.
+
 * Benutzeroberfläche
+Die Benutzeroberfläche wurde mit HTML5, CSS3 und Javascript realisiert. Über ein Navigation bar werden unterschiendliche Komponente des Systems aufgerufen. Die Benutzeroberfläche bietet mithilfe javascript ein sehr benutzerfreundliches und attraktives Interface.
+
 * Verwendung externer Frameworks
+-iText: wir nutzen iText zur Erstellung von PDF.
 
 [options="header", cols="1,2"]
 |===
