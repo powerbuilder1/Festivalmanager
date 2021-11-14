@@ -69,3 +69,6 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |U-024 |AW020 Festival           |- |maxVisitors ist 0   |Fehlermeldung - maxVisitors ist zu gering   |Conrad H. Carl
 |U-025 |AW020 Festival           |- |maxStages ist 0   |Fehlermeldung - maxStages ist zu gering   |Conrad H. Carl
 |U-030 |AW030 Location           |Location "TestLocation" exisitert bereits          |"TestLocation" wird erstellt   |Fehlermeldung - exisitert bereits |Conrad H. Carl
+
+
+|===
