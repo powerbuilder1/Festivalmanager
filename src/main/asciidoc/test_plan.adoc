@@ -63,3 +63,9 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |===
 |ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe |Verantworlicher
 |U-020 |AW020 Festival           |Festival "TestFestival" exisitert bereits          |"TestFestival" wird erstellt   |Fehlermeldung - exisitert bereits |Conrad H. Carl
+|U-021 |AW020 Festival           |Festival "TestFestival" im Zeitraum 1.1.2030 - 2.1.2030 hat die Location "TestLocation"            |"TestFestival2" im selben Zeitraum und selber Location   |Fehlermeldung - Location gebucht |Conrad H. Carl
+|U-022 |AW020 Festival           |- |Name leer   |Fehlermeldung - Name ist leer |Conrad H. Carl    
+|U-023 |AW020 Festival           |- |Location ist null |Fehlermeldung - Location ist null   |Conrad H. Carl
+|U-024 |AW020 Festival           |- |maxVisitors ist 0   |Fehlermeldung - maxVisitors ist zu gering   |Conrad H. Carl
+|U-025 |AW020 Festival           |- |maxStages ist 0   |Fehlermeldung - maxStages ist zu gering   |Conrad H. Carl
+|U-030 |AW030 Location           |Location "TestLocation" exisitert bereits          |"TestLocation" wird erstellt   |Fehlermeldung - exisitert bereits |Conrad H. Carl
