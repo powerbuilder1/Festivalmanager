@@ -86,6 +86,7 @@ Bis zu welchem Grad die Sicherheit der Benutzer und ihrer Daten sowie aller ande
 
 === Softwarearchitektur
 * Beschreibung der Architektur anhand der Top-Level-Architektur oder eines Client-Server-Diagramms
+image::models/protocols/client_server_diagram.png[]
 
 === Entwurfsentscheidungen
 * Verwendete Muster
