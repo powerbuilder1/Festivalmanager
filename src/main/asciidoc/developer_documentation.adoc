@@ -125,6 +125,15 @@ iText: wir nutzen iText zur Erstellung von PDF.
 
 image::models/design/catering_inventory_extended_v2.png[]
 
+* Festival
+
+image::models/design/package_festival.png[]
+
+* Location
+
+image::models/design/package_location.png[]
+
+
 [options="header"]
 |=== 
 |Klasse/Enumeration |Description
@@ -161,10 +170,25 @@ wird die Art der Verwendung dieser externen Klasse in der Spalte *Art der Verwen
 == Technische Schulden
 * Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
 
-image::models/develop/catering_inventory_extended.png[]
 
-image::models/develop/festival_location_extended.png[]
+== Sequenzdiagramme
 
-image::models/develop/manager_extended.png[]
+=== Festival
 
-image::models/develop/ticket_extended.png[]
+image::models/design/createFestival.png[]
+
+Der Benutzer kann ein neues Festival erstellen.
+
+image::models/design/listAllFestivals.png[]
+
+Der Benutzer kann alle Festivals anzeigen.
+
+== Klassen
+
+image::models/design/catering_inventory_extended.png[]
+
+image::models/design/festival_location_extended.png[]
+
+image::models/design/manager_extended.png[]
+
+image::models/design/ticket_extended.png[]
