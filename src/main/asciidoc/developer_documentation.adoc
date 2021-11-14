@@ -183,6 +183,20 @@ image::models/design/listAllFestivals.png[]
 
 Der Benutzer kann alle Festivals anzeigen.
 
+
+=== Manager
+
+image::models/design/managerUserSequenz.png[]
+
+
+== Technische Schulden
+* Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
+
+
+== Sequenzdiagramme
+
+Manager
+
 image::models/design/usecase_diagram_stock.png[]
 
 Der FestivalManager erhält den aktuellen Lagerbestand.
