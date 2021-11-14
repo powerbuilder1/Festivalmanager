@@ -50,7 +50,7 @@ iText: wir nutzen iText zur Erstellung von PDF.
 [options="header", cols="1,2"]
 |===
 |Externes Package |Verwendet von (Klasse der eigenen Anwendung)
-|salespointframework.useraccount |*authentication.User, authentication.UserController,authentication.UserDatainitializer,authentication.UserManagement
+|salespointframework.useraccount |-authentication.User, authentication.UserController,authentication.UserDatainitializer,authentication.UserManagement
 *catering.Catering *festivalDirector.FestivalDirector *PersonalManagement.ManagerDataInitializer
 |springframework.util            |*authentication.UserController,authentication.UserDatainitializer,authentication.UserManagement *festival.FesrivalController, festival.FestivalDataInitializer, festival.FestivalManager  *LineUp.LineUpController ,LineUp.LineUpDataInitializer ,LineUp.LineUpManagement *PersonalManagement.ManagerDataInitializer *Ticket.TicketController
 |salespointframework.core        |*authentication.UserDatainitializer  *festival.FesrivalDataInitializer *LineUp.LineUpDataInitializer *location.LocationDataInitializer *Ticket.TicketDataInitializer
