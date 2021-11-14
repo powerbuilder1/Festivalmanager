@@ -71,5 +71,9 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |U-032 |AW031 Location           |- |maxVisitors ist 0 |Fehlermeldung - maxVisitors ist zu gering   |Conrad H. Carl
 |U-033 |AW031 Location           |- |maxStages ist 0 |Fehlermeldung - maxStages ist zu gering   |Conrad H. Carl
 |U-034 |AW031 Location           |- |(200,3,"TestLocation",500) |Location(200,3,"TestLocation", 500)   |Conrad H. Carl
+|U-060 |AW060 PersonalMessageManagement|-|es wird keine Zielperson ausgewählt |Fehlermeldung - kein Adressant eingegeben|Cornelius Kroll
+|U-061 |AW060 PersonalMessageManagement|-|es wird kein Text eingegeben| Fehlermeldung - Text ist leer|Cornelius Kroll
+|U-063 |AW060 PersonalMessageManagement|MessageList ist leer|-| Fehlermeldung - Messagelist kann nicht leer sein|Cornelius Kroll
+|U-063 |AW060 PersonalMessageManagement|MessageList ist leer| Manager lässt sich MessageList anzeigen | Fehlermeldung - Messagelist kann nicht angezeigt werden, da leer |Cornelius Kroll
 
 |===
