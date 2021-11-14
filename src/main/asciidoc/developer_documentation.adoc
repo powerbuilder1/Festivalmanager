@@ -200,7 +200,7 @@ image::models/design/listAllLocations.png[]
 
 image::models/design/managerUserSequenz.png[]
 
-=== Catering
+=== Stock
 
 image::models/design/usecase_diagram_stock.png[]
 
