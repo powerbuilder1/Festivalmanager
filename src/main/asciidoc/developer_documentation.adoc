@@ -204,7 +204,13 @@ image::models/design/managerUserSequenz.png[]
 
 image::models/design/usecase_diagram_stock.png[]
 
-Der Festivalleiter kann den aktuellen Lagerbestand einsehen.
+Der Festivalleiter und Catering kann den aktuellen Lagerbestand einsehen.
+
+=== Catering
+
+image::models/design/usecase_digram_catering_inventory.png[]
+
+Produkte zum Katalog hinzufügen, Produkte zum Warenkorb hinzufügen, Umsatz einsehen, Verkaufszahlen einsehen.
 
 == Technische Schulden
 * Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
