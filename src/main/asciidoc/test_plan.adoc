@@ -53,8 +53,8 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-050  |AW050 Personal erstellen |Manager ist eingeloggt           |gültige Daten              |Personal wird erstellt   
 |I-051  |AW050 Personal bearbeiten  |Manager ist eingeloggt       |ungültige Eingabedaten (z.B Name ist zu kurz)       |IOException
 |I-052  |AW050 Personal löschen   |Manager ist eingeloggt          |Manager klickt auf "Löschen"                              |Personal wird gelöscht
-|I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet |Aleksey Ermoshin
-|I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung |Aleksey Ermoshin
-|I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |Aleksey Ermoshin
+|I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet
+|I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung 
+|I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt 
 
 |===
