@@ -175,6 +175,8 @@ image::models/design/ManagerUserPackage.png[]
 
 image::models/design/ManUsClasses.png[]
 
+image::models/design/PersonalMessageManagement.png[]
+
 [options="header"]
 |=== 
 |Klasse/Enumeration |Description
@@ -244,6 +246,14 @@ image::models/design/TicketSD.png[]
 === LineUp
 
 image::models/design/LineUpSD.png[]
+
+=== PersonalMessageManagement
+
+image::models/design/PersonalMessageManagement_SD_1.png[]
+
+image::models/design/PersonalMessageManagement_SD_2.png[]
+
+image::models/design/PersonalMessageManagement_SD_3.png[]
 
 
 == Technische Schulden
