@@ -9,6 +9,7 @@
 
 == Einführung und Ziele
 * Aufgabenstellung
+
 Der Festivalmanager ist eine Webanwendung, über welche Festivals geplant und verwaltet werden können.
 
 Es sollen Nutzergruppen wie Cateringpersonal, Planungspersonal, Festivalleiter und Manager zugriff auf das System haben um ihren Funktionen zu erfüllen.
