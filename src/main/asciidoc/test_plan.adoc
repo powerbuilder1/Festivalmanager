@@ -44,8 +44,8 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-010  |AW010 Login              |-                                   |ungültige Logindaten (Nutzername/Email, Passwort)       |Fehlermeldung |Ich             
 |I-011  |AW010 Login              |existierender Benutzer              |gültige Logindaten (Nutzername/Email, Passwort)         |Benutzer ist eingeloggt |-
 |I-012  |AW010 Login              |Benutzer ist eingeloggt             |Benutzer klickt auf "Logout"                            |Benutzer wird ausgeloggt |-
-|I-020  |AW020 Festival           |Festival exisitert bereits          |Benutzer gibt Daten ein (gleicher Name) klickt auf "Festival hinzufügen"    |Fehlermeldung |-
-|I-021  |AW020 Festival           |Festival existiert nicht            |Benutzer gibt Daten ein klickt auf "Festival hinzufügen"    |Festival wird erstellt |-
+|I-020  |AW020 Festival           |Festival exisitert bereits          |Benutzer gibt Daten ein (gleicher Name) klickt auf "Festival hinzufügen"    |Fehlermeldung |Conrad H. Carl
+|I-021  |AW020 Festival           |Festival existiert nicht            |Benutzer gibt Daten ein klickt auf "Festival hinzufügen"    |Festival wird erstellt |Conrad H. Carl
 |I-030  |AW030 Ticket           |Ticket auswählen            |Benutzer wählt kein Arte von Ticket   |IllegalArgumentException |-
 |I-031  |AW030 Ticket           |Ticket kaufen            |Benutzer will "0" Tickets kaufen    |NullPointerException |-
 |I-040  |AW040 LineUp           |Band in LineUp hinzufügen             |FestivalManager vergiss ein Stage oder ein PerformanceHour zu der Band zu geben   |IllegalArgumentException |-
@@ -58,3 +58,8 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |Cornelius Kroll 
 
 |===
+
+[options="headers"]
+|===
+|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe |Verantworlicher
+|U-020 |AW020 Festival           |Festival "TestFestival" exisitert bereits          |"TestFestival" wird erstellt   |Fehlermeldung - exisitert bereits |Conrad H. Carl
