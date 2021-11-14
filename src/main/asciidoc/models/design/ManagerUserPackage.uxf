@@ -1,0 +1,10 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLPackage</id><coordinates><x>92</x><y>230</y><w>160</w><h>80</h></coordinates><panel_attributes>PersonalManagement
+--
+Manager
+ManagerManagement
+ManagerController</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>142</x><y>140</y><w>80</w><h>110</h></coordinates><panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>92</x><y>70</y><w>160</w><h>80</h></coordinates><panel_attributes>Authentication
+--
+User
+UserManagement
+UserController</panel_attributes><additional_attributes></additional_attributes></element></diagram>
