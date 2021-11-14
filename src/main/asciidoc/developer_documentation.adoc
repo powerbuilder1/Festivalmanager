@@ -69,12 +69,29 @@ Bis zu welchem Grad die Sicherheit der Benutzer und ihrer Daten sowie aller ande
 |===
 
 == Randbedingungen
-* Hardware-Vorgaben
-* Software-Vorgaben
-* Vorgaben zum Betrieb des Software
+=== Hardware-Vorgaben
+* Die Hardware, die verwendet werden könnte, muss nicht erstklassig sein, um das in der Software implementierte System auszuführen.
 
-== Kontextabgrenzung
-* Kontextdiagramm
+=== Software-Vorgaben
+
+== Java
+
+* Java 8 SRE zum Asuführen
+* Java 8 SDK zum Kompilieren
+
+== Browser
+
+* Google Chrome , Version 69.0+
+
+* Mozila Firefox , Version 63.0+
+
+== Maven 3 zur Regelung der Dependencies 
+
+=== Vorgaben zum Betrieb des Software
+
+* Die Software muss fertig sein und auch keine Probleme im Code haben, um problemlos ausgeführt zu werden.
+Man kann die Software vom Terminal seines Computers oder vom Terminal seiner jeweiligen IDE ausführen, man kann die Software sehen, indem man in den Browser von Mozila Firefox oder Google Chrome die URL eingibt: http://localhost:8080/
+
 
 == Lösungsstrategie
 === Erfüllung der Qualitätsziele
