@@ -79,6 +79,6 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |U-060 |AW060 PersonalMessageManagement|-|es wird kein Adressant eingegeben |Fehlermeldung - kein Adressant eingegeben|Cornelius Kroll
 |U-061 |AW060 PersonalMessageManagement|-|es wird ein nicht existierender Adressant eingegeben |Fehlermeldung ungültiger Adressannt eingegeben |Cornelius Kroll
 |U-062 |AW060 PersonalMessageManagement|-|es wird kein Text eingegeben| Fehlermeldung - Text ist leer|Cornelius Kroll
-|U-063 |AW060 PersonalMessageManagement|MessageList ist leer|-| Fehlermeldung - Messagelist kann nicht leer sein|Cornelius Kroll
-|U-064 |AW060 PersonalMessageManagement|MessageList ist leer| Manager lässt sich MessageList anzeigen | Fehlermeldung - Messagelist kann nicht angezeigt werden, da leer |Cornelius Kroll
+|U-063 |AW060 PersonalMessageManagement|MessageList ist leer|-| Fehlermeldung - MessageList kann nicht leer sein|Cornelius Kroll
+|U-064 |AW060 PersonalMessageManagement|MessageList ist leer| Manager lässt sich MessageList anzeigen | Fehlermeldung - MessageList kann nicht angezeigt werden, da leer |Cornelius Kroll
 |===
