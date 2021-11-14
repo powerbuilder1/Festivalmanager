@@ -169,6 +169,12 @@ image::models/design/package_lineup.png[]
 
 image::models/design/package_ticket.png[]
 
+* Manager and User
+
+image::models/design/ManagerUserPackage.png[]
+
+image::models/design/ManUsClasses.png[]
+
 [options="header"]
 |=== 
 |Klasse/Enumeration |Description
