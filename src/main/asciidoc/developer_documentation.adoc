@@ -9,7 +9,63 @@
 
 == Einführung und Ziele
 * Aufgabenstellung
+Der Festivalmanager ist eine Webanwendung, über welche Festivals geplant und verwaltet werden können.
+
+Es sollen Nutzergruppen wie Cateringpersonal, Planungspersonal, Festivalleiter und Manager zugriff auf das System haben um ihren Funktionen zu erfüllen.
+
+Das Cateringpersonal soll ein eigenes Terminal erhalten über welches sie Essen und Trinken abrechnen können.
+
+Das Planungspersonal kann Festivals erstellen. Dazu gibt es eine Location und Terminal Auswahl, sowie die Möglichkeit Bands zu buchen.
+Zusätzlich gibt es die Möglichkeit die Location zu planen und Cateringstände, Toiletten und Bühnen zu platzieren.
+
+Der Festivalleiter hat ein Terminal in dem er die aktuellen Statistiken über das Festival sieht. Er hat zudem die Fähigkeit Lagerbestände aufzufrischen.
+
+Es gibt ein Ticketsystem, welches Online und vor Ort benutzt wird. Dieses stellt Tickets nach einem Kauf aus und kann diese verifizieren.
+
+Der Manager kann betriebswirtschaftliche Daten abrufen sowie angemeldete Mitarbeiter sehen.
+
+Die Planungsabteilung soll Termine und Locations festlegen könnnen. Somit brauchen sie eine Vorauswahl sowie die Möglichkeit diese Auswahl zu erweitern beziehungsweise zu ändern.
+Die Terminvergabe muss abgestimmt sein, sodass keine Doppeltbuchung möglich ist. Da jede Location nur bestimmt viel Platz hat muss sichergestellt werden das es nur eine bestimmte Anzahl an Tickets
+gibt. In Verbindung dazu müssen pro 100 Personem mindestens eine Person des Sicherheitspersonals anwesend sein. Dies muss in der Planung berrücksichtig und durch das System sichergestellt werden.
+Um den Besuchern einen angenehmen Aufenthalt zu ermöglichen soll das Planungsteam in der Lage sein Toiletten sowie Cateringstände platzieren zu können.
+Ein weiter Teil der Planung besteht darin Angebote von Künstlern einzuholen, welche durch eine Vorauswahl, die bearbeitet werden kann, ermöglicht wird.
+
+Das Cateringpersonal hat eigene Terminals, welche mit dem Lagersystem interagieren. Dies geschieht indem das Cateringpersonal Essen bzw. Getränke zu einer Abrechnung hinzufügen und diese dann,
+nach Kundenbestätigung, abschicken.
+
+Das Management hat ein eigenes Terminal in welchem Diagramme und Statisiken über die betriebswirtschaftlichen Daten des Festivals zu sehen sind. Desweiternen hat dieses eine Übersicht über alle angemeldeten Mitarbeiter. Diese Mitarbeiter können durch das Management erstellt und verwaltet werden. Der Manager ist dafür zuständig das Festival zu erstellen.
+
+Der Festivalmanager hat eine Übersicht über Nachrichten bezüglich des Festivals sowie eine Übersicht über den Lagerberstand. Außerdem kann dieser Nachbestellungen tätigen.
+In dieser Übersicht sind auch aktuelle Zahlen zu Besucherzahlen sowie Verkaufszahlen des Caterings sowie Informationen zur aktuellen Bühnenbelegung.
+
+Die Ticketverkäufer vor Ort haben ein eigenes Terminal, in dem sie Tickets für die Abendkasse verkaufen könnnen. Damit nicht zu viele Personen auf dem Festival sind gibt es eine
+automatische Beschränkung. Desweiteren sind Ticketverkäufer in der Lage Tickets am Einlass zu validieren. Dafür gibt es eine Datenbank, die die Bestellungen speichert und validieren kann.
+
 * Qualitätsziele
+
+Die folgende Tabelle zeigt, welche Qualitätsansprüche in welchem Umfang erfüllt werden müssen. Die erste Spalte listet die Qualitätsanforderungen auf, während in den folgenden Spalten ein "x" zur Kennzeichnung der Priorität verwendet wird.
+
+Instandhaltung::
+Represäntiert den Grad, wie Effektiv Änderungen und Reperaturen vorgenommen werden können.
+
+Erweiterbarkeit::
+Gibt den Grad an, wie einfach es sein soll, später änderungen um Code vorzunehmen um z.B. weitere Funktionen einzubinden. Dies wird etwa durch allgemeine Bezeichnungen der Variablen und Funktionen erreicht
+
+Benutzerfreundlichkeit::
+Gibt an, wie einfach und übersichtlich die Bedienung des Systems ist. Sodass auch Laien ohne Probleme das System bedienen können.
+
+Sicherheit::
+Bis zu welchem Grad die Sicherheit der Benutzer und ihrer Daten sowie aller anderen im System gespeicherten Daten sicher sind und von Unbefugten nicht eingesehen werden können.
+
+1 = nicht wichtig --- 5 = sehr wichtig
+[options="header", cols="3h, ^1, ^1, ^1, ^1, ^1"]
+|===
+|Qualitätsziel             | 1 | 2 | 3 | 4 | 5
+|Instandhaltung            |   |   |   | x |
+|Erweiterbarkeit           |   |   |   | x |
+|Benutzer Feundlichkeit    |   |   |   |   | x
+|Sicherheit                |   |   |   | x |
+|===
 
 == Randbedingungen
 * Hardware-Vorgaben
