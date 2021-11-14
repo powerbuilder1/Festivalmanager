@@ -121,7 +121,9 @@ iText: wir nutzen iText zur Erstellung von PDF.
 |===
 
 == Bausteinsicht
-* Entwurfsklassendiagramme der einzelnen Packages
+* Catering and Stock
+
+image::models/design/catering_inventory_extended_v2.png[]
 
 [options="header"]
 |=== 
