@@ -76,7 +76,6 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-040  |AW050 Personal erstellen |Manager ist eingeloggt           |String name,String adress ist leer  ("")  |IllegalArgumentException  | Aleksey Ermoshin 
 |I-041  |AW050 Personal erstellen  |Manager ist eingeloggt       |nicht-leere Eingabedaten aber zu kurz (String name, String adress)     |IllegalArgumentException | Aleksey Ermoshin
 |I-042  |AW050 Personal erstellen   |Manager ist eingeloggt          |nicht-leere gültige Eingabedaten (String name, String adress)       |Personal wird erstellt| Aleksey Ermoshin
-|I-043 | AW010 |- |       |
 |U-060 |AW060 PersonalMessageManagement|-|es wird kein Adressant eingegeben |Fehlermeldung - kein Adressant eingegeben|Cornelius Kroll
 |U-061 |AW060 PersonalMessageManagement|-|es wird ein nicht existierender Adressant eingegeben |Fehlermeldung ungültiger Adressannt eingegeben |Cornelius Kroll
 |U-062 |AW060 PersonalMessageManagement|-|es wird kein Text eingegeben| Fehlermeldung - Text ist leer|Cornelius Kroll
