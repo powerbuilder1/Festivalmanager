@@ -32,9 +32,7 @@
 
 === Entwurfsentscheidungen
 * Verwendete Muster
-- Spring: dient zur Strukturierung der Webapplikation
-- SalesPoint: dient zur Simulation des Business-Prozesse
-- Thymeleaf: Eine moderne serverseitige Java-Templating-Engine für Web- und Offline-Umgebungen, die HTML, XML, JavaScript, CSS und sogar Nur-Text verarbeiten kann.
+- Spring MVC: dient zur Strukturierung der Webapplikation
 - Singleton: es darf nur einen "Boss" geben
 
 * Persistenz
