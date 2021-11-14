@@ -134,6 +134,8 @@ iText: wir nutzen iText zur Erstellung von PDF.
 
 image::models/design/catering_inventory_extended_v2.png[]
 
+image::models/design/package_diagram_catering_stock.png[]
+
 * Festival
 
 image::models/design/package_festival.png[]
