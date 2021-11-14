@@ -133,6 +133,13 @@ image::models/design/package_festival.png[]
 
 image::models/design/package_location.png[]
 
+* LineUp
+
+image::models/design/package_lineup.png[]
+
+* Ticket
+
+image::models/design/package_ticket.png[]
 
 [options="header"]
 |=== 
@@ -161,17 +168,10 @@ wird die Art der Verwendung dieser externen Klasse in der Spalte *Art der Verwen
 [options="header"]
 |===
 |Klasse/Enumeration (Analysemodell) |Klasse/Enumeration (Entwurfsmodell) |Art der Verwendung
-|CateringStats|CateringManagment|zum bearbeiten jeglicher Aktionen die mit Catering zutun haben
+|...|...|...
 |===
 
 == Laufzeitsicht
-* Darstellung der Komponenteninteraktion anhand eines Sequenzdiagramms, welches die relevantesten Interaktionen darstellt.
-
-== Technische Schulden
-* Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
-
-
-== Sequenzdiagramme
 
 === Festival
 
@@ -183,6 +183,9 @@ image::models/design/listAllFestivals.png[]
 
 Der Benutzer kann alle Festivals anzeigen.
 
+=== Location
+
+image::models/design/listAllLocations.png[]
 
 === Manager
 
@@ -196,10 +199,6 @@ image::models/design/managerUserSequenz.png[]
 == Sequenzdiagramme
 
 Manager
-
-image::models/design/usecase_diagram_stock.png[]
-
-Der FestivalManager erhält den aktuellen Lagerbestand.
 
 == Klassen
 
