@@ -244,10 +244,6 @@ image::models/design/LineUpSD.png[]
 * Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
 
 
-== Sequenzdiagramme
-
-Manager
-
 == Klassen
 
 image::models/design/catering_inventory_extended.png[]
