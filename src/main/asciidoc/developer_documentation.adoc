@@ -81,7 +81,16 @@ Bis zu welchem Grad die Sicherheit der Benutzer und ihrer Daten sowie aller ande
 [options="header"]
 |=== 
 |Qualitätsziel |Lösungsansatz
-|... |...
+|Instandhaltung a| * Gute Dokumentation
+|Erweiterbarkeit a| * Gute Dokumentation
+* Modularität
+|Benutzerfreundlichkeit a| * Einheitliches GUI-Design
+* Erwatungskonform sein -> Warenkorb oben rechts, Navigations oben mitte, Logo oben links
+* Intuitive Navigation -> Reiter erscheinen je nach Rolle
+* Multi-Lingual (Deutsch, Englisch) -> erweiterbar
+* Ladezeiten möglichst gering halten
+* Den Benutzer nicht mit Informationen überladen
+|Sicherheit a| * Benutzen von SalespointSecurityConfiguration um Routen zu sichern und Nutzern ohne entsprechene Rolle keine Zugriff auf die entsprechenden Routen zu gewähren
 |===
 
 === Softwarearchitektur
