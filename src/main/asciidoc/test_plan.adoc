@@ -51,7 +51,7 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-040  |AW040 LineUp           |Band in LineUp hinzufügen             |FestivalManager vergiss ein Stage oder ein PerformanceHour zu der Band zu geben   |IllegalArgumentException |-
 |I-041  |AW040 LineUp           |Lineup zu Festival verbinden             |FestivalManager vergiss das Lineup mit der gewünschte Festival zu verbinden    |Fehlermeldung |-
 |I-050  |AW050 Personal erstellen |Manager ist eingeloggt           |gültige Daten              |Personal wird erstellt   | Aleksey Ermoshin 
-|I-051  |AW050 Personal bearbeiten  |Manager ist eingeloggt       |ungültige Eingabedaten (z.B Name ist zu kurz)       |IOException | Aleksey Ermoshin
+|I-051  |AW050 Personal bearbeiten  |Manager ist eingeloggt       |ungültige Eingabedaten (z.B Name ist zu kurz)       |IllegalArgumentException | Aleksey Ermoshin
 |I-052  |AW050 Personal löschen   |Manager ist eingeloggt          |Manager klickt auf "Löschen"                              |Personal wird gelöscht | Aleksey Ermoshin
 |I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet |Cornelius Kroll
 |I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung |Cornelius Kroll
@@ -62,18 +62,19 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 [options="headers"]
 |===
 |ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe |Verantworlicher
+|U-010 |AW010 Login | - | login, password leer  | IllegalArgumentException |Aleksey Ermoshin
+|U-020 |AW010 Login | - | login, password nicht leer und gültig  | Eingeloggt |Aleksey Ermoshin
+|U-030 |AW010 Login | - | login, password nicht leer aber zu kurz  | IllegalArgumentException |Aleksey Ermoshin
 |U-020 |AW020 Festival           |Festival "TestFestival" exisitert bereits          |"TestFestival" wird erstellt   |Fehlermeldung - exisitert bereits |Conrad H. Carl
 |U-021 |AW020 Festival           |Festival "TestFestival" im Zeitraum 1.1.2030 - 2.1.2030 hat die Location "TestLocation"            |"TestFestival2" im selben Zeitraum und selber Location   |Fehlermeldung - Location gebucht |Conrad H. Carl
 |U-022 |AW020 Festival           |- |Name leer   |Fehlermeldung - Name ist leer |Conrad H. Carl    
 |U-023 |AW020 Festival           |- |Location ist null |Fehlermeldung - Location ist null   |Conrad H. Carl
+|U-024 |AW020 Festival           |- |maxVisitors ist 0   |Fehlermeldung - maxVisitors ist zu gering   |Conrad H. Carl
+|U-025 |AW020 Festival           |- |maxStages ist 0   |Fehlermeldung - maxStages ist zu gering   |Conrad H. Carl
 |U-030 |AW030 Location           |Location "TestLocation" exisitert bereits          |"TestLocation" wird erstellt   |Fehlermeldung - exisitert bereits |Conrad H. Carl
-|U-031 |AW031 Location           |- |Name ist leer |Fehlermeldung - Name ist leer   |Conrad H. Carl
-|U-032 |AW031 Location           |- |maxVisitors ist 0 |Fehlermeldung - maxVisitors ist zu gering   |Conrad H. Carl
-|U-033 |AW031 Location           |- |maxStages ist 0 |Fehlermeldung - maxStages ist zu gering   |Conrad H. Carl
-|U-034 |AW031 Location           |- |(200,3,"TestLocation",500) |Location(200,3,"TestLocation", 500)   |Conrad H. Carl
-|U-060 |AW060 PersonalMessageManagement|-|es wird keine Zielperson ausgewählt |Fehlermeldung - kein Adressant eingegeben|Cornelius Kroll
-|U-061 |AW060 PersonalMessageManagement|-|es wird kein Text eingegeben| Fehlermeldung - Text ist leer|Cornelius Kroll
-|U-063 |AW060 PersonalMessageManagement|MessageList ist leer|-| Fehlermeldung - Messagelist kann nicht leer sein|Cornelius Kroll
-|U-063 |AW060 PersonalMessageManagement|MessageList ist leer| Manager lässt sich MessageList anzeigen | Fehlermeldung - Messagelist kann nicht angezeigt werden, da leer |Cornelius Kroll
 
+|I-040  |AW050 Personal erstellen |Manager ist eingeloggt           |String name,String adress ist leer  ("")  |IllegalArgumentException  | Aleksey Ermoshin 
+|I-041  |AW050 Personal erstellen  |Manager ist eingeloggt       |nicht-leere Eingabedaten aber zu kurz (String name, String adress)     |IllegalArgumentException | Aleksey Ermoshin
+|I-042  |AW050 Personal erstellen   |Manager ist eingeloggt          |nicht-leere gültige Eingabedaten (String name, String adress)       |Personal wird erstellt| Aleksey Ermoshin
+|I-043 | AW010 |- |       |
 |===
