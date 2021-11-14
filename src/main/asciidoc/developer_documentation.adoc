@@ -136,7 +136,17 @@ image::models/design/package_location.png[]
 [options="header"]
 |=== 
 |Klasse/Enumeration |Description
-|...|...
+|Person|abstrakte Klasse welche die Eigenschaften einer Person wiederspiegelt (z.B. Alter)
+|Personal|abstrakte Klasse welche die Eigenschaften des Festival Personals beschreibt (z.B. dass das Personal ein Gehalt bekommt)
+|Festivalleiter|ist eine spezifische Ausprägung von Personal und ist für die Administration des Fesitvals zuständig
+|Catering|ist eine spezifische Ausprägung von Personal und ist für den Verkauf von Catering Produkten (Food) zuständig / arbeitet am Catering Schalter
+|CateringController|ist zur bearbeitung("empfang") der HTTP Request bezüglich Catering angelegenheiten zuständig
+|CateringManagment|ist zur verarbeitung der vom CateringController übergebene Daten aus der HTTP Request zuständig (steht in Verbindung mit FoodCatalog bzw. der DB)
+|FoodCatalog|ist ein Interface welches vom Salespoint Catalog erbt und worüber man den Food Katalog bearbeiten kann (d.h. welche Produkte im Catering angeboten werden)
+|StockController|ist zur bearbeitung("empfang") der HTTP Request bezüglich Stock angelegenheiten zuständig
+|StockManager|ist zur verarbeitung der vom StockController übergebene Daten aus der HTTP Request zuständig (steht in Verbindung mit einem UniqueInventory bzw. der DB)
+|UniqueInventory|ist die Schnittstelle womit man das Lager bearbeiten kann
+
 |===
 
 === Rückverfolgbarkeit zwischen Analyse- und Entwurfsmodell
