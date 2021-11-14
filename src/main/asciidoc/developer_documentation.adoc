@@ -133,6 +133,14 @@ image::models/design/package_festival.png[]
 
 image::models/design/package_location.png[]
 
+* LineUp
+
+image::models/design/package_lineup.png[]
+
+* Ticket
+
+image::models/design/package_ticket.png[]
+
 [options="header"]
 |=== 
 |Klasse/Enumeration |Description
@@ -175,6 +183,9 @@ image::models/design/listAllFestivals.png[]
 
 Der Benutzer kann alle Festivals anzeigen.
 
+=== Location
+
+image::models/design/listAllLocations.png[]
 
 === Manager
 
