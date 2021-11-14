@@ -40,21 +40,21 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 // See http://asciidoctor.org/docs/user-manual/#tables
 [options="headers"]
 |===
-|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe
-|I-010  |AW010 Login              |-                                   |ungültige Logindaten (Nutzername/Email, Passwort)       |Fehlermeldung              
-|I-011  |AW010 Login              |existierender Benutzer              |gültige Logindaten (Nutzername/Email, Passwort)         |Benutzer ist eingeloggt
-|I-012  |AW010 Login              |Benutzer ist eingeloggt             |Benutzer klickt auf "Logout"                            |Benutzer wird ausgeloggt
-|I-020  |AW020 Festival           |Festival exisitert bereits          |Benutzer gibt Daten ein (gleicher Name) klickt auf "Festival hinzufügen"    |Fehlermeldung
-|I-021  |AW020 Festival           |Festival existiert nicht            |Benutzer gibt Daten ein klickt auf "Festival hinzufügen"    |Festival wird erstellt
-|I-030  |AW030 Ticket           |Ticket auswählen            |Benutzer wählt kein Arte von Ticket   |IllegalArgumentException
-|I-031  |AW030 Ticket           |Ticket kaufen            |Benutzer will "0" Tickets kaufen    |NullPointerException
-|I-040  |AW040 LineUp           |Band in LineUp hinzufügen             |FestivalManager vergiss ein Stage oder ein PerformanceHour zu der Band zu geben   |IllegalArgumentException
-|I-041  |AW040 LineUp           |Lineup zu Festival verbinden             |FestivalManager vergiss das Lineup mit der gewünschte Festival zu verbinden    |Fehlermeldung
-|I-050  |AW050 Personal erstellen |Manager ist eingeloggt           |gültige Daten              |Personal wird erstellt   
-|I-051  |AW050 Personal bearbeiten  |Manager ist eingeloggt       |ungültige Eingabedaten (z.B Name ist zu kurz)       |IOException
-|I-052  |AW050 Personal löschen   |Manager ist eingeloggt          |Manager klickt auf "Löschen"                              |Personal wird gelöscht
-|I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet
-|I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung 
-|I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt 
+|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe |Verantworlicher
+|I-010  |AW010 Login              |-                                   |ungültige Logindaten (Nutzername/Email, Passwort)       |Fehlermeldung |Ich             
+|I-011  |AW010 Login              |existierender Benutzer              |gültige Logindaten (Nutzername/Email, Passwort)         |Benutzer ist eingeloggt |-
+|I-012  |AW010 Login              |Benutzer ist eingeloggt             |Benutzer klickt auf "Logout"                            |Benutzer wird ausgeloggt |-
+|I-020  |AW020 Festival           |Festival exisitert bereits          |Benutzer gibt Daten ein (gleicher Name) klickt auf "Festival hinzufügen"    |Fehlermeldung |-
+|I-021  |AW020 Festival           |Festival existiert nicht            |Benutzer gibt Daten ein klickt auf "Festival hinzufügen"    |Festival wird erstellt |-
+|I-030  |AW030 Ticket           |Ticket auswählen            |Benutzer wählt kein Arte von Ticket   |IllegalArgumentException |-
+|I-031  |AW030 Ticket           |Ticket kaufen            |Benutzer will "0" Tickets kaufen    |NullPointerException |-
+|I-040  |AW040 LineUp           |Band in LineUp hinzufügen             |FestivalManager vergiss ein Stage oder ein PerformanceHour zu der Band zu geben   |IllegalArgumentException |-
+|I-041  |AW040 LineUp           |Lineup zu Festival verbinden             |FestivalManager vergiss das Lineup mit der gewünschte Festival zu verbinden    |Fehlermeldung |-
+|I-050  |AW050 Personal erstellen |Manager ist eingeloggt           |gültige Daten              |Personal wird erstellt   |- 
+|I-051  |AW050 Personal bearbeiten  |Manager ist eingeloggt       |ungültige Eingabedaten (z.B Name ist zu kurz)       |IOException |-
+|I-052  |AW050 Personal löschen   |Manager ist eingeloggt          |Manager klickt auf "Löschen"                              |Personal wird gelöscht |-
+|I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet |-
+|I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung |-
+|I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |- 
 
 |===
