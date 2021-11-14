@@ -1,0 +1,48 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>32</x><y>0</y><w>260</w><h>110</h></coordinates><panel_attributes>Manager
+--
+-id:long
+-name:String
+--
++getName(): String
++setName(name:String): void </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>331</x><y>0</y><w>300</w><h>140</h></coordinates><panel_attributes>User
+--
+-id:long
+-adress:String
+-userAccount:UserAccount
+--
+/+getId():long/
+/+getAdress(): String/
+/+setAdress(): void/
+/+getUserAccount(): UserAccount/
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>31</x><y>210</y><w>260</w><h>130</h></coordinates><panel_attributes>ManagerManagement
+--
++ManagerRepository managerRepository
+--
+/+createStaffAccount(): User/
+/+deleteStaffAccount(): boolean/
+/+checkFinances():int /
+/+vizualizeFinances():void/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>331</x><y>370</y><w>300</w><h>110</h></coordinates><panel_attributes>UserManagement
+--
+-users:UserRepository
+-userAccounts: UserAccountManagement
+--
+/+createUser(form: UserForm): User/
+/+findAll(): Streamable&lt;User&gt;/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>30</x><y>130</y><w>260</w><h>50</h></coordinates><panel_attributes>ManagerController
+--
++managerManagement: ManagerManagement
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>290</y><w>300</w><h>60</h></coordinates><panel_attributes>UserController
+--
+-userManamegent: UserManagement
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>150</y><w>300</w><h>120</h></coordinates><panel_attributes>UserForm
+--
+-name: String
+-password:String
+-adress: String
+--
+/+getName(): String/
+/+getPassword(): String/
+/+getAdress(): String/
+
+</panel_attributes><additional_attributes></additional_attributes></element></diagram>
