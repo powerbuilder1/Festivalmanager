@@ -161,7 +161,7 @@ wird die Art der Verwendung dieser externen Klasse in der Spalte *Art der Verwen
 [options="header"]
 |===
 |Klasse/Enumeration (Analysemodell) |Klasse/Enumeration (Entwurfsmodell) |Art der Verwendung
-|...|...|...
+|CateringStats|CateringManagment|zum bearbeiten jeglicher Aktionen die mit Catering zutun haben
 |===
 
 == Laufzeitsicht
@@ -182,6 +182,10 @@ Der Benutzer kann ein neues Festival erstellen.
 image::models/design/listAllFestivals.png[]
 
 Der Benutzer kann alle Festivals anzeigen.
+
+image::models/design/usecase_diagram_stock.png[]
+
+Der FestivalManager erhält den aktuellen Lagerbestand.
 
 == Klassen
 
