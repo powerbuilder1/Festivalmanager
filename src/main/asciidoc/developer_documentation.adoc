@@ -86,7 +86,7 @@ Bis zu welchem Grad die Sicherheit der Benutzer und ihrer Daten sowie aller ande
 
 === Softwarearchitektur
 
-image::models/protocols/client_server_diagram.png[]
+image::models/design/client_server_diagram.png[]
 
 === Entwurfsentscheidungen
 * Verwendete Muster
