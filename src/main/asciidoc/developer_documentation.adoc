@@ -191,6 +191,11 @@ image::models/design/listAllLocations.png[]
 
 image::models/design/managerUserSequenz.png[]
 
+=== Catering
+
+image::models/design/usecase_diagram_stock.png[]
+
+Der Festivalleiter kann den aktuellen Lagerbestand einsehen.
 
 == Technische Schulden
 * Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
