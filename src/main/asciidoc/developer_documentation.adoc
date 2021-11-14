@@ -50,7 +50,17 @@ iText: wir nutzen iText zur Erstellung von PDF.
 [options="header", cols="1,2"]
 |===
 |Externes Package |Verwendet von (Klasse der eigenen Anwendung)
-|... |... 
+|salespointframework.useraccount |*authentication.User, authentication.UserController,authentication.UserDatainitializer,authentication.UserManagement
+*catering.Catering *festivalDirector.FestivalDirector *PersonalManagement.ManagerDataInitializer
+|springframework.util            |*authentication.UserController,authentication.UserDatainitializer,authentication.UserManagement *festival.FesrivalController, festival.FestivalDataInitializer, festival.FestivalManager  *LineUp.LineUpController ,LineUp.LineUpDataInitializer ,LineUp.LineUpManagement *PersonalManagement.ManagerDataInitializer *Ticket.TicketController
+|salespointframework.core        |*authentication.UserDatainitializer  *festival.FesrivalDataInitializer *LineUp.LineUpDataInitializer *location.LocationDataInitializer *Ticket.TicketDataInitializer
+|springframework.stereotype      |*authentication.UserDatainitializer,authentication.UserManagement *catering.CateringController, catering.CateringManager *festival.FestivalDataInitializer,festival.FesrivalController, festival.FestivalManager *LineUp.LineUpController ,LineUp.LineUpDataInitializer ,LineUp.LineUpManagement *location.LocationController,location.LocationDataInitializer,location.LocationManagement *PersonalManagement.ManagerController,PersonalManagement.ManagerDataInitializer,PersonalManagement.ManagerManagment *Ticket.TicketController,Ticket.TicketDataInitializer
+|springframework.transaction     |*authentication.UserManagement  * festival.FestivalManager *LineUp.LineUpManagement *location.LocationManagement
+|springframework.data            |*authentication.UserManagement,authentication.UserRepository *catering.CateringRepository *festival.FestivalManager,festival.FestivalRepository *LineUp.LineUpManagement, LineUp.LineUpRepository *location.LocationManagement,location.LocationRepository *PersonalManagement.ManagerRepository *Ticket.TicketRepository
+|springframework.web             |*catering.CateringController *festival.FesrivalController  *LineUp.LineUpController *location.LocationController *Ticket.TicketController
+|springframework.ui               |*festival.FesrivalController  *LineUp.LineUpController *location.LocationController *Ticket.TicketController
+|salespointframework.catalog     |*Food.Food,*Food.FoodCatalog
+|springframework.validation     |*location.LocationController
 |===
 
 == Bausteinsicht
