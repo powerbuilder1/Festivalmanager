@@ -260,6 +260,6 @@ image::models/design/catering_inventory_extended.png[]
 
 image::models/design/festival_location_extended.png[]
 
-image::models/design/manager_extended.png[]
+image::models/design/ManUs.png[]
 
 image::models/design/ticket_extended.png[]
