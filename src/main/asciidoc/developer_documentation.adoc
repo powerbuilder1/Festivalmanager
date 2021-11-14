@@ -177,7 +177,7 @@ wird die Art der Verwendung dieser externen Klasse in der Spalte *Art der Verwen
 [options="header"]
 |===
 |Klasse/Enumeration (Analysemodell) |Klasse/Enumeration (Entwurfsmodell) |Art der Verwendung
-|...|...|...
+|CateringStats|CateringManagment|zum bearbeiten jeglicher Aktionen die mit Catering zutun haben
 |===
 
 == Laufzeitsicht
