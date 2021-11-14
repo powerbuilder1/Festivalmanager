@@ -133,7 +133,6 @@ image::models/design/package_festival.png[]
 
 image::models/design/package_location.png[]
 
-
 [options="header"]
 |=== 
 |Klasse/Enumeration |Description
@@ -155,13 +154,6 @@ wird die Art der Verwendung dieser externen Klasse in der Spalte *Art der Verwen
 |===
 
 == Laufzeitsicht
-* Darstellung der Komponenteninteraktion anhand eines Sequenzdiagramms, welches die relevantesten Interaktionen darstellt.
-
-== Technische Schulden
-* Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
-
-
-== Sequenzdiagramme
 
 === Festival
 
@@ -172,6 +164,20 @@ Der Benutzer kann ein neues Festival erstellen.
 image::models/design/listAllFestivals.png[]
 
 Der Benutzer kann alle Festivals anzeigen.
+
+
+=== Manager
+
+image::models/design/managerUserSequenz.png[]
+
+
+== Technische Schulden
+* Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
+
+
+== Sequenzdiagramme
+
+Manager
 
 == Klassen
 
