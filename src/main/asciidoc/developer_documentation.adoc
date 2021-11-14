@@ -231,6 +231,15 @@ image::models/design/usecase_digram_catering_inventory.png[]
 
 Produkte zum Katalog hinzufügen, Produkte zum Warenkorb hinzufügen, Umsatz einsehen, Verkaufszahlen einsehen.
 
+=== Ticket
+
+image::models/design/TicketSD.png[]
+
+=== LineUp
+
+image::models/design/LineUpSD.png[]
+
+
 == Technische Schulden
 * Auflistung der nicht erreichten Quality Gates und der zugehörigen SonarQube Issues zum Zeitpunkt der Abgabe
 
