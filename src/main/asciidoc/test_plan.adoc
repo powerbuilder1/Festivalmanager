@@ -40,7 +40,7 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 // See http://asciidoctor.org/docs/user-manual/#tables
 [options="headers"]
 |===
-|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe |Verantwortlicher
+|ID |Anwendungsfall |Vorbedingungen |Eingabe |Ausgabe
 |I-010  |AW010 Login              |-                                   |ungültige Logindaten (Nutzername/Email, Passwort)       |Fehlermeldung              
 |I-011  |AW010 Login              |existierender Benutzer              |gültige Logindaten (Nutzername/Email, Passwort)         |Benutzer ist eingeloggt
 |I-012  |AW010 Login              |Benutzer ist eingeloggt             |Benutzer klickt auf "Logout"                            |Benutzer wird ausgeloggt
