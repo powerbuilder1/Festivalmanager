@@ -90,4 +90,13 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |U-062 |AW060 PersonalMessageManagement|-|es wird kein Text eingegeben| Fehlermeldung - Text ist leer|Cornelius Kroll
 |U-063 |AW060 PersonalMessageManagement|MessageList ist leer|-| Fehlermeldung - MessageList kann nicht leer sein|Cornelius Kroll
 |U-064 |AW060 PersonalMessageManagement|MessageList ist leer| Manager lässt sich MessageList anzeigen | Fehlermeldung - MessageList kann nicht angezeigt werden, da leer |Cornelius Kroll
+|U-070 |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | Anzahl ist <= 0 | Fehlermeldung – Anzahl ist zu gering: Verkaufsmenge beträgt 1 |Philipp Herold
+|U-071 |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | Anzahl ist leer | Fehlermeldung: Anzahl darf nicht leer sein. |Philipp Herold
+|U-072 |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | Produkt ist null | Fehlermeldung: Bitte wähle ein Produkt aus. |Philipp Herold
+|U-073 |AW070 Produkt zum Katalog hinzufügen | Benutzer der Rolle Festivalleiter und Produkt existiert bereits | "Produkt" wird zum Katalog hinzugefügt | Fehlermeldung: Produkt existiert bereits im Sortiment. |Philipp Herold
+|U-074 |AW070 Produkt verkaufen | Benutzer der Rolle Catering eingeloggt / nur noch 3 Produkte der Sorte Bratwurst im Lager | Verkaufe 4 Bratwürste | Fehlermeldung: Es sind nur noch 3 Bratwürste im Lager. Bitte verringern sie ihre Bestellung. |Philipp Herold
+|U-075 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Anzahl <= 0 | Fehlermeldung: Anzahl zu gering: Mindestbestellmenge beträgt 1. |Philipp Herold
+|U-076 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Anzahl leer | Fehlermeldung: Anzahl darf nicht leer sein. |Philipp Herold
+|U-077 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Produkt ist null | Fehlermeldung: Bitte wähle ein Produkt aus. |Philipp Herold
+|U-078 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Produkt übergeben was nicht im Katalog existiert | Fehlermeldung: Produkt existiert nicht im Sortiment. |Philipp Herold
 |===
