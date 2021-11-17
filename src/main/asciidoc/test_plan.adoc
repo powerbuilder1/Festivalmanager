@@ -55,7 +55,16 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-052  |AW050 Personal löschen   |Manager ist eingeloggt          |Manager klickt auf "Löschen"                              |Personal wird gelöscht | Aleksey Ermoshin
 |I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet |Cornelius Kroll
 |I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung |Cornelius Kroll
-|I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |Cornelius Kroll 
+|I-062  |AW060 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |Cornelius Kroll
+|I-070  |AW070 Produkt nachbestellen | Benutzer mit Rolle Festivalleiter eingeloggt | gültige Eingabe  | Produkt wurde nachbestellet | Philipp Herold
+|I-071  |AW070 Produkt nachbestellen | Benutzer mit Rolle Festivalleiter eingeloggt | ungültige Eingabe bspw. anz. <= 0  | Fehlermeldung | Philipp Herold
+|I-072  |AW070 Finanzen überprüfen | Benutzer mit Rolle Festivalleiter oder Manager eingeloggt | Klicken auf Reiter „Finance“  | Verkaufszahlen, Umsatz | Philipp Herold
+|I-073  |AW070 Produktbestand einsehen | Benutzer mit Rolle Festivalleiter oder Catering eingeloggt | Klicken auf Reiter "Catering"  | Produkte mit jeweiligen Bestand | Philipp Herold
+|I-074  |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | gültige Eingabe | Produkte wird verkauft | Philipp Herold
+|I-075  |AW070 Produkt nachbestellen | Benutzer der nicht als Festivalleiter eingeloggt ist | Post Req. Über Route zum Produkte nachbestellen | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
+|I-076  |AW070 Finanzen überprüfen | Benutzer der nicht als Festivalleiter oder Manager eingeloggt ist | Get Req. Um Daten über Finanzen zu bekommen | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
+|I-077  |AW070 Produkte verkaufen | Benutzer der nicht als Catering eingeloggt ist | Post Req. Zum verkaufen von Produkten | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
+|I-078  |AW070 Produktebestand einsehen | Benutzer der nicht als Catering oder Festivalleiter eingeloggt ist | Get Req. Um Produktbestand einzusehen | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
 
 |===
 
