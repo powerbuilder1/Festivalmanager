@@ -1,0 +1,54 @@
+=== Meeting at the 11.11.2021
+
+Place: APB
+Start:   16:40 Uhr +
+End:     18:00
+
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* 12.11.2021
+
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+- Cornelius 
+- Tom (Tutor)
+
+
+== Remarks
+- The prototye has been made , but we have not merged all the classes that we have made because of the time.
+- The tutor gave us some advices to help us improve the prototype that we have made
+- The tutor explained us the task that we are going to do in the following weeks
+- The scratch of the developer documentation has been reviewed and the tutor gave us a feedback of it ( Problems with it will be solved till sunday and also it
+will be completed till the next meeting)
+
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+We have made our corresponding codes for the task "Festivalmanager" , and it will be merged to the branch Prototyp throughout the next days, since now we have made 
+only one sequence diagramm for the developer’s document ( Seq. Diagramm for Festival ), and we have started making the other ones . As a group we decided to meet the next day to solve a couple problems that we have 
+merging some branches in Git . Since now we haven’t had any problems whatsoever.
+
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===

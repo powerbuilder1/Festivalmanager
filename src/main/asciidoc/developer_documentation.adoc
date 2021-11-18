@@ -198,6 +198,14 @@ image::models/design/PersonalMessageManagement.png[]
 |FestivalForm|Klasse um Daten von einer Http From zu empfangen und zu prüfen
 |FestivalController|ist zur Verarbeitung von Http Request bezüglich Festivals zuständig, arbeitet mit FestivalManagement
 |FestivalManagement|Datenverarbeitung bezüglich Festivals, bereitet Daten von Controller auf und greift auf Datenbank zu
+|Ticket |abstrakte Klasse welche die Attribute und Eigenschaften von den Arten von Tickets hat ( z.B. Preis)
+|CampingTicket, Abendkasse, Tageskarte | sind Klassen , die die Eigenschaften von der Klasse Ticket erweitern
+|TicketController| ist die Klasse, die steuert, wann ein Kunde ein Ticket kauft und es direkt aus dem Repository entfernt
+|LineUp|ist eine Klasse , die direkt verbunden mit der Klasse Festival ist, und hilft um zu sehen, wann und welche Banden in einer bestimmten Festival spielen werden. Diese Klasse ist eine Liste von Banden
+|Band | ist die Klasse , die die Eigenschaften für die Personen und die Gruppen für ein bestimmtes LineUp einer Festival gibt.
+|LineUpController|ist zur bearbeitung("empfang") der HTTP Request bezüglich LineUp angelegenheiten zuständig
+|LineUpManagement |ist die Klasse , die für ein oder mehrere Festivals ein bestimmtes LineUp organisiert
+
 
 |===
 

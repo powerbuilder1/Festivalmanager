@@ -55,7 +55,16 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |I-052  |AW050 Personal löschen   |Manager ist eingeloggt          |Manager klickt auf "Löschen"                              |Personal wird gelöscht | Aleksey Ermoshin
 |I-060  |AW060 PersonalMessageManagement |Festivalleiter benachrichtigt den Staff | Festivalleiter gibt Nachricht in Textfeld ein und drückt auf senden |Nachricht wird gesendet |Cornelius Kroll
 |I-061  |AW060 PersonalMessageManagement |Festivalleiter gibt keinen Text ein | Festivalleiter drückt auf senden, wenn in Textfeld nichts steht | Fehlermeldung |Cornelius Kroll
-|I-062  |AW070 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |Cornelius Kroll 
+|I-062  |AW060 PersonalMessageManagement |Inventory ist leer/hat geringen Bestand | Der Warenbestand im Inventar erreicht die Mindestgrenze | Festivalleiter wird benachrichtigt |Cornelius Kroll
+|I-070  |AW070 Produkt nachbestellen | Benutzer mit Rolle Festivalleiter eingeloggt | gültige Eingabe  | Produkt wurde nachbestellet | Philipp Herold
+|I-071  |AW070 Produkt nachbestellen | Benutzer mit Rolle Festivalleiter eingeloggt | ungültige Eingabe bspw. anz. <= 0  | Fehlermeldung | Philipp Herold
+|I-072  |AW070 Finanzen überprüfen | Benutzer mit Rolle Festivalleiter oder Manager eingeloggt | Klicken auf Reiter „Finance“  | Verkaufszahlen, Umsatz | Philipp Herold
+|I-073  |AW070 Produktbestand einsehen | Benutzer mit Rolle Festivalleiter oder Catering eingeloggt | Klicken auf Reiter "Catering"  | Produkte mit jeweiligen Bestand | Philipp Herold
+|I-074  |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | gültige Eingabe | Produkte wird verkauft | Philipp Herold
+|I-075  |AW070 Produkt nachbestellen | Benutzer der nicht als Festivalleiter eingeloggt ist | Post Req. Über Route zum Produkte nachbestellen | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
+|I-076  |AW070 Finanzen überprüfen | Benutzer der nicht als Festivalleiter oder Manager eingeloggt ist | Get Req. Um Daten über Finanzen zu bekommen | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
+|I-077  |AW070 Produkte verkaufen | Benutzer der nicht als Catering eingeloggt ist | Post Req. Zum verkaufen von Produkten | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
+|I-078  |AW070 Produktebestand einsehen | Benutzer der nicht als Catering oder Festivalleiter eingeloggt ist | Get Req. Um Produktbestand einzusehen | Fehlermeldung: Keine Rechte für diese Aktion | Philipp Herold
 
 |===
 
@@ -81,4 +90,13 @@ Jede testbezogene Aufgabe muss einem Ansprechpartner zugeordnet werden.
 |U-062 |AW060 PersonalMessageManagement|-|es wird kein Text eingegeben| Fehlermeldung - Text ist leer|Cornelius Kroll
 |U-063 |AW060 PersonalMessageManagement|MessageList ist leer|-| Fehlermeldung - MessageList kann nicht leer sein|Cornelius Kroll
 |U-064 |AW060 PersonalMessageManagement|MessageList ist leer| Manager lässt sich MessageList anzeigen | Fehlermeldung - MessageList kann nicht angezeigt werden, da leer |Cornelius Kroll
+|U-070 |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | Anzahl ist <= 0 | Fehlermeldung – Anzahl ist zu gering: Verkaufsmenge beträgt 1 |Philipp Herold
+|U-071 |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | Anzahl ist leer | Fehlermeldung: Anzahl darf nicht leer sein. |Philipp Herold
+|U-072 |AW070 Produkt verkaufen | Benutzer mit Rolle Catering eingeloggt | Produkt ist null | Fehlermeldung: Bitte wähle ein Produkt aus. |Philipp Herold
+|U-073 |AW070 Produkt zum Katalog hinzufügen | Benutzer der Rolle Festivalleiter und Produkt existiert bereits | "Produkt" wird zum Katalog hinzugefügt | Fehlermeldung: Produkt existiert bereits im Sortiment. |Philipp Herold
+|U-074 |AW070 Produkt verkaufen | Benutzer der Rolle Catering eingeloggt / nur noch 3 Produkte der Sorte Bratwurst im Lager | Verkaufe 4 Bratwürste | Fehlermeldung: Es sind nur noch 3 Bratwürste im Lager. Bitte verringern sie ihre Bestellung. |Philipp Herold
+|U-075 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Anzahl <= 0 | Fehlermeldung: Anzahl zu gering: Mindestbestellmenge beträgt 1. |Philipp Herold
+|U-076 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Anzahl leer | Fehlermeldung: Anzahl darf nicht leer sein. |Philipp Herold
+|U-077 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Produkt ist null | Fehlermeldung: Bitte wähle ein Produkt aus. |Philipp Herold
+|U-078 |AW070 Produkt nachbestellen | Benutzer der Rolle Festivalleiter eingeloggt | Produkt übergeben was nicht im Katalog existiert | Fehlermeldung: Produkt existiert nicht im Sortiment. |Philipp Herold
 |===
