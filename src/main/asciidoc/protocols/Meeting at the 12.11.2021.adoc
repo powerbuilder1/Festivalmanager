@@ -1,0 +1,57 @@
+=== Meeting at the 12.11.2021
+
+Place: Trefftzbau
+Start:   11:10 Uhr +
+End:     12:40
+__Person that will write:__ Franz Nolasco
+
+Next Meeting :* 18.11.2021
+
+
+__Participants:__
+//Tabellarisch oder Aufzählung, Kennzeichnung von Teilnehmern mit besonderer Rolle (z.B. Kunde)
+
+- Franz 
+- Conrad 
+- Aleksey
+- Philipp
+
+
+
+== Remarks
+- We talked about how can we split the missing points for the developer documentation and we agreed on
+- We made some improvements in the codes that we wrote and we finally merged it in the branch Prototyp
+- We agreed that every single time that we want some changes in the code we are going to do it in branch Prototyp and then we pull it 
+( To avoid doing local branches and merging with them)
+- The class diagramms of each package have been made , but they need to be improve in some points ( the modified one is going to be finished till sunday )
+- The sequence diagrams of each package have been started.
+- The package diagrams of each package  have been started.
+
+== Retrospective of the last sprint
+*Issue referenziert die Issue ID von GitHub*
+// Wie ist der Status der im letzten Sprint erstellten Issues/veteilten Aufgaben?
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Aufgabe |Status |Bemerkung
+|…     |…       |…      |…
+|===
+
+
+== Current Status
+As planned we have finished the last version for the scratch of the task "Festival manager" and also we have already splitted the last points to be finished in
+the developer documentation, task that it will be finished till sunday , we have talked about some improvements that we can make to avoid some problems with Git. 
+The main task right now is that each of us needs to finish the sequence diagramms and also the package diagramms of our respective codes and then upload it in the developer documentation
+in our repository. We talked about the tasks that we are going to face within the next weeks and talked about some strategies that we could use to avoid missunderstandings in the future.
+Since now we haven’t had any problem.
+
+
+*Issue referenziert die Issue ID von GitHub*
+
+// See http://asciidoctor.org/docs/user-manual/=tables
+[option="headers"]
+|===
+|Issue |Titel |Beschreibung |Verantwortlicher |Status
+|…     |…     |…            |…                |…
+|===
