@@ -190,6 +190,14 @@ image::models/design/PersonalMessageManagement.png[]
 |StockController|ist zur bearbeitung("empfang") der HTTP Request bezüglich Stock angelegenheiten zuständig
 |StockManager|ist zur verarbeitung der vom StockController übergebene Daten aus der HTTP Request zuständig (steht in Verbindung mit einem UniqueInventory bzw. der DB)
 |UniqueInventory|ist die Schnittstelle womit man das Lager bearbeiten kann
+|Location|Klasse um Informationen zu einer Location zu speichern
+|LocationMangement|Datenverarbeitung bezüglich Locations, bereitet Daten von Controller auf und greift auf Datenbank zu
+|LocationController|ist zu Verarbetung der Http Request bezüglich Locations zuständig, arbeitet mit LocationManagement
+|LocationForm|Klasse um Daten von einer Http Form zu empfangen und zu prüfen
+|Festival|Klasse um Informationen zu einem Festival zu speichern
+|FestivalForm|Klasse um Daten von einer Http From zu empfangen und zu prüfen
+|FestivalController|ist zur Verarbeitung von Http Request bezüglich Festivals zuständig, arbeitet mit FestivalManagement
+|FestivalManagement|Datenverarbeitung bezüglich Festivals, bereitet Daten von Controller auf und greift auf Datenbank zu
 
 |===
 
