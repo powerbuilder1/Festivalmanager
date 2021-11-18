@@ -190,6 +190,14 @@ image::models/design/PersonalMessageManagement.png[]
 |StockController|ist zur bearbeitung("empfang") der HTTP Request bezüglich Stock angelegenheiten zuständig
 |StockManager|ist zur verarbeitung der vom StockController übergebene Daten aus der HTTP Request zuständig (steht in Verbindung mit einem UniqueInventory bzw. der DB)
 |UniqueInventory|ist die Schnittstelle womit man das Lager bearbeiten kann
+|Ticket |abstrakte Klasse welche die Attribute und Eigenschaften von den Arten von Tickets hat ( z.B. Preis)
+|CampingTicket, Abendkasse, Tageskarte | sind Klassen , die die Eigenschaften von der Klasse Ticket erweitern
+|TicketController| ist die Klasse, die steuert, wann ein Kunde ein Ticket kauft und es direkt aus dem Repository entfernt
+|LineUp|ist eine Klasse , die direkt verbunden mit der Klasse Festival ist, und hilft um zu sehen, wann und welche Banden in einer bestimmten Festival spielen werden. Diese Klasse ist eine List von Banden
+|Band | ist die Klasse , die die Eigenschaften für die Personen und die Gruppen für ein bestimmtes LineUp einer Festival gibt.
+|LineUpController|ist zur bearbeitung("empfang") der HTTP Request bezüglich LineUp angelegenheiten zuständig
+|LineUpManagement |ist die Klasse , die für ein oder mehrere Festivals ein bestimmtes LineUp organisiert
+
 
 |===
 
