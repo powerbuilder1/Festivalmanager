@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+</head>
+
+<body>
+    <!-- BEGIN:NAV -->
+    <div th:fragment="navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/" th_href="@{/}">LOGO</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/festivals}" href="/festivals">Festivals</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasRole('BOSS')">
+                            <a href="/locations" th:href="@{/locations}" class="nav-link">Locations</a>
+                        </li>
+                    </ul>
+                    <a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}" href="/login">Login</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- END:NAV -->
+</body>
+
+</html>
