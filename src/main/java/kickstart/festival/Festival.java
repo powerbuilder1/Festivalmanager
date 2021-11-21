@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import kickstart.location.Location;
 
@@ -12,8 +13,9 @@ public class Festival {
 
     private @Id @GeneratedValue Long id;
 
+    @ManyToOne
     private Location location;
-    private long locationId;
+    private long locationIdentifier;
     private String beginDate;
     private String endDate;
 
@@ -63,12 +65,12 @@ public class Festival {
         this.beginDate = beginDate;
     }
 
-    public long getLocationId() {
-        return locationId;
+    public long getLocationIdentifier() {
+        return locationIdentifier;
     }
 
-    public void setLocationId(long locationId) {
-        this.locationId = locationId;
+    public void setLocationIdentifier(long locationIdentifier) {
+        this.locationIdentifier = locationIdentifier;
     }
 
     public Location getLocation() {
@@ -83,7 +85,5 @@ public class Festival {
         return information;
     }
 
-    public void setInformation(String information) {
-        this.information = information;
-    }
-}
+public void setInformation(String information) {
+        this.information =
