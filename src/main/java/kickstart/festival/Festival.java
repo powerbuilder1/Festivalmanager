@@ -85,5 +85,7 @@ public class Festival {
         return information;
     }
 
-public void setInformation(String information) {
-        this.information =
+    public void setInformation(String information) {
+        this.information = information;
+    }
+}
