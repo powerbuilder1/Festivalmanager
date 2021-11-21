@@ -1,5 +1,6 @@
 package kickstart.festival;
 
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -27,4 +28,15 @@ public class FestivalManagement {
         return createFestival(festival);
     }
 
+    public Streamable<Festival> findAllFestivals() {
+        return festivalRepository.findAll();
+    }
+
+    public Festival findById(long id) {
+        return festivalRepository.findById(id).orElse(null);
+    }
+
+    public Streamable<Festival> findAllByName(String name) {
+        return festivalRepository.findAll().filter(festival -> festival.getName().equals(name));
+    }
 }
