@@ -1,4 +1,4 @@
-package kickstart.festival;
+package festivalmanager.festival;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-import kickstart.location.Location;
+import festivalmanager.location.Location;
 
 @Entity
 public class Festival {

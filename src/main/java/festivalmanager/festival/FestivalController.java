@@ -1,4 +1,4 @@
-package kickstart.festival;
+package festivalmanager.festival;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

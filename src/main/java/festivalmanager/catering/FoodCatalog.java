@@ -1,4 +1,4 @@
-package kickstart.catering;
+package festivalmanager.catering;
 
 import org.salespointframework.catalog.Catalog;
 

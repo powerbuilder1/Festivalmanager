@@ -1,4 +1,4 @@
-package kickstart.stock;
+package festivalmanager.stock;
 
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.springframework.stereotype.Controller;

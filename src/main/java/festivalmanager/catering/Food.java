@@ -1,4 +1,4 @@
-package kickstart.catering;
+package festivalmanager.catering;
 
 import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;

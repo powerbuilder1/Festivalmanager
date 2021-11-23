@@ -1,4 +1,4 @@
-package kickstart.location;
+package festivalmanager.location;
 
 import org.javamoney.moneta.Money;
 import org.springframework.data.util.Streamable;

@@ -1,4 +1,4 @@
-package kickstart.location;
+package festivalmanager.location;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

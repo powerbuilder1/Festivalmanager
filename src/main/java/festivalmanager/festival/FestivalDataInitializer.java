@@ -1,4 +1,4 @@
-package kickstart.festival;
+package festivalmanager.festival;
 
 import org.salespointframework.core.DataInitializer;
 import org.slf4j.Logger;

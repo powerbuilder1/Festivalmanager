@@ -1,4 +1,4 @@
-package kickstart.location;
+package festivalmanager.location;
 
 import static org.salespointframework.core.Currencies.*;
 

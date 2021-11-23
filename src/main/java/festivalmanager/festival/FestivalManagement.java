@@ -1,11 +1,11 @@
-package kickstart.festival;
+package festivalmanager.festival;
 
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import kickstart.location.Location;
+import festivalmanager.location.Location;
 
 @Service
 @Transactional

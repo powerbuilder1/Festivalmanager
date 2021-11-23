@@ -1,4 +1,4 @@
-package kickstart.location;
+package festivalmanager.location;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

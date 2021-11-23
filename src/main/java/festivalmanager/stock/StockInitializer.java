@@ -1,12 +1,13 @@
-package kickstart.stock;
+package festivalmanager.stock;
 
-import kickstart.catering.FoodCatalog;
 import org.salespointframework.core.DataInitializer;
 import org.salespointframework.inventory.UniqueInventory;
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.quantity.Quantity;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import festivalmanager.catering.FoodCatalog;
 
 @Component
 @Order(20)
