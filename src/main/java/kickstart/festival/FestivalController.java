@@ -19,7 +19,7 @@ public class FestivalController {
     String festivals(Model model) {
         model.addAttribute("festivals", festivalManagement.findAllFestivals());
         model.addAttribute("title", "Festivals");
-        return "festivals";
+        return "index";
     }
 
 }
