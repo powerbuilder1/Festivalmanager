@@ -46,6 +46,7 @@ public class Application {
 			http.csrf().disable(); // for lab purposes, that's ok!
 			http.authorizeRequests().antMatchers("/**").permitAll().and().formLogin().loginProcessingUrl("/login").and()
 					.logout().logoutUrl("/logout").logoutSuccessUrl("/");
+			http.headers().frameOptions().disable(); // allow /h2-console
 		}
 	}
 }
