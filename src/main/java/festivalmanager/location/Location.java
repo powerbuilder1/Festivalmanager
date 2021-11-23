@@ -16,6 +16,9 @@ public class Location {
     private String name;
     private Money rent;
 
+    public Location() {
+    }
+
     /**
      * Location constructor
      * 
