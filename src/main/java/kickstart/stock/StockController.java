@@ -13,6 +13,7 @@ public class StockController {
 	}
 
 	@GetMapping(path = "stock")
-	public void getCurrentStock() {
+	public String getCurrentStock() {
+		return "stock";
 	}
 }
