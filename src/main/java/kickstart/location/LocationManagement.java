@@ -1,6 +1,7 @@
 package kickstart.location;
 
 import org.javamoney.moneta.Money;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -44,4 +45,32 @@ public class LocationManagement {
         return createLocation(new Location(name, maxVisitors, stages, rent));
     }
 
+    /**
+     * returns all Locations
+     * 
+     * @return
+     */
+    public Streamable<Location> findAllLocations() {
+        return locationRepository.findAll();
+    }
+
+    /**
+     * returns the locations with the given name
+     * 
+     * @param name
+     * @return
+     */
+    public Streamable<Location> findAllByName(String name) {
+        return locationRepository.findAll().filter(location -> location.getName().equals(name));
+    }
+
+    /**
+     * returns the location with the given id
+     * 
+     * @param id
+     * @return
+     */
+    public Location findById(long id) {
+        return locationRepository.findById(id).orElse(null);
+    }
 }
