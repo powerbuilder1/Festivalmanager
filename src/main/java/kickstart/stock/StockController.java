@@ -16,11 +16,11 @@ public class StockController {
 
 	@GetMapping(path = "stock")
 	public String getCurrentStock(Model model) {
-/*
+
 		for (UniqueInventoryItem item : stockManagment.getCurrentStock()) {
 			System.out.println(item.getProduct().getName());
 		}
-*/
+
 		model.addAttribute("stock", stockManagment.getCurrentStock());
 		return "stock";
 	}
