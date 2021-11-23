@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Order(20)
-public class FoodCatalogInitializer implements DataInitializer {
+public class FoodDataInitializer implements DataInitializer {
 
 	private final FoodCatalog foodCatalog;
 
-	public FoodCatalogInitializer(FoodCatalog foodCatalog) {
+	public FoodDataInitializer(FoodCatalog foodCatalog) {
 		this.foodCatalog = foodCatalog;
 	}
 
