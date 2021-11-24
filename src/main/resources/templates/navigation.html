@@ -15,11 +15,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item" sec:authorize="hasRole('BOSS')">
+                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
                             <a href="/locations" th:href="@{/locations}" class="nav-link">Locations</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
-                        <a  href="/dashboard" th:href="@{/dashboard}" class="nav-link" th:text="#{manager.dashboard}">Kontrollzentrum</a>
+                            <a href="/dashboard" th:href="@{/dashboard}" class="nav-link" th:text="#{manager.dashboard}">Kontrollzentrum</a>
                         </li>
                     </ul>
                     <!--<a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}" href="/login">Login</a>-->
@@ -28,7 +28,7 @@
 
                 </div>
 
-             <!--   <div class="right menu">
+                <!--   <div class="right menu">
                     <a class="item" th:href="@{/login}" sec:authorize="!isAuthenticated()" th:text="#{nav.login}">Login</a>
                     <form class="item" sec:authorize="isAuthenticated()" th:action="@{/logout}" method="post">
                         <button type="submit" class="ui button" th:text="#{nav.logout}">Logout</button>
