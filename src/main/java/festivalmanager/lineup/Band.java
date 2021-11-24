@@ -25,5 +25,28 @@ public class Band {
 		this.stage = stage;
 		this.performanceHour = performanceHour;
 	}
+	public String getName() {
+		return name;
+	}
+
+	public String getStage() {
+		return stage;
+	}
+
+	public String getPerformanceHour() {
+		return performanceHour;
+	}
+
+	public Money getPrice() {
+		return price;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Long getId() {
+		return id;
+	}
 
 }
