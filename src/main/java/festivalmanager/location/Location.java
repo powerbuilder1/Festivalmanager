@@ -66,4 +66,8 @@ public class Location {
         this.maxVisitors = maxVisitors;
     }
 
+    public Long getId() {
+        return id;
+    }
+
 }
