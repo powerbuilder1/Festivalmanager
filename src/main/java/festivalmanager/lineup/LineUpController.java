@@ -1,6 +1,8 @@
 package festivalmanager.lineup;
 
 
+import festivalmanager.festival.Festival;
+import festivalmanager.festival.FestivalManagement;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
@@ -13,10 +15,11 @@ public class LineUpController {
 	LineUpController(LineUpRepository LineUpRepository) {
 		Assert.notNull(LineUpRepository, "LineUpRepository must not be null");
 		this.LineUpRepository= LineUpRepository;
+
 	}
 
-	@GetMapping("/lineup")
-	String lineup(Model model) {
+	@GetMapping("/lineup/{id}")
+	String lineup(@PathVariable long id, Model model) {
 		model.addAttribute("lineup", LineUpRepository.findAll());
 		model.addAttribute("title", "lineup");
 		return "lineup";

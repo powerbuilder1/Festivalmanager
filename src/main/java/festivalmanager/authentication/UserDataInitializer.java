@@ -34,5 +34,7 @@ public class UserDataInitializer implements DataInitializer {
 
 		List.of(new UserForm("Hans", "123456", "Zuhause")).forEach(userManagement::createUser);
 		List.of(new UserForm("BOSS", "123", "Zuhause")).forEach(userManagement::createBoss);
+		List.of(new UserForm("lineup", "1234", "Zuhause")).forEach(userManagement::createUser);
+
 	}
 }

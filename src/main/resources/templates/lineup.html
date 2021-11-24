@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container" th:each="lineup : ${lineup}" >
+        <div class="row">
+            <div class="col">
+                <h1>
+                    <span th:text="${lineup.getIndex()}"> Index </span>
+                </h1>
+                <table class="table">
+                    <thead><tr>
+                        <th scope="col">Uhrzeit</th>
+                        <th scope="col">Bühne 1</th>
+                    </tr></thead>
+                    <tbody><tr  th:each="lineup : ${lineup}">
+                        <td>
+                            <span th:text="${lineup.getLineupUhrzeiten()[0]}"> Festival 1</span>
+                        </td>
+                        <td>
+                            <span th:text="${lineup.getBandnames()[0]}"> Festival 1</span>
+                        </td>
+                    </tr><tr  th:each="lineup : ${lineup}">
+                        <td>
+                            <span th:text="${lineup.getLineupUhrzeiten()[1]}"> Festival 1</span>
+                        </td>
+                        <td>
+                            <span th:text="${lineup.getBandnames()[1]}"> Festival 1</span>
+                        </td>
+                    </tr><tr  th:each="lineup : ${lineup}">
+                        <td>
+                            <span th:text="${lineup.getLineupUhrzeiten()[2]}"> Festival 1</span>
+                        </td>
+                        <td>
+                            <span th:text="${lineup.getBandnames()[2]}"> Festival 1</span>
+                        </td>
+                    </tr></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <a href="/festivals" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück zu Festival</a>
+    </div>
+</section>
+</body>
+</html>
