@@ -1,6 +1,7 @@
 package festivalmanager.catering;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,12 +21,13 @@ public class CateringController {
 	}
 
 	@GetMapping(path = "catering/management")
-	public String getCateringManagement(NewFoodItemForm foodItemForm) {
+	public String getCateringManagement(Model model) {
+		model.addAttribute("foodItemForm", new NewFoodItemForm());
 		return "catering_management";
 	}
 
 	@PostMapping(path = "catering/addToFoodCatalog")
-	public String addItemToCatalog(@Valid NewFoodItemForm foodItemForm, BindingResult errors) {
+	public String addItemToCatalog(@ModelAttribute NewFoodItemForm foodItemForm) {
 		cateringManagement.addItemToCatalog(foodItemForm);
 		return "redirect:/";
 	}
