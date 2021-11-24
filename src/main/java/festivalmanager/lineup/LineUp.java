@@ -23,4 +23,34 @@ public class LineUp {
 	@SuppressWarnings({"unused", "deprecation"})
 	public LineUp() {
 	}
+
+	public void addBandto(Band band) {
+		Lineup.add(band);
+	}
+
+	public static Festival getFestival() {
+		return festival;
+	}
+
+	public String getIndex() {
+		return Index;
+	}
+
+	public ArrayList<String> getLineupnames() {
+		ArrayList<String> names = new ArrayList<>();
+		for (Band band : Lineup) {
+			names.add(band.getName());
+		}
+
+		return names;
+	}
+
+	public ArrayList<String> getLineupUhrzeiten() {
+		ArrayList<String> Uhrzeit = new ArrayList<>();
+		for (Band band : Lineup) {
+			Uhrzeit.add(band.getPerformanceHour());
+		}
+
+		return Uhrzeit;
+	}
 }
