@@ -24,6 +24,9 @@ public class Festival {
     private String information;
     private String name;
 
+    public Festival() {
+    }
+
     /**
      * Festival constructor
      * 
