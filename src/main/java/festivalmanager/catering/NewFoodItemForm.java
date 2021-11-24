@@ -1,12 +1,15 @@
 package festivalmanager.catering;
 
+import org.springframework.validation.Errors;
+
 import javax.validation.constraints.NotEmpty;
 
 public class NewFoodItemForm {
-	private final @NotEmpty String name;
-	private final @NotEmpty double price;
 
-	public NewFoodItemForm(String name, double price) {
+	private final @NotEmpty String name;
+	private final @NotEmpty Double price;
+
+	public NewFoodItemForm(String name, Double price) {
 		this.name = name;
 		this.price = price;
 	}
@@ -15,7 +18,11 @@ public class NewFoodItemForm {
 		return name;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
+	}
+
+	public void validate(Errors errors) {
+		// Complex validation goes here
 	}
 }
