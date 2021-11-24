@@ -1,6 +1,7 @@
 package festivalmanager.lineup;
 
 import festivalmanager.festival.Festival;
+import festivalmanager.location.Location;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,11 +21,15 @@ public class LineUpManagement {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		return LineUpRepository.save(lineUp);
 	}
-	public LineUp createLineUp (String Index, Festival festival) {
-		LineUp lineUp = new LineUp(Index, festival);
+	public LineUp createLineUp (String Index, Festival festival, long id) {
+		LineUp lineUp = new LineUp(Index, festival, id);
 		return createLineUp(lineUp);
 	}
 	public Streamable<LineUp> findAllLineUp() {
 		return LineUpRepository.findAll();
 	}
+	public LineUp findById(long id) {
+		return LineUpRepository.findById(id).orElse(null);
+	}
+
 }

@@ -29,7 +29,7 @@
                         </div>
                         <br />
                         <div class="d-grid gap-3">
-                            <a th:href="@{/lineup/{id}(id=${festival.id})}" href="/lineup" class="btn btn-primary btn-lg " tabindex="-1" role="button">Line up sehen</a>
+                            <a th:href="@{/lineup/{id}(id=${festival.id})}" href="/lineup/{id}" class="btn btn-primary btn-lg " tabindex="-1" role="button">Line up sehen</a>
                             <a th:href="@{/ticket/{id}(id=${festival.id})}" href="/ticket" class="btn btn-primary btn-lg " tabindex="-1" role="button">Tickets Kaufen</a>
                         </div>
                     </div>
