@@ -36,7 +36,7 @@ public class StorageController {
     String editImage(@RequestParam("image") MultipartFile file, RedirectAttributes redirectAttributes,
             @PathVariable long id) {
 
-        storageService.store(file);
+        storageService.store(file, "test" + id);
 
         return "redirect:/locations";
     }
