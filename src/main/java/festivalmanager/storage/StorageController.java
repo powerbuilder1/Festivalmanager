@@ -1,10 +1,13 @@
 package festivalmanager.storage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,5 +42,13 @@ public class StorageController {
         storageService.store(file, "test" + id);
 
         return "redirect:/locations";
+    }
+
+    @GetMapping("/image/{name}")
+    public ResponseEntity<Resource> serveImage(@PathVariable String name) {
+        Resource file = storageService.loadAsResource(name);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
+                .body(file);
     }
 }
