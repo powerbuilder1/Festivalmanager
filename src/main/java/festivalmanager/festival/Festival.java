@@ -91,4 +91,8 @@ public class Festival {
     public void setInformation(String information) {
         this.information = information;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
