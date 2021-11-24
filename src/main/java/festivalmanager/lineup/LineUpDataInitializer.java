@@ -33,8 +33,8 @@ public class LineUpDataInitializer implements DataInitializer {
 		Band band4 = new Band("Kings of Leon",Money.of(4000, EURO),"Buehne 3", "12:00 - 14:00");
 		Band band5 = new Band("TV Girl",Money.of(6000, EURO),"Buehne 2", "18:00 - 20:00");
 		Band band6 = new Band("Kendrick Lamar",Money.of(3000, EURO),"Buehne 1", "09:00 - 11:00");
-		LineUp lineUp1 = new LineUp("1",festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0) );
-		LineUp lineUp2 = new LineUp("2",festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0) );
+		LineUp lineUp1 = new LineUp("1",festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0),festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0).getId() );
+		LineUp lineUp2 = new LineUp("2",festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0) ,festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0).getId());
 		lineUp1.addBandto(band1);
 		lineUp1.addBandto(band2);
 		lineUp1.addBandto(band3);
@@ -42,7 +42,8 @@ public class LineUpDataInitializer implements DataInitializer {
 		lineUp2.addBandto(band5);
 		lineUp2.addBandto(band6);
 		List.of(lineUp1,lineUp2).forEach(LineUpManagement::createLineUp);
-		System.out.println(lineUp2.getLineupnames());
+		System.out.println(lineUp2.getBandnames());
+
 
 
 
