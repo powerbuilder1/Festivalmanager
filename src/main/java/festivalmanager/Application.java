@@ -17,12 +17,20 @@ package festivalmanager;
 
 import org.salespointframework.EnableSalespoint;
 import org.salespointframework.SalespointSecurityConfiguration;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
+import festivalmanager.storage.StorageProperties;
+import festivalmanager.storage.StorageService;
+
+@EnableConfigurationProperties(StorageProperties.class)
 @EnableSalespoint
 public class Application {
 
@@ -48,5 +56,13 @@ public class Application {
 					.logout().logoutUrl("/logout").logoutSuccessUrl("/");
 			http.headers().frameOptions().disable(); // allow /h2-console
 		}
+	}
+
+	@Bean
+	CommandLineRunner init(StorageService storageService) {
+		return (args) -> {
+			storageService.deleteAll();
+			storageService.init();
+		};
 	}
 }
