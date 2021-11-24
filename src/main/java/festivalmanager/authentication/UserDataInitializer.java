@@ -19,7 +19,6 @@ public class UserDataInitializer implements DataInitializer {
 	private final UserAccountManagement userAccountManagement;
 	private final UserManagement userManagement;
 
-
 	UserDataInitializer(UserAccountManagement userAccountManagement, UserManagement userManagement) {
 
 		Assert.notNull(userAccountManagement, "UserAccountManagement must not be null!");
@@ -34,5 +33,7 @@ public class UserDataInitializer implements DataInitializer {
 
 		List.of(new UserForm("Hans", "123456", "Zuhause")).forEach(userManagement::createUser);
 		List.of(new UserForm("BOSS", "123", "Zuhause")).forEach(userManagement::createBoss);
+		List.of(new UserForm("Plannuing", "123456", "Zuhause")).forEach(userManagement::createPlanningStaff);
+		List.of(new UserForm("Catering", "123456", "Zuhause")).forEach(userManagement::createCateringStaff);
 	}
 }
