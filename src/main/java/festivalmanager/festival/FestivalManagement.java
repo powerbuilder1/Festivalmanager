@@ -23,7 +23,8 @@ public class FestivalManagement {
         return festivalRepository.save(festival);
     }
 
-    public Festival findFestival(String name, Location location, String beginDate, String endDate, String information) {
+    public Festival createFestival(String name, Location location, String beginDate, String endDate,
+            String information) {
         Festival festival = new Festival(name, location, beginDate, endDate, information);
         return createFestival(festival);
     }
