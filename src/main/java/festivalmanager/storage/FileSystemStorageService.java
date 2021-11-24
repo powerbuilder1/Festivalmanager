@@ -1,11 +1,14 @@
 package festivalmanager.storage;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
+import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileSystemStorageService implements StorageService {
@@ -19,7 +22,11 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public void init() {
-        // TODO Auto-generated method stub
+        try {
+            Files.createDirectories(rootLocation);
+        } catch (IOException e) {
+            throw new StorageException("Could not initialize storage", e);
+        }
 
     }
 
@@ -49,8 +56,7 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public void deleteAll() {
-        // TODO Auto-generated method stub
-
+        FileSystemUtils.deleteRecursively(rootLocation.toFile());
     }
 
 }
