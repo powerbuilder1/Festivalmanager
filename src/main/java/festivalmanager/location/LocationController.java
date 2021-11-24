@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -19,13 +18,14 @@ public class LocationController {
         this.locationManagement = locationManagement;
     }
 
-    // @PreAuthorize("hasRolle('Planung')")
+    @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/locations")
     String locations(Model model) {
         model.addAttribute("locations", locationManagement.findAllLocations());
         return "locations";
     }
 
+    @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/location/{id}")
     String location(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Location location = locationManagement.findById(id);
@@ -38,6 +38,7 @@ public class LocationController {
         return "location";
     }
 
+    @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/location/{id}/edit/image")
     String editImage(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Location location = locationManagement.findById(id);
