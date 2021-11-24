@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <section layout:fragment="content">
+        <!-- BEGIN:DETAIL -->
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="card shadow-lg" style="padding-top: 15px; margin-top: 15px;">
+                    <img class="card-img-top shadow-lg" src="https://www.tagesspiegel.de/images/rock-concert-/27425484/4-format6001.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
+                        <p class="card-text" th:text="${festival.information}">
+                        </p>
+                        <div>
+                            Von:
+                            <p th:text="${festival.beginDate}">Termin: 32.13.3020</p>
+                        </div>
+                        <div>
+                            Bis:
+                            <p th:text="${festival.endDate}">Ende: 32.13.3020</p>
+                        </div>
+                        <div>
+                            <p>Location: </p>
+                            <img src="./../images/festival_location.png" width="200px">
+                        </div>
+                        <br />
+                        <div class="d-grid gap-3">
+                            <a th:href="@{/lineup/{id}(id=${festival.id})}" href="/lineup" class="btn btn-primary btn-lg " tabindex="-1" role="button">Line up sehen</a>
+                            <a th:href="@{/ticket/{id}(id=${festival.id})}" href="/ticket" class="btn btn-primary btn-lg " tabindex="-1" role="button">Tickets Kaufen</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

@@ -16,7 +16,7 @@ public class LocationController {
         this.locationManagement = locationManagement;
     }
 
-    @PreAuthorize("hasRolle('Planung')")
+    // @PreAuthorize("hasRolle('Planung')")
     @GetMapping("/locations")
     String locations(Model model) {
         model.addAttribute("locations", locationManagement.findAllLocations());
