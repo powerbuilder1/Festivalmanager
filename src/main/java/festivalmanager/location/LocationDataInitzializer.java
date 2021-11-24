@@ -16,7 +16,7 @@ import org.springframework.util.Assert;
 @Component
 public class LocationDataInitzializer implements DataInitializer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(LocationDataInitzializer.class);
+    private static final Logger log = LoggerFactory.getLogger(LocationDataInitzializer.class);
 
     private final LocationManagement locationManagement;
 
@@ -31,7 +31,7 @@ public class LocationDataInitzializer implements DataInitializer {
         if (locationManagement.findAllLocations().iterator().hasNext()) {
             return;
         }
-        LOG.info("Creating default location entries");
+        log.info("Creating default location entries");
         List.of(new Location("Hockenheimring", 5000, 3, Money.of(500000, EURO)),
                 new Location("Kraftwerk Mitte", 4000, 2, Money.of(2300000, EURO)),
                 new Location("Arteum", 1000, 5, Money.of(10000, EURO)),

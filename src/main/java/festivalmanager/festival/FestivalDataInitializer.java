@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class FestivalDataInitializer implements DataInitializer {
 
-    private final Logger LOG = LoggerFactory.getLogger(FestivalDataInitializer.class);
+    private final Logger log = LoggerFactory.getLogger(FestivalDataInitializer.class);
 
     @Override
     public void initialize() {
-        LOG.info("Initializing data for {}", getClass().getSimpleName());
+        log.info("Initializing data for {}", getClass().getSimpleName());
     }
 }
