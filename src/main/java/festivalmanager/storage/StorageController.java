@@ -38,6 +38,6 @@ public class StorageController {
 
         storageService.store(file);
 
-        return "redirect:location";
+        return "redirect:/locations";
     }
 }
