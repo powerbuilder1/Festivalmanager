@@ -9,6 +9,8 @@
 <section layout:fragment="content">
     <div class="container">
         <h1>Catering Management</h1>
+        <hr>
+        <h2>Add Item to Catalog</h2>
         <form action="#" th:action="@{/catering/addToFoodCatalog}" th:object="${foodItemForm}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
