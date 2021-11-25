@@ -1,5 +1,8 @@
 package festivalmanager.location;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javax.validation.constraints.NotEmpty;
 
 public class LocationForm {
@@ -14,7 +17,7 @@ public class LocationForm {
         this.maxVisitors = maxVisitors;
         this.maxStages = maxStages;
         this.name = name;
-        this.rent = rent;
+        this.rent = BigDecimal.valueOf(rent).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
 
     public int getMaxVisitors() {
