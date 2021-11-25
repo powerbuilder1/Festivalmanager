@@ -36,3 +36,6 @@ Desktop.ini
 # Misc
 hs_err_*.log
 ~$*
+
+
+src/main/resources/images

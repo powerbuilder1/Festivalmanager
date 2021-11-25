@@ -23,7 +23,9 @@
                             <p class="card-text " th:text="|${location.maxVisitors} Besucher| ">500</p>
                             <p class="card-text " th:text="|${location.maxStages} Bühnen| ">3</p>
                             <p class="card-text " th:text="|${location.rent}| ">1000€</p>
-                            <img src="" alt="Location Image">
+                            <a href="/" th:href="@{|/location/${location.id}/edit/image|}">
+                                <img th:src="@{|/image/location_${location.id}.png|}" alt="Location Image - edit me">
+                            </a>
                         </div>
                     </div>
                 </div>
