@@ -15,6 +15,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -22,6 +23,11 @@
                 <th></th>
                 <td th:text="${{item.getName()}}"></td>
                 <td th:text="${{item.getPrice()}}"></td>
+                <td>
+                    <form th:action="@{|/catering/deleteFromCatalog/${item.getId()}|}" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
             </tr>
             </tbody>
         </table>
