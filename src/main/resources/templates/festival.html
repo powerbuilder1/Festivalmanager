@@ -24,8 +24,8 @@
                             <p th:text="${festival.endDate}">Ende: 32.13.3020</p>
                         </div>
                         <div>
-                            <p>Location: </p>
-                            <img src="./../images/festival_location.png" width="200px">
+                            <p>Location: <span th:text="${festival.location.name}"></span></p>
+                            <img th:src="@{|/image/location_${festival.location.id}.png|}" width="200px">
                         </div>
                         <br />
                         <div class="d-grid gap-3">

@@ -20,7 +20,7 @@
                     <div class="card shadow-lg " style="padding-top: 15px; margin-top:15px; ">
                         <div class="card-body ">
                             <h5 class="card-title " th:text="${location.name} ">Location 1</h5>
-                            <img th:src="@{|/image/location_${location.id}.png|}" alt="current image">
+                            <img th:src="@{|/image/location_${location.id}.png|}" alt="current image" style="width: 800px">
                             <form method="POST" enctype="multipart/form-data" action="/location/{id}(id=${location.id})/edit/image" th:action="@{|/location/${location.id}/edit/image|}">
                                 <div class="form-group">
                                     <div class="input-group">
