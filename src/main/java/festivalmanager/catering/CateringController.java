@@ -1,13 +1,11 @@
 package festivalmanager.catering;
 
+import org.salespointframework.catalog.ProductIdentifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -38,5 +36,10 @@ public class CateringController {
 		return "catalog";
 	}
 
+	@PostMapping(path = "catering/deleteFromCatalog/{foodItem}")
+	public String deleteItemFromCatalog(@PathVariable("foodItem") Food foodItem) {
+		cateringManagement.deleteItemFromCatalog(foodItem);
+		return "catalog";
+	}
 
 }
