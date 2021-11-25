@@ -32,5 +32,11 @@ public class CateringController {
 		return "redirect:/";
 	}
 
+	@GetMapping(path = "catering/catalog")
+	public String getCatalog(Model model) {
+		model.addAttribute("catalog", cateringManagement.getCatalog());
+		return "catalog";
+	}
+
 
 }
