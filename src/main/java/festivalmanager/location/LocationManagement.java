@@ -1,6 +1,7 @@
 package festivalmanager.location;
 
 import org.javamoney.moneta.Money;
+import org.salespointframework.core.Currencies;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,12 @@ public class LocationManagement {
     public Location createLocation(Location location) {
         Assert.notNull(location, "location must not be null");
         return locationRepository.save(location);
+    }
+
+    public Location createLocation(LocationForm form) {
+        Assert.notNull(form, "form must not be null");
+        return createLocation(form.getName(), form.getMaxVisitors(), form.getMaxStages(),
+                Money.of(form.getRent(), Currencies.EURO));
     }
 
     /**

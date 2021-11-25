@@ -1,11 +1,16 @@
 package festivalmanager.location;
 
+import javax.validation.Valid;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -49,6 +54,23 @@ public class LocationController {
 
         model.addAttribute("location", location);
         return "location_edit_image";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @GetMapping("/location/new")
+    String newLocation(Model model) {
+        model.addAttribute("location", new Location());
+        return "location_new";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @PostMapping("/location/new")
+    String newLocation(@ModelAttribute LocationForm form, Errors result) {
+        if (result.hasErrors()) {
+            return "locations";
+        }
+        locationManagement.createLocation(form);
+        return "redirect:/locations";
     }
 
 }
