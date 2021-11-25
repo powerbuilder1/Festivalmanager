@@ -55,6 +55,19 @@ public class LocationController {
     }
 
     @PreAuthorize("hasRole('PLANNING')")
+    @GetMapping("/location/{id}/edit")
+    String editLocation(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+        Location location = locationManagement.findById(id);
+        if (location == null) {
+            redirectAttributes.addFlashAttribute("error", "LOCATION_NOT_FOUND");
+            return "redirect:/locations";
+        }
+
+        model.addAttribute("location", location);
+        return "location_edit";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/location/new")
     String newLocation(Model model) {
         model.addAttribute("location", new Location());

@@ -20,13 +20,11 @@
                     <div class="card shadow-lg " style="padding-top: 15px; margin-top:15px; ">
                         <div class="card-body ">
                             <h5 class="card-title " th:text="${location.name} ">Location 1</h5>
-                            <img th:src="@{|/image/location_${location.id}.png|}" alt="current image">
                             <form method="POST" enctype="multipart/form-data" action="/location/{id}(id=${location.id})/edit/image" th:action="@{|/location/${location.id}/edit/image|}">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="image" name="image">
-                                            <label class="custom-file-label" for="image" th:text="#{location.choose}">Choose file</label>
+
                                         </div>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="submit" th:text="#{location.upload}">Submit</button>
