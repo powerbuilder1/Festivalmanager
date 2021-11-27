@@ -16,6 +16,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -26,6 +27,11 @@
                 <td>
                     <form th:action="@{|/catering/deleteFromCatalog/${item.getId()}|}" method="post">
                         <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{|/catering/catalog/edit/${item.getId()}|}" method="get">
+                        <button type="submit" class="btn btn-warning">Edit</button>
                     </form>
                 </td>
             </tr>
