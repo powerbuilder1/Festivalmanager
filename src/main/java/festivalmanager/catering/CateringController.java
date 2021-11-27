@@ -38,7 +38,8 @@ public class CateringController {
 			@PathVariable("foodItem") Food foodItem,
 			Model model
 			) {
-		model.addAttribute("foodItem", foodItem);
+		model.addAttribute("item", foodItem);
+		model.addAttribute("foodItemForm", new NewFoodItemForm());
 		System.out.println(foodItem.getName());
 		System.out.println(foodItem.getPrice());
 		return "catalog_edit_item";
@@ -55,7 +56,17 @@ public class CateringController {
 	@PostMapping(path = "catering/deleteFromCatalog/{foodItem}")
 	public String deleteItemFromCatalog(@PathVariable("foodItem") Food foodItem) {
 		cateringManagement.deleteItemFromCatalog(foodItem);
-		return "catalog";
+		return "redirect:/catering/catalog";
+	}
+
+	// edit item from FoodCatalog
+	@PostMapping(path = "catering/editFromCatalog/{foodItem}")
+	public String editItemFromCatalog(
+			@PathVariable("foodItem") Food foodItem,
+			@ModelAttribute NewFoodItemForm foodItemForm
+	) {
+		cateringManagement.editItemFromCatalog(foodItem, foodItemForm);
+		return "redirect:/catering/catalog";
 	}
 
 }
