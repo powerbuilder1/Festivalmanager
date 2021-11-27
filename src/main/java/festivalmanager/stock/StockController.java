@@ -16,6 +16,7 @@ public class StockController {
 		this.stockManagment = stockManagment;
 	}
 
+	// route to stock overview
 	@GetMapping(path = "stock")
 	public String getCurrentStock(Model model) {
 
@@ -27,6 +28,7 @@ public class StockController {
 		return "stock";
 	}
 
+	// delete all inventory Items for a specific FoodItem
 	@PostMapping(path = "stock/deleteAllInventoryItems/{inventoryItem}")
 	public String deleteAllInventoryItems(@PathVariable UniqueInventoryItem inventoryItem) {
 		stockManagment.deleteAllInventoryItems(inventoryItem);
