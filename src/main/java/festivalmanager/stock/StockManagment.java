@@ -1,6 +1,8 @@
 package festivalmanager.stock;
 
 import festivalmanager.catering.Food;
+import festivalmanager.catering.FoodCatalog;
+import org.salespointframework.catalog.ProductIdentifier;
 import org.salespointframework.inventory.UniqueInventory;
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.quantity.Quantity;
@@ -43,5 +45,19 @@ public class StockManagment {
 	// Test
 	public void deleteAll() {
 		inventory.deleteAll();
+	}
+
+	public void reorderItem(ReorderForm reorderForm) {
+		ProductIdentifier foodItemId = reorderForm.getFoodItemId();
+		inventory.findByProductIdentifier(foodItemId).ifPresent(uniqueInventoryItem -> {
+			uniqueInventoryItem.increaseQuantity(Quantity.of(reorderForm.getAmount()));
+			inventory.save(uniqueInventoryItem);
+		});
+
+/*
+		Optional<UniqueInventoryItem> foodInventoryItem = inventory.findByProductIdentifier(foodItemId);
+		foodInventoryItem.ifPresent(uniqueInventoryItem
+				-> uniqueInventoryItem.increaseQuantity(Quantity.of(reorderForm.getAmount())));
+*/
 	}
 }
