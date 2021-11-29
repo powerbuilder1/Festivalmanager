@@ -1,13 +1,18 @@
 package festivalmanager.personalManagement;
 
+import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
 import festivalmanager.authentication.UserManagement;
+import festivalmanager.catering.Food;
+import festivalmanager.catering.NewFoodItemForm;
 import org.salespointframework.useraccount.QUserAccount;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
@@ -30,6 +35,7 @@ public class ManagerController{
 
 	@GetMapping("/team")
 	String team(Model model) {
+		model.addAttribute("userList", managerManagement.findAll());
 		return "team";
 	}
 

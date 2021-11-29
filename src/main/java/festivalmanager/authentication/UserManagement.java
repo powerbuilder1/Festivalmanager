@@ -38,7 +38,7 @@ public class UserManagement {
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, CUSTOMER_ROLE);
 
-		return users.save(new User(form.getAddress(), userAccount));
+		return users.save(new User(form.getPosition(), userAccount));
 	}
 
 	public User createBoss(UserForm form) {
@@ -48,7 +48,7 @@ public class UserManagement {
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, BOSS_ROLE);
 
-		return users.save(new User(form.getAddress(), userAccount));
+		return users.save(new User(form.getPosition(), userAccount));
 	}
 
 	public User createPlanningStaff(UserForm form) {
@@ -58,7 +58,7 @@ public class UserManagement {
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, PLANNING_ROLE);
 
-		return users.save(new User(form.getAddress(), userAccount));
+		return users.save(new User(form.getPosition(), userAccount));
 	}
 
 	public User createCateringStaff(UserForm form) {
@@ -68,7 +68,7 @@ public class UserManagement {
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, CATERING_ROLE);
 
-		return users.save(new User(form.getAddress(), userAccount));
+		return users.save(new User(form.getPosition(), userAccount));
 	}
 
 	public Streamable<User> findAll() {

@@ -12,7 +12,7 @@ public class User{
 
 	private @Id @GeneratedValue long id;
 	private String address;
-
+	private String position;
 
 	@OneToOne //
 	private UserAccount userAccount;
@@ -22,10 +22,19 @@ public class User{
 
 	}
 
-	public User(String address, UserAccount userAccount) {
-		this.address = address;
+
+
+	public User(String position, UserAccount userAccount) {
+
+		this.position = position;
 		this.userAccount = userAccount;
 	}
+
+
+//	public User(String address, UserAccount userAccount) {
+//		this.address = address;
+//		this.userAccount = userAccount;
+//	}
 
 
 
@@ -44,4 +53,13 @@ public class User{
 	public UserAccount getUserAccount() {
 		return userAccount;
 	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
 }
