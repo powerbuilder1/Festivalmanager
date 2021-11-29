@@ -99,4 +99,14 @@ public class LocationController {
         locationManagement.createLocation(form);
         return "redirect:/locations";
     }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @GetMapping("/location/{id}/delete")
+    String deleteLocation(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        if (!locationManagement.deleteById(id)) {
+            redirectAttributes.addFlashAttribute("error", "LOCATION_HAS_FESTIVALS");
+            return "redirect:/location/" + id;
+        }
+        return "redirect:/locations";
+    }
 }
