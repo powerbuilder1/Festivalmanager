@@ -21,16 +21,19 @@ public class CateringManagement {
 		this.stockManagment = stockManagment;
 	}
 
+	// add item to Catalog
 	public void addItemToCatalog(NewFoodItemForm foodItemForm) {
-		foodCatalog.save(new Food(
+		Food foodItem = foodCatalog.save(new Food(
 				foodItemForm.getName(),
 				Money.of(foodItemForm.getPrice(), Currencies.EURO)
 		));
+		stockManagment.initializeInventoryItem(foodItem, 0);
 		for (Product p : foodCatalog.findAll()) {
 			System.out.println(p.getName() + ": " + p.getPrice());
 		}
 	}
 
+	// get catalog
 	public Streamable<Food> getCatalog() {
 		return foodCatalog.findAll();
 	}
@@ -40,6 +43,15 @@ public class CateringManagement {
 			UniqueInventoryItem inventoryItem = stockManagment.findByProduct(foodItem).get();
 			stockManagment.deleteAllInventoryItems(inventoryItem);
 			foodCatalog.delete(foodItem);
+		}
+	}
+
+	// update item form FoodCatalog
+	public void editItemFromCatalog(Food foodItem, NewFoodItemForm foodItemForm) {
+		if (foodItem.getId() != null) {
+			foodItem.setName(foodItemForm.getName());
+			foodItem.setPrice(Money.of(foodItemForm.getPrice(), Currencies.EURO));
+			foodCatalog.save(foodItem);
 		}
 	}
 }

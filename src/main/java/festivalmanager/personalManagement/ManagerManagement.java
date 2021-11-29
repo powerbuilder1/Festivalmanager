@@ -1,14 +1,17 @@
 package festivalmanager.personalManagement;
 
+import festivalmanager.authentication.UserManagement;
+import festivalmanager.authentication.UserRepository;
+import org.salespointframework.useraccount.UserAccountManagement;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ManagerManagement {
-	public ManagerRepository managerRepository;
-
-	public ManagerManagement(ManagerRepository managerRepository) {
-		this.managerRepository = managerRepository;
+public class ManagerManagement extends UserManagement {
+	public ManagerManagement(UserRepository users, UserAccountManagement userAccounts) {
+		super(users, userAccounts);
 	}
+
+
 
 	public void createStaffAccount(){}
 

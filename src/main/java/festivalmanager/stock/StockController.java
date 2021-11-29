@@ -4,6 +4,7 @@ import org.salespointframework.inventory.UniqueInventoryItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -16,6 +17,7 @@ public class StockController {
 		this.stockManagment = stockManagment;
 	}
 
+	// route to stock overview
 	@GetMapping(path = "stock")
 	public String getCurrentStock(Model model) {
 
@@ -23,15 +25,27 @@ public class StockController {
 			System.out.println(item.getProduct().getName());
 		}
 
+		// add current stock to model
 		model.addAttribute("stock", stockManagment.getCurrentStock());
+		// add reorderForm container to model
+		model.addAttribute("reorderForm", new ReorderForm());
 		return "stock";
 	}
 
+	// delete all inventory Items for a specific FoodItem
 	@PostMapping(path = "stock/deleteAllInventoryItems/{inventoryItem}")
 	public String deleteAllInventoryItems(@PathVariable UniqueInventoryItem inventoryItem) {
 		stockManagment.deleteAllInventoryItems(inventoryItem);
 		return "stock";
 	}
+
+	@PostMapping(path = "stock/reorder")
+	public String reorderItem(@ModelAttribute ReorderForm reorderForm) {
+		stockManagment.reorderItem(reorderForm);
+		return "redirect:/stock";
+	}
+
+
 	 //TEST
 	@PostMapping(path = "stock/test/deleteAll")
 	public String deleteAll() {

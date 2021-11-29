@@ -18,10 +18,10 @@ public class UserManagement {
 	public static final Role PLANNING_ROLE = Role.of("PLANNING");
 	public static final Role CATERING_ROLE = Role.of("CATERING");
 
-	private final UserRepository users;
-	private final UserAccountManagement userAccounts;
+	protected final UserRepository users;
+	protected final UserAccountManagement userAccounts;
 
-	UserManagement(UserRepository users, UserAccountManagement userAccounts) {
+	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
 		Assert.notNull(users, "UserRepository must not be null!");
 		Assert.notNull(userAccounts, "UserAccountManagement must not be null!");
@@ -29,6 +29,7 @@ public class UserManagement {
 		this.users = users;
 		this.userAccounts = userAccounts;
 	}
+
 
 	public User createUser(UserForm form) {
 
