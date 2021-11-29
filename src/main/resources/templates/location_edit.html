@@ -21,7 +21,7 @@
                         <div class="card-body ">
                             <h5 class="card-title " th:text="${location.name} ">Location 1</h5>
                             <form style="margin-top: 50px;" method="post" role="form" th:action="@{|/location/${location.id}/edit|}" th:object="${location}">
-                                <input type="number" name="id" value="${location.id}" id="id" style="display: none;">
+                                <input type="number" name="id" value="${location.id}" th:field="*{id}" id="id" style="display: none;">
                                 <div class="mb-3">
                                     <label for="name" class="form-label" th:text="#{location.name}">Name</label>
                                     <input type="text" th:field="*{name}" class="form-control " id="name">
