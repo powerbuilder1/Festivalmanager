@@ -43,11 +43,7 @@
                 </form>
             </div>
         </div>
-        <script type="text/javascript">
-            function validate_rent(el) {
-                el.value = parseFloat(el.value).toFixed(2);
-            }
-        </script>
+        <script type="text/javascript" th:src="@{/resources/js/location_validator.js}" src="../static/resources/js/location_validator.js"></script>
         <!-- END:DETAIL -->
     </section>
 </body>
