@@ -30,8 +30,8 @@
                         <li class="nav-item">
                             <a href="/stock" th:href="@{/stock}" class="nav-link">Lager</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/lineup" th:href="@{/lineup}" class="nav-link">LineUp</a>
+                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
+                            <a href="/lineup/edit" th:href="@{/lineup/edit}" class="nav-link">LineUp</a>
                         </li>
                     </ul>
                     <!--<a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}" href="/login">Login</a>-->
