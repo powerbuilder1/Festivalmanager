@@ -1,8 +1,10 @@
 package festivalmanager.authentication;
 
+import org.hibernate.usertype.UserType;
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccountManagement;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,7 @@ public class UserManagement {
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
+
 
 	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
@@ -74,4 +77,6 @@ public class UserManagement {
 	public Streamable<User> findAll() {
 		return users.findAll();
 	}
+
+
 }

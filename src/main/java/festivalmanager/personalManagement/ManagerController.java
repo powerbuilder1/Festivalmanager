@@ -62,6 +62,37 @@ public class ManagerController{
 		return "new_personal";
 	}
 
+	@GetMapping(path = "dashboard/team/edit/{user}")
+	public String getUser(
+			@PathVariable("foodItem") User user,
+			Model model
+	) {
+		model.addAttribute("user", user);
+		model.addAttribute("userForm", new UserForm());
+		System.out.println(user.getAddress());
+		System.out.println(user.getPosition());
+		return "user_edit";
+	}
+
+
+
+	@PostMapping(path = "/dashboard/team/editUser/{user}")
+	public String editUser(
+			@PathVariable("user") User user,
+			@ModelAttribute UserForm userForm
+	) {
+		managerManagement.editUser(user, userForm);
+		return "redirect:/catering/catalog";
+	}
+
+
+
+	@PostMapping(path = "/dashboard/team/deleteUser/{user}")
+	public String deleteUser(@PathVariable("user") User user) {
+		managerManagement.deleteUser(user);
+		return "redirect:/dashboard";
+	}
+
 
 
 
