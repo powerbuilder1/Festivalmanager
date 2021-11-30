@@ -40,4 +40,5 @@ public class FestivalManagement {
     public Streamable<Festival> findAllByName(String name) {
         return festivalRepository.findAll().filter(festival -> festival.getName().equals(name));
     }
+
 }

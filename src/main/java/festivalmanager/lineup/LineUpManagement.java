@@ -21,7 +21,7 @@ public class LineUpManagement {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		return LineUpRepository.save(lineUp);
 	}
-	public LineUp createLineUp (String Index, Festival festival, long id) {
+	public LineUp createLineUp (String Index, String festival, long id) {
 		LineUp lineUp = new LineUp(Index, festival, id);
 		return createLineUp(lineUp);
 	}

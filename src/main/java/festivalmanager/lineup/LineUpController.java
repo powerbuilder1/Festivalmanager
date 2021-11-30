@@ -41,4 +41,16 @@ public class LineUpController {
 		model.addAttribute("lineup", lineup);
 		return "lineup";
 	}
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/lineup/{id}/edit")
+	String editImage(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+		LineUp lineUp = lineUpManagement.findById(id);
+		if (lineUp == null) {
+			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
+			return "redirect:/festivals";
+		}
+
+		model.addAttribute("lineup", lineUp);
+		return "lineup_edit";
+	}
 }

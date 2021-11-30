@@ -9,26 +9,28 @@ import java.util.List;
 public class LineUp {
 
 	private @Id long id;
-	protected static Festival festival;
+	public String festival;
 	public String Index;
+
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Band> Lineup = new ArrayList<Band>();
 
-	public LineUp(String Index, Festival festival, long id) {
+	public LineUp(String Index, String festival, long id) {
 		this.Index = Index;
 		this.festival = festival;
-		this.id = festival.getId();
+		this.id = id ;
 	}
 
 	@SuppressWarnings({"unused", "deprecation"})
 	public LineUp() {
+
 	}
 
 	public void addBandto(Band band) {
 		Lineup.add(band);
 	}
 
-	public static Festival getFestival() {
+	public String getFestival() {
 		return festival;
 	}
 
@@ -56,8 +58,9 @@ public class LineUp {
 	public long getId() {
 		return id;
 	}
+
 	public String Festivalname(){
-		return festival.getName()+ " ---- Line UP";
+		return festival+ " ---- Line UP";
 	}
 
 	public Iterable<Band> getBands() {
