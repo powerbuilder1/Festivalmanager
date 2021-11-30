@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <section layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Festivals</h1>
+                    <div th:if="${error}">
+                        <h2 th:text="#{${error}}"></h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 card" style="padding: 15px; margin-top: 15px;">
+                            <a class="btn btn-primary" href="/festival/new" th:href="@{/festival/new}">Neu</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="container" th:each="festival : ${festivals}">
+                        <div class="row d-flex justify-content-center">
+                            <div class="card shadow-lg" style="padding-top: 15px;">
+                                <div class="card-body">
+                                    <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
+                                    <p>
+                                        <span class="card-text" th:text="${festival.beginDate}">Start Datum</span>
+                                        <span> --- </span>
+                                        <span class="card-text" th:text="${festival.endDate}">End Datum</span>
+                                    </p>
+                                    <br>
+                                    <a th:href="@{/festival/{id}(id=${festival.id})}" class="btn btn-primary">click
+                                        me</a>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<

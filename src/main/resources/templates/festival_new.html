@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+    <section layout:fragment="content">
+        <!-- BEGIN:DETAIL -->
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <form style="margin-top: 50px;" method="post" role="form" th:action="@{/festival/new}" th:object="${festival}">
+                    <div class="mb-3">
+                        <label for="name" class="form-label" th:text="#{festival.name}">Name</label>
+                        <input type="text" th:field="*{name}" class="form-control " id="name">
+                        <div th:if="${#fields.hasErrors('name')} " th:errors="*{name}">
+                            <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="beginDate" class="form-label" th:text="#{festival.beginDate}">beginDate</label>
+                        <input type="date" th:field="*{beginDate}" class="form-control " id="beginDate">
+                        <div th:if="${#fields.hasErrors('beginDate')} " th:errors="*{beginDate}">
+                            <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="endDate" class="form-label" th:text="#{festival.endDate}">endDate</label>
+                        <input type="date" th:field="*{endDate}" class="form-control " id="endDate">
+                        <div th:if="${#fields.hasErrors('endDate')} " th:errors="*{endDate}">
+                            <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="information" class="form-label" th:text="#{festival.information}">information</label>
+                        <input type="text" th:field="*{information}" class="form-control " id="information">
+                        <div th:if="${#fields.hasErrors('information')} " th:errors="*{information}">
+                            <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label" th:text="#{festival.location}">location</label>
+                        <select class="form-select" th:field="*{locationIdentifier}" aria-label="Location Select">
+                            <option th:each="location : ${locations}" th:value="${location.id}"
+                                th:text="${location.name}">
+                        </select>
+                        <div th:if="${#fields.hasErrors('location')} " th:errors="*{location}">
+                            <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                        </div>
+                    </div>
+                    <button type="submit " class="btn btn-primary " th:text="#{festival.add} ">Submit</button>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+        </script>
+        <!-- END:DETAIL -->
+    </section>
+</body>
