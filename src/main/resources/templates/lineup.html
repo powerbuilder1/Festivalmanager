@@ -39,13 +39,25 @@
                     </tr></thead>
                     <tbody><tr  th:each="lineup : ${lineup}">
                         <td>
-                            <span th:text="${lineup.getLineupUhrzeiten()}"> 12:50</span>
+                            <div th:each="hour : ${lineup.getLineupUhrzeiten()}">
+                                <div>
+                                    <p th:text="${hour}"></p>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            <span th:text="${lineup.getBandnames()}"> the strokes </span>
+                            <div th:each="band : ${lineup.getBandnames()}">
+                                <div>
+                                    <p th:text="${band}"></p>
+                                </div>
+                            </div>
                         </td>
                         <td>
-                            <span th:text="${lineup.getStages()}"> stage 1 </span>
+                            <div th:each="stage : ${lineup.getStages()}">
+                                <div>
+                                    <p th:text="${stage}"></p>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     </tbody>
