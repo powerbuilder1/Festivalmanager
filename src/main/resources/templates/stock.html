@@ -31,14 +31,21 @@
             </tbody>
         </table>
         <form action="#" th:action="@{|/stock/reorder|}" th:object="${reorderForm}" method="post">
-            <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
-                <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
-            </select>
-            <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="number" class="form-control" id="amount" th:field="*{amount}">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
+                            <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Reorder</button>
+                    </div>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary">Reorder</button>
         </form>
     </div>
 </section>
