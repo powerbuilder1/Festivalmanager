@@ -4,16 +4,16 @@ import javax.validation.constraints.NotEmpty;
 
 public class UserForm {
 	@NotEmpty(message = "{RegistrationForm.name.NotEmpty}") //
-	private final String name;
+	private  String name;
 
 	@NotEmpty(message = "{RegistrationForm.password.NotEmpty}") //
-	private final String password;
+	private  String password;
 
 	@NotEmpty(message = "{RegistrationForm.address.NotEmpty}") // s
-	private final String address;
+	private  String address;
 
 	@NotEmpty(message = "{RegistrationForm.position.NotEmpty}") // s
-	private final String position;
+	private  String position;
 
 	public UserForm(String name, String password, String address, String position) {
 
@@ -21,6 +21,9 @@ public class UserForm {
 		this.password = password;
 		this.address = address;
 		this.position = position;
+	}
+
+	public UserForm() {
 	}
 
 	public String getName() {

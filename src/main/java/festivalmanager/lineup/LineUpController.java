@@ -23,10 +23,11 @@ public class LineUpController {
 
 	}
 
-	@GetMapping("/lineup")
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/lineup/edit")
 	String lineup(Model model) {
 		model.addAttribute("lineup", lineUpManagement.findAllLineUp());
-		return "lineup";
+		return "lineup_edit";
 	}
 
 
@@ -43,7 +44,7 @@ public class LineUpController {
 	}
 	@PreAuthorize("hasRole('PLANNING')")
 	@GetMapping("/lineup/{id}/edit")
-	String editImage(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+	String editLineUp(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
 		LineUp lineUp = lineUpManagement.findById(id);
 		if (lineUp == null) {
 			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
@@ -51,6 +52,6 @@ public class LineUpController {
 		}
 
 		model.addAttribute("lineup", lineUp);
-		return "lineup_edit";
+		return "lineup_id_edit";
 	}
 }

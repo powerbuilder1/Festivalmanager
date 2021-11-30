@@ -64,7 +64,7 @@ public class LocationController {
         }
 
         model.addAttribute("location", location);
-        return "location_edit";
+        return "location_id_edit";
     }
 
     @PreAuthorize("hasRole('PLANNING')")

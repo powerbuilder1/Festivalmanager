@@ -8,7 +8,7 @@
 <section layout:fragment="content">
   <div class="container">
     <h1>Edit user</h1>
-    <form action="#" th:action="@{/personal_edit}" th:object="${userForm}" method="post">
+    <form action="#" th:action="@{|/dashboard/team/editUser/${user.getId()}|}" th:object="${userForm}" method="post">
       <div class="form-group">
         <label for="address">Address</label>
         <input type="text" class="form-control" id="address" th:placeholder="${user.getAddress()}" th:field="*{address}">
