@@ -19,13 +19,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class ManagerManagement extends UserManagement {
 
-	private final UserManagement userManagement;
 
-	private UserRepository userRepository;
+
 
 	public ManagerManagement(UserRepository users, UserAccountManagement userAccounts) {
 		super(users, userAccounts);
-		userManagement = null;
 	}
 
 	public void deleteUser(User user) {
@@ -35,22 +33,15 @@ public class ManagerManagement extends UserManagement {
 	public void editUser(User user, UserForm userForm) {
 			user.setAddress(userForm.getAddress());
 			user.setPosition(userForm.getPosition());
-			userRepository.save(user);
-
+			users.save(user);
 	}
 
-
-	public void createStaffAccount(){}
-
-	public boolean deleteStaffAccount(){
-		return true;
-	}
 
 	public void checkFinances(){
-
+	//Finances not implemented yet
 	}
 	public void vizualizeFinances(){
-
+	//Finances not implemented yet
 	}
 
 

@@ -23,8 +23,6 @@ public class UserForm {
 		this.position = position;
 	}
 
-	public UserForm() {
-	}
 
 	public String getName() {
 		return name;

@@ -37,7 +37,6 @@ public class UserManagement {
 	public User createUser(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
-
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, CUSTOMER_ROLE);
 

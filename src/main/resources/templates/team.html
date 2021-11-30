@@ -42,19 +42,21 @@
             <tr>
               <th th:text="#{users.name}">Name</th>
               <th th:text="#{users.position}">Position</th>
+              <th th:text="#{users.address}">Address</th>
             </tr>
             </thead>
             <tbody th:remove="all-but-first">
             <tr th:each=" user : ${userList}">
-              <td th:text="${user.userAccount.id}">Paul</td>
+              <td th:text="${user.userAccount.id}">Id</td>
               <td th:text="${user.position}">Position</td>
+              <th th:text="${user.address}">Address</th>
               <td>
                 <form th:action="@{|/dashboard/team/personal_edit/${user.getId()}|}" method="get">
                   <button type="submit"  class="btn btn-warning">Edit</button>
                 </form>
               </td>
               <td>
-                <form th:action="@{|/dashboard/team/deleteUser/${user.getId()}|}" method="post">
+                <form th:action="@{|/dashboard/team/deleteUserById/${user.getId()}|}" method="post">
                   <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
               </td>

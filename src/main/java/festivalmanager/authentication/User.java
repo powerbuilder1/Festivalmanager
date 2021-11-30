@@ -8,11 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 @Entity
-public class User{
+public class User {
 
 	private @Id @GeneratedValue long id;
 	private String address;
 	private String position;
+	private String name;
+	private String password;
+
+
 
 	@OneToOne //
 	private UserAccount userAccount;
@@ -23,23 +27,28 @@ public class User{
 	}
 
 
-
 	public User(String position, UserAccount userAccount) {
-
 		this.position = position;
 		this.userAccount = userAccount;
 	}
 
-
-//	public User(String address, UserAccount userAccount) {
-//		this.address = address;
-//		this.userAccount = userAccount;
-//	}
-
-
-
 	public long getId() {
 		return id;
+	}
+
+	public String getName(){
+		return name;
+	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getAddress() {
