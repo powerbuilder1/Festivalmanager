@@ -23,7 +23,6 @@ public class UserManagement {
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
 
-
 	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
 		Assert.notNull(users, "UserRepository must not be null!");
@@ -33,14 +32,14 @@ public class UserManagement {
 		this.userAccounts = userAccounts;
 	}
 
-
 	public User createUser(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, CUSTOMER_ROLE);
-
-		return users.save(new User(form.getPosition(), userAccount));
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		return users.save(user);
 	}
 
 	public User createBoss(UserForm form) {
@@ -76,6 +75,5 @@ public class UserManagement {
 	public Streamable<User> findAll() {
 		return users.findAll();
 	}
-
 
 }
