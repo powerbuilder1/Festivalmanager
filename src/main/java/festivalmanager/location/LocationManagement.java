@@ -7,15 +7,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import festivalmanager.festival.Festival;
+import festivalmanager.festival.FestivalRepository;
+
 @Service
 @Transactional
 public class LocationManagement {
 
     private final LocationRepository locationRepository;
+    private final FestivalRepository festivalRepository;
 
-    public LocationManagement(LocationRepository locationRepository) {
+    public LocationManagement(LocationRepository locationRepository, FestivalRepository festivalRepository) {
         Assert.notNull(locationRepository, "locationRepository must not be null");
+        Assert.notNull(festivalRepository, "festivalRepository must not be null");
         this.locationRepository = locationRepository;
+        this.festivalRepository = festivalRepository;
     }
 
     /**
@@ -79,5 +85,16 @@ public class LocationManagement {
      */
     public Location findById(long id) {
         return locationRepository.findById(id).orElse(null);
+    }
+
+    public boolean deleteById(long id) {
+        Location location = findById(id);
+        Streamable<Festival> festivals = festivalRepository.findAll()
+                .filter(festival -> festival.getLocation().equals(location));
+        if (festivals.toList().size() > 0) {
+            return false;
+        }
+        locationRepository.deleteById(id);
+        return true;
     }
 }

@@ -78,4 +78,22 @@ public class FestivalController {
         return "redirect:/festival";
     }
 
+    @PreAuthorize("hasRole('PLANNING')")
+    @GetMapping("/festival/{id}/edit")
+    String editFestival() {
+        return "festival_edit";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @PostMapping("/festival/{id}/edit")
+    String editFestival(int dummy) {
+        return "festival_edit";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @GetMapping("/festival/{id}/delete")
+    String deleteFestival() {
+        return "festival_delete";
+    }
+
 }
