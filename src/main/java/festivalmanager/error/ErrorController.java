@@ -13,6 +13,7 @@ public class ErrorController {
      * Default constructor
      */
     public ErrorController() {
+        // default constructor
     }
 
     @GetMapping("/error")
