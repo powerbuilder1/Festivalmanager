@@ -81,17 +81,12 @@ public class FileSystemStorageService implements StorageService {
             if (resource.exists() || resource.isReadable()) {
                 return resource;
             } else {
-                try {
-                    // try jpg
-                    if (filename.contains(".png")) {
-                        return loadAsResource(filename.replace(".png", ".jpg"));
-                    } else {
-                        throw new StorageFileNotFoundException("Could not read file: " + filename);
-                    }
-                } catch (Exception e) {
+                // try jpg
+                if (filename.contains(".png")) {
+                    return loadAsResource(filename.replace(".png", ".jpg"));
+                } else {
                     throw new StorageFileNotFoundException("Could not read file: " + filename);
                 }
-
             }
         } catch (MalformedURLException e) {
             throw new StorageFileNotFoundException("Could not read file: " + filename, e);
