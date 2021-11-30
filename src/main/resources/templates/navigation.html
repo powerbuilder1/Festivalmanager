@@ -18,20 +18,25 @@
                         <li class="nav-item" sec:authorize="hasRole('PLANNING')">
                             <a href="/locations" th:href="@{/locations}" class="nav-link">Locations</a>
                         </li>
+                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
+                            <a href="/festival" th:href="@{/festival}" class="nav-link">Festival</a>
+                        </li>
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
                             <a href="/dashboard" th:href="@{/dashboard}" class="nav-link" th:text="#{manager.dashboard}">Kontrollzentrum</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/catering/management" th:href="@{/catering/management}" class="nav-link">Catering Management</a>
+                            <a href="/catering/management" th:href="@{/catering/management}" class="nav-link">Catering
+                                Management</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/catering/catalog" th:href="@{/catering/catalog}" class="nav-link">Catering Angebot</a>
+                            <a href="/catering/catalog" th:href="@{/catering/catalog}" class="nav-link">Catering
+                                Angebot</a>
                         </li>
                         <li class="nav-item">
                             <a href="/stock" th:href="@{/stock}" class="nav-link">Lager</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="/lineup" th:href="@{/lineup}" class="nav-link">LineUp</a>
+                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
+                            <a href="/lineup/edit" th:href="@{/lineup/edit}" class="nav-link">LineUp</a>
                         </li>
                     </ul>
                     <!--<a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}" href="/login">Login</a>-->

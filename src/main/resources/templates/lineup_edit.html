@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="row">
+        <div class="col-md-12 card" style="padding: 15px; margin-top: 15px;">
+            <a class="btn btn-primary" href="/lineup/new" th:href="@{/lineup/new}">Neu</a>
+        </div>
+    </div>
+    <div class="container" th:each="lineup : ${lineup}" >
+        <div class="row">
+            <div class="col">
+                <div class="card shadow-lg " style="padding-top: 15px; margin-top:15px; ">
+                    <div class="card-body ">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-10">
+                                    <span th:text="${lineup.Festivalname}"> Festival 1</span>
+                                    <a th:href="@{/lineup/{id}/edit(id=${lineup.id})}" class="btn btn-primary">edit me</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <a href="/" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück zu Homepage</a>
+    </div>
+</section>
+</body>
+</html>
