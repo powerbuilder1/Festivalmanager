@@ -30,7 +30,7 @@
                                         <span class="card-text" th:text="${festival.endDate}">End Datum</span>
                                     </p>
                                     <br>
-                                    <a th:href="@{/festival/{id}(id=${festival.id})}" class="btn btn-primary">click
+                                    <a th:href="@{|/festival/${festival.id}/edit|}" class="btn btn-primary">click
                                         me</a>
                                 </div>
                             </div>

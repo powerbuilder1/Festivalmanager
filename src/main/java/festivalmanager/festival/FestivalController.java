@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
 
 @Controller
@@ -92,8 +91,12 @@ public class FestivalController {
 
     @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/festival/{id}/delete")
-    String deleteFestival() {
-        return "festival_delete";
+    String deleteFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        if (!festivalManagement.deleteById(id)) {
+            redirectAttributes.addFlashAttribute("error", "FESTIVAL_NOT_FOUND");
+            return "redirect:/festival/" + id;
+        }
+        return "redirect:/festival";
     }
 
 }

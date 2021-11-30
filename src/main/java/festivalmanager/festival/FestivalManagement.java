@@ -48,4 +48,9 @@ public class FestivalManagement {
         return festivalRepository.findAll().filter(festival -> festival.getName().equals(name));
     }
 
+    public boolean deleteById(long id) {
+        festivalRepository.deleteById(id);
+        return true;
+    }
+
 }
