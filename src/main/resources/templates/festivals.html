@@ -34,8 +34,8 @@
                                         <span class="card-text" th:text="${festival.endDate}">End Datum</span>
                                     </p>
                                     <br>
-                                    <a th:href="@{|/festival/${festival.id}/edit|}" class="btn btn-primary" th:text="#{festival.edit}"></a>
-                                    <a th:href="@{|/festival/${festival.id}/delete|}"></a>
+                                    <a th:href="@{|/festival/${festival.id}/edit|}"><img src="/resources/images/edit.png" style="width:64px;"></a>
+                                    <a th:href="@{|/festival/${festival.id}/delete|}"><img src="/resources/images/delete.png" style="width:64px;"></a>
                                 </div>
                             </div>
                         </div>
@@ -47,4 +47,4 @@
     </section>
 </body>
 
-<
+</html>
