@@ -19,18 +19,41 @@
                 <div class=" row d-flex justify-content-center ">
                     <div class="card shadow-lg " style="padding-top: 15px; margin-top:15px; ">
                         <div class="card-body ">
-                            <h5 class="card-title " th:text="${location.name} ">Location 1</h5>
-                            <form method="POST" enctype="multipart/form-data" action="/location/{id}(id=${location.id})/edit/image" th:action="@{|/location/${location.id}/edit/image|}">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="custom-file">
-
-                                        </div>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary" type="submit" th:text="#{location.upload}">Submit</button>
-                                        </div>
+                            <h5 class="card-title " th:text="${festival.name} ">Festival 1</h5>
+                            <form style="margin-top: 50px;" method="post" role="form" th:action="@{|/festival/${festival.id}/edit|}" th:object="${festival}">
+                                <input type="number" name="id" th:field="*{id}" id="id" style="display: none;">
+                                <input type="number" name="locationIdentifier" th:field="*{locationIdentifier}" id="locationIdentifier" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label" th:text="#{festival.name}">Name</label>
+                                    <input type="text" th:field="*{name}" class="form-control " id="name">
+                                    <div th:if="${#fields.hasErrors('name')} " th:errors="*{name}">
+                                        <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                                     </div>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="information" class="form-label" th:text="#{festival.information}">max
+                                        Visitors</label>
+                                    <input type="text" th:field="*{information}" class="form-control " id="information">
+                                    <div th:if="${#fields.hasErrors('information')} " th:errors="*{information}">
+                                        <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="beginDate" class="form-label" th:text="#{festival.beginDate}">max
+                                        Stages</label>
+                                    <input type="date" th:field="*{beginDate}" class="form-control " id="beginDate">
+                                    <div th:if="${#fields.hasErrors('beginDate')} " th:errors="*{beginDate}">
+                                        <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="endDate" class="form-label" th:text="#{festival.endDate}">rent</label>
+                                    <input type="date" th:field="*{endDate}" class="form-control " name="endDate" id="endDate" step="0.01" onchange="validate_rent(this)">
+                                    <div th:if="${#fields.hasErrors('endDate')} " th:errors="*{endDate}">
+                                        <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                                    </div>
+                                </div>
+                                <button type="submit " class="btn btn-primary " th:text="#{festival.edit} ">Submit</button>
                             </form>
                         </div>
                     </div>

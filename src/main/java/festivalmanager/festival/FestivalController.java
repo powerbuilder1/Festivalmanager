@@ -79,14 +79,29 @@ public class FestivalController {
 
     @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/festival/{id}/edit")
-    String editFestival() {
+    String editFestival(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+        Festival festival = festivalManagement.findById(id);
+        if (festival == null) {
+            redirectAttributes.addFlashAttribute("error", "FESTIVAL_NOT_FOUND");
+            return "redirect:/festival";
+        }
+
+        model.addAttribute("festival", festival);
         return "festival_edit";
     }
 
     @PreAuthorize("hasRole('PLANNING')")
     @PostMapping("/festival/{id}/edit")
-    String editFestival(int dummy) {
-        return "festival_edit";
+    String editFestival(@PathVariable long id, @ModelAttribute @Valid Festival festival, Errors result,
+            RedirectAttributes redirectAttributes) {
+        System.out.println(festival.toString());
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("error", result.toString());
+            return "redirect:/festival/" + id + "/edit";
+        }
+        festival.setId(id);
+        festivalManagement.updateFestival(festival);
+        return "redirect:/festival/" + id;
     }
 
     @PreAuthorize("hasRole('PLANNING')")

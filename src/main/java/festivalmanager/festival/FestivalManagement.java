@@ -53,4 +53,15 @@ public class FestivalManagement {
         return true;
     }
 
+    public Festival updateFestival(Festival festival) {
+        Assert.notNull(festival, "festival must not be null");
+        if (festival.getLocation() == null) {
+            System.out.println("leeeeeeeeeeeeeeeeeel");
+            festival.setLocation(locationManagement.findById(festival.getLocationIdentifier()));
+            System.out.println(festival.getLocationIdentifier());
+        }
+        System.out.println(festival.toString());
+        return festivalRepository.save(festival);
+    }
+
 }
