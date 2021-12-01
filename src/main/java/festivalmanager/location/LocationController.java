@@ -64,7 +64,23 @@ public class LocationController {
         }
 
         model.addAttribute("location", location);
-        return "location_id_edit";
+        model.addAttribute("rent_value", location.getRent().toString().split(" ")[1]);
+        return "location_edit";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @PostMapping("/location/{id}/edit")
+    String editLocation(@PathVariable long id, @ModelAttribute LocationForm form, Errors result,
+            RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("error", result.toString());
+            System.out.println("ERROR update location:");
+            System.out.println("Error count: " + result.getErrorCount());
+            System.out.println(result.toString());
+            return "redirect:/location/" + id + "/edit";
+        }
+        locationManagement.updateLocation(form);
+        return "redirect:/location/" + id + "/";
     }
 
     @PreAuthorize("hasRole('PLANNING')")

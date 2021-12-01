@@ -19,40 +19,41 @@
                 <div class=" row d-flex justify-content-center ">
                     <div class="card shadow-lg " style="padding-top: 15px; margin-top:15px; ">
                         <div class="card-body ">
-                            <h5 class="card-title " th:text="${location.name} ">Location 1</h5>
-                            <form style="margin-top: 50px;" method="post" role="form" th:action="@{|/location/${location.id}/edit|}" th:object="${location}">
-                                <input type="number" name="id" value="${location.id}" th:field="*{id}" id="id" style="display: none;">
+                            <h5 class="card-title " th:text="${festival.name} ">Festival 1</h5>
+                            <form style="margin-top: 50px;" method="post" role="form" th:action="@{|/festival/${festival.id}/edit|}" th:object="${festival}">
+                                <input type="number" name="id" th:field="*{id}" id="id" style="display: none;">
+                                <input type="number" name="locationIdentifier" th:field="*{locationIdentifier}" id="locationIdentifier" style="display: none;">
                                 <div class="mb-3">
-                                    <label for="name" class="form-label" th:text="#{location.name}">Name</label>
+                                    <label for="name" class="form-label" th:text="#{festival.name}">Name</label>
                                     <input type="text" th:field="*{name}" class="form-control " id="name">
                                     <div th:if="${#fields.hasErrors('name')} " th:errors="*{name}">
                                         <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="maxVisitors" class="form-label" th:text="#{location.maxVisitors}">max
+                                    <label for="information" class="form-label" th:text="#{festival.information}">max
                                         Visitors</label>
-                                    <input type="number" th:field="*{maxVisitors}" class="form-control " id="maxVisitors">
-                                    <div th:if="${#fields.hasErrors('maxVisitors')} " th:errors="*{maxVisitors}">
+                                    <input type="text" th:field="*{information}" class="form-control " id="information">
+                                    <div th:if="${#fields.hasErrors('information')} " th:errors="*{information}">
                                         <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="maxStages" class="form-label" th:text="#{location.maxStages}">max
+                                    <label for="beginDate" class="form-label" th:text="#{festival.beginDate}">max
                                         Stages</label>
-                                    <input type="number" th:field="*{maxStages}" class="form-control " id="maxStages">
-                                    <div th:if="${#fields.hasErrors('maxStages')} " th:errors="*{maxStages}">
+                                    <input type="date" th:field="*{beginDate}" class="form-control " id="beginDate">
+                                    <div th:if="${#fields.hasErrors('beginDate')} " th:errors="*{beginDate}">
                                         <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                                     </div>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="rent" class="form-label" th:text="#{location.rent}">rent</label>
-                                    <input type="number" th:value="${rent_value}" class="form-control " name="rent" id="rent" step="0.01" onchange="validate_rent(this)">
-                                    <div th:if="${#fields.hasErrors('rent')} " th:errors="*{rent}">
+                                    <label for="endDate" class="form-label" th:text="#{festival.endDate}">rent</label>
+                                    <input type="date" th:field="*{endDate}" class="form-control " name="endDate" id="endDate" step="0.01" onchange="validate_rent(this)">
+                                    <div th:if="${#fields.hasErrors('endDate')} " th:errors="*{endDate}">
                                         <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                                     </div>
                                 </div>
-                                <button type="submit " class="btn btn-primary " th:text="#{location.edit} ">Submit</button>
+                                <button type="submit " class="btn btn-primary " th:text="#{festival.edit} ">Submit</button>
                             </form>
                         </div>
                     </div>

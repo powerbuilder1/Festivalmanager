@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
 
 @Controller
@@ -80,20 +79,39 @@ public class FestivalController {
 
     @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/festival/{id}/edit")
-    String editFestival() {
+    String editFestival(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+        Festival festival = festivalManagement.findById(id);
+        if (festival == null) {
+            redirectAttributes.addFlashAttribute("error", "FESTIVAL_NOT_FOUND");
+            return "redirect:/festival";
+        }
+
+        model.addAttribute("festival", festival);
         return "festival_edit";
     }
 
     @PreAuthorize("hasRole('PLANNING')")
     @PostMapping("/festival/{id}/edit")
-    String editFestival(int dummy) {
-        return "festival_edit";
+    String editFestival(@PathVariable long id, @ModelAttribute @Valid Festival festival, Errors result,
+            RedirectAttributes redirectAttributes) {
+        System.out.println(festival.toString());
+        if (result.hasErrors()) {
+            redirectAttributes.addFlashAttribute("error", result.toString());
+            return "redirect:/festival/" + id + "/edit";
+        }
+        festival.setId(id);
+        festivalManagement.updateFestival(festival);
+        return "redirect:/festival/" + id;
     }
 
     @PreAuthorize("hasRole('PLANNING')")
     @GetMapping("/festival/{id}/delete")
-    String deleteFestival() {
-        return "festival_delete";
+    String deleteFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        if (!festivalManagement.deleteById(id)) {
+            redirectAttributes.addFlashAttribute("error", "FESTIVAL_NOT_FOUND");
+            return "redirect:/festival/" + id;
+        }
+        return "redirect:/festival";
     }
 
 }

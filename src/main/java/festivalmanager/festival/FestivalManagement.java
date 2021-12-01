@@ -48,4 +48,20 @@ public class FestivalManagement {
         return festivalRepository.findAll().filter(festival -> festival.getName().equals(name));
     }
 
+    public boolean deleteById(long id) {
+        festivalRepository.deleteById(id);
+        return true;
+    }
+
+    public Festival updateFestival(Festival festival) {
+        Assert.notNull(festival, "festival must not be null");
+        if (festival.getLocation() == null) {
+            System.out.println("leeeeeeeeeeeeeeeeeel");
+            festival.setLocation(locationManagement.findById(festival.getLocationIdentifier()));
+            System.out.println(festival.getLocationIdentifier());
+        }
+        System.out.println(festival.toString());
+        return festivalRepository.save(festival);
+    }
+
 }

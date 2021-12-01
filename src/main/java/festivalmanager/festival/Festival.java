@@ -42,6 +42,7 @@ public class Festival {
         this.setBeginDate(beginDate);
         this.setEndDate(endDate);
         this.information = information;
+        this.locationIdentifier = location.getId();
     }
 
     public String getName() {
@@ -95,4 +96,22 @@ public class Festival {
     public Long getId() {
         return id;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", location='" + getLocation() + "'" +
+                ", locationIdentifier='" + getLocationIdentifier() + "'" +
+                ", beginDate='" + getBeginDate() + "'" +
+                ", endDate='" + getEndDate() + "'" +
+                ", information='" + getInformation() + "'" +
+                ", name='" + getName() + "'" +
+                "}";
+    }
+
 }

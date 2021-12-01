@@ -3,6 +3,7 @@ package festivalmanager.personalManagement;
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
 import festivalmanager.authentication.UserManagement;
+import festivalmanager.authentication.UserRepository;
 import festivalmanager.catering.Food;
 import festivalmanager.catering.NewFoodItemForm;
 import org.salespointframework.useraccount.QUserAccount;
@@ -22,9 +23,11 @@ import javax.validation.Valid;
 @PreAuthorize("hasRole('BOSS')")
 public class ManagerController{
 	public ManagerManagement managerManagement;
+	private UserRepository userRepository;
 
-	public ManagerController(ManagerManagement managerManagement) {
+	public ManagerController(ManagerManagement managerManagement, UserRepository userRepository) {
 		this.managerManagement = managerManagement;
+		this.userRepository = userRepository;
 	}
 
 	@GetMapping("/dashboard")
@@ -54,7 +57,7 @@ public class ManagerController{
 		}else if (form.getPosition().equalsIgnoreCase("planning")){
 			managerManagement.createPlanningStaff(form);
 		}
-		return "redirect:/";
+		return "redirect:/team";
 	}
 
 	@GetMapping("/new_personal")
@@ -62,35 +65,39 @@ public class ManagerController{
 		return "new_personal";
 	}
 
-	@GetMapping(path = "dashboard/team/edit/{user}")
+	@GetMapping(path = "dashboard/team/personal_edit/{user}")
 	public String getUser(
-			@PathVariable("foodItem") User user,
+			@PathVariable("user") Long id,
 			Model model
 	) {
+		User user = userRepository.findById(id).get();
 		model.addAttribute("user", user);
-		model.addAttribute("userForm", new UserForm());
+		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(), user.getPosition()));
+		System.out.println(user.getName());
+		System.out.println(user.getPassword());
 		System.out.println(user.getAddress());
 		System.out.println(user.getPosition());
-		return "user_edit";
+		return "personal_edit";
 	}
 
 
 
-	@PostMapping(path = "/dashboard/team/editUser/{user}")
-	public String editUser(
-			@PathVariable("user") User user,
+	@PostMapping(path = "/dashboard/team/editUserById/{user}")
+	public String editUserById(
+			@PathVariable("user") long id,
 			@ModelAttribute UserForm userForm
 	) {
-		managerManagement.editUser(user, userForm);
-		return "redirect:/catering/catalog";
+		// checks auf null
+		managerManagement.editUser(userRepository.findById(id).get(), userForm);
+		return "redirect:/team";
 	}
 
 
 
-	@PostMapping(path = "/dashboard/team/deleteUser/{user}")
-	public String deleteUser(@PathVariable("user") User user) {
-		managerManagement.deleteUser(user);
-		return "redirect:/dashboard";
+	@PostMapping(path = "/dashboard/team/deleteUserById/{user}")
+	public String deleteUserById(@PathVariable("user") Long id) {
+		managerManagement.deleteUser(userRepository.findById(id).get());
+		return "redirect:/team";
 	}
 
 
