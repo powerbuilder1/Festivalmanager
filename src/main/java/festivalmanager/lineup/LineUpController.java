@@ -9,18 +9,25 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.sound.sampled.Line;
+import javax.validation.Valid;
+
 @Controller
 public class LineUpController {
 	LineUpManagement lineUpManagement;
-	LineUpController(LineUpManagement lineUpManagement) {
+
+	FestivalManagement festivalManagement;
+	LineUpController(LineUpManagement lineUpManagement,FestivalManagement festivalManagement) {
 		Assert.notNull(lineUpManagement, "lineupManagement must not be null");
 		this.lineUpManagement= lineUpManagement;
-
+		this.festivalManagement = festivalManagement;
 	}
 
 	@PreAuthorize("hasRole('PLANNING')")
@@ -32,7 +39,7 @@ public class LineUpController {
 
 
 	@GetMapping("/lineup/{id}")
-	String location(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+	String lineupid(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
 		LineUp lineup = lineUpManagement.findById(id);
 		if (lineup == null) {
 			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
@@ -53,5 +60,37 @@ public class LineUpController {
 
 		model.addAttribute("lineup", lineUp);
 		return "lineup_id_edit";
+	}
+
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/lineup/new")
+	String newLineUp( Model model) {
+		model.addAttribute("lineup", new LineUp());
+		model.addAttribute("title", "New LineUp");
+		model.addAttribute("festivals", festivalManagement.findAllFestivals());
+
+		return "lineup_new";
+		}
+	@PreAuthorize("hasRole('PLANNING')")
+	@PostMapping("/lineup/new")
+	String newLineUp(@ModelAttribute LineUp lineup, Errors result, RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			redirectAttributes.addFlashAttribute("error", result.toString());
+			return "redirect:/lineup";
+		}
+		lineUpManagement.createLineUp(lineup);
+		return "redirect:/lineup";
+	}
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/band/edit")
+	String newBand(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+		LineUp lineUp = lineUpManagement.findById(id);
+		if (lineUp == null) {
+			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
+			return "redirect:/festivals";
+		}
+
+		model.addAttribute("lineup", lineUp);
+		return "band_new";
 	}
 }

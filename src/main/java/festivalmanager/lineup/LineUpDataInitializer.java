@@ -26,6 +26,7 @@ public class LineUpDataInitializer implements DataInitializer {
 	}
 	@Override
 	public void initialize() {
+		LOG.info("Initializing data for {}", getClass().getSimpleName());
 		LOG.info("Creating default  entries.");
 		Band band1 = new Band("The Strokes", Money.of(2000, EURO),"Buehne 2", "14:00 - 16:00");
 		Band band2 = new Band("The Parcels",Money.of(2000, EURO),"Buehne 3", "20:00 - 22:00");
@@ -33,8 +34,8 @@ public class LineUpDataInitializer implements DataInitializer {
 		Band band4 = new Band("Kings of Leon",Money.of(4000, EURO),"Buehne 3", "12:00 - 14:00");
 		Band band5 = new Band("TV Girl",Money.of(6000, EURO),"Buehne 2", "18:00 - 20:00");
 		Band band6 = new Band("Kendrick Lamar",Money.of(3000, EURO),"Buehne 1", "09:00 - 11:00");
-		LineUp lineUp1 = new LineUp("1",festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0).getName(),festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0).getId() );
-		LineUp lineUp2 = new LineUp("2",festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0).getName() ,festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0).getId() );
+		LineUp lineUp1 = new LineUp(festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0),festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0).getId() );
+		LineUp lineUp2 = new LineUp(festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0) ,festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0).getId());
 		lineUp1.addBandto(band1);
 		lineUp1.addBandto(band2);
 		lineUp1.addBandto(band3);
@@ -42,11 +43,6 @@ public class LineUpDataInitializer implements DataInitializer {
 		lineUp2.addBandto(band5);
 		lineUp2.addBandto(band6);
 		List.of(lineUp1,lineUp2).forEach(LineUpManagement::createLineUp);
-		System.out.println(festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0)+ " " + festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0));
-		System.out.println(lineUp2.Festivalname() + " " + lineUp1.Festivalname() );
-		System.out.println(lineUp1.getFestival());
-		System.out.println(lineUp2.getFestival());
-
 
 
 

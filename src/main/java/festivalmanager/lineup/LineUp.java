@@ -7,35 +7,56 @@ import java.util.List;
 
 @Entity
 public class LineUp {
+	@ManyToOne
+	private Festival festival;
+	private long festivalIdentifier;
+	private long festivalIdIdentifier;
+
 
 	private @Id long id;
-	public String festival;
-	public String Index;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Band> Lineup = new ArrayList<Band>();
-
-	public LineUp(String Index, String festival, long id) {
-		this.Index = Index;
-		this.festival = festival;
-		this.id = id ;
-	}
-
-	@SuppressWarnings({"unused", "deprecation"})
 	public LineUp() {
 
+	}
+	/**
+	 * LineUp constructor
+	 *
+	 * @param festival
+	 * @param id
+	 */
+	public LineUp(Festival festival, long id) {
+
+		this.setFestival(festival);
+		this.setId(festival.getId());
+
+
+
+	}
+	public long getFestivalIdentifier() {
+		return festivalIdentifier;
+	}
+
+	public void setFestivalIdentifier (long festivalIdentifier) {
+		this.festivalIdentifier = festivalIdentifier;
 	}
 
 	public void addBandto(Band band) {
 		Lineup.add(band);
 	}
 
-	public String getFestival() {
+	public Festival getFestival() {
 		return festival;
 	}
 
-	public String getIndex() {
-		return Index;
+
+	public long getFestivalIdIdentifier() {
+		return festivalIdIdentifier;
+	}
+
+	public void setFestivalIdIdentifier(long festivalIdIdentifier) {
+		this.festivalIdIdentifier = festivalIdIdentifier;
 	}
 
 	public ArrayList<String> getBandnames() {
@@ -60,13 +81,12 @@ public class LineUp {
 	}
 
 	public String Festivalname(){
-		return festival+ " ---- Line UP";
+		return festival.getName()+ " ---- Line UP";
 	}
 
 	public Iterable<Band> getBands() {
 		return Lineup;
 	}
-
 
 	public ArrayList<String> getStages() {
 		ArrayList<String> stages = new ArrayList<>();
@@ -77,4 +97,18 @@ public class LineUp {
 		return stages ;
 	}
 
+	public void setId(long id) {
+		this.id = id;
 	}
+
+	public void setFestival(Festival festival) {
+		this.festival = festival;
+	}
+
+
+	public void setLineup(List<Band> lineup) {
+		this.Lineup = lineup;
+	}
+
+}
+

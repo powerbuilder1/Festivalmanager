@@ -19,12 +19,22 @@ public class Band {
 	public Band() {
 	}
 
+	/**
+	 * Location constructor
+	 *
+	 * @param name
+	 * @param price
+	 * @param stage
+	 * @param performanceHour
+	 */
 	public Band(String name, Money price, String stage, String performanceHour) {
-		this.price = price;
-		this.name = name;
-		this.stage = stage;
-		this.performanceHour = performanceHour;
+		this.setPrice(price);
+		this.setName(name);
+		this.setStage(stage);
+		this.setPerformanceHour(performanceHour);
 	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -41,12 +51,28 @@ public class Band {
 		return price;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public Long getId() {
 		return id;
 	}
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPrice(Money price) {
+		this.price = price;
+	}
+
+	public void setStage(String stage) {
+		this.stage = stage;
+	}
+
+	public void setPerformanceHour(String performanceHour) {
+		this.performanceHour = performanceHour;
+	}
+
 
 }
