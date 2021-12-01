@@ -34,6 +34,7 @@ public class ManagerDataInitializer implements DataInitializer {
 		}
 
 		userAccountManagement.create("manager", Password.UnencryptedPassword.of("manager"), Role.of("BOSS"));
+		userAccountManagement.create("catering", Password.UnencryptedPassword.of("catering"), Role.of("CATERING"));
 		var password = "manager";
 
 
