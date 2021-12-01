@@ -249,7 +249,7 @@ image::models/design/managerUserSequenz.png[]
 
 === Stock
 
-image::models/design/usecase_diagram_stock.png[]
+image::models/design/usecase_diagram_stock_v2.png[]
 
 Der Festivalleiter und Catering kann den aktuellen Lagerbestand einsehen.
 
