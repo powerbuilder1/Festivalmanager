@@ -39,7 +39,7 @@ public class LineUpController {
 
 
 	@GetMapping("/lineup/{id}")
-	String lineupid(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+	String lineupId(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
 		LineUp lineup = lineUpManagement.findById(id);
 		if (lineup == null) {
 			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
@@ -76,21 +76,28 @@ public class LineUpController {
 	String newLineUp(@ModelAttribute LineUp lineup, Errors result, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			redirectAttributes.addFlashAttribute("error", result.toString());
-			return "redirect:/lineup";
+			return "redirect:/lineup/edit";
 		}
 		lineUpManagement.createLineUp(lineup);
-		return "redirect:/lineup";
+		return "redirect:/lineup/edit";
 	}
 	@PreAuthorize("hasRole('PLANNING')")
-	@GetMapping("/band/edit")
-	String newBand(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
-		LineUp lineUp = lineUpManagement.findById(id);
-		if (lineUp == null) {
-			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
-			return "redirect:/festivals";
+	@GetMapping("/band/new")
+	String newBand( Model model) {
+		model.addAttribute("Band", new Band());
+		model.addAttribute("title", "New Band");
+		model.addAttribute("Band", lineUpManagement.findAllBands());
+
+		return "band_new";
+	}
+	@PreAuthorize("hasRole('PLANNING')")
+	@PostMapping("/band/new")
+	String newBand(@ModelAttribute Band band, Errors result, RedirectAttributes redirectAttributes) {
+		if (result.hasErrors()) {
+			redirectAttributes.addFlashAttribute("error", result.toString());
+			return "redirect:/band/new";
 		}
 
-		model.addAttribute("lineup", lineUp);
-		return "band_new";
+		return "redirect:/band/new";
 	}
 }

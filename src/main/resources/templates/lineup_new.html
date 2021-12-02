@@ -20,7 +20,15 @@
                             <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                         </div>
                     </div>
-                    <button  href="/lineup/edit" type="submit " class="btn btn-primary " th:text="#{lineup.add} ">Submit</button>
+                    <div class="mb-3">
+                        <label for="Band" class="form-label" th:text="#{lineup.band}">Bands Hinzufügen</label>
+                        <div class="col-md-12 card" style="padding: 15px; margin-top: 15px;">
+                            <a class="btn btn-primary" href="/lineup/band/new" th:href="@{/lineup/band/new}">Neu</a>
+                        </div>
+                    </div>
+
+
+                    <button type="submit " class="btn btn-primary " th:text="#{lineup.add} ">Submit</button>
 
                 </form>
             </div>

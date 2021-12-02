@@ -24,9 +24,8 @@ public class LineUp {
 	 * LineUp constructor
 	 *
 	 * @param festival
-	 * @param id
 	 */
-	public LineUp(Festival festival, long id) {
+	public LineUp(Festival festival) {
 
 		this.setFestival(festival);
 		this.setId(festival.getId());
@@ -84,7 +83,7 @@ public class LineUp {
 		return festival.getName()+ " ---- Line UP";
 	}
 
-	public Iterable<Band> getBands() {
+	public List<Band> getBands() {
 		return Lineup;
 	}
 
