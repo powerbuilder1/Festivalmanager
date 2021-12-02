@@ -20,7 +20,7 @@ public class Band {
 	}
 
 	/**
-	 * Location constructor
+	 * Band constructor
 	 *
 	 * @param name
 	 * @param price

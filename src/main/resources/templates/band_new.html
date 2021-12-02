@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+</head>
+
+<body>
+<section layout:fragment="content">
+    <!-- BEGIN:DETAIL -->
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <form style="margin-top: 50px;" method="post" role="form" th:action="@{/band/new}" th:object="${band}">
+                <div class="mb-3">
+                    <label for="festival" class="form-label" th:text="#{lineup.festival}">Festival</label>
+                    <select class="form-select" th:field=" *{festivalIdentifier}" aria-label="Festival Select">
+                        <option th:each="festival : ${festivals}" th:value="${festival.id}"
+                                th:text="${festival.name}">
+                    </select>
+                    <div th:if="${#fields.hasErrors('festival')} " th:errors="*{festival}">
+                        <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Band" class="form-label" th:text="#{lineup.band}">Bands Hinzufügen</label>
+                    <div class="col-md-12 card" style="padding: 15px; margin-top: 15px;">
+                        <a class="btn btn-primary" href="/lineup/band/new" th:href="@{/lineup/band/new}">Neu</a>
+                    </div>
+                </div>
+
+
+                <button type="submit " class="btn btn-primary " th:text="#{lineup.add} ">Submit</button>
+
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function validate_rent(el) {
+            el.value = parseFloat(el.value).toFixed(2);
+        }
+    </script>
+    <!-- END:DETAIL -->
+</section>
+</body>
