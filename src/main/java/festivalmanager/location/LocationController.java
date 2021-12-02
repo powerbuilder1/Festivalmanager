@@ -92,9 +92,11 @@ public class LocationController {
 
     @PreAuthorize("hasRole('PLANNING')")
     @PostMapping("/location/new")
-    String newLocation(@ModelAttribute LocationForm form, Errors result) {
+    String newLocation(@ModelAttribute LocationForm form, Errors result, RedirectAttributes redirectAttributes) {
+        System.out.println(form.toString());
         if (result.hasErrors()) {
-            return "locations";
+            redirectAttributes.addFlashAttribute("error", result.toString());
+            return "redirect:/locations";
         }
         locationManagement.createLocation(form);
         return "redirect:/locations";

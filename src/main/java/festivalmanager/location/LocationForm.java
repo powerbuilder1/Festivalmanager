@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 
 public class LocationForm {
 
-    private final @NotEmpty long id;
+    private final long id;
     private final @NotEmpty int maxVisitors;
 
     private final @NotEmpty int maxStages;
@@ -40,6 +40,17 @@ public class LocationForm {
 
     public long getId() {
         return this.id;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", maxVisitors='" + getMaxVisitors() + "'" +
+                ", maxStages='" + getMaxStages() + "'" +
+                ", name='" + getName() + "'" +
+                ", rent='" + getRent() + "'" +
+                "}";
     }
 
 }

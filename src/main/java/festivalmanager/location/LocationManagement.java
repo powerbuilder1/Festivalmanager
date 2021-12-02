@@ -37,8 +37,10 @@ public class LocationManagement {
 
     public Location createLocation(LocationForm form) {
         Assert.notNull(form, "form must not be null");
-        return createLocation(form.getName(), form.getMaxVisitors(), form.getMaxStages(),
+        Location location = new Location(form.getName(), form.getMaxVisitors(), form.getMaxStages(),
                 Money.of(form.getRent(), Currencies.EURO));
+        System.out.println(location.toString());
+        return createLocation(location);
     }
 
     /**

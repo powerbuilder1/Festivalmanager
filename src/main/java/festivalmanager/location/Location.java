@@ -70,4 +70,19 @@ public class Location {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                " id='" + getId() + "'" +
+                ", maxVisitors='" + getMaxVisitors() + "'" +
+                ", maxStages='" + getMaxStages() + "'" +
+                ", name='" + getName() + "'" +
+                ", rent='" + getRent() + "'" +
+                "}";
+    }
+
 }
