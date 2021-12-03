@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="beginDate" class="form-label" th:text="#{festival.beginDate}">beginDate</label>
-                        <input type="date" th:field="*{beginDate}" class="form-control " id="beginDate">
+                        <input type="date" th:field="*{beginDate}" class="form-control " id="beginDate" onchange="updateEndDate()">
                         <div th:if="${#fields.hasErrors('beginDate')} " th:errors="*{beginDate}">
                             <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                         </div>
@@ -53,6 +53,45 @@
             </div>
         </div>
         <script type="text/javascript">
+            function dateToString(date) {
+                var dd = date.getDate();
+                var mm = date.getMonth() + 1;
+                var yyyy = date.getFullYear();
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+
+                return yyyy + '-' + mm + '-' + dd;
+            }
+
+            function stringToDate(string) {
+                return Date.parse(string);
+            }
+
+            function updateEndDate() {
+                var begin = document.querySelector("#beginDate");
+                var end = document.querySelector("#endDate");
+                end.setAttribute("min", document.querySelector("#beginDate").value);
+                if (end.value == "") {
+                    end.value = begin.value;
+                }
+                if (stringToDate(end.value) < stringToDate(begin.value)) {
+                    end.value = begin.value;
+                }
+            }
+
+            function init() {
+                var begin = document.querySelector("#beginDate");
+                var end = document.querySelector("#endDate");
+
+                // set min date to today
+                begin.setAttribute("min", dateToString(new Date()));
+                end.setAttribute("min", dateToString(new Date()));
+            }
+            init();
         </script>
         <!-- END:DETAIL -->
     </section>
