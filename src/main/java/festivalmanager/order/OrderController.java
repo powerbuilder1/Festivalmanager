@@ -1,10 +1,8 @@
 package festivalmanager.order;
 
 import festivalmanager.catering.CateringManagement;
-import festivalmanager.catering.Food;
+import festivalmanager.stock.ReorderForm;
 import org.salespointframework.order.Cart;
-import org.salespointframework.order.Order;
-import org.salespointframework.order.OrderManagement;
 import org.salespointframework.quantity.Quantity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -16,12 +14,12 @@ import org.springframework.web.bind.annotation.*;
 @SessionAttributes("cart")
 public class OrderController {
 
-	private final OrderManagement<Order> orderOrderManagement;
 	private final CateringManagement cateringManagement;
+	private final CustomOrderManagement customOrderManagement;
 
-	public OrderController(OrderManagement<Order> orderOrderManagement, CateringManagement cateringManagement) {
-		this.orderOrderManagement = orderOrderManagement;
+	public OrderController(CateringManagement cateringManagement, CustomOrderManagement customOrderManagement) {
 		this.cateringManagement = cateringManagement;
+		this.customOrderManagement = customOrderManagement;
 	}
 
 
@@ -30,22 +28,23 @@ public class OrderController {
 		return new Cart();
 	}
 
-	@GetMapping(path = "catering/order")
+	@GetMapping(path = "catering/sale")
 	String getCart(Model model) {
 		model.addAttribute("catalog", cateringManagement.getCatalog());
+		model.addAttribute("orderForm", new ReorderForm());
 		return "catering";
 	}
 
 	@PostMapping(path = "catering/order")
 	String addFoodToCard(
-			@RequestParam("foodItemId") Food food,
-			@RequestParam("amount") int amount,
-			@ModelAttribute Cart cart
+			@ModelAttribute Cart cart,
+			@ModelAttribute ReorderForm orderForm
 			) {
 
-		// add food items to card
-		cart.addOrUpdateItem(food, Quantity.of(amount));
-		return "redirect:/catering/order";
+		customOrderManagement.addFoodToCard(cart, orderForm);
+
+		System.out.println(cart.isEmpty());
+		return "redirect:/catering/sale";
 	}
 
 }
