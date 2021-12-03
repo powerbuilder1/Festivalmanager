@@ -12,32 +12,37 @@
         <h1>Catering</h1>
         <div class="row">
             <div class="col-sm-4">
-                <div class="radio-toolbar">
-                    <div class="inner">
-                        <div th:each="item : ${catalog}" class="child">
-                            <input type="radio" th:id="${item.getId()}" name="radioFood" th:value="${item.getId()}" checked>
-                            <label th:for="${item.getId()}" th:text="${item.getName()}"></label>
+                <form action="#" th:action="@{|/catering/order|}" th:object="${orderForm}" method="post">
+                    <div class="radio-toolbar">
+                        <div class="inner">
+                            <div th:each="item : ${catalog}" class="child">
+                                <input type="radio" th:field="*{foodItemId}" th:id="${item.getId()}" name="radioFood"
+                                       th:value="${item.getId()}">
+                                <label th:for="${item.getId()}" th:text="${item.getName()}"></label>
+                            </div>
+                            <!--
+                                                    <div class="child">
+                                                        <input type="radio" id="radioBanana" name="radioFruit" value="banana">
+                                                        <label for="radioBanana">Banana</label>
+                                                    </div>
+                                                    <div class="child">
+                                                        <input type="radio" id="radioOrange" name="radioFruit" value="orange">
+                                                        <label for="radioOrange">Orange</label>
+                                                    </div>
+                                                    <div class="child">
+                                                        <input type="radio" id="radioTest" name="radioFruit" value="test">
+                                                        <label for="radioTest">Orange</label>
+                                                    </div>
+                                                    <div class="child">
+                                                        <input type="radio" id="radioTest1" name="radioFruit" value="test">
+                                                        <label for="radioTest1">Orange</label>
+                                                    </div>
+                            -->
                         </div>
-<!--
-                        <div class="child">
-                            <input type="radio" id="radioBanana" name="radioFruit" value="banana">
-                            <label for="radioBanana">Banana</label>
-                        </div>
-                        <div class="child">
-                            <input type="radio" id="radioOrange" name="radioFruit" value="orange">
-                            <label for="radioOrange">Orange</label>
-                        </div>
-                        <div class="child">
-                            <input type="radio" id="radioTest" name="radioFruit" value="test">
-                            <label for="radioTest">Orange</label>
-                        </div>
-                        <div class="child">
-                            <input type="radio" id="radioTest1" name="radioFruit" value="test">
-                            <label for="radioTest1">Orange</label>
-                        </div>
--->
                     </div>
-                </div>
+                    <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                    <button type="submit" class="btn btn-primary">ADD TO CARD</button>
+                </form>
                 <p>&nbsp;</p>
             </div>
             <div class="col-sm-8">
@@ -62,7 +67,7 @@
                         <td th:text="${{item.productName}}"></td>
                         <td th:text="${{item.quantity}}"></td>
                         <td th:text="${{item.price}}"></td>
-                        <td th:text="">Total 1111</td>
+                        <td> Total 1111</td>
                     </tr>
                     </tbody>
                 </table>
