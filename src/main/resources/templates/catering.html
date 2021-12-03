@@ -3,56 +3,90 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/resources/css/catering.css}" href="../static/resources/css/catering.css">
     <title>Catering</title>
 </head>
 <body>
 <section layout:fragment="content">
-    <div class="container">
+    <div class="main">
         <h1>Catering</h1>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Anzahl</th>
-                <th scope="col">Preis</th>
-                <th scope="col">Total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--
-                            <tr th:if="${stock.empty}">
-                                <td colspan="2"> Out of stock </td>
-                            </tr>
-            -->
-            <tr th:each=" item : ${cart}">
-                <th></th>
-                <td th:text="${{item.productName}}"></td>
-                <td th:text="${{item.quantity}}"></td>
-                <td th:text="${{item.price}}"></td>
-                <td th:text="">Total 1111</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="radio-toolbar">
+                    <div class="inner">
+                        <div th:each="item : ${catalog}" class="child">
+                            <input type="radio" th:id="${item.getId()}" name="radioFood" th:value="${item.getId()}" checked>
+                            <label th:for="${item.getId()}" th:text="${item.getName()}"></label>
+                        </div>
 <!--
-        <form action="#" th:action="@{|/stock/reorder|}" th:object="${reorderForm}" method="post">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
-                            <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control" id="amount" th:field="*{amount}">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">Reorder</button>
+                        <div class="child">
+                            <input type="radio" id="radioBanana" name="radioFruit" value="banana">
+                            <label for="radioBanana">Banana</label>
+                        </div>
+                        <div class="child">
+                            <input type="radio" id="radioOrange" name="radioFruit" value="orange">
+                            <label for="radioOrange">Orange</label>
+                        </div>
+                        <div class="child">
+                            <input type="radio" id="radioTest" name="radioFruit" value="test">
+                            <label for="radioTest">Orange</label>
+                        </div>
+                        <div class="child">
+                            <input type="radio" id="radioTest1" name="radioFruit" value="test">
+                            <label for="radioTest1">Orange</label>
+                        </div>
+-->
                     </div>
                 </div>
+                <p>&nbsp;</p>
             </div>
-        </form>
--->
+            <div class="col-sm-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Anzahl</th>
+                        <th scope="col">Preis</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--
+                                    <tr th:if="${stock.empty}">
+                                        <td colspan="2"> Out of stock </td>
+                                    </tr>
+                    -->
+                    <tr th:each=" item : ${cart}">
+                        <th></th>
+                        <td th:text="${{item.productName}}"></td>
+                        <td th:text="${{item.quantity}}"></td>
+                        <td th:text="${{item.price}}"></td>
+                        <td th:text="">Total 1111</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--
+                <form action="#" th:action="@{|/stock/reorder|}" th:object="${reorderForm}" method="post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
+                                    <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Reorder</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        -->
     </div>
 </section>
 </body>
