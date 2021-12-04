@@ -18,7 +18,7 @@
                         <div class="inner">
                             <div th:each="item : ${catalog}" class="child">
                                 <input type="radio" th:field="*{foodItemId}" th:id="${item.getId()}" name="radioFood"
-                                       th:value="${item.getId()}">
+                                       th:value="${item.getId()}" checked>
                                 <label th:for="${item.getId()}" th:text="${item.getName()}"></label>
                             </div>
                             <!--
@@ -67,8 +67,9 @@
                         <th></th>
                         <td th:text="${{item.productName}}"></td>
                         <td th:text="${{item.quantity}}"></td>
-                        <td th:text="${{item.price}}"></td>
-                        <td th:id="${item.getId().toString()}"></td>
+                        <td th:text="${item.getProduct().price}"></td>
+                        <td th:id="${item.getId().toString()}" th:text="${item.price}"></td>
+<!--
                         <script th:inline="javascript">
                             let quantity = /*[[${item.quantity.getAmount().intValue()}]]*/ 0;
                             let price = /*[[${item.price.getNumber().intValue()}]]*/ 0;
@@ -76,6 +77,7 @@
                             let id = /*[[${item.getId().toString()}]]*/ 0;
                             calcTotal(quantity, price, id)
                         </script>
+-->
                     </tr>
                     </tbody>
                 </table>
