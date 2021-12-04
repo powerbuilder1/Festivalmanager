@@ -1,12 +1,11 @@
 package festivalmanager.festival;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
+import festivalmanager.catering.Food;
 import festivalmanager.location.Location;
+
+import java.util.Set;
 
 @Entity
 public class Festival {
@@ -23,6 +22,9 @@ public class Festival {
     @Column(columnDefinition = "TEXT")
     private String information;
     private String name;
+
+	@OneToMany(mappedBy = "festival")
+	private Set<Food> catalogFoodItems;
 
     public Festival() {
     }
