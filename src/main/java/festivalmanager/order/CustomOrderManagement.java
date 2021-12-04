@@ -6,8 +6,12 @@ import festivalmanager.stock.ReorderForm;
 import org.salespointframework.order.Cart;
 import org.salespointframework.order.Order;
 import org.salespointframework.order.OrderManagement;
+import org.salespointframework.payment.Cash;
 import org.salespointframework.quantity.Quantity;
+import org.salespointframework.useraccount.UserAccount;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CustomOrderManagement {
@@ -26,5 +30,20 @@ public class CustomOrderManagement {
 			// add food items to card
 			cart.addOrUpdateItem(food, Quantity.of(orderForm.getAmount()));
 		});
+	}
+
+	public String buy(Cart cart, Optional<UserAccount> userAccount) {
+		return userAccount.map(account -> {
+			Order order = new Order(account, Cash.CASH);
+
+			cart.addItemsTo(order);
+
+			orderOrderManagement.payOrder(order);
+			orderOrderManagement.completeOrder(order);
+
+			cart.clear();
+
+			return "redirect:/catering/sale";
+		}).orElse("redirect:/catering/sale");
 	}
 }
