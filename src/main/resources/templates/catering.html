@@ -10,7 +10,27 @@
 <body>
 <section layout:fragment="content">
     <div class="main">
-        <h1>Catering</h1>
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>Catering</h1>
+            </div>
+            <div class="col-sm-8">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col">
+                        <form th:action="@{|/catering/checkout|}" method="post">
+                            <button type="submit" class="btn btn-success" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-credit-card-2-back-fill" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z"/>
+                                </svg>
+                                PAY
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-sm-4">
                 <form action="#" th:action="@{|/catering/order|}" th:object="${orderForm}" method="post">
@@ -69,15 +89,15 @@
                         <td th:text="${{item.quantity}}"></td>
                         <td th:text="${item.getProduct().price}"></td>
                         <td th:id="${item.getId().toString()}" th:text="${item.price}"></td>
-<!--
-                        <script th:inline="javascript">
-                            let quantity = /*[[${item.quantity.getAmount().intValue()}]]*/ 0;
-                            let price = /*[[${item.price.getNumber().intValue()}]]*/ 0;
-                            alert(price)
-                            let id = /*[[${item.getId().toString()}]]*/ 0;
-                            calcTotal(quantity, price, id)
-                        </script>
--->
+                        <!--
+                                                <script th:inline="javascript">
+                                                    let quantity = /*[[${item.quantity.getAmount().intValue()}]]*/ 0;
+                                                    let price = /*[[${item.price.getNumber().intValue()}]]*/ 0;
+                                                    alert(price)
+                                                    let id = /*[[${item.getId().toString()}]]*/ 0;
+                                                    calcTotal(quantity, price, id)
+                                                </script>
+                        -->
                     </tr>
                     </tbody>
                 </table>
