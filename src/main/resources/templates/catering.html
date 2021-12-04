@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" th:href="@{/resources/css/catering.css}" href="../static/resources/css/catering.css">
+    <script type="text/javascript" th:src="@{/resources/js/catering.js}"></script>
     <title>Catering</title>
 </head>
 <body>
@@ -67,7 +68,14 @@
                         <td th:text="${{item.productName}}"></td>
                         <td th:text="${{item.quantity}}"></td>
                         <td th:text="${{item.price}}"></td>
-                        <td> Total 1111</td>
+                        <td th:id="${item.getId().toString()}"></td>
+                        <script th:inline="javascript">
+                            let quantity = /*[[${item.quantity.getAmount().intValue()}]]*/ 0;
+                            let price = /*[[${item.price.getNumber().intValue()}]]*/ 0;
+                            alert(price)
+                            let id = /*[[${item.getId().toString()}]]*/ 0;
+                            calcTotal(quantity, price, id)
+                        </script>
                     </tr>
                     </tbody>
                 </table>
