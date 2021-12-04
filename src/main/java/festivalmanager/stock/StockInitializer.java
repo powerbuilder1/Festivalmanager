@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import festivalmanager.catering.FoodCatalog;
 
 @Component
-@Order(20)
+@Order(30)
 public class StockInitializer implements DataInitializer {
 
 	private final UniqueInventory<UniqueInventoryItem> inventory;
