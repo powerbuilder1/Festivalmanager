@@ -46,11 +46,14 @@ public class CateringController {
 	}
 
 	// add item to FoodCatalog
+	// TODO: fix because foodItem need festival now
+/*
 	@PostMapping(path = "catering/addToFoodCatalog")
 	public String addItemToCatalog(@ModelAttribute NewFoodItemForm foodItemForm) {
 		cateringManagement.addItemToCatalog(foodItemForm);
 		return "redirect:/";
 	}
+*/
 
 	// delete item from FoodCatalog
 	@PostMapping(path = "catering/deleteFromCatalog/{foodItem}")

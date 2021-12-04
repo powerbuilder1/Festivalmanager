@@ -8,8 +8,6 @@ import org.salespointframework.inventory.UniqueInventoryItem;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class CateringManagement {
 
@@ -22,16 +20,19 @@ public class CateringManagement {
 	}
 
 	// add item to Catalog
+	// TODO: fix because of foodItem need festival now
+/*
 	public void addItemToCatalog(NewFoodItemForm foodItemForm) {
 		Food foodItem = foodCatalog.save(new Food(
 				foodItemForm.getName(),
-				Money.of(foodItemForm.getPrice(), Currencies.EURO)
-		));
+				Money.of(foodItemForm.getPrice(), Currencies.EURO),
+				festival));
 		stockManagment.initializeInventoryItem(foodItem, 0);
 		for (Product p : foodCatalog.findAll()) {
 			System.out.println(p.getName() + ": " + p.getPrice());
 		}
 	}
+*/
 
 	// get catalog
 	public Streamable<Food> getCatalog() {
