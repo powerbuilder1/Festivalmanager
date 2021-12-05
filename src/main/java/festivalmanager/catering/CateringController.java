@@ -1,6 +1,8 @@
 package festivalmanager.catering;
 
 import org.salespointframework.catalog.ProductIdentifier;
+import org.salespointframework.useraccount.UserAccount;
+import org.salespointframework.useraccount.web.LoggedIn;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -8,6 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 public class CateringController {
@@ -46,6 +49,7 @@ public class CateringController {
 	}
 
 	// add item to FoodCatalog
+	// TODO: fix because foodItem need festival now
 	@PostMapping(path = "catering/addToFoodCatalog")
 	public String addItemToCatalog(@ModelAttribute NewFoodItemForm foodItemForm) {
 		cateringManagement.addItemToCatalog(foodItemForm);
@@ -67,6 +71,18 @@ public class CateringController {
 	) {
 		cateringManagement.editItemFromCatalog(foodItem, foodItemForm);
 		return "redirect:/catering/catalog";
+	}
+
+	@GetMapping(path = "catering/test")
+	public String test(
+			Model model,
+			@LoggedIn Optional<UserAccount> userAccount
+	) {
+		model.addAttribute("test", "LOL");
+		userAccount.ifPresent(account -> {
+			model.addAttribute("userAccount", account);
+		});
+		return "test";
 	}
 
 }

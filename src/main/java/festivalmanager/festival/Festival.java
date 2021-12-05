@@ -7,8 +7,12 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.persistence.*;
 
+import festivalmanager.catering.Food;
 import festivalmanager.location.Location;
+
+import java.util.Set;
 
 @Entity
 public class Festival {
@@ -27,6 +31,9 @@ public class Festival {
     @NotNull
     @Size(min = 4, max = 255)
     private String name;
+
+    @OneToMany(mappedBy = "festival")
+    private Set<Food> catalogFoodItems;
 
     public Festival() {
     }

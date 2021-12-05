@@ -3,56 +3,125 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/resources/css/catering.css}" href="../static/resources/css/catering.css">
+    <script type="text/javascript" th:src="@{/resources/js/catering.js}"></script>
     <title>Catering</title>
 </head>
 <body>
 <section layout:fragment="content">
-    <div class="container">
-        <h1>Catering</h1>
-        <table class="table">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Anzahl</th>
-                <th scope="col">Preis</th>
-                <th scope="col">Total</th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--
-                            <tr th:if="${stock.empty}">
-                                <td colspan="2"> Out of stock </td>
-                            </tr>
-            -->
-            <tr th:each=" item : ${cart}">
-                <th></th>
-                <td th:text="${{item.productName}}"></td>
-                <td th:text="${{item.quantity}}"></td>
-                <td th:text="${{item.price}}"></td>
-                <td th:text="">Total 1111</td>
-            </tr>
-            </tbody>
-        </table>
-<!--
-        <form action="#" th:action="@{|/stock/reorder|}" th:object="${reorderForm}" method="post">
-            <div class="container">
+    <div class="main">
+        <div class="row">
+            <div class="col-sm-4">
+                <h1>Catering</h1>
+            </div>
+            <div class="col-sm-8">
                 <div class="row">
+                    <div class="col"></div>
                     <div class="col">
-                        <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
-                            <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <input type="number" class="form-control" id="amount" th:field="*{amount}">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-primary">Reorder</button>
+                        <form th:action="@{|/catering/checkout|}" method="post">
+                            <button type="submit" class="btn btn-success" aria-hidden="true">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                     class="bi bi-credit-card-2-back-fill" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0V4zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-2zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1H0z"/>
+                                </svg>
+                                PAY
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </form>
--->
+        </div>
+        <div class="row">
+            <div class="col-sm-4">
+                <form action="#" th:action="@{|/catering/order|}" th:object="${orderForm}" method="post">
+                    <div class="radio-toolbar">
+                        <div class="inner">
+                            <div th:each="item : ${catalog}" class="child">
+                                <input type="radio" th:field="*{foodItemId}" th:id="${item.getId()}" name="radioFood"
+                                       th:value="${item.getId()}" checked>
+                                <label th:for="${item.getId()}" th:text="${item.getName()}"></label>
+                            </div>
+                            <!--
+                                                    <div class="child">
+                                                        <input type="radio" id="radioBanana" name="radioFruit" value="banana">
+                                                        <label for="radioBanana">Banana</label>
+                                                    </div>
+                                                    <div class="child">
+                                                        <input type="radio" id="radioOrange" name="radioFruit" value="orange">
+                                                        <label for="radioOrange">Orange</label>
+                                                    </div>
+                                                    <div class="child">
+                                                        <input type="radio" id="radioTest" name="radioFruit" value="test">
+                                                        <label for="radioTest">Orange</label>
+                                                    </div>
+                                                    <div class="child">
+                                                        <input type="radio" id="radioTest1" name="radioFruit" value="test">
+                                                        <label for="radioTest1">Orange</label>
+                                                    </div>
+                            -->
+                        </div>
+                    </div>
+                    <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                    <button type="submit" class="btn btn-primary">ADD TO CARD</button>
+                </form>
+                <p>&nbsp;</p>
+            </div>
+            <div class="col-sm-8">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Anzahl</th>
+                        <th scope="col">Preis</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--
+                                    <tr th:if="${stock.empty}">
+                                        <td colspan="2"> Out of stock </td>
+                                    </tr>
+                    -->
+                    <tr th:each=" item : ${cart}">
+                        <th></th>
+                        <td th:text="${{item.productName}}"></td>
+                        <td th:text="${{item.quantity}}"></td>
+                        <td th:text="${item.getProduct().price}"></td>
+                        <td th:id="${item.getId().toString()}" th:text="${item.price}"></td>
+                        <!--
+                                                <script th:inline="javascript">
+                                                    let quantity = /*[[${item.quantity.getAmount().intValue()}]]*/ 0;
+                                                    let price = /*[[${item.price.getNumber().intValue()}]]*/ 0;
+                                                    alert(price)
+                                                    let id = /*[[${item.getId().toString()}]]*/ 0;
+                                                    calcTotal(quantity, price, id)
+                                                </script>
+                        -->
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--
+                <form action="#" th:action="@{|/stock/reorder|}" th:object="${reorderForm}" method="post">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
+                                    <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                            </div>
+                            <div class="col">
+                                <button type="submit" class="btn btn-primary">Reorder</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        -->
     </div>
 </section>
 </body>

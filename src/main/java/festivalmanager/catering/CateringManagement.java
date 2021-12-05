@@ -1,5 +1,6 @@
 package festivalmanager.catering;
 
+import festivalmanager.festival.FestivalManagement;
 import festivalmanager.stock.StockManagment;
 import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;
@@ -8,25 +9,27 @@ import org.salespointframework.inventory.UniqueInventoryItem;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class CateringManagement {
 
 	private final FoodCatalog foodCatalog;
 	private final StockManagment stockManagment;
+	private final FestivalManagement festivalManagement;
 
-	public CateringManagement(FoodCatalog foodCatalog, StockManagment stockManagment) {
+	public CateringManagement(FoodCatalog foodCatalog, StockManagment stockManagment, FestivalManagement festivalManagement) {
 		this.foodCatalog = foodCatalog;
 		this.stockManagment = stockManagment;
+		this.festivalManagement = festivalManagement;
 	}
 
 	// add item to Catalog
+	// TODO: fix because of foodItem need festival now
 	public void addItemToCatalog(NewFoodItemForm foodItemForm) {
 		Food foodItem = foodCatalog.save(new Food(
 				foodItemForm.getName(),
-				Money.of(foodItemForm.getPrice(), Currencies.EURO)
-		));
+				Money.of(foodItemForm.getPrice(), Currencies.EURO),
+				festivalManagement.findById(foodItemForm.getFestivalId())
+				));
 		stockManagment.initializeInventoryItem(foodItem, 0);
 		for (Product p : foodCatalog.findAll()) {
 			System.out.println(p.getName() + ": " + p.getPrice());
