@@ -2,9 +2,14 @@ package festivalmanager.authentication;
 
 import org.salespointframework.useraccount.UserAccount;
 
+import festivalmanager.communication.Participants;
+
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -16,16 +21,17 @@ public class User {
 	private String name;
 	private String password;
 
-
-
 	@OneToOne //
 	private UserAccount userAccount;
+
+	// used for chat
+	@OneToMany(mappedBy = "user")
+	Set<Participants> participants;
 
 	@SuppressWarnings("unused")
 	private User() {
 
 	}
-
 
 	public User(String position, UserAccount userAccount) {
 		this.position = position;
@@ -36,9 +42,10 @@ public class User {
 		return id;
 	}
 
-	public String getName(){
+	public String getName() {
 		return name;
 	}
+
 	public String getPassword() {
 		return password;
 	}
