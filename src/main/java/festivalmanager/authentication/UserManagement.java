@@ -91,4 +91,12 @@ public class UserManagement {
 		return users.findById(id).orElse(null);
 	}
 
+	public User findByName(String name) {
+		Streamable<User> userList = users.findAll().filter(user -> user.getName().equals(name));
+		if (!userList.isEmpty()) {
+			return userList.toList().get(0);
+		}
+		return null;
+	}
+
 }
