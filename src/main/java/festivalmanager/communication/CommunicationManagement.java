@@ -100,4 +100,21 @@ public class CommunicationManagement {
         }
         return participantsRepository.findAll().filter(p -> p.getRoom().equals(room)).map(p -> p.getUser());
     }
+
+    public Room findRoomByName(String name) {
+        Streamable<Room> rooms = roomRepository.findAll().filter(r -> r.getName().equals(name));
+        if (!rooms.isEmpty()) {
+            return rooms.toList().get(0);
+        }
+        return null;
+    }
+
+    public Streamable<ChatMessage> findAllMessagesInRoom(String name) {
+        Room room = findRoomByName(name);
+        if (room == null) {
+            System.out.println("CommunicationManagement: Room not found");
+            return null;
+        }
+        return chatMessageRepository.findAll().filter(m -> m.getRoom().equals(room));
+    }
 }

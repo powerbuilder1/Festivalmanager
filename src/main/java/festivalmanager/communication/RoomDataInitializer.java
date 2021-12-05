@@ -20,7 +20,7 @@ public class RoomDataInitializer implements DataInitializer {
 
     @Override
     public void initialize() {
-        List.of("Catering", "All").forEach(communicationManagement::createRoom);
+        List.of("Catering", "public", "Planning").forEach(communicationManagement::createRoom);
     }
 
 }
