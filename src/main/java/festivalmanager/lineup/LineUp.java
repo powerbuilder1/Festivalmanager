@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 public class LineUp {
-	@ManyToOne
+	@OneToOne
 	private Festival festival;
 	private long festivalIdentifier;
 	private long festivalIdIdentifier;
@@ -27,11 +27,8 @@ public class LineUp {
 	 */
 	public LineUp(Festival festival) {
 
-		this.setFestival(festival);
+		this.festival = festival;
 		this.setId(festival.getId());
-
-
-
 	}
 	public long getFestivalIdentifier() {
 		return festivalIdentifier;
