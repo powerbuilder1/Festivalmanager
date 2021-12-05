@@ -1,5 +1,7 @@
 package festivalmanager.communication;
 
+import javax.validation.constraints.AssertTrue;
+
 import org.springframework.util.Assert;
 
 import festivalmanager.authentication.User;
@@ -47,5 +49,25 @@ public class CommunicationManagement {
         }
 
         return null;
+    }
+
+    public boolean joinRoom(User user, Room room, String access) {
+        Assert.notNull(user, "user must not be null");
+        Assert.notNull(room, "room must not be null");
+        Assert.notNull(access, "access must not be null");
+        Assert.isTrue(access.length() > 0, "access must not be empty");
+        participantsRepository.save(new Participants(user, room, access));
+        return true;
+    }
+
+    public boolean joinRoom(long userId, long roomId, String access) {
+        User user = userManagement.findById(userId);
+        Room room = roomRepository.findById(roomId).orElse(null);
+
+        if (user == null || room == null) {
+            System.out.println("User or room not found");
+            return false;
+        }
+        return joinRoom(user, room, access);
     }
 }
