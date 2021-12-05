@@ -25,26 +25,18 @@ public class ChatMessageDataInitializer implements DataInitializer {
 
     @Override
     public void initialize() {
-        Streamable<User> users = userManagement.findAll();
-        if (users.isEmpty()) {
-            System.out.println("No users found.");
+        User user = userManagement.findByName("manager");
+        if (user == null) {
+            System.out.println("initMessages: manager not found");
             return;
         }
-        User user = users.toList().get(0);
-
-        Streamable<Room> rooms = communicationManagement.findAllRoomsOfUser(user.getId());
-        if (rooms.isEmpty()) {
-            System.out.println("No rooms found.");
+        Room room = communicationManagement.findRoomByName("public");
+        if (room == null) {
+            System.out.println("initMessages: room 'public' not found");
             return;
         }
 
-        Room room = rooms.toList().get(0);
-
-        ChatMessage msg = communicationManagement.sendMessage(user.getId(), "Hallo Welt!", room.getId());
-        if (msg != null) {
-            System.out.println(msg.toString());
-        }
-
+        communicationManagement.sendMessage(user, "Message system is working now!", room);
     }
 
 }
