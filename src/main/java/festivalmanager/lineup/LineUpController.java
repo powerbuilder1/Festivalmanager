@@ -64,6 +64,7 @@ public class LineUpController {
 		}
 
 		model.addAttribute("lineup", lineUp);
+		model.addAttribute("bandform", new BandForm());
 		return "lineup_id_edit";
 	}
 
@@ -89,17 +90,13 @@ public class LineUpController {
 	}
 
 	@PreAuthorize("hasRole('PLANNING')")
-	@PostMapping("/lineup/{lineup}/addband")
-	public String addBand(@PathVariable LineUp lineup, @Valid  bandsadd form, Errors errors) {
-		if (errors.hasErrors()) {
-			return "lineup_id_edit";
-		}
+	@PostMapping("/lineup/{id}/addband")
+	public String addBand(@PathVariable long id, @ModelAttribute BandForm bandform) {
 
-		lineup.addBandto(form.toBand());
-		lineUpManagement.createLineUp(lineup);
+		System.out.println(bandform.getName());
+		lineUpManagement.addBand(id,bandform);
 
-
-		return "redirect:/lineup/edit";
+		return "redirect:/lineup/"+id+"/edit";
 
 	}
 
