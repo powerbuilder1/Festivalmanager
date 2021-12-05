@@ -69,4 +69,13 @@ public class ChatMessage {
         this.room = room;
     }
 
+    public String toString() {
+        return "{" +
+                " id=" + this.id +
+                ", message='" + this.message + '\'' +
+                ", sender=" + this.sender.getName() +
+                ", room=" + this.room.getName() +
+                "}";
+    }
+
 }
