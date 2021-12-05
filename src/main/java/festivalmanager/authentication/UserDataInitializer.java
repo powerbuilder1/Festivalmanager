@@ -6,11 +6,13 @@ import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccountManagement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.util.List;
 
+@Order(30)
 @Component
 public class UserDataInitializer implements DataInitializer {
 
@@ -32,15 +34,15 @@ public class UserDataInitializer implements DataInitializer {
 	public void initialize() {
 
 		List.of(new UserForm("Hans", "123456", "Zuhause", "Customer")).forEach(userManagement::createUser);
-		List.of(new UserForm("Planning", "123456", "Zuhause","Planning")).forEach(userManagement::createPlanningStaff);
-		List.of(new UserForm("Catering", "123456", "Zuhause","Catering")).forEach(userManagement::createCateringStaff);
+		List.of(new UserForm("Planning", "123456", "Zuhause", "Planning")).forEach(userManagement::createPlanningStaff);
+		List.of(new UserForm("Catering", "123456", "Zuhause", "Catering")).forEach(userManagement::createCateringStaff);
 
-
-
-
-//		userAccountManagement.create("Catering", Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
-//		userAccountManagement.create("Hans", Password.UnencryptedPassword.of("123456"), Role.of("CUSTOMER"));
-//		userAccountManagement.create("Planning", Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));
+		// userAccountManagement.create("Catering",
+		// Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
+		// userAccountManagement.create("Hans",
+		// Password.UnencryptedPassword.of("123456"), Role.of("CUSTOMER"));
+		// userAccountManagement.create("Planning",
+		// Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));
 
 		var password = "manager";
 
