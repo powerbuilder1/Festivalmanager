@@ -40,6 +40,8 @@ public class UserManagement {
 		var userAccount = userAccounts.create(form.getName(), password, CUSTOMER_ROLE);
 		User user = new User(form.getPosition(), userAccount);
 		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
 		return users.save(user);
 	}
 
@@ -49,8 +51,11 @@ public class UserManagement {
 
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, BOSS_ROLE);
-
-		return users.save(new User(form.getPosition(), userAccount));
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		return users.save(user);
 	}
 
 	public User createPlanningStaff(UserForm form) {
@@ -59,8 +64,11 @@ public class UserManagement {
 
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, PLANNING_ROLE);
-
-		return users.save(new User(form.getPosition(), userAccount));
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		return users.save(user);
 	}
 
 	public User createCateringStaff(UserForm form) {
@@ -69,8 +77,11 @@ public class UserManagement {
 
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, CATERING_ROLE);
-
-		return users.save(new User(form.getPosition(), userAccount));
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		return users.save(user);
 	}
 
 	public User createSystem(UserForm form) {
@@ -79,8 +90,11 @@ public class UserManagement {
 
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, SYSTEM_ROLE);
-
-		return users.save(new User(form.getPosition(), userAccount));
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		return users.save(user);
 	}
 
 	public Streamable<User> findAll() {
