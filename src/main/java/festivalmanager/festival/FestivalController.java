@@ -30,7 +30,7 @@ public class FestivalController {
 
     @GetMapping("/")
     String index(Model model) {
-        model.addAttribute("festivals", festivalManagement.findAllFestivals());
+        model.addAttribute("festivals", festivalManagement.findAllPublishedFestivals());
         model.addAttribute("title", "Festivals");
         return "index";
     }
