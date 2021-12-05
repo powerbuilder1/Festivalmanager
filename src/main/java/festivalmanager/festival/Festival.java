@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import festivalmanager.location.Location;
 
@@ -22,6 +24,8 @@ public class Festival {
     // varchar(255) is to small
     @Column(columnDefinition = "TEXT")
     private String information;
+    @NotNull
+    @Size(min = 4, max = 255)
     private String name;
 
     public Festival() {
