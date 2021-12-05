@@ -19,6 +19,7 @@ public class UserManagement {
 	public static final Role BOSS_ROLE = Role.of("BOSS");
 	public static final Role PLANNING_ROLE = Role.of("PLANNING");
 	public static final Role CATERING_ROLE = Role.of("CATERING");
+	public static final Role SYSTEM_ROLE = Role.of("SYSTEM");
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
@@ -68,6 +69,16 @@ public class UserManagement {
 
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, CATERING_ROLE);
+
+		return users.save(new User(form.getPosition(), userAccount));
+	}
+
+	public User createSystem(UserForm form) {
+
+		Assert.notNull(form, "Registration form must not be null!");
+
+		var password = Password.UnencryptedPassword.of(form.getPassword());
+		var userAccount = userAccounts.create(form.getName(), password, SYSTEM_ROLE);
 
 		return users.save(new User(form.getPosition(), userAccount));
 	}
