@@ -22,11 +22,9 @@ public class FestivalManagement {
      * @param festivalRepository
      * @param locationManagement
      */
-    FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
-            LineUpManagement lineUpManagement) {
+    FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
-        Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
         this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
     }
