@@ -35,6 +35,8 @@ public class Festival {
     @OneToMany(mappedBy = "festival")
     private Set<Food> catalogFoodItems;
 
+    private boolean isPublished;
+
     public Festival() {
     }
 
@@ -54,6 +56,28 @@ public class Festival {
         this.setEndDate(endDate);
         this.information = information;
         this.locationIdentifier = location.getId();
+        this.isPublished = false;
+    }
+
+    /**
+     * Festival constructor
+     * 
+     * @param name
+     * @param location
+     * @param beginDate
+     * @param endDate
+     * @param information
+     * @param isPublished
+     */
+    public Festival(String name, Location location, String beginDate, String endDate, String information,
+            boolean isPublished) {
+        this.setName(name);
+        this.setLocation(location);
+        this.setBeginDate(beginDate);
+        this.setEndDate(endDate);
+        this.information = information;
+        this.locationIdentifier = location.getId();
+        this.isPublished = isPublished;
     }
 
     public String getName() {
@@ -110,6 +134,14 @@ public class Festival {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public boolean getIsPublished() {
+        return isPublished;
+    }
+
+    public void setIsPublished(boolean isPublished) {
+        this.isPublished = isPublished;
     }
 
     @Override
