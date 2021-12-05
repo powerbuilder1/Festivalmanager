@@ -42,13 +42,9 @@ public class LineUpDataInitializer implements DataInitializer {
 		lineUp2.addBandto(band4);
 		lineUp2.addBandto(band5);
 		lineUp2.addBandto(band6);
-		List.of(band1,band2,band3,band4,band5,band6).forEach(LineUpManagement::createBand);
 		List.of(lineUp1,lineUp2).forEach(LineUpManagement::createLineUp);
 
 
-		for (int i = 0; i < (lineUpManagement.findAllBands()).size() ; i++) {
-			System.out.println(lineUpManagement.findAllBands().get(i).getName());
-		}
 
 
 
