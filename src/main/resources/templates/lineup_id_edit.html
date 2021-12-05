@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html(title=${lineup.Festivalname})}">
 <head>
 </head>
 <body>
@@ -43,6 +45,32 @@
       </div>
     </div>
   </div>
+  <form class="ui reply form" role="form" th:object="${bandsadd}" th:action="@{/lineup/{id}/addband(id=${lineup.id})}" method="post">
+    <p class="ui negative message" th:if="${#fields.hasErrors('*')}">
+      Einige Angaben sind nicht korrekt.
+    </p>
+    <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
+      <label th:text="#{lineup.band.name}" for="name">Name</label>
+      <input type="text" th:field="*{name}" class="form-control" id="name">
+    </div>
+    <div class="field" th:classappend="${#fields.hasErrors('stage')} ? 'error' : ''">
+      <label th:text="#{lineup.band.stage}" for="stage">Stage</label>
+      <input type="text" th:field="*{stage}" class="form-control" id="stage">
+    </div>
+    <div class="field" th:classappend="${#fields.hasErrors('price')} ? 'error' : ''">
+      <label th:text="#{lineup.band.price}" for="price">Price</label>
+      <input type="number" th:field="*{price}" class="form-control" id="price">
+    </div>
+    <div class="field" th:classappend="${#fields.hasErrors('performanceHour')} ? 'error' : ''">
+      <label th:text="#{lineup.band.performanceHour}" for="performanceHour">Performance Hour</label>
+      <input type="text" th:field="*{performaceHour}" class="form-control" id="performanceHour">
+    </div>
+
+    <button type="submit" class="ui labeled icon button">
+      <i class="icon edit"></i><span th:text="#{lineup.band.add}"> Add band to Line Up </span>
+    </button>
+  </form>
+
   <div class="row d-flex justify-content-center">
     <a href="/lineup/edit" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück </a>
   </div>

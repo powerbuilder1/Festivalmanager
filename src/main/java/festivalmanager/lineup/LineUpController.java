@@ -1,10 +1,12 @@
 package festivalmanager.lineup;
 
 
+import festivalmanager.authentication.UserForm;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
+import org.javamoney.moneta.Money;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,15 +20,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.sound.sampled.Line;
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 @Controller
 public class LineUpController {
 	LineUpManagement lineUpManagement;
 
 	FestivalManagement festivalManagement;
-	LineUpController(LineUpManagement lineUpManagement,FestivalManagement festivalManagement) {
+
+	LineUpController(LineUpManagement lineUpManagement, FestivalManagement festivalManagement) {
 		Assert.notNull(lineUpManagement, "lineupManagement must not be null");
-		this.lineUpManagement= lineUpManagement;
+		this.lineUpManagement = lineUpManagement;
 		this.festivalManagement = festivalManagement;
 	}
 
@@ -49,6 +53,7 @@ public class LineUpController {
 		model.addAttribute("lineup", lineup);
 		return "lineup";
 	}
+
 	@PreAuthorize("hasRole('PLANNING')")
 	@GetMapping("/lineup/{id}/edit")
 	String editLineUp(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
@@ -64,13 +69,14 @@ public class LineUpController {
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@GetMapping("/lineup/new")
-	String newLineUp( Model model) {
+	String newLineUp(Model model) {
 		model.addAttribute("lineup", new LineUp());
 		model.addAttribute("title", "New LineUp");
 		model.addAttribute("festivals", festivalManagement.findAllFestivals());
 
 		return "lineup_new";
-		}
+	}
+
 	@PreAuthorize("hasRole('PLANNING')")
 	@PostMapping("/lineup/new")
 	String newLineUp(@ModelAttribute LineUp lineup, Errors result, RedirectAttributes redirectAttributes) {
@@ -81,23 +87,39 @@ public class LineUpController {
 		lineUpManagement.createLineUp(lineup);
 		return "redirect:/lineup/edit";
 	}
-	@PreAuthorize("hasRole('PLANNING')")
-	@GetMapping("/band/new")
-	String newBand( Model model) {
-		model.addAttribute("Band", new Band());
-		model.addAttribute("title", "New Band");
-		model.addAttribute("Band", lineUpManagement.findAllBands());
 
-		return "band_new";
-	}
 	@PreAuthorize("hasRole('PLANNING')")
-	@PostMapping("/band/new")
-	String newBand(@ModelAttribute Band band, Errors result, RedirectAttributes redirectAttributes) {
-		if (result.hasErrors()) {
-			redirectAttributes.addFlashAttribute("error", result.toString());
-			return "redirect:/band/new";
+	@PostMapping("/lineup/{lineup}/addband")
+	public String addBand(@PathVariable LineUp lineup, @Valid  bandsadd form, Errors errors) {
+		if (errors.hasErrors()) {
+			return "lineup_id_edit";
 		}
 
-		return "redirect:/band/new";
+		lineup.addBandto(form.toBand());
+		lineUpManagement.createLineUp(lineup);
+
+
+		return "redirect:/lineup/edit";
+
+	}
+
+
+	interface bandsadd {
+
+		@NotEmpty
+		String getName();
+		@NotEmpty
+		Money getPrice();
+		@NotEmpty
+		String getStage();
+		@NotEmpty
+		String getPerformanceHour();
+
+
+		default Band toBand() {
+			return new Band (getName(), getPrice(),getStage(),getPerformanceHour());
+			//String name, Money price, String stage, String performanceHour
+		}
 	}
 }
+
