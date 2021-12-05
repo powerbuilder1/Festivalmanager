@@ -76,4 +76,8 @@ public class UserManagement {
 		return users.findAll();
 	}
 
+	public User findById(long id) {
+		return users.findById(id).orElse(null);
+	}
+
 }
