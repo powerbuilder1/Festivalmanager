@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
 
@@ -21,9 +22,11 @@ public class FestivalManagement {
      * @param festivalRepository
      * @param locationManagement
      */
-    FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement) {
+    FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
+            LineUpManagement lineUpManagement) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
+        Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
         this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
     }
@@ -121,6 +124,9 @@ public class FestivalManagement {
      * @return
      */
     public boolean deleteById(long id) {
+        // ! TODO: resolve circular dependency with lineup
+        // TODO: check if festival contains lineup
+
         festivalRepository.deleteById(id);
         return true;
     }
