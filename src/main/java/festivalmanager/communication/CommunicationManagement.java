@@ -1,0 +1,51 @@
+package festivalmanager.communication;
+
+import org.springframework.util.Assert;
+
+import festivalmanager.authentication.User;
+import festivalmanager.authentication.UserManagement;
+
+public class CommunicationManagement {
+
+    private final ChatMessageRepository chatMessageRepository;
+    private final RoomRepository roomRepository;
+    private final UserManagement userManagement;
+    private final ParticipantsRepository participantsRepository;
+
+    public CommunicationManagement(ChatMessageRepository chatMessageRepository, RoomRepository roomRepository,
+            UserManagement userManagement, ParticipantsRepository participantsRepository) {
+        Assert.notNull(chatMessageRepository, "chatMessageRepository must not be null");
+        Assert.notNull(roomRepository, "roomRepository must not be null");
+        Assert.notNull(userManagement, "userManagement must not be null");
+        Assert.notNull(participantsRepository, "participantsRepository must not be null");
+        this.chatMessageRepository = chatMessageRepository;
+        this.roomRepository = roomRepository;
+        this.userManagement = userManagement;
+        this.participantsRepository = participantsRepository;
+    }
+
+    public Room createRoom(String name) {
+        return roomRepository.save(new Room(name));
+    }
+
+    public ChatMessage sendMessage(User sender, String message, Room room) {
+        Assert.notNull(sender, "sender must not be null");
+        Assert.notNull(message, "message must not be null");
+        Assert.notNull(room, "room must not be null");
+        ChatMessage chatMessage = new ChatMessage(message, sender, room);
+        chatMessageRepository.save(chatMessage);
+        return chatMessage;
+    }
+
+    public ChatMessage sendMessage(long userId, String message, long roomId) {
+        User sender = userManagement.findById(userId);
+        Room room = roomRepository.findById(roomId).orElse(null);
+
+        if (sender == null || room == null) {
+            System.out.println("Sender or room not found");
+            return null;
+        }
+
+        return null;
+    }
+}
