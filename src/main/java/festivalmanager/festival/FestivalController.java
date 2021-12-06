@@ -1,5 +1,7 @@
 package festivalmanager.festival;
 
+import java.util.stream.Collectors;
+
 import javax.validation.Valid;
 
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -70,7 +72,8 @@ public class FestivalController {
     @PostMapping("/festival/new")
     String newFestival(@ModelAttribute @Valid Festival festival, Errors result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
-            redirectAttributes.addFlashAttribute("error", result.toString());
+            redirectAttributes.addFlashAttribute("errors",
+                    result.getAllErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList()));
             return "redirect:/festival";
         }
         if (!festivalManagement.findAllByName(festival.getName()).isEmpty()) {
