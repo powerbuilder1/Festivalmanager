@@ -7,6 +7,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import javax.validation.Constraint;
+import javax.validation.Payload;
 
 /**
  * https://www.baeldung.com/spring-mvc-custom-validator
@@ -19,13 +20,8 @@ public @interface FestivalConstraint {
 
     String message() default "Invalid festival";
 
-    String field();
+    Class<?>[] groups() default {};
 
-    String fieldMatch();
+    Class<? extends Payload>[] payload() default {};
 
-    @Target({ ElementType.TYPE })
-    @Retention(RetentionPolicy.RUNTIME)
-    @interface List {
-        FestivalConstraint[] value();
-    }
 }

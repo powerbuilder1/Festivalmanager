@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.persistence.*;
 
 import festivalmanager.catering.Food;
@@ -15,6 +14,7 @@ import festivalmanager.location.Location;
 import java.util.Set;
 
 @Entity
+@FestivalConstraint()
 public class Festival {
 
     private @Id @GeneratedValue Long id;
@@ -29,7 +29,6 @@ public class Festival {
     @Column(columnDefinition = "TEXT")
     private String information;
     @NotNull
-    @Size(min = 4, max = 255)
     private String name;
 
     @OneToMany(mappedBy = "festival")
