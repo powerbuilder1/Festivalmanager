@@ -25,7 +25,9 @@
                             <div class="row">
                                 <div class="col-10">
                                     <span th:text="${lineup.Festivalname}"> Festival 1</span>
-                                    <a th:href="@{/lineup/{id}/edit(id=${lineup.id})}" class="btn btn-primary">edit me</a>
+                                    <a th:href="@{/lineup/{id}/add(id=${lineup.id})}" class="btn btn-primary">Add bands</a>
+                                    <a th:href="@{/lineup/{id}/delete(id=${lineup.id})}" class="btn btn-primary">Delete bands</a>
+
                                 </div>
                             </div>
                         </div>

@@ -50,7 +50,7 @@
       Einige Angaben sind nicht korrekt.
     </p>
     <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
-      <label th:text="#{lineup.band.name}" for="name">Name</label>
+      <label th:text="#{lineup.band.name.add}" for="name">Name</label>
       <input type="text" th:field="*{name}" class="form-control" id="name">
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('stage')} ? 'error' : ''">

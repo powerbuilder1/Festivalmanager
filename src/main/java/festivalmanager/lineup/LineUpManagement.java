@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 
 import javax.money.CurrencyUnit;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -59,6 +60,28 @@ public class LineUpManagement {
 		});
 
 	}
+	public void deleteBand( Long id, String bandname) {
+		LineUpRepository.findById(id).ifPresent(lineUp -> {
+
+			Iterator itr = lineUp.getBands().iterator();
+		while( itr.hasNext())
+		{
+			Band delBand = (Band) itr.next() ;
+			if (delBand.getName().equals(bandname))
+			{
+				itr.remove();
+			}
+			else
+			{
+				System.out.println("This band has not been found");
+			}
+		}
+
+			LineUpRepository.save(lineUp);
+
+		});
+	}
+
 	public LineUp createLineUp (Festival festival) {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);
