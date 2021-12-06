@@ -1,5 +1,7 @@
 package festivalmanager.communication;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,6 +29,8 @@ public class ChatMessage {
     @ManyToOne
     private Room room;
 
+    private Date timeStamp;
+
     public ChatMessage() {
         // default constructor
     }
@@ -35,6 +39,7 @@ public class ChatMessage {
         this.message = message;
         this.sender = sender;
         this.room = room;
+        this.timeStamp = new Date();
     }
 
     public Long getId() {
@@ -67,6 +72,14 @@ public class ChatMessage {
 
     public void setRoom(Room room) {
         this.room = room;
+    }
+
+    public void setTimeStamp(Date date) {
+        this.timeStamp = date;
+    }
+
+    public Date getTimeStamp() {
+        return this.timeStamp;
     }
 
     public String toString() {
