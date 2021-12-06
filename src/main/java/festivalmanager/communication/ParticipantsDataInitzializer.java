@@ -2,6 +2,7 @@ package festivalmanager.communication;
 
 import org.salespointframework.core.DataInitializer;
 import org.springframework.core.annotation.Order;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -25,7 +26,10 @@ public class ParticipantsDataInitzializer implements DataInitializer {
 
     @Override
     public void initialize() {
+        // inits chat rooms
         initPublic();
+        initCatering();
+        initPlanning();
     }
 
     /**
@@ -52,6 +56,58 @@ public class ParticipantsDataInitzializer implements DataInitializer {
         }
         communicationManagement.joinRoom(manager, room, "rw");
         communicationManagement.joinRoom(system, room, "r");
+    }
+
+    private void initCatering() {
+        User manager = userManagement.findByName("manager");
+        Streamable<User> catering = userManagement.findAll()
+                .filter(user -> user.getUserAccount().hasRole(UserManagement.CATERING_ROLE));
+
+        if (manager == null) {
+            System.out.println("initCatering: Manager not found");
+            return;
+        }
+        if (catering.isEmpty()) {
+            System.out.println("initCatering: No catering personal found");
+            return;
+        }
+
+        Room room = communicationManagement.findRoomByName("catering");
+        if (room == null) {
+            System.out.println("initCatering: Room not found");
+            return;
+        }
+
+        communicationManagement.joinRoom(manager, room, "rw");
+        for (User user : catering) {
+            communicationManagement.joinRoom(user, room, "r");
+        }
+    }
+
+    private void initPlanning() {
+        User manager = userManagement.findByName("manager");
+        Streamable<User> planning = userManagement.findAll()
+                .filter(user -> user.getUserAccount().hasRole(UserManagement.PLANNING_ROLE));
+
+        if (manager == null) {
+            System.out.println("initCatering: Manager not found");
+            return;
+        }
+        if (planning.isEmpty()) {
+            System.out.println("initCatering: No catering personal found");
+            return;
+        }
+
+        Room room = communicationManagement.findRoomByName("catering");
+        if (room == null) {
+            System.out.println("initCatering: Room not found");
+            return;
+        }
+
+        communicationManagement.joinRoom(manager, room, "rw");
+        for (User user : planning) {
+            communicationManagement.joinRoom(user, room, "r");
+        }
     }
 
 }
