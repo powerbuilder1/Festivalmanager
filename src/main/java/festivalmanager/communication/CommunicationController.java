@@ -55,4 +55,27 @@ public class CommunicationController {
         return "chat";
     }
 
+    @PreAuthorize("hasAnyRole('PLANNING', 'CATERING', 'BOSS')")
+    @GetMapping("/chat/room/id")
+    String chatRoom(@PathVariable long id, Model model) {
+        User currentUser = getCurrentUser();
+        if (currentUser == null) {
+            System.out.println("/chat: User is null");
+            return "redirect:/login";
+        }
+        // all chat rooms the current user is in
+        Streamable<Room> rooms = communicationManagement.findAllRoomsOfUser(currentUser.getId());
+        model.addAttribute("chats", rooms);
+
+        // fetch current chat room
+        Room room = communicationManagement.findRoomById(id);
+        model.addAttribute("room", room);
+
+        // fetch all messages in the current chat room
+        Streamable<ChatMessage> messages = communicationManagement.findAllMessagesInRoom(room.getName());
+
+        model.addAttribute("messages", messages);
+
+        return "chat";
+    }
 }
