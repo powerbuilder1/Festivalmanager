@@ -2,7 +2,6 @@ package festivalmanager.festival;
 
 import javax.validation.Valid;
 
-import festivalmanager.lineup.LineUp;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,6 +73,11 @@ public class FestivalController {
             redirectAttributes.addFlashAttribute("error", result.toString());
             return "redirect:/festival";
         }
+        if (!festivalManagement.findAllByName(festival.getName()).isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "FESTIVAL_ALREADY_EXISTS");
+            return "redirect:/festival";
+        }
+
         festivalManagement.createFestival(festival);
         return "redirect:/festival";
     }
