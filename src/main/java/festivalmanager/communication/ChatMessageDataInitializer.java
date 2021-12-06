@@ -2,7 +2,6 @@ package festivalmanager.communication;
 
 import org.salespointframework.core.DataInitializer;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
@@ -37,6 +36,14 @@ public class ChatMessageDataInitializer implements DataInitializer {
         }
 
         communicationManagement.sendMessage(user, "Message system is working now!", room);
+
+        User system = userManagement.findByName("SYSTEM");
+        if (system == null) {
+            System.out.println("initMessages: system not found");
+            return;
+        }
+
+        communicationManagement.sendMessage(system, "Hello World from System", room);
     }
 
 }

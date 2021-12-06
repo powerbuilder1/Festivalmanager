@@ -34,7 +34,8 @@ public class CommunicationController {
 
     @GetMapping("/news")
     String news(Model model) {
-        model.addAttribute("news", communicationManagement.findAllMessagesInRoom("public"));
+        model.addAttribute("news", communicationManagement.findAllMessagesInRoom("public")
+                .filter(msg -> msg.getSender().getName().equals("manager")));
         model.addAttribute("titel", "News");
         return "news";
     }
@@ -56,13 +57,15 @@ public class CommunicationController {
     }
 
     @PreAuthorize("hasAnyRole('PLANNING', 'CATERING', 'BOSS')")
-    @GetMapping("/chat/room/id")
+    @GetMapping("/chat/room/{id}")
     String chatRoom(@PathVariable long id, Model model) {
         User currentUser = getCurrentUser();
         if (currentUser == null) {
             System.out.println("/chat: User is null");
             return "redirect:/login";
         }
+        model.addAttribute("you", currentUser);
+
         // all chat rooms the current user is in
         Streamable<Room> rooms = communicationManagement.findAllRoomsOfUser(currentUser.getId());
         model.addAttribute("chats", rooms);
@@ -73,7 +76,6 @@ public class CommunicationController {
 
         // fetch all messages in the current chat room
         Streamable<ChatMessage> messages = communicationManagement.findAllMessagesInRoom(room.getName());
-
         model.addAttribute("messages", messages);
 
         return "chat";
