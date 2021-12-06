@@ -18,6 +18,9 @@
                         <li class="nav-item">
                             <a href="/news" th:href="@{/news}" class="nav-link">News</a>
                         </li>
+                        <li class="nav-item" sec:authorize="hasAnyRole('PLANNING', 'CATERING', 'BOSS')">
+                            <a href="/chat" th:href="@{/chat}" class="nav-link">Chat</a>
+                        </li>
                         <li class="nav-item" sec:authorize="hasRole('PLANNING')">
                             <a href="/locations" th:href="@{/locations}" class="nav-link">Locations</a>
                         </li>
