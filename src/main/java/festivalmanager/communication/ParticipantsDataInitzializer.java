@@ -72,7 +72,7 @@ public class ParticipantsDataInitzializer implements DataInitializer {
             return;
         }
 
-        Room room = communicationManagement.findRoomByName("catering");
+        Room room = communicationManagement.findRoomByName("Catering");
         if (room == null) {
             System.out.println("initCatering: Room not found");
             return;
@@ -98,7 +98,7 @@ public class ParticipantsDataInitzializer implements DataInitializer {
             return;
         }
 
-        Room room = communicationManagement.findRoomByName("catering");
+        Room room = communicationManagement.findRoomByName("Planning");
         if (room == null) {
             System.out.println("initCatering: Room not found");
             return;
