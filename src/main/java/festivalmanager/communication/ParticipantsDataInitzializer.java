@@ -80,7 +80,7 @@ public class ParticipantsDataInitzializer implements DataInitializer {
 
         communicationManagement.joinRoom(manager, room, "rw");
         for (User user : catering) {
-            communicationManagement.joinRoom(user, room, "r");
+            communicationManagement.joinRoom(user, room, "rw");
         }
     }
 
@@ -106,7 +106,7 @@ public class ParticipantsDataInitzializer implements DataInitializer {
 
         communicationManagement.joinRoom(manager, room, "rw");
         for (User user : planning) {
-            communicationManagement.joinRoom(user, room, "r");
+            communicationManagement.joinRoom(user, room, "rw");
         }
     }
 
