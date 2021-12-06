@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
@@ -79,5 +82,20 @@ public class CommunicationController {
         model.addAttribute("messages", messages);
 
         return "chat";
+    }
+
+    @PreAuthorize("hasAnyRole('PLANNING', 'CATERING', 'BOSS')")
+    @PostMapping("/chat/room/{id}")
+    String chatRoom(@PathVariable long id, @RequestParam String message, RedirectAttributes redirectAttributes) {
+        if (message.isBlank()) {
+            redirectAttributes.addFlashAttribute("error_input", "Message cannot be empty");
+            return "redirect:/chat/room/" + id;
+        }
+        // get current user
+        User currentUser = getCurrentUser();
+        // fetch current chat room
+        Room room = communicationManagement.findRoomById(id);
+        communicationManagement.sendMessage(currentUser, message, room);
+        return "redirect:/chat/room/" + id;
     }
 }
