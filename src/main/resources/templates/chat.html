@@ -21,18 +21,13 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <a href="#" class="list-group-item list-group-item-action border-0">
-                                <div class="badge bg-success float-right">5</div>
+                            <a th:each="chat : ${chats}" href="/chat/room/id" th:href="@{/chat/room/{id}(id=${chat.id})}" class="list-group-item list-group-item-action border-0">
+                                <!--<div class="badge bg-success float-right">5</div>-->
                                 <div class="d-flex align-items-start">
                                     <img src="https://eu.ui-avatars.com/api/?name=Vanessa+Tucker" class="rounded-circle mr-1" alt="Vanessa Tucker" width="40" height="40">
-                                    <div class="flex-grow-1 ml-3">
-                                        Vanessa Tucker
-                                        <div class="small"><span class="fas fa-circle chat-online"></span> Online</div>
-                                    </div>
+                                    <div class="flex-grow-1 ml-3" th:text="${chat.name}">Sample ChatNname</div>
                                 </div>
                             </a>
-
                             <hr class="d-block d-lg-none mt-1 mb-0">
                         </div>
                         <div class="col-12 col-lg-7 col-xl-9">

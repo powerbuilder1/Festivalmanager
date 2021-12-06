@@ -2,12 +2,14 @@ package festivalmanager.communication;
 
 import com.mysema.commons.lang.Assert;
 
+import org.springframework.data.util.Streamable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
@@ -45,6 +47,11 @@ public class CommunicationController {
             System.out.println("/chat: User is null");
             return "redirect:/login";
         }
+
+        // all chat rooms the current user is in
+        Streamable<Room> rooms = communicationManagement.findAllRoomsOfUser(currentUser.getId());
+        model.addAttribute("chats", rooms);
+
         return "chat";
     }
 
