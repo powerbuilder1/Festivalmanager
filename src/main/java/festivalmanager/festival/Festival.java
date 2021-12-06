@@ -9,9 +9,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.persistence.*;
 
-
 import festivalmanager.catering.Food;
-import festivalmanager.lineup.LineUp;
 import festivalmanager.location.Location;
 
 import java.util.Set;
