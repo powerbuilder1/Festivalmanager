@@ -1,5 +1,6 @@
 package festivalmanager.authentication;
 
+import festivalmanager.location.Location;
 import org.salespointframework.useraccount.UserAccount;
 
 import festivalmanager.communication.Participants;

@@ -66,12 +66,9 @@ public class UserManagement {
 		var userAccount = userAccounts.create(form.getName(), password, PLANNING_ROLE);
 		User user = new User(form.getPosition(), userAccount);
 		user.setAddress(form.getAddress());
-<<<<<<< HEAD
 		user.setWorkPlace(form.getWorkPlace());
-=======
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
->>>>>>> a66caba43db1d322b246ff29d2bbc388e43043e3
 		return users.save(user);
 	}
 
@@ -83,9 +80,7 @@ public class UserManagement {
 		var userAccount = userAccounts.create(form.getName(), password, CATERING_ROLE);
 		User user = new User(form.getPosition(), userAccount);
 		user.setAddress(form.getAddress());
-<<<<<<< HEAD
 		user.setWorkPlace(form.getWorkPlace());
-=======
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
 		return users.save(user);
@@ -101,7 +96,6 @@ public class UserManagement {
 		user.setAddress(form.getAddress());
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
->>>>>>> a66caba43db1d322b246ff29d2bbc388e43043e3
 		return users.save(user);
 	}
 

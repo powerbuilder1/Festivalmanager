@@ -3,6 +3,7 @@ package festivalmanager.personalManagement;
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
 import festivalmanager.authentication.UserRepository;
+import festivalmanager.location.LocationManagement;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +19,14 @@ import javax.validation.Valid;
 @Controller
 @PreAuthorize("hasRole('BOSS')")
 public class ManagerController{
-	public ManagerManagement managerManagement;
-	private UserRepository userRepository;
+	public final ManagerManagement managerManagement;
+	private final UserRepository userRepository;
+	private final LocationManagement locationManagement;
 
-	public ManagerController(ManagerManagement managerManagement, UserRepository userRepository) {
+	public ManagerController(ManagerManagement managerManagement, UserRepository userRepository, LocationManagement locationManagement) {
 		this.managerManagement = managerManagement;
 		this.userRepository = userRepository;
+		this.locationManagement = locationManagement;
 	}
 
 	@GetMapping("/dashboard")
@@ -67,12 +70,14 @@ public class ManagerController{
 			Model model
 	) {
 		User user = userRepository.findById(id).get();
+		model.addAttribute("locations", locationManagement.findAllLocations().toList());
 		model.addAttribute("user", user);
 		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(), user.getPosition(), user.getWorkPlace()));
 		System.out.println(user.getName());
 		System.out.println(user.getPassword());
 		System.out.println(user.getAddress());
 		System.out.println(user.getPosition());
+		System.out.println(user.getWorkPlace());
 		return "personal_edit";
 	}
 
