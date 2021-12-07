@@ -169,6 +169,9 @@ public class FestivalManagement {
             return "Festival has no lineups";
         }
 
+        festival.setIsPublished(true);
+        updateFestival(festival);
+
         return "ok";
     }
 
