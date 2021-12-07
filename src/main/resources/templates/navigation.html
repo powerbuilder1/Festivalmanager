@@ -41,6 +41,9 @@
                         <li class="nav-item" sec:authorize="hasRole('CATERING')">
                             <a href="/stock" th:href="@{/stock}" class="nav-link">Lager</a>
                         </li>
+                        <li class="nav-item" sec:authorize="hasRole('CATERING')">
+                            <a href="/catering/sale" th:href="@{/catering/sale}" class="nav-link">Sale</a>
+                        </li>
                         <li class="nav-item" sec:authorize="hasRole('PLANNING')">
                             <a href="/lineup/edit" th:href="@{/lineup/edit}" class="nav-link">LineUp</a>
                         </li>
