@@ -34,8 +34,6 @@ public class UserDataInitializer implements DataInitializer {
 	public void initialize() {
 
 
-
-
 //		userAccountManagement.create("Catering", Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
 //		userAccountManagement.create("Planning", Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));
 
