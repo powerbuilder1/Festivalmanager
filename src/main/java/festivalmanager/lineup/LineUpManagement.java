@@ -61,22 +61,18 @@ public class LineUpManagement {
 	public void deleteBand(Long id, String bandname) {
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 
-		Iterator itr = lineUp.getBands().iterator();
-		while( itr.hasNext())
-		{
-			Band delBand = (Band) itr.next() ;
-			if (delBand.getName1().equals(bandname))
-			{
-				itr.remove();
-			}
-			else
-			{
-				System.out.println("This band has not been found");
-			}
+			Iterator itr = lineUp.getBands().iterator();
+			while (itr.hasNext()) {
+				Band delBand = (Band) itr.next();
+				if (delBand.getName1().equals(bandname)) {
+					itr.remove();
+				} else {
+					System.out.println("This band has not been found");
+				}
 
-			LineUpRepository.save(lineUp);
-
-		};
+				LineUpRepository.save(lineUp);
+			}
+		});
 	}
 	/*
 	 * public void updateBand(BandForm form) {
