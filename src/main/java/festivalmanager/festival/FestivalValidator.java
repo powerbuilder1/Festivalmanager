@@ -5,7 +5,13 @@ import java.util.Date;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.util.Streamable;
 
+import festivalmanager.Util.ServiceUtils;
+import festivalmanager.location.LocationManagement;
+
+@Configuration
 public class FestivalValidator implements ConstraintValidator<FestivalConstraint, Festival> {
 
     @Override
@@ -14,6 +20,9 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
 
     @Override
     public boolean isValid(Festival value, ConstraintValidatorContext ctx) {
+        Date beginDate = null;
+        Date endDate = null;
+
         // name
         if (value.getName().length() < 4) {
             ctx.buildConstraintViolationWithTemplate("Festival name must be at least 4 characters long")
@@ -57,6 +66,7 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
                 System.out.println(value.toString());
                 return false;
             }
+            beginDate = date;
         } catch (Exception e) {
             ctx.buildConstraintViolationWithTemplate("BeginDate is not valid")
                     .addConstraintViolation();
@@ -80,13 +90,14 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
         }
         try {
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(value.getEndDate());
-            Date beginDate = new SimpleDateFormat("yyyy-MM-dd").parse(value.getBeginDate());
-            if (date.before(beginDate)) {
+            Date begin = new SimpleDateFormat("yyyy-MM-dd").parse(value.getBeginDate());
+            if (date.before(begin)) {
                 ctx.buildConstraintViolationWithTemplate("EndDate must take place after BeginDate")
                         .addConstraintViolation();
                 System.out.println(value.toString());
                 return false;
             }
+            endDate = date;
         } catch (Exception e) {
             ctx.buildConstraintViolationWithTemplate("EndDate is not valid")
                     .addConstraintViolation();
@@ -94,6 +105,51 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
             System.out.println(value.toString());
             return false;
         }
+
+        // location
+        LocationManagement locationManagement = ServiceUtils.getLocationManagement();
+        FestivalManagement festivalManagement = ServiceUtils.getFestivalManagement();
+
+        if (value.getLocation() == null && value.getLocationIdentifier() != 0) {
+            value.setLocation(locationManagement.findById(value.getLocationIdentifier()));
+        }
+        if (beginDate == null || endDate == null) {
+            return false;
+        }
+        // check if location is not used in another festival during the time period of
+        // beginDate and endDate
+
+        Streamable<Festival> festivals = festivalManagement.findAllFestivals()
+                .filter(festival -> festival.getLocation().equals(value.getLocation()));
+        System.out.println("Count: " + festivals.toList().size());
+
+        for (Festival festival : festivals) {
+            System.out.println("Checking for festival " + festival.toString());
+            try {
+                Date begin = new SimpleDateFormat("yyyy-MM-dd").parse(festival.getBeginDate());
+                Date end = new SimpleDateFormat("yyyy-MM-dd").parse(festival.getEndDate());
+
+                if (beginDate.before(begin) && endDate.after(begin)) {
+                    ctx.buildConstraintViolationWithTemplate(
+                            "Location is already used in another festival (" + festival.getName()
+                                    + ") during the time period of "
+                                    + begin.toString() + " and " + end.toString())
+                            .addConstraintViolation();
+                    return false;
+                }
+                if (begin.before(beginDate) && end.after(beginDate)) {
+                    ctx.buildConstraintViolationWithTemplate(
+                            "Location is already used in another festival (" + festival.getName()
+                                    + ") during the time period of "
+                                    + begin.toString() + " and " + end.toString())
+                            .addConstraintViolation();
+                    return false;
+                }
+            } catch (Exception e) {
+                // should never happen because festivals are validated before
+            }
+        }
+
         return true;
     }
 
