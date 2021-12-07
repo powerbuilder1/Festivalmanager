@@ -12,10 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.Assert;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.sound.sampled.Line;
@@ -81,6 +78,22 @@ public class LineUpController {
 		model.addAttribute("banddelete", new Band());
 		return "lineup_id_delete";
 	}
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/lineup/{id}/edit")
+	String editBandinLineUp (@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+		LineUp lineUp = lineUpManagement.findById(id);
+		if (lineUp == null) {
+			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
+			return "redirect:/festivals";
+		}
+
+		model.addAttribute("lineup", lineUp);
+		model.addAttribute("bandname", new Band());
+		model.addAttribute("bandedit", new BandForm());
+
+
+		return "lineup_id_edit";
+	}
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@GetMapping("/lineup/new")
@@ -118,30 +131,25 @@ public class LineUpController {
 	@PostMapping("/lineup/{id}/deleteband")
 	public String deleteBand(@PathVariable long id, @ModelAttribute Band bandName) {
 
-		System.out.println(bandName.getName());
-		lineUpManagement.deleteBand(id,bandName.getName());
+		System.out.println(bandName.getName1());
+		lineUpManagement.deleteBand(id,bandName.getName1());
 
 		return "redirect:/lineup/"+id+"/delete";
 
 	}
 
+	@PreAuthorize("hasRole('PLANNING')")
+	@PostMapping("/lineup/{id}/editband")
+	public String editBand(@PathVariable long id,@ModelAttribute Band bandname, @ModelAttribute BandForm bandedit) {
 
-	interface bandsadd {
+		System.out.println(bandname.getName1());
+		System.out.println(bandedit.getName());
+		lineUpManagement.updateBand (id,bandname.getName1(),bandedit);
 
-		@NotEmpty
-		String getName();
-		@NotEmpty
-		Money getPrice();
-		@NotEmpty
-		String getStage();
-		@NotEmpty
-		String getPerformanceHour();
+		return "redirect:/lineup/"+id+"/edit";
 
-
-		default Band toBand() {
-			return new Band (getName(), getPrice(),getStage(),getPerformanceHour());
-			//String name, Money price, String stage, String performanceHour
-		}
 	}
+
 }
+
 

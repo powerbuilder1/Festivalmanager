@@ -3,6 +3,7 @@ package festivalmanager.lineup;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.location.Location;
+import festivalmanager.location.LocationForm;
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.Currencies;
 import org.springframework.data.util.Streamable;
@@ -60,11 +61,40 @@ public class LineUpManagement {
 	public void deleteBand(Long id, String bandname) {
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 
+		Iterator itr = lineUp.getBands().iterator();
+		while( itr.hasNext())
+		{
+			Band delBand = (Band) itr.next() ;
+			if (delBand.getName1().equals(bandname))
+			{
+				itr.remove();
+			}
+			else
+			{
+				System.out.println("This band has not been found");
+			}
+
+			LineUpRepository.save(lineUp);
+
+		};
+	}
+	/*
+	 * public void updateBand(BandForm form) {
+	 * Assert.notNull(form, "form must not be null");
+	 * }
+	 */
+
+	public void updateBand(long id, String Bandname, BandForm form) {
+
+		LineUpRepository.findById(id).ifPresent(lineUp -> {
+
 			Iterator itr = lineUp.getBands().iterator();
 			while (itr.hasNext()) {
-				Band delBand = (Band) itr.next();
-				if (delBand.getName().equals(bandname)) {
-					itr.remove();
+				Band editBand = (Band) itr.next();
+				if (editBand.getName1().equals(Bandname)) {
+					editBand.setName1(form.getName());
+					editBand.setStage(form.getStage());
+					editBand.setPerformanceHour(form.getPerformanceHour());
 				} else {
 					System.out.println("This band has not been found");
 				}
@@ -73,6 +103,17 @@ public class LineUpManagement {
 			LineUpRepository.save(lineUp);
 
 		});
+		/*
+		 * LineUpRepository.findById(id).ifPresent(lineUp -> {
+		 * for (Band bands: lineUp.getBands())
+		 * {
+		 * bands.setName1(form.getName());
+		 * bands.setPrice(Money.of(form.getPrice(), Currencies.EURO));
+		 * bands.setPerformanceHour(form.getPerformanceHour());
+		 * bands.setStage(form.getStage());
+		 * }
+		 * });
+		 */
 	}
 
 	public LineUp createLineUp(Festival festival) {

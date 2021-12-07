@@ -20,6 +20,9 @@ public class User {
 	private String position;
 	private String name;
 	private String password;
+	private String workPlace;
+
+
 
 	@OneToOne //
 	private UserAccount userAccount;
@@ -48,6 +51,14 @@ public class User {
 
 	public String getPassword() {
 		return password;
+	}
+
+	public String getWorkPlace() {
+		return workPlace;
+	}
+
+	public void setWorkPlace(String workPlace) {
+		this.workPlace = workPlace;
 	}
 
 	public void setName(String name) {

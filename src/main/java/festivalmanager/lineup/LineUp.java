@@ -1,5 +1,6 @@
 package festivalmanager.lineup;
 import festivalmanager.festival.Festival;
+import org.javamoney.moneta.Money;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class LineUp {
 	public ArrayList<String> getBandnames() {
 		ArrayList<String> names = new ArrayList<>();
 		for (Band band : Lineup) {
-			names.add(band.getName());
+			names.add(band.getName1());
 		}
 
 		return names;

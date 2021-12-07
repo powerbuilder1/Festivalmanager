@@ -2,11 +2,7 @@ package festivalmanager.personalManagement;
 
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
-import festivalmanager.authentication.UserManagement;
 import festivalmanager.authentication.UserRepository;
-import festivalmanager.catering.Food;
-import festivalmanager.catering.NewFoodItemForm;
-import org.salespointframework.useraccount.QUserAccount;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,7 +68,7 @@ public class ManagerController{
 	) {
 		User user = userRepository.findById(id).get();
 		model.addAttribute("user", user);
-		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(), user.getPosition()));
+		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(), user.getPosition(), user.getWorkPlace()));
 		System.out.println(user.getName());
 		System.out.println(user.getPassword());
 		System.out.println(user.getAddress());
