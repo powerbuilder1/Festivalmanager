@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html(title=${lineup.Festivalname})}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container" th:each="lineup : ${lineup}" >
+        <div class="row">
+            <div class="col">
+                <h1><span th:text="${lineup.Festivalname}"> Festival 1</span></h1>
+                <table class="table">
+                    <thead><tr>
+                        <th scope="col">Uhrzeit</th>
+                        <th scope="col">Bands</th>
+                        <th scope="col">Bühnen</th>
+                        <th scope="col">Preis</th>
+
+
+                    </tr></thead>
+                    <tbody> <tr  th:each="lineup : ${lineup}">
+                        <td>
+                            <div th:each="hour : ${lineup.getLineupUhrzeiten()}">
+                                <div>
+                                    <p th:text="${hour}"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:each="band : ${lineup.getBandnames()}">
+                                <div>
+                                    <p th:text="${band}"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:each="stage : ${lineup.getStages()}">
+                                <div>
+                                    <p th:text="${stage}"></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <form class="ui reply form" role="form" th:action="@{/lineup/{id}/editband (id=${lineup.id})}" method="post">
+
+        <div class="mb-3">
+            <label for="name1" class="form-label" th:text="#{lineup.band.name.edit}">Name</label>
+            <input type="text" th:field="*{bandname.name1}" class="form-control " id="name1">
+            <div th:if="${#fields.hasErrors('bandname.name1')} " th:errors="*{bandname.name1}">
+                <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+            </div>
+        </div>
+
+        <h5 class="card-title " > Form  </h5>
+        <div class="mb-3">
+            <label for="bandedit.name" class="form-label" th:text="#{lineup.band.name}">Name</label>
+            <input type="text" th:field="*{bandedit.name}" class="form-control " id="bandedit.name">
+            <div th:if="${#fields.hasErrors('bandedit.name')} " th:errors="*{bandedit.name}">
+                <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="bandedit.stage" class="form-label" th:text="#{lineup.band.stage}">stage
+            </label>
+            <input type="text" th:field="*{bandedit.stage}" class="form-control " id="bandedit.stage">
+            <div th:if="${#fields.hasErrors('bandedit.stage')} " th:errors="*{bandedit.stage}">
+                <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="bandedit.performanceHour" class="form-label" th:text="#{lineup.band.performanceHour}">Performance</label>
+            <input type="text" th:field="*{bandedit.performanceHour}" class="form-control " name="bandedit.performanceHour" id="bandedit.performanceHour">
+            <div th:if="${#fields.hasErrors('bandedit.performanceHour')} " th:errors="*{bandedit.performanceHour}">
+                <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+            </div>
+        </div>
+
+
+
+        <button type="submit" class="ui labeled icon button">
+            <i class="icon edit"></i><span th:text="#{lineup.band.edit}"> Edit band in Line Up </span>
+        </button>
+
+    </form>
+
+    <div class="row d-flex justify-content-center">
+        <a href="/lineup/edit" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück </a>
+    </div>
+</section>
+</body>
+</html>

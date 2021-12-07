@@ -50,9 +50,9 @@
             <p class="ui negative message" th:if="${#fields.hasErrors('*')}">
                 Einige Angaben sind nicht korrekt.
             </p>
-            <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
+            <div class="field" th:classappend="${#fields.hasErrors('name1')} ? 'error' : ''">
                 <label th:text="#{lineup.band.name.delete}" for="name1">Name</label>
-                <input type="text" th:field="*{name}" class="form-control" id="name1">
+                <input type="text" th:field="*{name1}" class="form-control" id="name1">
             </div>
             <button type="submit" class="ui labeled icon button">
                 <i class="icon edit"></i><span th:text="#{lineup.band.delete}"> Delete band from Line Up </span>

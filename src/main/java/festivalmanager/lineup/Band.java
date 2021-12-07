@@ -11,7 +11,7 @@ public class Band {
 	private @Id
 	@GeneratedValue
 	long id;
-	public String name;
+	public String name1;
 	public Money price;
 	public String stage;
 	public String performanceHour;
@@ -22,21 +22,21 @@ public class Band {
 	/**
 	 * Band constructor
 	 *
-	 * @param name
+	 * @param name1
 	 * @param price
 	 * @param stage
 	 * @param performanceHour
 	 */
-	public Band(String name, Money price, String stage, String performanceHour) {
+	public Band(String name1, Money price, String stage, String performanceHour) {
 		this.setPrice(price);
-		this.setName(name);
+		this.setName1(name1);
 		this.setStage(stage);
 		this.setPerformanceHour(performanceHour);
 	}
 
 
-	public String getName() {
-		return name;
+	public String getName1() {
+		return name1;
 	}
 
 	public String getStage() {
@@ -58,8 +58,8 @@ public class Band {
 		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName1(String name1) {
+		this.name1 = name1;
 	}
 
 	public void setPrice(Money price) {
