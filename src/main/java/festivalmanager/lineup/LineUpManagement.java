@@ -15,36 +15,34 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-
 @Service
 @Transactional
 public class LineUpManagement {
 	private static LineUpRepository LineUpRepository;
 	private static FestivalManagement festivalManagement;
 
-	LineUpManagement(LineUpRepository LineUpRepository, FestivalManagement festivalManagement) {
+	LineUpManagement(LineUpRepository LineUpRepository) {
 		Assert.notNull(LineUpRepository, "festivalRepository must not be null");
-		Assert.notNull(festivalManagement, "festivalmanagement must not be null");
-
 
 		this.LineUpRepository = LineUpRepository;
-		this.festivalManagement = festivalManagement;
-
 
 	}
-	public static LineUp createLineUp (LineUp lineUp) {
+
+	public void setFestivalManagement(FestivalManagement festivalManagement) {
+		this.festivalManagement = festivalManagement;
+	}
+
+	public static LineUp createLineUp(LineUp lineUp) {
 		Assert.notNull(lineUp, "lineUp must not be null");
-		if (lineUp.getFestival() == null)
-		{
+		if (lineUp.getFestival() == null) {
 			lineUp.setFestival(festivalManagement.findById(lineUp.getFestivalIdentifier()));
-			lineUp.setId ((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());
+			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());
 
 		}
 		return LineUpRepository.save(lineUp);
 	}
 
-	public void addBand (Long id, BandForm bandForm )
-	{
+	public void addBand(Long id, BandForm bandForm) {
 		System.out.println("Welcome1");
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			System.out.println("Welcome");
@@ -53,42 +51,39 @@ public class LineUpManagement {
 							bandForm.getName(),
 							Money.of(bandForm.getPrice(), Currencies.EURO),
 							bandForm.getStage(),
-							bandForm.getPerformanceHour()
-					)
-			);
+							bandForm.getPerformanceHour()));
 			LineUpRepository.save(lineUp);
 		});
 
 	}
-	public void deleteBand( Long id, String bandname) {
+
+	public void deleteBand(Long id, String bandname) {
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 
 			Iterator itr = lineUp.getBands().iterator();
-		while( itr.hasNext())
-		{
-			Band delBand = (Band) itr.next() ;
-			if (delBand.getName().equals(bandname))
-			{
-				itr.remove();
+			while (itr.hasNext()) {
+				Band delBand = (Band) itr.next();
+				if (delBand.getName().equals(bandname)) {
+					itr.remove();
+				} else {
+					System.out.println("This band has not been found");
+				}
 			}
-			else
-			{
-				System.out.println("This band has not been found");
-			}
-		}
 
 			LineUpRepository.save(lineUp);
 
 		});
 	}
 
-	public LineUp createLineUp (Festival festival) {
+	public LineUp createLineUp(Festival festival) {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);
 	}
+
 	public Streamable<LineUp> findAllLineUp() {
 		return LineUpRepository.findAll();
 	}
+
 	public LineUp findById(long id) {
 		return LineUpRepository.findById(id).orElse(null);
 	}

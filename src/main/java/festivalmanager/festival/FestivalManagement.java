@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import festivalmanager.catering.CateringManagement;
+import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
 
@@ -13,19 +15,32 @@ import festivalmanager.location.LocationManagement;
 public class FestivalManagement {
 
     private final FestivalRepository festivalRepository;
+
+    // managements
     private final LocationManagement locationManagement;
+    private final CateringManagement cateringManagement;
+    private final LineUpManagement lineUpManagement;
 
     /**
      * Constructor
      * 
      * @param festivalRepository
      * @param locationManagement
+     * @param cateringManagement
+     * @param lineUpManagement
      */
-    FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement) {
+    FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
+            CateringManagement cateringManagement, LineUpManagement lineUpManagement) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
+        Assert.notNull(cateringManagement, "cateringManagement must not be null");
+        Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
         this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
+        this.cateringManagement = cateringManagement;
+        this.cateringManagement.setFestivalManagement(this);
+        this.lineUpManagement = lineUpManagement;
+        this.lineUpManagement.setFestivalManagement(this);
     }
 
     /**

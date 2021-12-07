@@ -14,11 +14,15 @@ public class CateringManagement {
 
 	private final FoodCatalog foodCatalog;
 	private final StockManagment stockManagment;
-	private final FestivalManagement festivalManagement;
+	private FestivalManagement festivalManagement;
 
-	public CateringManagement(FoodCatalog foodCatalog, StockManagment stockManagment, FestivalManagement festivalManagement) {
+	public CateringManagement(FoodCatalog foodCatalog, StockManagment stockManagment) {
 		this.foodCatalog = foodCatalog;
 		this.stockManagment = stockManagment;
+		this.festivalManagement = null;
+	}
+
+	public void setFestivalManagement(FestivalManagement festivalManagement) {
 		this.festivalManagement = festivalManagement;
 	}
 
@@ -28,8 +32,7 @@ public class CateringManagement {
 		Food foodItem = foodCatalog.save(new Food(
 				foodItemForm.getName(),
 				Money.of(foodItemForm.getPrice(), Currencies.EURO),
-				festivalManagement.findById(foodItemForm.getFestivalId())
-				));
+				festivalManagement.findById(foodItemForm.getFestivalId())));
 		stockManagment.initializeInventoryItem(foodItem, 0);
 		for (Product p : foodCatalog.findAll()) {
 			System.out.println(p.getName() + ": " + p.getPrice());
