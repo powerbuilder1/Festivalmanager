@@ -1,12 +1,15 @@
 package festivalmanager.communication;
 
-import javax.validation.constraints.AssertTrue;
-
+import org.springframework.data.util.Streamable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
 
+@Service
+@Transactional
 public class CommunicationManagement {
 
     private final ChatMessageRepository chatMessageRepository;
@@ -48,7 +51,7 @@ public class CommunicationManagement {
             return null;
         }
 
-        return null;
+        return sendMessage(sender, message, room);
     }
 
     public boolean joinRoom(User user, Room room, String access) {
@@ -69,5 +72,49 @@ public class CommunicationManagement {
             return false;
         }
         return joinRoom(user, room, access);
+    }
+
+    public Streamable<Room> findAllRooms() {
+        return roomRepository.findAll();
+    }
+
+    public Room findRoomById(long id) {
+        return roomRepository.findById(id).orElse(null);
+    }
+
+    public Streamable<Room> findAllRoomsOfUser(long userId) {
+        User user = userManagement.findById(userId);
+        if (user == null) {
+            System.out.println("User not found");
+            return null;
+        }
+        // get all -> filter by user -> map to room
+        return participantsRepository.findAll().filter(p -> p.getUser().equals(user)).map(p -> p.getRoom());
+    }
+
+    public Streamable<User> findAllUsersInRoom(long roomId) {
+        Room room = roomRepository.findById(roomId).orElse(null);
+        if (room == null) {
+            System.out.println("Room not found");
+            return null;
+        }
+        return participantsRepository.findAll().filter(p -> p.getRoom().equals(room)).map(p -> p.getUser());
+    }
+
+    public Room findRoomByName(String name) {
+        Streamable<Room> rooms = roomRepository.findAll().filter(r -> r.getName().equals(name));
+        if (!rooms.isEmpty()) {
+            return rooms.toList().get(0);
+        }
+        return null;
+    }
+
+    public Streamable<ChatMessage> findAllMessagesInRoom(String name) {
+        Room room = findRoomByName(name);
+        if (room == null) {
+            System.out.println("CommunicationManagement: Room not found");
+            return null;
+        }
+        return chatMessageRepository.findAll().filter(m -> m.getRoom().equals(room));
     }
 }

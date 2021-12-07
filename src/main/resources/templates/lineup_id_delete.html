@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html(title=${lineup.Festivalname})}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container" th:each="lineup : ${lineup}" >
+        <div class="row">
+            <div class="col">
+                <h1><span th:text="${lineup.Festivalname}"> Festival 1</span></h1>
+                <table class="table">
+                    <thead><tr>
+                        <th scope="col">Uhrzeit</th>
+                        <th scope="col">Bands</th>
+                        <th scope="col">Bühnen</th>
+
+                    </tr></thead>
+                    <tbody> <tr  th:each="lineup : ${lineup}">
+                        <td>
+                            <div th:each="hour : ${lineup.getLineupUhrzeiten()}">
+                                <div>
+                                    <p th:text="${hour}"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:each="band : ${lineup.getBandnames()}">
+                                <div>
+                                    <p th:text="${band}"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:each="stage : ${lineup.getStages()}">
+                                <div>
+                                    <p th:text="${stage}"></p>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <form class="ui reply form" role="form" th:object="${banddelete}" th:action="@{/lineup/{id}/deleteband(id=${lineup.id})}" method="post">
+            <p class="ui negative message" th:if="${#fields.hasErrors('*')}">
+                Einige Angaben sind nicht korrekt.
+            </p>
+            <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
+                <label th:text="#{lineup.band.name.delete}" for="name1">Name</label>
+                <input type="text" th:field="*{name}" class="form-control" id="name1">
+            </div>
+            <button type="submit" class="ui labeled icon button">
+                <i class="icon edit"></i><span th:text="#{lineup.band.delete}"> Delete band from Line Up </span>
+            </button>
+        </form>
+
+    </div>
+    <div class="row d-flex justify-content-center">
+        <a href="/lineup/edit" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück </a>
+    </div>
+</section>
+</body>
+</html>

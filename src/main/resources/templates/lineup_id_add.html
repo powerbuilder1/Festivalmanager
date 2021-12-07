@@ -45,12 +45,12 @@
       </div>
     </div>
   </div>
-  <form class="ui reply form" role="form" th:object="${bandsadd}" th:action="@{/lineup/{id}/addband(id=${lineup.id})}" method="post">
+  <form class="ui reply form" role="form" th:object="${bandform}" th:action="@{/lineup/{id}/addband(id=${lineup.id})}" method="post">
     <p class="ui negative message" th:if="${#fields.hasErrors('*')}">
       Einige Angaben sind nicht korrekt.
     </p>
     <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
-      <label th:text="#{lineup.band.name}" for="name">Name</label>
+      <label th:text="#{lineup.band.name.add}" for="name">Name</label>
       <input type="text" th:field="*{name}" class="form-control" id="name">
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('stage')} ? 'error' : ''">
@@ -59,11 +59,11 @@
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('price')} ? 'error' : ''">
       <label th:text="#{lineup.band.price}" for="price">Price</label>
-      <input type="number" th:field="*{price}" class="form-control" id="price">
+      <input type="number" step="any" th:field="*{price}" class="form-control" id="price">
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('performanceHour')} ? 'error' : ''">
       <label th:text="#{lineup.band.performanceHour}" for="performanceHour">Performance Hour</label>
-      <input type="text" th:field="*{performaceHour}" class="form-control" id="performanceHour">
+      <input type="text" th:field="*{performanceHour}" class="form-control" id="performanceHour">
     </div>
 
     <button type="submit" class="ui labeled icon button">

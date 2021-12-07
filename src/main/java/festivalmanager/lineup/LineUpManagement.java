@@ -4,12 +4,15 @@ import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.location.Location;
 import org.javamoney.moneta.Money;
+import org.salespointframework.core.Currencies;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import javax.money.CurrencyUnit;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -39,6 +42,46 @@ public class LineUpManagement {
 		}
 		return LineUpRepository.save(lineUp);
 	}
+
+	public void addBand (Long id, BandForm bandForm )
+	{
+		System.out.println("Welcome1");
+		LineUpRepository.findById(id).ifPresent(lineUp -> {
+			System.out.println("Welcome");
+			lineUp.addBandto(
+					new Band(
+							bandForm.getName(),
+							Money.of(bandForm.getPrice(), Currencies.EURO),
+							bandForm.getStage(),
+							bandForm.getPerformanceHour()
+					)
+			);
+			LineUpRepository.save(lineUp);
+		});
+
+	}
+	public void deleteBand( Long id, String bandname) {
+		LineUpRepository.findById(id).ifPresent(lineUp -> {
+
+			Iterator itr = lineUp.getBands().iterator();
+		while( itr.hasNext())
+		{
+			Band delBand = (Band) itr.next() ;
+			if (delBand.getName().equals(bandname))
+			{
+				itr.remove();
+			}
+			else
+			{
+				System.out.println("This band has not been found");
+			}
+		}
+
+			LineUpRepository.save(lineUp);
+
+		});
+	}
+
 	public LineUp createLineUp (Festival festival) {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);

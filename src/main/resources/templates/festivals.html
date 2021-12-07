@@ -17,6 +17,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" th:each="err : ${errors}">
+                        <div class="col-md-12">
+                            <div class="alert alert-danger">
+                                <strong th:text="${err}">Error!</strong>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12 card" style="padding: 15px; margin-top: 15px;">
                             <a class="btn btn-primary" href="/festival/new" th:href="@{/festival/new}">Neu</a>

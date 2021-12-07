@@ -55,8 +55,8 @@ public class LineUpController {
 	}
 
 	@PreAuthorize("hasRole('PLANNING')")
-	@GetMapping("/lineup/{id}/edit")
-	String editLineUp(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+	@GetMapping("/lineup/{id}/add")
+	String addbandToLineUp(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
 		LineUp lineUp = lineUpManagement.findById(id);
 		if (lineUp == null) {
 			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
@@ -64,7 +64,22 @@ public class LineUpController {
 		}
 
 		model.addAttribute("lineup", lineUp);
-		return "lineup_id_edit";
+		model.addAttribute("bandform", new BandForm());
+
+		return "lineup_id_add";
+	}
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/lineup/{id}/delete")
+	String deleteBandfromLineUp (@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+		LineUp lineUp = lineUpManagement.findById(id);
+		if (lineUp == null) {
+			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
+			return "redirect:/festivals";
+		}
+
+		model.addAttribute("lineup", lineUp);
+		model.addAttribute("banddelete", new Band());
+		return "lineup_id_delete";
 	}
 
 	@PreAuthorize("hasRole('PLANNING')")
@@ -89,17 +104,24 @@ public class LineUpController {
 	}
 
 	@PreAuthorize("hasRole('PLANNING')")
-	@PostMapping("/lineup/{lineup}/addband")
-	public String addBand(@PathVariable LineUp lineup, @Valid  bandsadd form, Errors errors) {
-		if (errors.hasErrors()) {
-			return "lineup_id_edit";
-		}
+	@PostMapping("/lineup/{id}/addband")
+	public String addBand(@PathVariable long id, @ModelAttribute BandForm bandform) {
 
-		lineup.addBandto(form.toBand());
-		lineUpManagement.createLineUp(lineup);
+		System.out.println(bandform.getName());
+		lineUpManagement.addBand(id,bandform);
 
+		return "redirect:/lineup/"+id+"/add";
 
-		return "redirect:/lineup/edit";
+	}
+
+	@PreAuthorize("hasRole('PLANNING')")
+	@PostMapping("/lineup/{id}/deleteband")
+	public String deleteBand(@PathVariable long id, @ModelAttribute Band bandName) {
+
+		System.out.println(bandName.getName());
+		lineUpManagement.deleteBand(id,bandName.getName());
+
+		return "redirect:/lineup/"+id+"/delete";
 
 	}
 

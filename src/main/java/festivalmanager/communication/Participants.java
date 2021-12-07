@@ -28,9 +28,9 @@ public class Participants {
     }
 
     public Participants(User user, Room room, String access) {
-        this.user = user;
-        this.room = room;
-        this.access = access;
+        setUser(user);
+        setRoom(room);
+        setAccess(access);
     }
 
     public Long getId() {

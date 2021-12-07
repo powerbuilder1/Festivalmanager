@@ -3,23 +3,27 @@ import festivalmanager.festival.Festival;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 @Entity
 public class LineUp {
-	@ManyToOne
+	@OneToOne
 	private Festival festival;
 	private long festivalIdentifier;
 	private long festivalIdIdentifier;
 
 
-	private @Id long id;
+	private @Id
+	long id;
 
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Band> Lineup = new ArrayList<Band>();
+
 	public LineUp() {
 
 	}
+
 	/**
 	 * LineUp constructor
 	 *
@@ -27,17 +31,15 @@ public class LineUp {
 	 */
 	public LineUp(Festival festival) {
 
-		this.setFestival(festival);
+		this.festival = festival;
 		this.setId(festival.getId());
-
-
-
 	}
+
 	public long getFestivalIdentifier() {
 		return festivalIdentifier;
 	}
 
-	public void setFestivalIdentifier (long festivalIdentifier) {
+	public void setFestivalIdentifier(long festivalIdentifier) {
 		this.festivalIdentifier = festivalIdentifier;
 	}
 

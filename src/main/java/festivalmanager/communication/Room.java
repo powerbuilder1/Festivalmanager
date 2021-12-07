@@ -37,4 +37,12 @@ public class Room {
         this.name = name;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 }

@@ -19,6 +19,7 @@ public class UserManagement {
 	public static final Role BOSS_ROLE = Role.of("BOSS");
 	public static final Role PLANNING_ROLE = Role.of("PLANNING");
 	public static final Role CATERING_ROLE = Role.of("CATERING");
+	public static final Role SYSTEM_ROLE = Role.of("SYSTEM");
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
@@ -39,6 +40,8 @@ public class UserManagement {
 		var userAccount = userAccounts.create(form.getName(), password, CUSTOMER_ROLE);
 		User user = new User(form.getPosition(), userAccount);
 		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
 		return users.save(user);
 	}
 
@@ -48,8 +51,11 @@ public class UserManagement {
 
 		var password = Password.UnencryptedPassword.of(form.getPassword());
 		var userAccount = userAccounts.create(form.getName(), password, BOSS_ROLE);
-
-		return users.save(new User(form.getPosition(), userAccount));
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		return users.save(user);
 	}
 
 	public User createPlanningStaff(UserForm form) {
@@ -60,7 +66,12 @@ public class UserManagement {
 		var userAccount = userAccounts.create(form.getName(), password, PLANNING_ROLE);
 		User user = new User(form.getPosition(), userAccount);
 		user.setAddress(form.getAddress());
+<<<<<<< HEAD
 		user.setWorkPlace(form.getWorkPlace());
+=======
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+>>>>>>> a66caba43db1d322b246ff29d2bbc388e43043e3
 		return users.save(user);
 	}
 
@@ -72,7 +83,25 @@ public class UserManagement {
 		var userAccount = userAccounts.create(form.getName(), password, CATERING_ROLE);
 		User user = new User(form.getPosition(), userAccount);
 		user.setAddress(form.getAddress());
+<<<<<<< HEAD
 		user.setWorkPlace(form.getWorkPlace());
+=======
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		return users.save(user);
+	}
+
+	public User createSystem(UserForm form) {
+
+		Assert.notNull(form, "Registration form must not be null!");
+
+		var password = Password.UnencryptedPassword.of(form.getPassword());
+		var userAccount = userAccounts.create(form.getName(), password, SYSTEM_ROLE);
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+>>>>>>> a66caba43db1d322b246ff29d2bbc388e43043e3
 		return users.save(user);
 	}
 
@@ -82,6 +111,14 @@ public class UserManagement {
 
 	public User findById(long id) {
 		return users.findById(id).orElse(null);
+	}
+
+	public User findByName(String name) {
+		Streamable<User> userList = users.findAll().filter(user -> user.getName().equals(name));
+		if (!userList.isEmpty()) {
+			return userList.toList().get(0);
+		}
+		return null;
 	}
 
 }
