@@ -4,6 +4,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import static org.salespointframework.core.Currencies.*;
 
+import javax.annotation.meta.Exhaustive;
+
 import org.javamoney.moneta.Money;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,13 @@ public class LocationManagementIntegrationTests {
 
     @Autowired
     private LocationManagement locationManagement;
+
+    @Test
+    void createLocation() {
+        LocationForm form = new LocationForm(12, 1, "TestLocation", 500, 200);
+        locationManagement.createLocation(form);
+        assertThat(locationManagement.findAllByName(form.getName())).hasSize(1);
+    }
 
     @Test
     void findsAllLocations() {

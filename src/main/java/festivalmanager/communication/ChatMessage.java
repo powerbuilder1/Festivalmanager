@@ -36,10 +36,10 @@ public class ChatMessage {
     }
 
     public ChatMessage(String message, User sender, Room room) {
-        this.message = message;
-        this.sender = sender;
-        this.room = room;
-        this.timeStamp = new Date();
+        setMessage(message);
+        setSender(sender);
+        setRoom(room);
+        setTimeStamp(new Date());
     }
 
     public Long getId() {
