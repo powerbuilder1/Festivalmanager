@@ -2,6 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
+    <style>
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,19 +20,23 @@
                         <h2 th:text="#{${error}}"></h2>
                     </div>
                     <div class="container" th:each="festival : ${festivals}">
-                        <div class="row d-flex justify-content-center">
-                            <div class="card shadow-lg" style="padding-top: 15px;">
-                                <img class="card-img-top shadow-lg" src="https://www.tagesspiegel.de/images/rock-concert-/27425484/4-format6001.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
-                                    <p class="card-text" th:text="${festival.beginDate}">Start Datum</p>
-                                    <p class="card-text" th:text="${festival.endDate}">End Datum</p>
-                                    <a th:href="@{/festival/{id}(id=${festival.id})}" class="btn btn-primary">click
-                                        me</a>
+                        <a th:href="@{/festival/{id}(id=${festival.id})}">
+                            <div class="row d-flex justify-content-center">
+                                <div class="card shadow-lg" style="padding-top: 15px;">
+                                    <img class="card-img-top shadow-lg" src="https://www.tagesspiegel.de/images/rock-concert-/27425484/4-format6001.jpg" alt="Card image cap">
+                                    <div class="card-body">
+                                        <th:block th:with="sdf = ${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+                                            <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
+                                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
+                                                Datum</span> -
+                                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
+                                                Datum</span>
+                                        </th:block>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <br>
+                            <br>
+                        </a>
                     </div>
                 </div>
             </div>
