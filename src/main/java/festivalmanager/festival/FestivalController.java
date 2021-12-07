@@ -122,4 +122,15 @@ public class FestivalController {
         return "redirect:/festival";
     }
 
+    @PreAuthorize("hasRole('BOSS')")
+    @GetMapping("/festival/{id}/publish")
+    String publishFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        String error = festivalManagement.publishById(id);
+        if (error != "ok") {
+            redirectAttributes.addFlashAttribute("error", error);
+            return "redirect:/festival/" + id;
+        }
+        return "redirect:/festival";
+    }
+
 }

@@ -2,6 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
+    <style>
+        a {
+            color: black;
+            text-decoration: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,18 +27,18 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center" th:each="location : ${locations}">
-                <div class="row d-flex justify-content-center">
-                    <div class="card shadow-lg" style="padding-top: 15px; margin-top:15px;">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${location.name}">Location 1</h5>
-                            <p class="card-text" th:text="|${location.maxVisitors} Besucher|">500</p>
-                            <p class="card-text" th:text="|${location.maxStages} Bühnen|">3</p>
-                            <p class="card-text" th:text="|${location.rent}€|">1000€</p>
-                            <a th:href="@{/location/{id}(id=${location.id})}" class="btn btn-primary">click
-                                me</a>
+                <a th:href="@{/location/{id}(id=${location.id})}">
+                    <div class="row d-flex justify-content-center">
+                        <div class="card shadow-lg" style="padding-top: 15px; margin-top:15px;">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${location.name}">Location 1</h5>
+                                <p class="card-text" th:text="|${location.maxVisitors} Besucher|">500</p>
+                                <p class="card-text" th:text="|${location.maxStages} Bühnen|">3</p>
+                                <p class="card-text" th:text="|${location.rent}€|">1000€</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <!-- END:DETAIL -->

@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import festivalmanager.catering.CateringManagement;
+import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
@@ -158,6 +159,17 @@ public class FestivalManagement {
         }
         System.out.println(festival.toString());
         return festivalRepository.save(festival);
+    }
+
+    public String publishById(long id) {
+        Festival festival = findById(id);
+        Streamable<LineUp> lineups = lineUpManagement.findAllLineUp()
+                .filter(lineup -> lineup.getFestivalIdIdentifier() == id);
+        if (lineups.isEmpty()) {
+            return "Festival has no lineups";
+        }
+
+        return "ok";
     }
 
 }
