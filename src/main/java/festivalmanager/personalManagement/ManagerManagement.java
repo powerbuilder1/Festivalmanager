@@ -4,23 +4,17 @@ import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
 import festivalmanager.authentication.UserManagement;
 import festivalmanager.authentication.UserRepository;
-import festivalmanager.catering.CateringManagement;
-import festivalmanager.catering.Food;
-import festivalmanager.catering.FoodCatalog;
-import festivalmanager.catering.NewFoodItemForm;
-import festivalmanager.stock.StockManagment;
-import org.hibernate.usertype.UserType;
-import org.javamoney.moneta.Money;
-import org.salespointframework.core.Currencies;
-import org.salespointframework.inventory.UniqueInventoryItem;
+import festivalmanager.location.Location;
+import festivalmanager.location.LocationRepository;
 import org.salespointframework.useraccount.UserAccountManagement;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class ManagerManagement extends UserManagement {
 
-
-
+ 	Location location;
+	LocationRepository locationRepository;
 
 	public ManagerManagement(UserRepository users, UserAccountManagement userAccounts) {
 		super(users, userAccounts);
@@ -31,8 +25,16 @@ public class ManagerManagement extends UserManagement {
 	}
 
 	public void editUser(User user, UserForm userForm) {
-			user.setAddress(userForm.getAddress());
-			user.setPosition(userForm.getPosition());
+		user.setAddress(userForm.getAddress());
+		switch (userForm.getPosition().toLowerCase()){
+				case "planning":
+				case "catering":
+					user.setPosition(userForm.getPosition());
+					break;
+				default:
+					throw new IllegalStateException("Unexpected value: " + userForm.getPosition());
+			}
+				user.setWorkPlace(userForm.getWorkPlace());
 			users.save(user);
 	}
 

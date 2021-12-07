@@ -17,6 +17,14 @@
         <label for="position">Position</label>
         <input type="text"  class="form-control" id="position" th:placeholder="${user.getPosition()}" th:field="*{position}">
       </div>
+      <div class="form-group">
+        <label for="workplace" class="form-label" th:text="#{festival.location}">Work Place</label>
+        <select id="workplace" class="form-select" th:field="*{locationIdentifier}" aria-label="Location Select">
+          <option th:each="location : ${locations}" th:value="${location.id}"
+                  th:text="${location.name}">
+        </select>
+      </div>
+
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
   </div>

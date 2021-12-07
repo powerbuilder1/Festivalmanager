@@ -15,12 +15,16 @@ public class UserForm {
 	@NotEmpty(message = "{RegistrationForm.position.NotEmpty}") // s
 	private  String position;
 
-	public UserForm(String name, String password, String address, String position) {
+	@NotEmpty(message = "{RegistrationForm.workplace.NotEmpty}")
+	private String workPlace;
+
+	public UserForm(String name, String password, String address, String position, String workPlace) {
 
 		this.name = name;
 		this.password = password;
 		this.address = address;
 		this.position = position;
+		this.workPlace = workPlace;
 	}
 
 
@@ -39,4 +43,9 @@ public class UserForm {
 	public String getPosition() {
 		return position;
 	}
+
+	public String getWorkPlace() {
+		return workPlace;
+	}
+
 }
