@@ -22,14 +22,13 @@
                         <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
                         <p class="card-text" th:text="${festival.information}">
                         </p>
-                        <div>
-                            Von:
-                            <p th:text="${festival.beginDate}">Termin: 32.13.3020</p>
-                        </div>
-                        <div>
-                            Bis:
-                            <p th:text="${festival.endDate}">Ende: 32.13.3020</p>
-                        </div>
+                        <th:block th:with="sdf = ${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
+                                Datum</span> -
+                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
+                                Datum</span>
+                        </th:block>
+                        <br>
                         <div>
                             <p>Location: <span th:text="${festival.location.name}"></span></p>
                             <img th:src="@{|/image/location_${festival.location.id}.png|}" width="200px">
