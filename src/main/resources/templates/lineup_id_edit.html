@@ -15,7 +15,6 @@
                         <th scope="col">Uhrzeit</th>
                         <th scope="col">Bands</th>
                         <th scope="col">Bühnen</th>
-                        <th scope="col">Preis</th>
 
 
                     </tr></thead>
@@ -51,7 +50,9 @@
 
         <div class="mb-3">
             <label for="name1" class="form-label" th:text="#{lineup.band.name.edit}">Name</label>
-            <input type="text" th:field="*{bandname.name1}" class="form-control " id="name1">
+            <select type="text" th:field="*{bandname.name1}" class="form-select " id="name1">
+                <option th:each="bands: ${lineup.getBands()}" th:value="${bands.name1}"  th:text="${bands.getName1()}">
+            </select>
             <div th:if="${#fields.hasErrors('bandname.name1')} " th:errors="*{bandname.name1}">
                 <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
             </div>
@@ -72,6 +73,10 @@
             <div th:if="${#fields.hasErrors('bandedit.stage')} " th:errors="*{bandedit.stage}">
                 <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
             </div>
+        </div>
+        <div class="field" th:classappend="${#fields.hasErrors('bandedit.price')} ? 'error' : ''">
+            <label th:text="#{lineup.band.price}" for="bandedit.price">Price</label>
+            <input type="number" step="any" th:field="*{bandedit.price}" class="form-control" id="bandedit.price">
         </div>
         <div class="mb-3">
             <label for="bandedit.performanceHour" class="form-label" th:text="#{lineup.band.performanceHour}">Performance</label>

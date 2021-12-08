@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
+<head>
+    <script th:src="@{/resources/js/location_locationmap.js}"></script>
+    <style>
+        .selected {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <section layout:fragment="content">
+        <!-- BEGIN:DETAIL -->
+        <div class="container-fluid" style="margin-top: 15px;">
+            <div class="row" th:if="${error}">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <strong th:text="#{${error}}">Error!</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="width: 100%;">
+                <div class="card shadow-lg" style="padding-top: 15px; margin-top:15px;">
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${location.name}">Location 1</h5>
+                        <span th:text="${location.data}" id="data" style="display: none;"></span>
+                        <div class="container-fluid">
+                            <div class="row" style="width: 100%;">
+                                <div class="col-md-8">
+                                    <div id="map" style="height: 600px; width:100%;">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div id="control_div">
+                                        <ol id="control">
+                                        </ol>
+                                        <div id="information">
+                                            Polygon Details:
+                                            <br>
+                                            <input type="text" placeholder="Name" id="name_input" onchange="changePolygonName()">
+                                            <button onclick="removePolygon()">Remove</button>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <form th:action="@{|/location/${location.id}/locationmap|}" method="post" id="form">
+                                                <input type="hidden" name="data" id="form_data">
+                                                <input type="hidden" name="staticLink" id="form_static">
+                                            </form>
+                                            <button onclick="save()">Save</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuAHl9sypEnysXjsS7SbNJ5e7x44kAFmY&callback=initMap&v=weekly" async></script>
+        <!-- END:DETAIL -->
+    </section>
+</body>
+
+</html>

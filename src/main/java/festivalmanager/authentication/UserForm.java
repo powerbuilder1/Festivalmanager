@@ -1,7 +1,5 @@
 package festivalmanager.authentication;
 
-import festivalmanager.location.Location;
-
 import javax.validation.constraints.NotEmpty;
 
 public class UserForm {
@@ -20,13 +18,16 @@ public class UserForm {
 	@NotEmpty(message = "{RegistrationForm.workplace.NotEmpty}")
 	private String workPlace;
 
-	public UserForm(String name, String password, String address, String position, String workPlace) {
+	private Long festivalId;
+
+	public UserForm(String name, String password, String address, String position, String workPlace,  Long festivalId) {
 
 		this.name = name;
 		this.password = password;
 		this.address = address;
 		this.position = position;
 		this.workPlace = workPlace;
+		this.festivalId = festivalId;
 	}
 
 
@@ -49,5 +50,7 @@ public class UserForm {
 	public String getWorkPlace() {
 		return workPlace;
 	}
+
+	public Long getFestivalId() { return festivalId; }
 
 }

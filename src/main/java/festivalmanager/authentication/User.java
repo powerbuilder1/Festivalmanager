@@ -1,5 +1,6 @@
 package festivalmanager.authentication;
 
+import festivalmanager.festival.Festival;
 import festivalmanager.location.Location;
 import org.salespointframework.useraccount.UserAccount;
 
@@ -7,11 +8,7 @@ import festivalmanager.communication.Participants;
 
 import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -27,6 +24,10 @@ public class User {
 
 	@OneToOne //
 	private UserAccount userAccount;
+
+	@ManyToOne
+	@JoinColumn(name = "festival_id", nullable = false)
+	private Festival festival;
 
 	// used for chat
 	@OneToMany(mappedBy = "user")
@@ -90,4 +91,11 @@ public class User {
 		this.position = position;
 	}
 
+	public Festival getFestival() {
+		return festival;
+	}
+
+	public void setFestival(Festival festival) {
+		this.festival = festival;
+	}
 }

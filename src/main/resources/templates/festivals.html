@@ -36,13 +36,17 @@
                                 <div class="card-body">
                                     <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
                                     <p>
-                                        <span class="card-text" th:text="${festival.beginDate}">Start Datum</span>
-                                        <span> --- </span>
-                                        <span class="card-text" th:text="${festival.endDate}">End Datum</span>
+                                        <th:block th:with="sdf = ${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+                                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
+                                                Datum</span> -
+                                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
+                                                Datum</span>
+                                        </th:block>
                                     </p>
                                     <br>
                                     <a th:href="@{|/festival/${festival.id}/edit|}"><img src="/resources/images/edit.png" style="width:64px;"></a>
                                     <a th:href="@{|/festival/${festival.id}/delete|}"><img src="/resources/images/delete.png" style="width:64px;"></a>
+                                    <a th:unless="${festival.isPublished}" th:href="@{|/festival/${festival.id}/publish|}"><img src="/resources/images/publish.png" style="width: 64px;"></a>
                                 </div>
                             </div>
                         </div>

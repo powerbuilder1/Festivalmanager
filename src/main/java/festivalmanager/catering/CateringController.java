@@ -1,5 +1,6 @@
 package festivalmanager.catering;
 
+import festivalmanager.authentication.User;
 import org.salespointframework.catalog.ProductIdentifier;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
@@ -30,8 +31,11 @@ public class CateringController {
 
 	// route to catalog overview
 	@GetMapping(path = "catering/catalog")
-	public String getCatalog(Model model) {
-		model.addAttribute("catalog", cateringManagement.getCatalog());
+	public String getCatalog(
+			Model model,
+			@LoggedIn Optional<UserAccount> userAccount
+	) {
+		model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
 		return "catalog";
 	}
 
@@ -51,8 +55,11 @@ public class CateringController {
 	// add item to FoodCatalog
 	// TODO: fix because foodItem need festival now
 	@PostMapping(path = "catering/addToFoodCatalog")
-	public String addItemToCatalog(@ModelAttribute NewFoodItemForm foodItemForm) {
-		cateringManagement.addItemToCatalog(foodItemForm);
+	public String addItemToCatalog(
+			@ModelAttribute NewFoodItemForm foodItemForm,
+			@LoggedIn Optional<UserAccount> account
+	) {
+		cateringManagement.addItemToCatalog(foodItemForm, account);
 		return "redirect:/";
 	}
 

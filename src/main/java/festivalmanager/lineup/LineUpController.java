@@ -38,19 +38,6 @@ public class LineUpController {
 		return "lineup_edit";
 	}
 
-
-	@GetMapping("/lineup/{id}")
-	String lineupId(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
-		LineUp lineup = lineUpManagement.findById(id);
-		if (lineup == null) {
-			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
-			return "redirect:/lineup";
-		}
-
-		model.addAttribute("lineup", lineup);
-		return "lineup";
-	}
-
 	@PreAuthorize("hasRole('PLANNING')")
 	@GetMapping("/lineup/{id}/add")
 	String addbandToLineUp(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
@@ -129,10 +116,10 @@ public class LineUpController {
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@PostMapping("/lineup/{id}/deleteband")
-	public String deleteBand(@PathVariable long id, @ModelAttribute Band bandName) {
+	public String deleteBand(@PathVariable long id, @RequestParam String name1) {
 
-		System.out.println(bandName.getName1());
-		lineUpManagement.deleteBand(id,bandName.getName1());
+		System.out.println(name1);
+		lineUpManagement.deleteBand(id,name1);
 
 		return "redirect:/lineup/"+id+"/delete";
 
@@ -140,11 +127,11 @@ public class LineUpController {
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@PostMapping("/lineup/{id}/editband")
-	public String editBand(@PathVariable long id,@ModelAttribute Band bandname, @ModelAttribute BandForm bandedit) {
+	public String editBand(@PathVariable long id,@RequestParam String name1, @ModelAttribute BandForm bandedit) {
 
-		System.out.println(bandname.getName1());
+		System.out.println(name1);
 		System.out.println(bandedit.getName());
-		lineUpManagement.updateBand (id,bandname.getName1(),bandedit);
+		lineUpManagement.updateBand (id,name1,bandedit);
 
 		return "redirect:/lineup/"+id+"/edit";
 

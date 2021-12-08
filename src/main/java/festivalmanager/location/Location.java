@@ -1,5 +1,6 @@
 package festivalmanager.location;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,12 @@ public class Location {
     private int maxStages;
     private String name;
     private Money rent;
+
+    // varchar(255) is to small
+    @Column(columnDefinition = "TEXT")
+    private String data;
+    @Column(columnDefinition = "TEXT")
+    private String staticImage;
 
     public Location() {
     }
@@ -72,6 +79,22 @@ public class Location {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public String getStaticImage() {
+        return staticImage;
+    }
+
+    public void setStaticImage(String staticImage) {
+        this.staticImage = staticImage;
     }
 
     @Override

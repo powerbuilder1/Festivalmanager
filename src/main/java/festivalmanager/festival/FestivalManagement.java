@@ -1,11 +1,13 @@
 package festivalmanager.festival;
 
+import festivalmanager.authentication.UserManagement;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import festivalmanager.catering.CateringManagement;
+import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
@@ -20,18 +22,19 @@ public class FestivalManagement {
     private final LocationManagement locationManagement;
     private final CateringManagement cateringManagement;
     private final LineUpManagement lineUpManagement;
+	private final UserManagement userManagement;
 
     /**
      * Constructor
-     * 
-     * @param festivalRepository
+     *  @param festivalRepository
      * @param locationManagement
-     * @param cateringManagement
-     * @param lineUpManagement
-     */
+	 * @param cateringManagement
+	 * @param lineUpManagement
+	 * @param userManagement
+	 */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
-            CateringManagement cateringManagement, LineUpManagement lineUpManagement) {
-        Assert.notNull(festivalRepository, "festivalRepository must not be null");
+					   CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement) {
+		Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
@@ -41,6 +44,8 @@ public class FestivalManagement {
         this.cateringManagement.setFestivalManagement(this);
         this.lineUpManagement = lineUpManagement;
         this.lineUpManagement.setFestivalManagement(this);
+		this.userManagement = userManagement;
+		this.userManagement.setFestivalManagement(this);
     }
 
     /**
@@ -158,6 +163,20 @@ public class FestivalManagement {
         }
         System.out.println(festival.toString());
         return festivalRepository.save(festival);
+    }
+
+    public String publishById(long id) {
+        Festival festival = findById(id);
+        Streamable<LineUp> lineups = lineUpManagement.findAllLineUp()
+                .filter(lineup -> lineup.getFestivalIdIdentifier() == id);
+        if (lineups.isEmpty()) {
+            return "Festival has no lineups";
+        }
+
+        festival.setIsPublished(true);
+        updateFestival(festival);
+
+        return "ok";
     }
 
 }
