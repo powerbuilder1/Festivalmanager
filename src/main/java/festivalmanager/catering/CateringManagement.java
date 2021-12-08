@@ -1,6 +1,5 @@
 package festivalmanager.catering;
 
-import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
@@ -35,16 +34,18 @@ public class CateringManagement {
 	}
 
 	// add item to Catalog
-	// TODO: fix because of foodItem need festival now
-	public void addItemToCatalog(NewFoodItemForm foodItemForm) {
-		Food foodItem = foodCatalog.save(new Food(
-				foodItemForm.getName(),
-				Money.of(foodItemForm.getPrice(), Currencies.EURO),
-				festivalManagement.findById(foodItemForm.getFestivalId())));
-		stockManagment.initializeInventoryItem(foodItem, 0);
-		for (Product p : foodCatalog.findAll()) {
-			System.out.println(p.getName() + ": " + p.getPrice());
-		}
+	public void addItemToCatalog(NewFoodItemForm foodItemForm, Optional<UserAccount> userAccount) {
+		userAccount.ifPresent(account -> {
+			Festival festival = userManagement.findUserByUserAccount(userAccount.get()).getFestival();
+			Food foodItem = foodCatalog.save(new Food(
+							foodItemForm.getName(),
+							Money.of(foodItemForm.getPrice(), Currencies.EURO),
+							festival
+					)
+			);
+			stockManagment.initializeInventoryItem(foodItem, 0, festival);
+		});
+		// get festival from user over userAccount
 	}
 
 	// get catalog
