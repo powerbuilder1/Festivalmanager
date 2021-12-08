@@ -137,3 +137,16 @@ function create_polygon(pos) {
 
     self.addPolygon(paths, self.randomColor(), null);
 }
+
+function addPolygonControl(index) {
+    var control = document.querySelector("#control");
+    var el = document.createElement("li");
+    el.innerHTML = self.findPolygon(index).name;
+    el.dataset.id = index;
+
+    el.onclick = () => {
+        selectPolygon(el, null);
+    }
+
+    control.appendChild(el);
+}
