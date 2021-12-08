@@ -1,7 +1,9 @@
 package festivalmanager.order;
 
+import festivalmanager.authentication.User;
 import festivalmanager.catering.CateringManagement;
 import festivalmanager.stock.ReorderForm;
+import groovy.util.logging.Log;
 import org.salespointframework.order.Cart;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
@@ -32,8 +34,11 @@ public class OrderController {
 	}
 
 	@GetMapping(path = "catering/sale")
-	String getCart(Model model) {
-		// model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
+	String getCart(
+			Model model,
+			@LoggedIn Optional<UserAccount> userAccount
+			) {
+		model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
 		model.addAttribute("orderForm", new ReorderForm());
 		return "catering";
 	}
@@ -41,12 +46,12 @@ public class OrderController {
 	@PostMapping(path = "catering/order")
 	String addFoodToCard(
 			@ModelAttribute Cart cart,
-			@ModelAttribute ReorderForm orderForm
+			@ModelAttribute ReorderForm orderForm,
+			@LoggedIn Optional<UserAccount> userAccount
 			) {
 
 		customOrderManagement.addFoodToCard(cart, orderForm);
 
-		System.out.println(cart.isEmpty());
 		return "redirect:/catering/sale";
 	}
 
