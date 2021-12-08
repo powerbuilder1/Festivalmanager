@@ -20,6 +20,8 @@ public class Location {
     // varchar(255) is to small
     @Column(columnDefinition = "TEXT")
     private String data;
+    @Column(columnDefinition = "TEXT")
+    private String staticImage;
 
     public Location() {
     }
@@ -85,6 +87,14 @@ public class Location {
 
     public String getData() {
         return data;
+    }
+
+    public String getStaticImage() {
+        return staticImage;
+    }
+
+    public void setStaticImage(String staticImage) {
+        this.staticImage = staticImage;
     }
 
     @Override

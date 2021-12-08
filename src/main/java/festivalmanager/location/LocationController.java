@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -113,6 +114,16 @@ public class LocationController {
             return "redirect:/location/" + id;
         }
         return "redirect:/locations";
+    }
+
+    @PreAuthorize("hasRole('PLANNING')")
+    @PostMapping("/location/{id}/locationmap")
+    String locationMap(@PathVariable long id, @RequestParam String data, @RequestParam String staticLink) {
+        Location location = locationManagement.findById(id);
+        location.setData(data);
+        location.setStaticImage(staticLink);
+        locationManagement.updateLocation(location);
+        return "redirect:/location/" + id;
     }
 
 }
