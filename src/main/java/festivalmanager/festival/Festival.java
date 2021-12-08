@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
+import festivalmanager.authentication.User;
 import festivalmanager.catering.Food;
 import festivalmanager.location.Location;
 import festivalmanager.stock.FoodInventoryItem;
@@ -37,6 +38,9 @@ public class Festival {
 
 	@OneToMany(mappedBy = "festival")
 	private Set<FoodInventoryItem> inventoryFoodItems;
+
+	@OneToMany(mappedBy = "festival")
+	private Set<User> users;
 
 	private boolean isPublished;
 
