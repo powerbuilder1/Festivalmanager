@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 import festivalmanager.catering.Food;
 import festivalmanager.location.Location;
+import festivalmanager.stock.FoodInventoryItem;
 
 import java.util.Set;
 
@@ -34,7 +35,10 @@ public class Festival {
     @OneToMany(mappedBy = "festival")
     private Set<Food> catalogFoodItems;
 
-    private boolean isPublished;
+	@OneToMany(mappedBy = "festival")
+	private Set<FoodInventoryItem> inventoryFoodItems;
+
+	private boolean isPublished;
 
     public Festival() {
     }
