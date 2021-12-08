@@ -3,6 +3,7 @@ package festivalmanager.catering;
 import festivalmanager.authentication.UserManagement;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
+import festivalmanager.stock.FoodInventoryItem;
 import festivalmanager.stock.StockManagment;
 import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;
@@ -59,7 +60,7 @@ public class CateringManagement {
 
 	public void deleteItemFromCatalog(Food foodItem) {
 		if (stockManagment.findByProduct(foodItem).isPresent()) {
-			UniqueInventoryItem inventoryItem = stockManagment.findByProduct(foodItem).get();
+			FoodInventoryItem inventoryItem = stockManagment.findByProduct(foodItem).get();
 			stockManagment.deleteAllInventoryItems(inventoryItem);
 			foodCatalog.delete(foodItem);
 		}
