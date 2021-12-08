@@ -40,10 +40,12 @@ public class UserDataInitializer implements DataInitializer {
 //		userAccountManagement.create("Planning", Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));
 
 		Long festivalId = festivalManagement.findAllFestivals().toList().get(0).getId();
+		Long festivalId1 = festivalManagement.findAllFestivals().toList().get(1).getId();
 
 		List.of(new UserForm("Hans", "123456", "Zuhause", "Customer",null, festivalId)).forEach(userManagement::createUser);
 		List.of(new UserForm("Planning", "123456", "Zuhause", "Planning",null, festivalId)).forEach(userManagement::createPlanningStaff);
 		List.of(new UserForm("Catering", "123456", "Zuhause", "Catering",null, festivalId)).forEach(userManagement::createCateringStaff);
+		List.of(new UserForm("Catering1", "123456", "Zuhause", "Catering",null, festivalId1)).forEach(userManagement::createCateringStaff);
 		List.of(new UserForm("Boss", "123456", "Zuhause", "BOSS",null, festivalId),
 				new UserForm("manager", "manager", "Zuhause", "BOSS",null, festivalId)).forEach(userManagement::createBoss);
 		List.of(new UserForm("SYSTEM", "abcdefg", "", "SYSTEM",null, festivalId)).forEach(userManagement::createSystem);
