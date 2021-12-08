@@ -75,6 +75,19 @@ const self = {
         })
         return poly;
     },
+
+    addPolygon: function(paths, color, name) {
+        var poly = this.createPolygon(paths, color, name);
+        poly.setMap(this.map);
+        this.polygons.push(poly);
+        addPolygonControl(poly.id);
+    },
+
+    findPolygon: function(id) {
+        return this.polygons.filter((poly) => {
+            return poly.id == id;
+        })[0];
+    },
 };
 
 function initMap() {
