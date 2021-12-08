@@ -1,13 +1,19 @@
 package festivalmanager.catering;
 
+import festivalmanager.authentication.User;
+import festivalmanager.authentication.UserManagement;
+import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.stock.StockManagment;
 import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;
 import org.salespointframework.core.Currencies;
 import org.salespointframework.inventory.UniqueInventoryItem;
+import org.salespointframework.useraccount.UserAccount;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class CateringManagement {
@@ -15,10 +21,12 @@ public class CateringManagement {
 	private final FoodCatalog foodCatalog;
 	private final StockManagment stockManagment;
 	private FestivalManagement festivalManagement;
+	private final UserManagement userManagement;
 
-	public CateringManagement(FoodCatalog foodCatalog, StockManagment stockManagment) {
+	public CateringManagement(FoodCatalog foodCatalog, StockManagment stockManagment, UserManagement userManagement) {
 		this.foodCatalog = foodCatalog;
 		this.stockManagment = stockManagment;
+		this.userManagement = userManagement;
 		this.festivalManagement = null;
 	}
 
@@ -40,8 +48,12 @@ public class CateringManagement {
 	}
 
 	// get catalog
-	public Streamable<Food> getCatalog() {
-		return foodCatalog.findAll();
+	public Streamable<Food> getCatalog(Optional<UserAccount> userAccount) {
+		if (userAccount.isPresent()) {
+			Festival festival = userManagement.findUserByUserAccount(userAccount.get()).getFestival();
+			return foodCatalog.findFoodsByFestival(festival);
+		}
+		return null;
 	}
 
 	public void deleteItemFromCatalog(Food foodItem) {
