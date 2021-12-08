@@ -3,9 +3,6 @@ package festivalmanager.order;
 import festivalmanager.catering.CateringManagement;
 import festivalmanager.stock.ReorderForm;
 import org.salespointframework.order.Cart;
-import org.salespointframework.order.Order;
-import org.salespointframework.payment.Cash;
-import org.salespointframework.quantity.Quantity;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -36,7 +33,7 @@ public class OrderController {
 
 	@GetMapping(path = "catering/sale")
 	String getCart(Model model) {
-		model.addAttribute("catalog", cateringManagement.getCatalog());
+		// model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
 		model.addAttribute("orderForm", new ReorderForm());
 		return "catering";
 	}
