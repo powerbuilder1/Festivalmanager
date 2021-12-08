@@ -15,15 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
 
-
 @Controller
 @PreAuthorize("hasRole('BOSS')")
-public class ManagerController{
+public class ManagerController {
 	public final ManagerManagement managerManagement;
 	private final UserRepository userRepository;
 	private final LocationManagement locationManagement;
 
-	public ManagerController(ManagerManagement managerManagement, UserRepository userRepository, LocationManagement locationManagement) {
+	public ManagerController(ManagerManagement managerManagement, UserRepository userRepository,
+			LocationManagement locationManagement) {
 		this.managerManagement = managerManagement;
 		this.userRepository = userRepository;
 		this.locationManagement = locationManagement;
@@ -41,7 +41,6 @@ public class ManagerController{
 		return "team";
 	}
 
-
 	@PostMapping("/new_personal")
 	String registerNew(@Valid UserForm form, Errors result) {
 
@@ -51,9 +50,9 @@ public class ManagerController{
 
 		// (｡◕‿◕｡)
 		// Falles alles in Ordnung ist legen wir einen Mitarbeiter an
-		if(form.getPosition().equalsIgnoreCase("catering")){
+		if (form.getPosition().equalsIgnoreCase("catering")) {
 			managerManagement.createCateringStaff(form);
-		}else if (form.getPosition().equalsIgnoreCase("planning")){
+		} else if (form.getPosition().equalsIgnoreCase("planning")) {
 			managerManagement.createPlanningStaff(form);
 		}
 		return "redirect:/team";
@@ -67,12 +66,12 @@ public class ManagerController{
 	@GetMapping(path = "dashboard/team/personal_edit/{user}")
 	public String getUser(
 			@PathVariable("user") Long id,
-			Model model
-	) {
+			Model model) {
 		User user = userRepository.findById(id).get();
 		model.addAttribute("locations", locationManagement.findAllLocations().toList());
 		model.addAttribute("user", user);
-		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(), user.getPosition(), user.getWorkPlace()));
+		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(),
+				user.getPosition(), user.getWorkPlace(), user.getFestival().getId()));
 		System.out.println(user.getName());
 		System.out.println(user.getPassword());
 		System.out.println(user.getAddress());
@@ -81,28 +80,19 @@ public class ManagerController{
 		return "personal_edit";
 	}
 
-
-
 	@PostMapping(path = "/dashboard/team/editUserById/{user}")
 	public String editUserById(
 			@PathVariable("user") long id,
-			@ModelAttribute UserForm userForm
-	) {
+			@ModelAttribute UserForm userForm) {
 		// checks auf null
 		managerManagement.editUser(userRepository.findById(id).get(), userForm);
 		return "redirect:/team";
 	}
-
-
 
 	@PostMapping(path = "/dashboard/team/deleteUserById/{user}")
 	public String deleteUserById(@PathVariable("user") Long id) {
 		managerManagement.deleteUser(userRepository.findById(id).get());
 		return "redirect:/team";
 	}
-
-
-
-
 
 }
