@@ -59,26 +59,13 @@ public class LineUpManagement {
 	}
 
 	public void deleteBand(Long id, String bandname) {
+		System.out.println(bandname);
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
+			lineUp.getBands().removeIf(filterBand -> filterBand.getName1().equals(bandname));
+			LineUpRepository.save(lineUp);
 
-			Iterator itr = lineUp.getBands().iterator();
-			while (itr.hasNext()) {
-				Band delBand = (Band) itr.next();
-				if (delBand.getName1().equals(bandname)) {
-					itr.remove();
-				} else {
-					System.out.println("This band has not been found");
-				}
-
-				LineUpRepository.save(lineUp);
-			}
 		});
 	}
-	/*
-	 * public void updateBand(BandForm form) {
-	 * Assert.notNull(form, "form must not be null");
-	 * }
-	 */
 
 	public void updateBand(long id, String Bandname, BandForm form) {
 
@@ -90,7 +77,9 @@ public class LineUpManagement {
 				if (editBand.getName1().equals(Bandname)) {
 					editBand.setName1(form.getName());
 					editBand.setStage(form.getStage());
+					editBand.setPrice(Money.of(form.getPrice(), Currencies.EURO));
 					editBand.setPerformanceHour(form.getPerformanceHour());
+					break;
 				} else {
 					System.out.println("This band has not been found");
 				}

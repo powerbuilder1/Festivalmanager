@@ -129,10 +129,10 @@ public class LineUpController {
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@PostMapping("/lineup/{id}/deleteband")
-	public String deleteBand(@PathVariable long id, @ModelAttribute Band bandName) {
+	public String deleteBand(@PathVariable long id, @RequestParam String name1) {
 
-		System.out.println(bandName.getName1());
-		lineUpManagement.deleteBand(id,bandName.getName1());
+		System.out.println(name1);
+		lineUpManagement.deleteBand(id,name1);
 
 		return "redirect:/lineup/"+id+"/delete";
 
@@ -140,11 +140,11 @@ public class LineUpController {
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@PostMapping("/lineup/{id}/editband")
-	public String editBand(@PathVariable long id,@ModelAttribute Band bandname, @ModelAttribute BandForm bandedit) {
+	public String editBand(@PathVariable long id,@RequestParam String name1, @ModelAttribute BandForm bandedit) {
 
-		System.out.println(bandname.getName1());
+		System.out.println(name1);
 		System.out.println(bandedit.getName());
-		lineUpManagement.updateBand (id,bandname.getName1(),bandedit);
+		lineUpManagement.updateBand (id,name1,bandedit);
 
 		return "redirect:/lineup/"+id+"/edit";
 

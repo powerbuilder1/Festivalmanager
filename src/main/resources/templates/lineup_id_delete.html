@@ -52,12 +52,16 @@
             </p>
             <div class="field" th:classappend="${#fields.hasErrors('name1')} ? 'error' : ''">
                 <label th:text="#{lineup.band.name.delete}" for="name1">Name</label>
-                <input type="text" th:field="*{name1}" class="form-control" id="name1">
+                <select type="text" th:field="*{name1}" class="form-select" id="name1">
+                <option th:each="bands: ${lineup.getBands()}" th:value="${bands.name1}"  th:text="${bands.getName1()}">
+
+                </select>
             </div>
             <button type="submit" class="ui labeled icon button">
                 <i class="icon edit"></i><span th:text="#{lineup.band.delete}"> Delete band from Line Up </span>
             </button>
         </form>
+
 
     </div>
     <div class="row d-flex justify-content-center">
