@@ -96,6 +96,34 @@ const self = {
         }
         return color;
     },
+    load: function(data) {
+        data = JSON.parse(data);
+        self.map.setCenter(data.map.center);
+        self.map.setZoom(data.map.zoom);
+        data.polygons.forEach(function(poly) {
+            self.addPolygon(poly.paths, poly.color, poly.name);
+        });
+    },
+    save: function() {
+        var data = {
+            map: {
+                center: {
+                    lat: self.map.getCenter().lat(),
+                    lng: self.map.getCenter().lng()
+                },
+                zoom: self.map.getZoom()
+            },
+            polygons: [],
+        };
+        this.polygons.forEach(function(poly) {
+            data.polygons.push({
+                color: poly.fillColor,
+                name: poly.name,
+                paths: poly.getPath().getArray()
+            });
+        });
+        return JSON.stringify(data);
+    },
 };
 
 function initMap() {
@@ -114,6 +142,8 @@ function initMap() {
     google.maps.event.addListener(self.map, "click", (event) => {
         create_polygon(event.latLng);
     });
+    // try loading data from location
+    self.load(document.querySelector("#data").value);
 }
 
 function create_polygon(pos) {
@@ -181,6 +211,7 @@ function selectPolygon(el, id) {
     // load polygon data
     var poly = self.findPolygon(id);
     document.querySelector("#color_input").value = poly.fillColor;
+    document.querySelector("#name_input").value = poly.name;
 }
 
 function changePolygonColor() {

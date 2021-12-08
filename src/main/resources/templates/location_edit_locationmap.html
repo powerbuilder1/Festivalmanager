@@ -3,6 +3,11 @@
 
 <head>
     <script th:src="@{/resources/js/location_locationmap.js}"></script>
+    <style>
+        .selected {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,6 +25,7 @@
                 <div class="card shadow-lg" style="padding-top: 15px; margin-top:15px;">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${location.name}">Location 1</h5>
+                        <span th:text="${location.data}" id="data" style="display: none;"></span>
                         <div class="container-fluid">
                             <div class="row" style="width: 100%;">
                                 <div class="col-md-8">
