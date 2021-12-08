@@ -1,8 +1,8 @@
 package festivalmanager.authentication;
 
+import festivalmanager.festival.Festival;
+import festivalmanager.festival.FestivalManagement;
 import org.salespointframework.core.DataInitializer;
-import org.salespointframework.useraccount.Password;
-import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccountManagement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +20,10 @@ public class UserDataInitializer implements DataInitializer {
 
 	private final UserAccountManagement userAccountManagement;
 	private final UserManagement userManagement;
+	private final FestivalManagement festivalManagement;
 
-	UserDataInitializer(UserAccountManagement userAccountManagement, UserManagement userManagement) {
+	UserDataInitializer(UserAccountManagement userAccountManagement, UserManagement userManagement, FestivalManagement festivalManagement) {
+		this.festivalManagement = festivalManagement;
 
 		Assert.notNull(userAccountManagement, "UserAccountManagement must not be null!");
 		Assert.notNull(userManagement, "UserRepository must not be null!");
@@ -37,12 +39,14 @@ public class UserDataInitializer implements DataInitializer {
 //		userAccountManagement.create("Catering", Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
 //		userAccountManagement.create("Planning", Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));
 
-		List.of(new UserForm("Hans", "123456", "Zuhause", "Customer",null)).forEach(userManagement::createUser);
-		List.of(new UserForm("Planning", "123456", "Zuhause", "Planning",null)).forEach(userManagement::createPlanningStaff);
-		List.of(new UserForm("Catering", "123456", "Zuhause", "Catering",null)).forEach(userManagement::createCateringStaff);
-		List.of(new UserForm("Boss", "123456", "Zuhause", "BOSS",null),
-				new UserForm("manager", "manager", "Zuhause", "BOSS",null)).forEach(userManagement::createBoss);
-		List.of(new UserForm("SYSTEM", "abcdefg", "", "SYSTEM",null)).forEach(userManagement::createSystem);
+		Long festivalId = festivalManagement.findAllFestivals().toList().get(0).getId();
+
+		List.of(new UserForm("Hans", "123456", "Zuhause", "Customer",null, festivalId)).forEach(userManagement::createUser);
+		List.of(new UserForm("Planning", "123456", "Zuhause", "Planning",null, festivalId)).forEach(userManagement::createPlanningStaff);
+		List.of(new UserForm("Catering", "123456", "Zuhause", "Catering",null, festivalId)).forEach(userManagement::createCateringStaff);
+		List.of(new UserForm("Boss", "123456", "Zuhause", "BOSS",null, festivalId),
+				new UserForm("manager", "manager", "Zuhause", "BOSS",null, festivalId)).forEach(userManagement::createBoss);
+		List.of(new UserForm("SYSTEM", "abcdefg", "", "SYSTEM",null, festivalId)).forEach(userManagement::createSystem);
 
 		// userAccountManagement.create("Catering",
 		// Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
