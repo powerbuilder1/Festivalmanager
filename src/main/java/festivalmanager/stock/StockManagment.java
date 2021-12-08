@@ -1,7 +1,7 @@
 package festivalmanager.stock;
 
 import festivalmanager.catering.Food;
-import festivalmanager.catering.FoodCatalog;
+import festivalmanager.festival.Festival;
 import org.salespointframework.catalog.ProductIdentifier;
 import org.salespointframework.inventory.UniqueInventory;
 import org.salespointframework.inventory.UniqueInventoryItem;
@@ -36,8 +36,8 @@ public class StockManagment {
 	}
 
 	// initialize new Inventory Item for a specific Food-Product
-	public void initializeInventoryItem(Food foodItem, double amount) {
-		inventory.save(new UniqueInventoryItem(foodItem, Quantity.of(amount)));
+	public void initializeInventoryItem(Food foodItem, double amount, Festival festival) {
+		inventory.save(new FoodInventoryItem(foodItem, Quantity.of(amount), festival));
 	}
 
 
