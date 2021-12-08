@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
+    <script th:src="@{/resources/js/location_locationmap.js}"></script>
 </head>
 
 <body>
@@ -16,15 +17,29 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
-                <div class=" row d-flex justify-content-center ">
-                    <div class="card shadow-lg " style="padding-top: 15px; margin-top:15px; ">
-                        <div class="card-body ">
-                            <h5 class="card-title " th:text="${location.name} ">Location 1</h5>
+                <div class="row d-flex justify-content-center">
+                    <div class="card shadow-lg" style="padding-top: 15px; margin-top:15px;">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${location.name}">Location 1</h5>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div id="map" style="height: 600px; width:900px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div id="control_div">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuAHl9sypEnysXjsS7SbNJ5e7x44kAFmY&callback=initMap&v=weekly" async></script>
         <!-- END:DETAIL -->
     </section>
 </body>
