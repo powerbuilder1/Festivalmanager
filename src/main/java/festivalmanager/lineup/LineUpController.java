@@ -38,19 +38,6 @@ public class LineUpController {
 		return "lineup_edit";
 	}
 
-
-	@GetMapping("/lineup/{id}")
-	String lineupId(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
-		LineUp lineup = lineUpManagement.findById(id);
-		if (lineup == null) {
-			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
-			return "redirect:/lineup";
-		}
-
-		model.addAttribute("lineup", lineup);
-		return "lineup";
-	}
-
 	@PreAuthorize("hasRole('PLANNING')")
 	@GetMapping("/lineup/{id}/add")
 	String addbandToLineUp(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
