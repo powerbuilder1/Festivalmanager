@@ -182,3 +182,21 @@ function selectPolygon(el, id) {
     var poly = self.findPolygon(id);
     document.querySelector("#color_input").value = poly.fillColor;
 }
+
+function changePolygonColor() {
+    var poly = self.findPolygon(document.querySelector(".selected").dataset.id);
+    poly.setOptions({
+        fillColor: document.querySelector("#color_input").value,
+        strokeColor: document.querySelector("#color_input").value
+    });
+}
+
+function changePolygonName() {
+    var el = document.querySelector(".selected");
+    var poly = self.findPolygon(el.dataset.id);
+    poly.name = document.querySelector("#name_input").value;
+    var label = poly.marker.getLabel()
+    label.text = poly.name;
+    poly.marker.setLabel(label);
+    el.innerHTML = poly.name;
+}
