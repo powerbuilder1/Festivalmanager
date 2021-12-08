@@ -44,11 +44,17 @@ public class UserDataInitializer implements DataInitializer {
 
 		List.of(new UserForm("Hans", "123456", "Zuhause", "Customer",null, festivalId)).forEach(userManagement::createUser);
 		List.of(new UserForm("Planning", "123456", "Zuhause", "Planning",null, festivalId)).forEach(userManagement::createPlanningStaff);
-		List.of(new UserForm("Catering", "123456", "Zuhause", "Catering",null, festivalId)).forEach(userManagement::createCateringStaff);
-		List.of(new UserForm("Catering1", "123456", "Zuhause", "Catering",null, festivalId1)).forEach(userManagement::createCateringStaff);
+		List.of(
+				new UserForm("Catering", "123456", "Zuhause", "Catering",null, festivalId),
+				new UserForm("Catering1", "123456", "Zuhause", "Catering",null, festivalId1)
+		).forEach(userManagement::createCateringStaff);
 		List.of(new UserForm("Boss", "123456", "Zuhause", "BOSS",null, festivalId),
 				new UserForm("manager", "manager", "Zuhause", "BOSS",null, festivalId)).forEach(userManagement::createBoss);
 		List.of(new UserForm("SYSTEM", "abcdefg", "", "SYSTEM",null, festivalId)).forEach(userManagement::createSystem);
+		List.of(
+				new UserForm("FestivalDirector", "123", "Zuhause", "FESTIVALDIRECTOR",null, festivalId),
+				new UserForm("FestivalDirector1", "123", "Zuhause", "FESTIVALDIRECTOR",null, festivalId1)
+		).forEach(userManagement::createFestivalDirector);
 
 		// userAccountManagement.create("Catering",
 		// Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
