@@ -1,16 +1,15 @@
 package festivalmanager.catering;
 
-import festivalmanager.authentication.User;
-import org.salespointframework.catalog.ProductIdentifier;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -23,6 +22,7 @@ public class CateringController {
 	}
 
 	// route to catering management page
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/management")
 	public String getCateringManagement(Model model) {
 		model.addAttribute("foodItemForm", new NewFoodItemForm());
@@ -30,6 +30,7 @@ public class CateringController {
 	}
 
 	// route to catalog overview
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/catalog")
 	public String getCatalog(
 			Model model,
@@ -40,6 +41,7 @@ public class CateringController {
 	}
 
 	// route to edit page for catalog items
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/catalog/edit/{foodItem}")
 	public String getEditCatalogItem(
 			@PathVariable("foodItem") Food foodItem,
@@ -53,7 +55,7 @@ public class CateringController {
 	}
 
 	// add item to FoodCatalog
-	// TODO: fix because foodItem need festival now
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/addToFoodCatalog")
 	public String addItemToCatalog(
 			@ModelAttribute NewFoodItemForm foodItemForm,
@@ -64,6 +66,7 @@ public class CateringController {
 	}
 
 	// delete item from FoodCatalog
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/deleteFromCatalog/{foodItem}")
 	public String deleteItemFromCatalog(@PathVariable("foodItem") Food foodItem) {
 		cateringManagement.deleteItemFromCatalog(foodItem);
@@ -71,6 +74,7 @@ public class CateringController {
 	}
 
 	// edit item from FoodCatalog
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/editFromCatalog/{foodItem}")
 	public String editItemFromCatalog(
 			@PathVariable("foodItem") Food foodItem,
