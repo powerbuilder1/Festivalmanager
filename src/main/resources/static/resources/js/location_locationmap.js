@@ -143,7 +143,7 @@ function initMap() {
         create_polygon(event.latLng);
     });
     // try loading data from location
-    self.load(document.querySelector("#data").value);
+    self.load(document.querySelector("#data").innerHTML);
 }
 
 function create_polygon(pos) {
