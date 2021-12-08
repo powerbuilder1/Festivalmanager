@@ -150,3 +150,35 @@ function addPolygonControl(index) {
 
     control.appendChild(el);
 }
+
+function selectPolygon(el, id) {
+    if (el == undefined || el == null) {
+        el = document.querySelector("[data-id='" + id + "']");
+    } else if (id == undefined || id == null) {
+        id = el.dataset.id;
+    }
+
+    // deselect others
+    if (document.querySelectorAll(".selected").length > 0) {
+        document.querySelectorAll(".selected").forEach((element) => {
+            if (element == undefined || self.findPolygon(element.dataset.id) == undefined) return;
+            // reset stroke color
+            var fillColor = self.findPolygon(element.dataset.id).fillColor;
+            self.findPolygon(element.dataset.id).setOptions({
+                strokeColor: fillColor
+            });
+            // remove class
+            element.classList.remove("selected");
+        });
+    }
+
+    // self select -> underline text & set stroke color to red
+    el.classList.add("selected");
+    self.findPolygon(id).setOptions({
+        strokeColor: "#FF0000",
+    });
+
+    // load polygon data
+    var poly = self.findPolygon(id);
+    document.querySelector("#color_input").value = poly.fillColor;
+}
