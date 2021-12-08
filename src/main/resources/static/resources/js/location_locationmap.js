@@ -199,4 +199,14 @@ function changePolygonName() {
     label.text = poly.name;
     poly.marker.setLabel(label);
     el.innerHTML = poly.name;
+
+}
+
+function removePolygon() {
+    var el = document.querySelector(".selected");
+    var poly = self.findPolygon(el.dataset.id);
+    poly.marker.setMap(null);
+    poly.setMap(null);
+    self.polygons = self.polygons.filter(poly => poly.id != el.dataset.id);
+    document.querySelector("#control").removeChild(el);
 }
