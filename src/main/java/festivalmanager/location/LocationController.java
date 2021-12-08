@@ -51,7 +51,8 @@ public class LocationController {
         }
 
         model.addAttribute("location", location);
-        return "location_edit_image";
+        // return "location_edit_image";
+        return "location_edit_locationmap";
     }
 
     @PreAuthorize("hasRole('PLANNING')")
@@ -93,7 +94,8 @@ public class LocationController {
 
     @PreAuthorize("hasRole('PLANNING')")
     @PostMapping("/location/new")
-    String newLocation(@ModelAttribute("location") LocationForm form, Errors result, RedirectAttributes redirectAttributes) {
+    String newLocation(@ModelAttribute("location") LocationForm form, Errors result,
+            RedirectAttributes redirectAttributes) {
         System.out.println(form.toString());
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("error", result.toString());
