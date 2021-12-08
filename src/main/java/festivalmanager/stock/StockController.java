@@ -4,6 +4,7 @@ import groovy.util.logging.Log;
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ public class StockController {
 	}
 
 	// route to stock overview
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "stock")
 	public String getCurrentStock(
 			Model model,
@@ -37,12 +39,14 @@ public class StockController {
 	}
 
 	// delete all inventory Items for a specific FoodItem
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "stock/deleteAllInventoryItems/{inventoryItem}")
 	public String deleteAllInventoryItems(@PathVariable FoodInventoryItem inventoryItem) {
 		stockManagment.deleteAllInventoryItems(inventoryItem);
 		return "stock";
 	}
 
+	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "stock/reorder")
 	public String reorderItem(@ModelAttribute ReorderForm reorderForm) {
 		stockManagment.reorderItem(reorderForm);
