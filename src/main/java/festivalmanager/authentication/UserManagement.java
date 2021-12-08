@@ -22,6 +22,7 @@ public class UserManagement {
 	public static final Role PLANNING_ROLE = Role.of("PLANNING");
 	public static final Role CATERING_ROLE = Role.of("CATERING");
 	public static final Role SYSTEM_ROLE = Role.of("SYSTEM");
+	public static final Role FESTIVALDIRECTOR_ROLE = Role.of("FESTIVALDIRECTOR");
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
@@ -112,6 +113,19 @@ public class UserManagement {
 		return users.save(user);
 	}
 
+	public User createFestivalDirector(UserForm form) {
+
+		Assert.notNull(form, "Registration form must not be null!");
+
+		var password = Password.UnencryptedPassword.of(form.getPassword());
+		var userAccount = userAccounts.create(form.getName(), password, FESTIVALDIRECTOR_ROLE);
+		User user = new User(form.getPosition(), userAccount);
+		user.setAddress(form.getAddress());
+		user.setName(form.getName());
+		user.setPosition(form.getPosition());
+		user.setFestival(festivalManagement.findById(form.getFestivalId()));
+		return users.save(user);
+	}
 	public Streamable<User> findAll() {
 		return users.findAll();
 	}
