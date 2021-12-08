@@ -32,6 +32,49 @@ const self = {
             lng: y1 + (y2 - y1) / 2
         };
     },
+    createPolygon: function(paths, color, name) {
+        var poly = new google.maps.Polygon({
+            paths: paths,
+            strokeColor: color,
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: color,
+            fillOpacity: 0.35,
+            editable: true,
+            draggable: true,
+        });
+        // set extra attributes
+        poly.id = self.counter++;
+        poly.name = (name) ? name : "Polygon[" + poly.id + "]";
+
+        // add marker
+        poly.marker = new google.maps.Marker({
+            position: this.getPolygonCenter(poly),
+            map: self.map,
+            draggable: false,
+            label: {
+                text: poly.name,
+                color: "#FFFFFF",
+            },
+            icon: {
+                url: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdjyHQt+g8ABFsCIF75EPIAAAAASUVORK5CYII="
+            }
+        });
+
+        // set event listeners
+        poly.addListener('rightclick', function(mev) {
+            if (mev.vertex != null && this.getPath().getLength() > 3) {
+                this.getPath().removeAt(mev.vertex);
+            }
+        });
+        poly.addListener('click', function() {
+            selectPolygon(null, poly.id);
+        })
+        poly.addListener('mouseup', function() {
+            this.marker.setPosition(self.getPolygonCenter(this));
+        })
+        return poly;
+    },
 };
 
 function initMap() {
