@@ -44,6 +44,7 @@
               <th th:text="#{users.position}">Position</th>
               <th th:text="#{users.address}">Address</th>
               <th th:text="#{users.workplace}">Work Place</th>
+              <th>Festival</th>
             </tr>
             </thead>
             <tbody th:remove="all-but-first">
@@ -52,6 +53,7 @@
               <td th:text="${user.position}">Position</td>
               <th th:text="${user.address}">Address</th>
               <th th:text="${user.workPlace}">Work Place</th>
+              <th th:text="${user.festival.name}">Work Place</th>
               <td>
                 <form th:action="@{|/dashboard/team/personal_edit/${user.getId()}|}" method="get">
                   <button type="submit"  class="btn btn-warning">Edit</button>
