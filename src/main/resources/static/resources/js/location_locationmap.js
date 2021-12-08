@@ -115,3 +115,25 @@ function initMap() {
         create_polygon(event.latLng);
     });
 }
+
+function create_polygon(pos) {
+    var paths = [];
+    paths.push({
+        lat: pos.lat() - 0.001,
+        lng: pos.lng()
+    });
+    paths.push({
+        lat: pos.lat(),
+        lng: pos.lng() + 0.001
+    });
+    paths.push({
+        lat: pos.lat() + 0.001,
+        lng: pos.lng()
+    });
+    paths.push({
+        lat: pos.lat(),
+        lng: pos.lng() - 0.001
+    });
+
+    self.addPolygon(paths, self.randomColor(), null);
+}
