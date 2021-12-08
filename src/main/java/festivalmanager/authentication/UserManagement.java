@@ -4,6 +4,7 @@ import festivalmanager.festival.FestivalManagement;
 import org.hibernate.usertype.UserType;
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
+import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Streamable;
@@ -125,6 +126,10 @@ public class UserManagement {
 			return userList.toList().get(0);
 		}
 		return null;
+	}
+
+	public User findUserByUserAccount(UserAccount useraccount) {
+		return users.findUserByUserAccount(useraccount);
 	}
 
 }
