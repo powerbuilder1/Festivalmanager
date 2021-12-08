@@ -33,6 +33,7 @@ public class OrderController {
 		return new Cart();
 	}
 
+	@PreAuthorize("hasRole('CATERING')")
 	@GetMapping(path = "catering/sale")
 	String getCart(
 			Model model,
@@ -43,6 +44,7 @@ public class OrderController {
 		return "catering";
 	}
 
+	@PreAuthorize("hasRole('CATERING')")
 	@PostMapping(path = "catering/order")
 	String addFoodToCard(
 			@ModelAttribute Cart cart,
@@ -55,6 +57,7 @@ public class OrderController {
 		return "redirect:/catering/sale";
 	}
 
+	@PreAuthorize("hasRole('CATERING')")
 	@PostMapping(path = "catering/checkout")
 	String buy(
 			@ModelAttribute Cart cart,
