@@ -29,7 +29,7 @@
                                         <a href="/" th:href="@{|/location/${location.id}/edit/image|}">
                                             <!--old: <img th:src="@{|/image/location_${location.id}.png|}" alt="Location Image - edit me" style="width: 400px">-->
                                             <span id="data" th:text="${location.data}" style="display: none;"></span>
-                                            <img src="/" alt="Location Map">
+                                            <img th:src="${location.staticImage}" alt="Location Map">
                                         </a>
                                     </div>
                                     <div class="col-2">

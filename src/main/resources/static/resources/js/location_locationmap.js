@@ -124,6 +124,39 @@ const self = {
         });
         return JSON.stringify(data);
     },
+    toStatic: function() {
+        var baseUrl = "https://maps.googleapis.com/maps/api/staticmap";
+        baseUrl += "?center=" + this.map.getCenter().lat() + "," + this.map.getCenter().lng();
+        baseUrl += "&zoom=" + this.map.getZoom();
+        baseUrl += "&size=640x400";
+        baseUrl += "&maptype=satellite";
+
+        // add polygon data
+        self.polygons.forEach(function(poly) {
+            var path = poly.getPath().getArray();
+            baseUrl += "&path=color:" + "0x1E" + poly.fillColor.substring(1, 7) + "|weight:1|fillcolor:" + "0x1E" + poly.fillColor.substring(1, 7);
+            path.forEach(function(point) {
+                baseUrl += "|" + point.lat() + "," + point.lng();
+            });
+        });
+
+        // add polygon markers
+        self.polygons.forEach(function(poly) {
+            var url = "https://api.imgbun.com/png?key=a81cb2b882806de2fd480cb5a75b1c7a&text=" + poly.name + "&color=FFFFFF&size=12";
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", url, false);
+            xmlHttp.send(null);
+            var link = JSON.parse(xmlHttp.responseText).direct_link;
+
+            // empty image: https://i.ibb.co/9vDKM7b/icon.png
+            baseUrl += "&markers=anchor:center|icon:" + link;
+            baseUrl += "|" + poly.marker.position.lat() + "," + poly.marker.position.lng();
+        });
+
+        baseUrl += "&key=AIzaSyAuAHl9sypEnysXjsS7SbNJ5e7x44kAFmY";
+
+        return baseUrl;
+    }
 };
 
 function initMap() {
@@ -244,6 +277,6 @@ function removePolygon() {
 
 function save() {
     document.querySelector("#form_data").value = self.save();
-
+    document.querySelector("#form_static").value = self.toStatic();
     document.querySelector("#form").submit();
 }
