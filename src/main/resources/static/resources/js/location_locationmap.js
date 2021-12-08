@@ -1,4 +1,10 @@
-const self = {};
+const self = {
+    markers: [],
+    map: null,
+    poly: null,
+    polygons: [],
+    counter: 0,
+};
 
 function initMap() {
     console.log("initMap");
@@ -9,6 +15,7 @@ function initMap() {
             lng: 13.763133
         },
         mapTypeId: "satellite",
+        disableDefaultUI: true,
     });
     self.map = map;
 
