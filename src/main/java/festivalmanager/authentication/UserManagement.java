@@ -1,5 +1,6 @@
 package festivalmanager.authentication;
 
+import festivalmanager.festival.FestivalManagement;
 import org.hibernate.usertype.UserType;
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
@@ -23,6 +24,7 @@ public class UserManagement {
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
+	private FestivalManagement festivalManagement;
 
 	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
@@ -31,6 +33,11 @@ public class UserManagement {
 
 		this.users = users;
 		this.userAccounts = userAccounts;
+		this.festivalManagement = null;
+	}
+
+	public void setFestivalManagement(FestivalManagement festivalManagement) {
+		this.festivalManagement = festivalManagement;
 	}
 
 	public User createUser(UserForm form) {
@@ -42,6 +49,7 @@ public class UserManagement {
 		user.setAddress(form.getAddress());
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
+		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
 
@@ -55,6 +63,7 @@ public class UserManagement {
 		user.setAddress(form.getAddress());
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
+		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
 
@@ -69,6 +78,7 @@ public class UserManagement {
 		user.setWorkPlace(form.getWorkPlace());
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
+		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
 
@@ -83,6 +93,7 @@ public class UserManagement {
 		user.setWorkPlace(form.getWorkPlace());
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
+		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
 
@@ -96,6 +107,7 @@ public class UserManagement {
 		user.setAddress(form.getAddress());
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
+		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
 
