@@ -84,6 +84,19 @@
 
                         <hr class="mx-n3">
 
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0">Position</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <select class="form-select" aria-label="Default select example" th:field="*{festivalId}">
+                                    <option th:each=" festival : ${festivals}" th:value="${festival.id}" th:text="${festival.name}"></option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <hr class="mx-n3">
                         <div class="px-5 py-4">
                             <button type="submit" class="btn btn-primary btn-lg"  th:text="#{register.submit}">Create Account</button>
                         </div>
