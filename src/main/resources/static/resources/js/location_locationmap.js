@@ -241,3 +241,9 @@ function removePolygon() {
     self.polygons = self.polygons.filter(poly => poly.id != el.dataset.id);
     document.querySelector("#control").removeChild(el);
 }
+
+function save() {
+    document.querySelector("#form_data").value = self.save();
+
+    document.querySelector("#form").submit();
+}

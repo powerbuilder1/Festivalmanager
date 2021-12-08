@@ -41,6 +41,15 @@
                                             <br>
                                             <input type="text" placeholder="Name" id="name_input" onchange="changePolygonName()">
                                             <button onclick="removePolygon()">Remove</button>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <form th:action="@{|/location/${location.id}/locationmap|}" method="post" id="form">
+                                                <input type="hidden" name="data" id="form_data">
+                                                <input type="hidden" name="static" id="form_static">
+                                            </form>
+                                            <button onclick="save()">Save</button>
                                         </div>
                                     </div>
                                 </div>
