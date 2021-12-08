@@ -1,5 +1,7 @@
 package festivalmanager.authentication;
 
+import festivalmanager.location.Location;
+
 import javax.validation.constraints.NotEmpty;
 
 public class UserForm {

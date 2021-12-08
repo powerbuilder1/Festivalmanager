@@ -51,6 +51,5 @@ public class UserDataInitializer implements DataInitializer {
 		// userAccountManagement.create("Planning",
 		// Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));
 
-
 	}
 }

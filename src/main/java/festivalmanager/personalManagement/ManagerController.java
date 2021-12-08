@@ -2,6 +2,7 @@ package festivalmanager.personalManagement;
 
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
+import festivalmanager.authentication.UserManagement;
 import festivalmanager.authentication.UserRepository;
 import festivalmanager.location.LocationManagement;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 
@@ -72,7 +74,11 @@ public class ManagerController{
 		User user = userRepository.findById(id).get();
 		model.addAttribute("locations", locationManagement.findAllLocations().toList());
 		model.addAttribute("user", user);
-		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(), user.getPosition(), user.getWorkPlace()));
+		model.addAttribute("userForm", new UserForm(user.getName(),
+																user.getPassword(),
+																user.getAddress(),
+																user.getPosition(),
+																user.getWorkPlace()));
 		System.out.println(user.getName());
 		System.out.println(user.getPassword());
 		System.out.println(user.getAddress());

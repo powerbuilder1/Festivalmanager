@@ -4,24 +4,30 @@ import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
 import festivalmanager.authentication.UserManagement;
 import festivalmanager.authentication.UserRepository;
+import festivalmanager.festival.Festival;
 import festivalmanager.location.Location;
+import festivalmanager.location.LocationManagement;
 import festivalmanager.location.LocationRepository;
+import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.useraccount.UserAccountManagement;
+import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class ManagerManagement extends UserManagement {
 
- 	Location location;
-	LocationRepository locationRepository;
+
+	LocationManagement locationManagement;
 
 	public ManagerManagement(UserRepository users, UserAccountManagement userAccounts) {
 		super(users, userAccounts);
 	}
 
+
+
 	public void deleteUser(User user) {
-			users.deleteById(user.getId());
+				users.deleteById(user.getId());
 	}
 
 	public void editUser(User user, UserForm userForm) {

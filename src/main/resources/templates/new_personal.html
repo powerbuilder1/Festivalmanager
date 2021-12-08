@@ -81,6 +81,18 @@
                             </div>
                         </div>
 
+                        <div class="row align-items-center pt-4 pb-3">
+                            <div class="col-md-3 ps-5">
+                                <h6 class="mb-0" th:text="#{register.workplace}">Work Place</h6>
+                            </div>
+                            <div class="col-md-9 pe-5">
+                                <input class="form-control form-control-lg" id="workPlace" name="workPlace" th:field="*{workPlace}" th:errorclass="fieldError" type="text"
+                                       required="required"/><br/>
+                                <p th:if="${#fields.hasErrors('workPlace')}" th:errors="*{workPlace}">Die Position darf
+                                    nicht leer sein.</p>
+                            </div>
+                        </div>
+
 
                         <hr class="mx-n3">
 

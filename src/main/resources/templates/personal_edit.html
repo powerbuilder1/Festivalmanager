@@ -20,7 +20,7 @@
       <div class="form-group">
         <label for="workplace" class="form-label" th:text="#{festival.location}">Work Place</label>
         <select id="workplace" class="form-select" th:field="*{workPlace}" aria-label="Location Select">
-          <option th:each="location : ${locations}" th:value="${location.id}"
+          <option th:each="location : ${locations}" th:value="${location.name}"
                   th:text="${location.name}">
         </select>
       </div>
