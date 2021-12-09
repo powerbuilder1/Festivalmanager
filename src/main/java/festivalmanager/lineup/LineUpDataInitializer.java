@@ -15,7 +15,7 @@ import static org.salespointframework.core.Currencies.EURO;
 
 @Component
 public class LineUpDataInitializer implements DataInitializer {
-	private final Logger LOG = LoggerFactory.getLogger(festivalmanager.lineup.LineUpDataInitializer.class);
+	private final Logger log = LoggerFactory.getLogger(festivalmanager.lineup.LineUpDataInitializer.class);
 	private final LineUpManagement lineUpManagement;
 	private final FestivalManagement festivalManagement;
 
@@ -26,8 +26,8 @@ public class LineUpDataInitializer implements DataInitializer {
 	}
 	@Override
 	public void initialize() {
-		LOG.info("Initializing data for {}", getClass().getSimpleName());
-		LOG.info("Creating default  entries.");
+		log.info("Initializing data for {}", getClass().getSimpleName());
+		log.info("Creating default  entries.");
 		Band band1 = new Band("The Strokes", Money.of(2000, EURO),"Buehne 2", "14:00 - 16:00");
 		Band band2 = new Band("The Parcels",Money.of(2000, EURO),"Buehne 3", "20:00 - 22:00");
 		Band band3 = new Band("Boy Pablo",Money.of(3000, EURO),"Buehne 1", "19:00 - 21:00");

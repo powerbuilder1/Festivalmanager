@@ -1,5 +1,6 @@
 package festivalmanager.Ticket;
 
+import festivalmanager.festival.Festival;
 import org.javamoney.moneta.Money;
 
 import javax.persistence.Entity;
@@ -9,12 +10,13 @@ import javax.persistence.Id;
 @Entity
 class TagesKarte extends Ticket  {
 
-	public TagesKarte() {
+	public TagesKarte (Festival festival,Money price, String barcode, double validePeriod) {
+
+		super(festival,price,barcode,validePeriod);
+
 	}
 
-	public TagesKarte (Money price, String barcode, double validePeriod) {
-
-		super(price,barcode,validePeriod);
+	public TagesKarte() {
 
 	}
 

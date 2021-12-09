@@ -19,7 +19,7 @@ public class LineUp {
 	long id;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Band> Lineup = new ArrayList<Band>();
+	private List<Band> SetofBands = new ArrayList<Band>();
 
 	public LineUp() {
 
@@ -45,7 +45,7 @@ public class LineUp {
 	}
 
 	public void addBandto(Band band) {
-		Lineup.add(band);
+		SetofBands.add(band);
 	}
 
 	public Festival getFestival() {
@@ -63,7 +63,7 @@ public class LineUp {
 
 	public ArrayList<String> getBandnames() {
 		ArrayList<String> names = new ArrayList<>();
-		for (Band band : Lineup) {
+		for (Band band : SetofBands) {
 			names.add(band.getName1());
 		}
 
@@ -71,8 +71,7 @@ public class LineUp {
 	}
 	public ArrayList<String> getLineupUhrzeiten() {
 		ArrayList<String> Uhrzeit = new ArrayList<>();
-		for (Band band: Lineup)
-			{
+		for (Band band: SetofBands) {
 				Uhrzeit.add(band.getPerformanceHour());
 			}
 				return Uhrzeit ;
@@ -87,13 +86,12 @@ public class LineUp {
 	}
 
 	public List<Band> getBands() {
-		return Lineup;
+		return SetofBands;
 	}
 
 	public ArrayList<String> getStages() {
 		ArrayList<String> stages = new ArrayList<>();
-		for (Band band: Lineup)
-		{
+		for (Band band: SetofBands) {
 			stages.add(band.getStage());
 		}
 		return stages ;
@@ -108,8 +106,8 @@ public class LineUp {
 	}
 
 
-	public void setLineup(List<Band> lineup) {
-		this.Lineup = lineup;
+	public void setLineup(List<Band> SetofBands) {
+		this.SetofBands = SetofBands;
 	}
 
 }
