@@ -32,9 +32,10 @@ public class ManagerManagement extends UserManagement {
 
 	public void editUser(User user, UserForm userForm) {
 		user.setAddress(userForm.getAddress());
-		switch (userForm.getPosition().toLowerCase()){
-				case "planning":
-				case "catering":
+
+		switch (userForm.getPosition()){
+				case "Planning":
+				case "Catering":
 					user.setPosition(userForm.getPosition());
 					break;
 				default:
