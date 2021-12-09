@@ -4,12 +4,17 @@ import festivalmanager.festival.Festival;
 import org.springframework.validation.Errors;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
-public class NewFoodItemForm implements Serializable {
+public class NewFoodItemForm {
 
-	private @NotEmpty String name;
-	private @NotEmpty Double price;
+	@NotEmpty
+	@Size(min = 3)
+	private  String name;
+	@NotNull
+	private Double price;
 
 	public NewFoodItemForm(String name, Double price) {
 		this.name = name;
@@ -18,7 +23,6 @@ public class NewFoodItemForm implements Serializable {
 
 	public NewFoodItemForm() {
 	}
-
 	public String getName() {
 		return name;
 	}
