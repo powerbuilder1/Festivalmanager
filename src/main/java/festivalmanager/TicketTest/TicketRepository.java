@@ -17,4 +17,6 @@ public interface TicketRepository extends Catalog<Ticket> {
 		return findByType(type, DEFAULT_SORT);
 	}
 
+	Streamable<Ticket> findAll();
+
 }
