@@ -8,7 +8,7 @@ import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
-public class TicketController {
+public class TicketController  {
 
 	private final OrderManagement<Order> orderManagement;
 
