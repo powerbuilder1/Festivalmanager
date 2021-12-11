@@ -38,15 +38,15 @@ public class Festival {
     private Set<Food> catalogFoodItems;
 
     @OneToMany(mappedBy = "festival")
-	private Set<Ticket> tickets;
+    private Set<Ticket> tickets;
 
-	@OneToMany(mappedBy = "festival")
-	private Set<FoodInventoryItem> inventoryFoodItems;
+    @OneToMany(mappedBy = "festival")
+    private Set<FoodInventoryItem> inventoryFoodItems;
 
-	@OneToMany(mappedBy = "festival")
-	private Set<User> users;
+    @OneToMany(mappedBy = "festival")
+    private Set<User> users;
 
-	private boolean isPublished;
+    private boolean isPublished;
 
     public Festival() {
     }
@@ -153,6 +153,22 @@ public class Festival {
 
     public void setIsPublished(boolean isPublished) {
         this.isPublished = isPublished;
+    }
+
+    public Set<Food> getCatalogFoodItems() {
+        return catalogFoodItems;
+    }
+
+    public Set<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public Set<FoodInventoryItem> getInventoryFoodItems() {
+        return inventoryFoodItems;
+    }
+
+    public Set<User> getUsers() {
+        return users;
     }
 
     @Override
