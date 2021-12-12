@@ -98,4 +98,8 @@ public class LineUpManagement {
 		return LineUpRepository.findById(id).orElse(null);
 	}
 
+	public Streamable<LineUp> findAllByFestival (Festival festival) {
+		return LineUpRepository.findAll().filter(lineUp -> lineUp.getFestival().equals(festival));
+	}
+
 }
