@@ -40,9 +40,8 @@ public class FestivalManagement {
 	 */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
             CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement,
-            CommunicationManagement communicationManagement) {
+            CommunicationManagement communicationManagement, StockEventListener stockEventListener) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
-					   CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement, CommunicationManagement communicationManagement, StockEventListener stockEventListener) {
 		Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
