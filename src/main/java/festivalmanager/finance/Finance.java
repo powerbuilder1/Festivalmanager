@@ -9,19 +9,15 @@ public class Finance {
 
 	private @Id @GeneratedValue Long id;
 
-	//private String name;
 	private Money balance;
 
-	public Finance(/*String name,*/ Money balance){
-	//	this.name=name;
+	public Finance( Money balance){
 		this.balance=balance;
 	}
 
 	public Long getId() {return this.id;}
 
 	public void setId(Long id) {this.id = id;}
-
-	//public String getName(){return name;}
 
 	public Money getBalance(){return balance;}
 

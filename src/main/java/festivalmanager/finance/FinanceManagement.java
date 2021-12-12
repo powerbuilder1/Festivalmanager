@@ -1,10 +1,15 @@
 package festivalmanager.finance;
 
+import static org.salespointframework.core.Currencies.*;
+
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
+import festivalmanager.catering.Food;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.festival.FestivalRepository;
 import festivalmanager.festival.Festival;
+import festivalmanager.lineup.Band;
+import festivalmanager.lineup.BandForm;
 import festivalmanager.lineup.LineUp;
 import festivalmanager.location.LocationManagement;
 import festivalmanager.location.LocationRepository;
@@ -16,6 +21,7 @@ import org.javamoney.moneta.Money;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -23,28 +29,19 @@ import java.util.Optional;
 @Transactional
 public class FinanceManagement {
 	private final FinanceRepository financeRepository;
-	private final FestivalRepository festivalRepository;
 	private final FestivalManagement festivalManagement;
-	private final LocationRepository locationRepository;
-	private final LocationManagement locationManagement;
 
 
 	public FinanceManagement(FinanceRepository financeRepository, FestivalRepository festivalRepository, FestivalManagement festivalManagement, LocationRepository locationRepository, LocationManagement locationManagement){
 		Assert.notNull(financeRepository,"financeRepository must not be Null");
-		Assert.notNull(festivalRepository,"festivalRepository must not be Null");
 		Assert.notNull(festivalManagement,"festivalManagement must not be Null");
-		Assert.notNull(locationRepository,"locationRepository must not be Null");
-		Assert.notNull(locationManagement,"locationManagement must not be null");
 		this.financeRepository = financeRepository;
-		this.festivalRepository = festivalRepository;
 		this.festivalManagement = festivalManagement;
-		this.locationRepository = locationRepository;
-		this.locationManagement= locationManagement;
 	}
 
 	public void visualizeFinance(){}
 
-	public Money payLocation(long festivalId/*, Money rent*/){
+	public Money payLocation(long festivalId){
 		Festival festival = festivalManagement.findById(festivalId);
 		Money rent = festival.getLocation().getRent();
 		Streamable<Finance> balance= financeRepository.findAll();
@@ -55,21 +52,35 @@ public class FinanceManagement {
 
 	}
 
-	public void payArtists(long festivalId){
+	public Money payArtists(long festivalId){
 		Festival festival = festivalManagement.findById(festivalId);
 		LineUp lineup = festivalManagement.getLineUpManagement().findById(festivalId);
+		Streamable<Finance> balance=financeRepository.findAll();
 		lineup.getBands();
+		Money festivalbalance=balance.toList().get(0).getBalance();
+		Money price=Money.of(0,EURO);
+		for(Band bands:lineup.getBands()){
+			price.add(bands.getPrice());
+		}
+		festivalbalance.subtract(price);
+		return festivalbalance;
 	}
-
-	public void payStaff(long festivalId){
+	/*
+	public Money payStaff(long festivalId){
 		Festival festival = festivalManagement.findById(festivalId);
 		User user = festivalManagement.getUserManagement().findById(festivalId);
 		user.getWorkPlace();
-	}
+	} */
 
-	public void payItems(long festivalId){
+	public Money payItems(long festivalId){
 		Festival festival = festivalManagement.findById(festivalId);
-		Money price = festivalManagement.gCateringManagement();
+		Streamable<Food> items = festivalManagement.getCateringManagement().getCatalog(festivalId);
+		Streamable<Finance> balance= financeRepository.findAll();
+		Money festivalbalance=balance.toList().get(0).getBalance();
+		Money price = Money.of(0,EURO);
+		for(Food food: items){price.add(food.getPrice());}
+		festivalbalance.subtract(price);
+		return festivalbalance;
 
 	}
 
