@@ -9,6 +9,7 @@ import java.util.List;
 
 @Entity
 public class LineUp {
+
 	@OneToOne
 	private Festival festival;
 	private long festivalIdentifier;

@@ -32,7 +32,12 @@ public class LineUpManagement {
 	public void setFestivalManagement(FestivalManagement festivalManagement) {
 		this.festivalManagement = festivalManagement;
 	}
-
+	/**
+	 * creates a new Lineup and it adds it to the repository
+	 *
+	 * @param lineUp
+	 * @return
+	 */
 	public static LineUp createLineUp(LineUp lineUp) {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		if (lineUp.getFestival() == null) {
@@ -40,7 +45,13 @@ public class LineUpManagement {
 			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());}
 		return LineUpRepository.save(lineUp);
 	}
-
+	/**
+	 * add new band to an specific LineUp
+	 *
+	 * @param id
+	 * @param bandForm
+	 * @return
+	 */
 	public void addBand(Long id, BandForm bandForm) {
 		System.out.println("Welcome1");
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
@@ -54,14 +65,27 @@ public class LineUpManagement {
 			LineUpRepository.save(lineUp); });
 
 	}
-
+	/**
+	 * deletes a specific band from an specific LineUp
+	 *
+	 * @param id
+	 * @param bandname
+	 * @return
+	 */
 	public void deleteBand(Long id, String bandname) {
 		System.out.println(bandname);
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			lineUp.getBands().removeIf(filterBand -> filterBand.getName1().equals(bandname));
 			LineUpRepository.save(lineUp); });
 	}
-
+	/**
+	 * edit an specific band in an specific LineUp
+	 *
+	 * @param id
+	 * @param Bandname
+	 * @param form
+	 * @return
+	 */
 	public void updateBand(long id, String Bandname, BandForm form) {
 
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
@@ -89,17 +113,22 @@ public class LineUpManagement {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);
 	}
-
+	/**
+	 * Finds all the Lineups in a repository
+	 *
+	 * @return
+	 */
 	public Streamable<LineUp> findAllLineUp() {
 		return LineUpRepository.findAll();
 	}
-
+	/**
+	 * Finds a lineUp with the given Id
+	 * @param id
+	 * @return
+	 */
 	public LineUp findById(long id) {
 		return LineUpRepository.findById(id).orElse(null);
 	}
 
-	public Streamable<LineUp> findAllByFestival (Festival festival) {
-		return LineUpRepository.findAll().filter(lineUp -> lineUp.getFestival().equals(festival));
-	}
 
 }

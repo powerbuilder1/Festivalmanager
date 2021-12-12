@@ -29,15 +29,7 @@ public class TicketStockManagement {
 		}
 		return null;
 	}
-	// find a UniqueInventoryItem by Food-Product
-	public Optional<TicketInventoryItem> findByProduct(Ticket ticket) {
-		return ticketStockInventory.findByProduct(ticket);
-	}
 
-	// initialize new Inventory Item for a specific Food-Product
-	public void initializeInventoryItem(Ticket ticket, double amount, Festival festival) {
-		ticketStockInventory.save(new TicketInventoryItem(ticket, Quantity.of(amount), festival));
-	}
 	// Test
 	public void deleteAll() {
 		ticketStockInventory.deleteAll();

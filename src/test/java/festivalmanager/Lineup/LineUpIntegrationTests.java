@@ -1,9 +1,11 @@
-package festivalmanager.festival;
+package festivalmanager.Lineup;
 
 import static org.assertj.core.api.Assertions.*;
 
 import static org.salespointframework.core.Currencies.*;
 
+import festivalmanager.festival.Festival;
+import festivalmanager.festival.FestivalManagement;
 import festivalmanager.lineup.Band;
 import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
@@ -35,6 +37,7 @@ public class LineUpIntegrationTests {
 		Streamable<LineUp> lineUps = lineUpManagement.findAllLineUp();
 		assertThat(lineUps).hasSize(2);
 	}
+
 	@Test
 	void checkGetLineUpById() {
 
