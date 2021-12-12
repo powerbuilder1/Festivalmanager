@@ -25,18 +25,18 @@ public class FinanceController {
 		this.locationManagement = locationManagement;
 	}
 
-	@GetMapping("/finance/{id}")
-	String finance(@PathVariable long id, Model model) {
+	@GetMapping("/finance")
+	String finance(/*@PathVariable long id,*/ Model model) {
 		return "finance";
 	}
 
-	@GetMapping("/finance/{id}/overview")
-	String overview(@PathVariable long id, Model model){
+	@GetMapping("/finance/overview")
+	String overview(/*@PathVariable long id,*/ Model model){
 		return "finance_overview";
 	}
 
-	@GetMapping("finance/{id}/pay")
-	String pay(@PathVariable long id, Model model){
+	@GetMapping("finance/pay")
+	String pay(/*@PathVariable long id,*/ Model model){
 		return "finance_pay";
 	}
 
