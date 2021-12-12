@@ -1,0 +1,106 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>741</x><y>10</y><w>210</w><h>350</h></coordinates><panel_attributes>User
+--
+-id:long
+-address:String
+-position:String
+-name:String
+-password:String
+-workPlace:String
+-userAccount:UserAccount
+-festival:Festival
+--
+/+getId():long/
+/+getName():String/
+/+getPassword():String/
+/+getWorkPlace():String/
+/+getAdress(): String/
+/+setAdress(): void/
+/+setName():void/
+/+setWorkPlace():void/
+/+setPassword():void/
+/+setPosition():void/
+/+getFestival():Festival/
+/+getUserAccount(): UserAccount/
+/+setFestival():void/
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>11</x><y>150</y><w>260</w><h>130</h></coordinates><panel_attributes>ManagerManagement
+--
++ManagerRepository managerRepository
+--
+/+deleteUser(user:User):void/
+/+editUser(user:User,userForm:UserForm):void/
+/+vizualizeFinances(): void/
+/+checkFinances(): int/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>321</x><y>320</y><w>320</w><h>270</h></coordinates><panel_attributes>UserManagement
+--
+-users:UserRepository
+-userAccounts: UserAccountManagement
+-festivalManagenent: FestivalManagement
+--
+/+createUser(form: UserForm): User/
+/+findAll(): Streamable&lt;User&gt;/
+/+createBoss(form: UserForm): User/
+/+createPlanningStaff(form: UserForm): User/
+/+createCateringStaff(form: UserForm): User/
+/+createSystem(form: UserForm): User/
+/+createFestivalDirector(form: UserForm): User/
+/+setFestivalManagement():void/
+/+findAll():Streamable&lt;User&gt;/
+/+findById(id:Long):User/
+/+findByName(name:String):User/
+/+findUserByUserAccount(useraccount:UserAccount):User/</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>330</x><y>0</y><w>300</w><h>170</h></coordinates><panel_attributes>ManagerController
+--
++managerManagement: ManagerManagement
+-userRepository :UserRepository
+--
+/+dashboard(model:Model):String/
+/+team(model:Model):String/
+/+registerNew(form:UserForm,results:Error):String/
+/+register(model:Model,form:UserForm):String/
+/+getUser(id:Long,model:Model):String/
+/+editUserById(id:Long):String/
+/+deleteUserById(id:Long):String/
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>390</x><y>200</y><w>240</w><h>60</h></coordinates><panel_attributes>UserController
+--
+-userManamegent: UserManagement
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>350</y><w>300</w><h>310</h></coordinates><panel_attributes>UserForm
+--
+-name: String
+-password:String
+-adress: String
+-position:String
+-workPlace:String
+-festivalId: Long
+--
+/+getName(): String/
+/+getPassword(): String/
+/+getAddress(): String/
+/+getPosition(): String/
+/+getWorkPlace(): String/
+/+getFestivalId(): Long/
+/+setName(name:String): void/
+/+setPassword(password:String): void/
+/+setAddress(address:String): void/
+/+setPosition(position: String): void/
+/+setWorkPlace(workPlace:String): void/
+/+setFestivalId(festivalId: Long): void/
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>750</x><y>570</y><w>260</w><h>70</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+com.springframework.data.repository
+CrudRepository&lt;T,ID&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>50</y><w>230</w><h>120</h></coordinates><panel_attributes>1
+
+1</panel_attributes><additional_attributes>210;20;10;20;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>800</x><y>422</y><w>160</w><h>60</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+UserRepository
+--
++findAll():Streamable&lt;User&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>870</x><y>474</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;100;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>622</x><y>434</y><w>200</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+</panel_attributes><additional_attributes>19;20;180;20</additional_attributes></element><element><id>Relation</id><coordinates><x>822</x><y>354</y><w>40</w><h>90</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1
+</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>492</x><y>254</y><w>50</w><h>90</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=1</panel_attributes><additional_attributes>20;10;19;70</additional_attributes></element><element><id>Relation</id><coordinates><x>200</x><y>274</y><w>140</w><h>70</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>120;50;10;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>290</x><y>580</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=.&gt;
+use</panel_attributes><additional_attributes>10;60;110;60;110;10</additional_attributes></element><element><id>Relation</id><coordinates><x>70</x><y>270</y><w>50</w><h>100</h></coordinates><panel_attributes>lt=.&gt;
+use</panel_attributes><additional_attributes>10;80;10;10</additional_attributes></element></diagram>
