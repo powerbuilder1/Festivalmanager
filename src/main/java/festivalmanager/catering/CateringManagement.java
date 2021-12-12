@@ -7,6 +7,7 @@ import festivalmanager.stock.FoodInventoryItem;
 import festivalmanager.stock.StockManagment;
 import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;
+import org.salespointframework.catalog.ProductIdentifier;
 import org.salespointframework.core.Currencies;
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.useraccount.UserAccount;
@@ -73,5 +74,9 @@ public class CateringManagement {
 			foodItem.setPrice(Money.of(foodItemForm.getPrice(), Currencies.EURO));
 			foodCatalog.save(foodItem);
 		}
+	}
+
+	public Optional<Food> findProductById(ProductIdentifier productIdentifier) {
+		return foodCatalog.findById(productIdentifier);
 	}
 }

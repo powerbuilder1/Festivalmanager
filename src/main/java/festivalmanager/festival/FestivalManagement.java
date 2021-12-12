@@ -1,6 +1,7 @@
 package festivalmanager.festival;
 
 import festivalmanager.authentication.UserManagement;
+import festivalmanager.stock.StockEventListener;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
+import festivalmanager.communication.CommunicationManagement;
 
 @Service
 @Transactional
@@ -23,30 +25,37 @@ public class FestivalManagement {
     private final CateringManagement cateringManagement;
     private final LineUpManagement lineUpManagement;
     private final UserManagement userManagement;
+	private final CommunicationManagement communicationManagement;
+	private final StockEventListener stockEventListener;
 
     /**
      * Constructor
-     * 
-     * @param festivalRepository
-     * @param locationManagement
-     * @param cateringManagement
-     * @param lineUpManagement
-     * @param userManagement
-     */
+	 * @param festivalRepository
+	 * @param locationManagement
+	 * @param cateringManagement
+	 * @param lineUpManagement
+	 * @param userManagement
+	 * @param communicationManagement
+	 * @param stockEventListener
+	 */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
-            CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement) {
-        Assert.notNull(festivalRepository, "festivalRepository must not be null");
+					   CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement, CommunicationManagement communicationManagement, StockEventListener stockEventListener) {
+		Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
-        this.festivalRepository = festivalRepository;
+		Assert.notNull(communicationManagement, "communicationManagement must not be null");
+		this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
         this.cateringManagement = cateringManagement;
+		this.communicationManagement = communicationManagement;
         this.cateringManagement.setFestivalManagement(this);
         this.lineUpManagement = lineUpManagement;
         this.lineUpManagement.setFestivalManagement(this);
         this.userManagement = userManagement;
         this.userManagement.setFestivalManagement(this);
+		this.stockEventListener = stockEventListener;
+		this.stockEventListener.setFestivalManagement(this);
     }
 
     public LineUpManagement getLineUpManagement() {
@@ -57,12 +66,16 @@ public class FestivalManagement {
         return this.userManagement;
     }
 
-    public CateringManagement gCateringManagement() {
+    public CateringManagement getCateringManagement() {
         return this.cateringManagement;
     }
 
-    /**
-     * Create a new festival
+	public CommunicationManagement getCommunicationManagement() {
+		return communicationManagement;
+	}
+
+	/**
+	 * Create a new festival
      * 
      * @param festival
      * @return
