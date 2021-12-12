@@ -61,12 +61,16 @@ public class ManagerController{
 		}else if (form.getPosition().equalsIgnoreCase("planning")){
 			managerManagement.createPlanningStaff(form);
 		}
+		else if (form.getPosition().equalsIgnoreCase("festivalleiter")){
+			managerManagement.createFestivalDirector(form);
+		}
 		return "redirect:/team";
 	}
 
 	@GetMapping("/new_personal")
 	String register(Model model, UserForm userForm) {
 		model.addAttribute("festivals", festivalManagement.findAllFestivals());
+		model.addAttribute("locations", locationManagement.findAllLocations().toList());
 		return "new_personal";
 	}
 
@@ -92,11 +96,12 @@ public class ManagerController{
 	@PostMapping(path = "/dashboard/team/editUserById/{user}")
 	public String editUserById(
 			@PathVariable("user") long id,
-			@ModelAttribute UserForm userForm
+			@ModelAttribute UserForm userForm,
+			Model model
 
 	) {
 		// checks auf null
-		managerManagement.editUser(userRepository.findById(id).get(), userForm);
+		managerManagement.editUser(userRepository.findById(id).get(),  userForm);
 		return "redirect:/team";
 	}
 
