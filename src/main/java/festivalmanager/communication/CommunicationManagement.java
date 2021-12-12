@@ -117,4 +117,10 @@ public class CommunicationManagement {
         }
         return chatMessageRepository.findAll().filter(m -> m.getRoom().equals(room));
     }
+
+    public void removeEverywhere(User user) {
+        Assert.notNull(user, "user must not be null");
+        participantsRepository.deleteAll(participantsRepository.findAll().filter(p -> p.getUser().equals(user)));
+        chatMessageRepository.deleteAll(chatMessageRepository.findAll().filter(m -> m.getSender().equals(user)));
+    }
 }

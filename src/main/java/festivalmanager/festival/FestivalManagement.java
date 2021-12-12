@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import festivalmanager.catering.CateringManagement;
+import festivalmanager.communication.CommunicationManagement;
 import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
@@ -23,6 +24,7 @@ public class FestivalManagement {
     private final CateringManagement cateringManagement;
     private final LineUpManagement lineUpManagement;
     private final UserManagement userManagement;
+    private final CommunicationManagement communicationManagement;
 
     /**
      * Constructor
@@ -34,11 +36,13 @@ public class FestivalManagement {
      * @param userManagement
      */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
-            CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement) {
+            CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement,
+            CommunicationManagement communicationManagement) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
+        Assert.notNull(communicationManagement, "userManagement must not be null");
         this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
         this.cateringManagement = cateringManagement;
@@ -47,6 +51,7 @@ public class FestivalManagement {
         this.lineUpManagement.setFestivalManagement(this);
         this.userManagement = userManagement;
         this.userManagement.setFestivalManagement(this);
+        this.communicationManagement = communicationManagement;
     }
 
     public LineUpManagement getLineUpManagement() {
@@ -59,6 +64,10 @@ public class FestivalManagement {
 
     public CateringManagement getCateringManagement() {
         return this.cateringManagement;
+    }
+
+    public CommunicationManagement getCommunicationManagement() {
+        return this.communicationManagement;
     }
 
     /**
