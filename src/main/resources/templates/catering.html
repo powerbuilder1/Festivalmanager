@@ -40,6 +40,12 @@
                                 <input type="radio" th:field="*{foodItemId}" th:id="${item.getId()}" name="radioFood"
                                        th:value="${item.getId()}" checked>
                                 <label th:for="${item.getId()}" th:text="${item.getName()}"></label>
+                                <script th:inline="javascript">
+                                    /*<![CDATA[*/
+                                    let itemId = /*[[${item.getId().toString()}]]*/ 'default';
+                                    document.getElementById(itemId).checked = true;
+                                    /*]]>*/
+                                </script>
                             </div>
                             <!--
                                                     <div class="child">
