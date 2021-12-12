@@ -88,8 +88,14 @@ public class CateringController {
 	@PostMapping(path = "catering/editFromCatalog/{foodItem}")
 	public String editItemFromCatalog(
 			@PathVariable("foodItem") Food foodItem,
-			@ModelAttribute NewFoodItemForm foodItemForm
+			@Valid @ModelAttribute NewFoodItemForm foodItemForm,
+			Errors result,
+			RedirectAttributes redirectAttributes
 	) {
+		if (result.hasErrors()) {
+			redirectAttributes.addFlashAttribute("error", result.toString());
+			return "redirect:/catering/catalog/edit/" + foodItem.getId();
+		}
 		cateringManagement.editItemFromCatalog(foodItem, foodItemForm);
 		return "redirect:/catering/catalog";
 	}
