@@ -24,7 +24,7 @@ public class UserManagement {
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
-	private FestivalManagement festivalManagement;
+	private static FestivalManagement festivalManagement;
 
 	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
@@ -33,7 +33,7 @@ public class UserManagement {
 
 		this.users = users;
 		this.userAccounts = userAccounts;
-		this.festivalManagement = null;
+
 	}
 
 	public void setFestivalManagement(FestivalManagement festivalManagement) {

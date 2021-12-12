@@ -53,4 +53,27 @@ public class UserForm {
 
 	public Long getFestivalId() { return festivalId; }
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public void setWorkPlace(String workPlace) {
+		this.workPlace = workPlace;
+	}
+
+	public void setFestivalId(Long festivalId) {
+		this.festivalId = festivalId;
+	}
 }
