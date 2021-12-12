@@ -87,4 +87,6 @@ public class FinanceManagement {
 	public void earnTicketSales(long festivalId){}
 
 	public void earnCateringSales(long festivalId){}
+
+	public Streamable<Finance> findAllFinances(){return financeRepository.findAll();}
 }

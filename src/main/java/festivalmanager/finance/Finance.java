@@ -1,17 +1,19 @@
 package festivalmanager.finance;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import org.javamoney.moneta.Money;
 
+@Entity
 public class Finance {
 
 	private @Id @GeneratedValue Long id;
 
 	private Money balance;
 
-	public Finance( Money balance){
+	public Finance(Money balance){
 		this.balance=balance;
 	}
 
