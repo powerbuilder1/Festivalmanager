@@ -16,10 +16,13 @@ public class StockInitializer implements DataInitializer {
 	private final FoodCatalog foodCatalog;
 	private final FestivalManagement festivalManagement;
 
+
+
 	public StockInitializer(StockInventory inventory, FoodCatalog foodCatalog, FestivalManagement festivalManagement) {
 		this.inventory = inventory;
 		this.foodCatalog = foodCatalog;
 		this.festivalManagement = festivalManagement;
+
 	}
 
 	@Override
@@ -29,5 +32,6 @@ public class StockInitializer implements DataInitializer {
 				inventory.save(new FoodInventoryItem(food, Quantity.of(5), food.getFestival()));
 			}
 		});
+
 	}
 }

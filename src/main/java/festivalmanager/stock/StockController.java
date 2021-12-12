@@ -1,6 +1,7 @@
 package festivalmanager.stock;
 
 import groovy.util.logging.Log;
+import org.salespointframework.inventory.UniqueInventory;
 import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
@@ -20,9 +21,11 @@ public class StockController {
 
 	final private StockManagment stockManagment;
 
+
 	public StockController(StockManagment stockManagment) {
 		this.stockManagment = stockManagment;
 	}
+
 
 	// route to stock overview
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
