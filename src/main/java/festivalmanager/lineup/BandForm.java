@@ -21,8 +21,7 @@ public class BandForm {
 		this.performanceHour = performanceHour;
 		this.stage = stage;
 	}
-	public BandForm()
-	{
+	public BandForm() {
 	}
 
 

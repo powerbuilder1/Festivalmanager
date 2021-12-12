@@ -37,9 +37,7 @@ public class LineUpManagement {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		if (lineUp.getFestival() == null) {
 			lineUp.setFestival(festivalManagement.findById(lineUp.getFestivalIdentifier()));
-			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());
-
-		}
+			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());}
 		return LineUpRepository.save(lineUp);
 	}
 
@@ -53,8 +51,7 @@ public class LineUpManagement {
 							Money.of(bandForm.getPrice(), Currencies.EURO),
 							bandForm.getStage(),
 							bandForm.getPerformanceHour()));
-			LineUpRepository.save(lineUp);
-		});
+			LineUpRepository.save(lineUp); });
 
 	}
 
@@ -62,9 +59,7 @@ public class LineUpManagement {
 		System.out.println(bandname);
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			lineUp.getBands().removeIf(filterBand -> filterBand.getName1().equals(bandname));
-			LineUpRepository.save(lineUp);
-
-		});
+			LineUpRepository.save(lineUp); });
 	}
 
 	public void updateBand(long id, String Bandname, BandForm form) {
@@ -88,17 +83,6 @@ public class LineUpManagement {
 			LineUpRepository.save(lineUp);
 
 		});
-		/*
-		 * LineUpRepository.findById(id).ifPresent(lineUp -> {
-		 * for (Band bands: lineUp.getBands())
-		 * {
-		 * bands.setName1(form.getName());
-		 * bands.setPrice(Money.of(form.getPrice(), Currencies.EURO));
-		 * bands.setPerformanceHour(form.getPerformanceHour());
-		 * bands.setStage(form.getStage());
-		 * }
-		 * });
-		 */
 	}
 
 	public LineUp createLineUp(Festival festival) {
