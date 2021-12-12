@@ -96,11 +96,12 @@ public class ManagerController{
 	@PostMapping(path = "/dashboard/team/editUserById/{user}")
 	public String editUserById(
 			@PathVariable("user") long id,
-			@ModelAttribute UserForm userForm
+			@ModelAttribute UserForm userForm,
+			Model model
 
 	) {
 		// checks auf null
-		managerManagement.editUser(userRepository.findById(id).get(), userForm);
+		managerManagement.editUser(userRepository.findById(id).get(),  userForm);
 		return "redirect:/team";
 	}
 
