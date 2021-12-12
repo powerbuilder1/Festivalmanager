@@ -26,7 +26,8 @@ public class FestivalController {
     LocationManagement locationManagement;
     LineUpManagement lineUpManagement;
 
-    FestivalController(FestivalManagement festivalManagement, LocationManagement locationManagement,LineUpManagement lineUpManagement) {
+    FestivalController(FestivalManagement festivalManagement, LocationManagement locationManagement,
+            LineUpManagement lineUpManagement) {
         Assert.notNull(festivalManagement, "festivalManagement must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         this.festivalManagement = festivalManagement;
@@ -41,19 +42,31 @@ public class FestivalController {
         return "index";
     }
 
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
+    @GetMapping("/publish/{id}")
+    String publishFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
+        String error = festivalManagement.publishById(id);
+        if (error != "ok") {
+            redirectAttributes.addFlashAttribute("error", error);
+            return "redirect:/festival/" + id;
+        }
+        return "redirect:/festival";
+    }
+
     @GetMapping("/festival/{id}")
     String festival(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Festival festival = festivalManagement.findById(id);
-		LineUp lineup = lineUpManagement.findById(id);
-		if (lineup == null) {
-			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
-			return "redirect:/lineup";
-		}
-		if (festival == null) {
+        LineUp lineup = lineUpManagement.findById(id);
+        System.out.println("lel");
+        if (lineup == null) {
+            redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
+            return "redirect:/lineup";
+        }
+        if (festival == null) {
             redirectAttributes.addFlashAttribute("error", "FESTIVAL_NOT_FOUND");
             return "redirect:/";
         }
-		model.addAttribute("lineup", lineup);
+        model.addAttribute("lineup", lineup);
         model.addAttribute("festival", festival);
         model.addAttribute("title", festival.getName());
 
@@ -130,16 +143,4 @@ public class FestivalController {
         }
         return "redirect:/festival";
     }
-
-    @PreAuthorize("hasRole('BOSS')")
-    @GetMapping("/festival/{id}/publish")
-    String publishFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
-        String error = festivalManagement.publishById(id);
-        if (error != "ok") {
-            redirectAttributes.addFlashAttribute("error", error);
-            return "redirect:/festival/" + id;
-        }
-        return "redirect:/festival";
-    }
-
 }

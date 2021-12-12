@@ -46,7 +46,7 @@
                                     <br>
                                     <a th:href="@{|/festival/${festival.id}/edit|}"><img src="/resources/images/edit.png" style="width:64px;"></a>
                                     <a th:href="@{|/festival/${festival.id}/delete|}"><img src="/resources/images/delete.png" style="width:64px;"></a>
-                                    <a th:unless="${festival.isPublished}" th:href="@{|/festival/${festival.id}/publish|}"><img src="/resources/images/publish.png" style="width: 64px;"></a>
+                                    <a th:unless="${festival.isPublished}" th:href="@{|/publish/${festival.id}|}"><img src="/resources/images/publish.png" style="width: 64px;"></a>
                                 </div>
                             </div>
                         </div>

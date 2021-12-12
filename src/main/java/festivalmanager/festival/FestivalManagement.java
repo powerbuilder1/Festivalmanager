@@ -25,24 +25,25 @@ public class FestivalManagement {
     private final CateringManagement cateringManagement;
     private final LineUpManagement lineUpManagement;
     private final UserManagement userManagement;
-	private final CommunicationManagement communicationManagement;
-	private final StockEventListener stockEventListener;
+    private final CommunicationManagement communicationManagement;
+    private final StockEventListener stockEventListener;
 
     /**
      * Constructor
-	 * @param festivalRepository
-	 * @param locationManagement
-	 * @param cateringManagement
-	 * @param lineUpManagement
-	 * @param userManagement
-	 * @param communicationManagement
-	 * @param stockEventListener
-	 */
+     * 
+     * @param festivalRepository
+     * @param locationManagement
+     * @param cateringManagement
+     * @param lineUpManagement
+     * @param userManagement
+     * @param communicationManagement
+     * @param stockEventListener
+     */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
             CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement,
             CommunicationManagement communicationManagement, StockEventListener stockEventListener) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
-		Assert.notNull(festivalRepository, "festivalRepository must not be null");
+        Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
@@ -56,8 +57,8 @@ public class FestivalManagement {
         this.userManagement = userManagement;
         this.userManagement.setFestivalManagement(this);
         this.communicationManagement = communicationManagement;
-		this.stockEventListener = stockEventListener;
-		this.stockEventListener.setFestivalManagement(this);
+        this.stockEventListener = stockEventListener;
+        this.stockEventListener.setFestivalManagement(this);
     }
 
     public LineUpManagement getLineUpManagement() {
@@ -87,6 +88,7 @@ public class FestivalManagement {
         if (festival.getLocation() == null) {
             festival.setLocation(locationManagement.findById(festival.getLocationIdentifier()));
         }
+        festival.setIsPublished(true);
         return festivalRepository.save(festival);
     }
 
@@ -103,6 +105,7 @@ public class FestivalManagement {
     public Festival createFestival(String name, Location location, String beginDate, String endDate,
             String information) {
         Festival festival = new Festival(name, location, beginDate, endDate, information);
+        festival.setIsPublished(true);
         return createFestival(festival);
     }
 
@@ -120,7 +123,7 @@ public class FestivalManagement {
     public Festival createFestival(String name, Location location, String beginDate, String endDate,
             String information, boolean isPublished) {
         Festival festival = new Festival(name, location, beginDate, endDate, information);
-        festival.setIsPublished(isPublished);
+        festival.setIsPublished(true);
         return createFestival(festival);
     }
 
