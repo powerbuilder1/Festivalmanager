@@ -57,7 +57,7 @@ public class FestivalManagement {
         return this.userManagement;
     }
 
-    public CateringManagement gCateringManagement() {
+    public CateringManagement getCateringManagement() {
         return this.cateringManagement;
     }
 
