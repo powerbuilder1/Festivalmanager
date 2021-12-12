@@ -9,6 +9,13 @@
 <section layout:fragment="content">
     <div class="container">
         <h1>Edit item</h1>
+        <div class="row" th:if="${error}">
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    <strong th:text="#{${error}}">Error!</strong>
+                </div>
+            </div>
+        </div>
         <form action="#" th:action="@{|/catering/editFromCatalog/${item.getId()}|}" th:object="${foodItemForm}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
@@ -18,6 +25,15 @@
                 <label for="price">Price</label>
                 <input type="number" step="any" class="form-control" id="price" th:placeholder="${item.getPrice()}" th:field="*{price}">
             </div>
+
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                let itemName = /*[[${item.name}]]*/ 'default';
+                document.getElementById("name").value = itemName;
+                let itemPrice = /*[[${item.price.getNumber().doubleValueExact()}]]*/ 'default';
+                document.getElementById("price").value = itemPrice;
+                /*]]>*/
+            </script>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

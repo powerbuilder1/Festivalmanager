@@ -29,7 +29,7 @@ public class StockInitializer implements DataInitializer {
 	public void initialize() {
 		foodCatalog.findAll().forEach(food -> {
 			if (inventory.findByProduct(food).isEmpty() && !festivalManagement.findAllFestivals().isEmpty()) {
-				inventory.save(new FoodInventoryItem(food, Quantity.of(5), food.getFestival()));
+				inventory.save(new FoodInventoryItem(food, Quantity.of(20), food.getFestival()));
 			}
 		});
 

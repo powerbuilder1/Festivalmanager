@@ -22,19 +22,20 @@ public class FestivalManagement {
     private final LocationManagement locationManagement;
     private final CateringManagement cateringManagement;
     private final LineUpManagement lineUpManagement;
-	private final UserManagement userManagement;
+    private final UserManagement userManagement;
 
     /**
      * Constructor
-     *  @param festivalRepository
+     * 
+     * @param festivalRepository
      * @param locationManagement
-	 * @param cateringManagement
-	 * @param lineUpManagement
-	 * @param userManagement
-	 */
+     * @param cateringManagement
+     * @param lineUpManagement
+     * @param userManagement
+     */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
-					   CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement) {
-		Assert.notNull(festivalRepository, "festivalRepository must not be null");
+            CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement) {
+        Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
@@ -44,8 +45,20 @@ public class FestivalManagement {
         this.cateringManagement.setFestivalManagement(this);
         this.lineUpManagement = lineUpManagement;
         this.lineUpManagement.setFestivalManagement(this);
-		this.userManagement = userManagement;
-		this.userManagement.setFestivalManagement(this);
+        this.userManagement = userManagement;
+        this.userManagement.setFestivalManagement(this);
+    }
+
+    public LineUpManagement getLineUpManagement() {
+        return this.lineUpManagement;
+    }
+
+    public UserManagement getUserManagement() {
+        return this.userManagement;
+    }
+
+    public CateringManagement getCateringManagement() {
+        return this.cateringManagement;
     }
 
     /**
