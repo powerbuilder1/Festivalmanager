@@ -1,4 +1,4 @@
-package festivalmanager.TicketTest;
+package festivalmanager.Ticket;
 
 import festivalmanager.festival.Festival;
 import org.javamoney.moneta.Money;

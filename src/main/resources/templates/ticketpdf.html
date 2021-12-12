@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+
+
+</head>
+<body class="flex items-center justify-center h-screen">
+<div class="rounded-lg border shadow-lg p-10 w-3/5">
+  <div class="flex flex-row justify-between pb-4">
+    <div>
+      <tr th:each="item : ${cart}">
+      <h2 class="text-xl font-bold">Order #<span class="text-green-600" th:text="${item.getId()}"></span>
+      </h2>
+      </tr>
+    </div>
+    <div>
+      <h2 class="text-xl font-bold">Name :<span class="text-green-600" th:text="${user2}"></span>
+      </h2>
+    </div>
+
+
+  </div>
+    <div class="row d-flex justify-content-center">
+      <table class="table-fixed w-full text-right border rounded">
+        <thead class="bg-gray-100">
+        <tr>
+          <th>Name </th>
+          <th>Qty</th>
+          <th>Price</th>
+          <th class="pr-4">Total</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${cart}">
+          <td class="pl-4 text-left" th:text="${{item.productName}}"></td>
+          <td th:text="${item.getQuantity().toString()}"></td>
+          <td th:text="${item.price}"></td>
+          <td th:id="${item.getId().toString()}" th:text="${item.price}"></td>
+        </tr>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+  </div>
+</body>
+</html>
