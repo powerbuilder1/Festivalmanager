@@ -74,7 +74,7 @@
                                 <h6 class="mb-0" th:text="#{register.position}">Position</h6>
                             </div>
                             <div class="col-md-9 pe-5">
-                                <input class="form-control form-control-lg" id="position" name="position" th:field="*{position}" th:errorclass="fieldError" type="text"
+                                <input placeholder="Catering/ Planning/ Festivalleiter" class="form-control form-control-lg" id="position" name="position" th:field="*{position}" th:errorclass="fieldError" type="text"
                                        required="required"/><br/>
                                 <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Die Position darf
                                     nicht leer sein.</p>
@@ -86,10 +86,12 @@
                                 <h6 class="mb-0" th:text="#{register.workplace}">Work Place</h6>
                             </div>
                             <div class="col-md-9 pe-5">
-                                <input class="form-control form-control-lg" id="workPlace" name="workPlace" th:field="*{workPlace}" th:errorclass="fieldError" type="text"
-                                       required="required"/><br/>
-                                <p th:if="${#fields.hasErrors('workPlace')}" th:errors="*{workPlace}">Die Position darf
-                                    nicht leer sein.</p>
+<!--                                <input class="form-control form-control-lg" id="workPlace" name="workPlace" th:field="*{workPlace}" th:errorclass="fieldError" type="text"-->
+<!--                                       required="required"/><br/>-->
+                                <select class="form-select" th:field="*{workPlace}" aria-label="Workplace Select">
+                                    <option th:each="location : ${locations}" th:value="${location.name}"
+                                            th:text="${location.name}">
+                                </select>
                             </div>
                         </div>
 
