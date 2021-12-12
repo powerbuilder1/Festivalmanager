@@ -39,11 +39,9 @@ public class CateringManagement {
 		userAccount.ifPresent(account -> {
 			Festival festival = userManagement.findUserByUserAccount(userAccount.get()).getFestival();
 			Food foodItem = foodCatalog.save(new Food(
-							foodItemForm.getName(),
-							Money.of(foodItemForm.getPrice(), Currencies.EURO),
-							festival
-					)
-			);
+					foodItemForm.getName(),
+					Money.of(foodItemForm.getPrice(), Currencies.EURO),
+					festival));
 			stockManagment.initializeInventoryItem(foodItem, 0, festival);
 		});
 		// get festival from user over userAccount
@@ -56,6 +54,11 @@ public class CateringManagement {
 			return foodCatalog.findFoodsByFestival(festival);
 		}
 		return null;
+	}
+
+	public Streamable<Food> getCatalog(long festivalId) {
+		Festival festival = festivalManagement.findById(festivalId);
+		return foodCatalog.findFoodsByFestival(festival);
 	}
 
 	public void deleteItemFromCatalog(Food foodItem) {
