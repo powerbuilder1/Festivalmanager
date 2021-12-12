@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 
-import festivalmanager.TicketTest.Ticket;
+import festivalmanager.Ticket.Ticket;
 import festivalmanager.authentication.User;
 import festivalmanager.catering.Food;
 import festivalmanager.location.Location;
