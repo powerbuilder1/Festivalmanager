@@ -9,6 +9,13 @@
 <section layout:fragment="content">
     <div class="container">
         <h1>Edit item</h1>
+        <div class="row" th:if="${error}">
+            <div class="col-md-12">
+                <div class="alert alert-danger">
+                    <strong th:text="#{${error}}">Error!</strong>
+                </div>
+            </div>
+        </div>
         <form action="#" th:action="@{|/catering/editFromCatalog/${item.getId()}|}" th:object="${foodItemForm}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
