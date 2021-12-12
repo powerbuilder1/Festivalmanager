@@ -1,18 +1,16 @@
 package festivalmanager.authentication;
 
 import festivalmanager.festival.FestivalManagement;
-import org.hibernate.usertype.UserType;
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.UserAccountManagement;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import festivalmanager.catering.CateringController;
+
 
 @Service
 @Transactional
@@ -26,7 +24,7 @@ public class UserManagement {
 
 	protected final UserRepository users;
 	protected final UserAccountManagement userAccounts;
-	private FestivalManagement festivalManagement;
+	private static FestivalManagement festivalManagement;
 
 	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
@@ -35,7 +33,7 @@ public class UserManagement {
 
 		this.users = users;
 		this.userAccounts = userAccounts;
-		this.festivalManagement = null;
+
 	}
 
 	public void setFestivalManagement(FestivalManagement festivalManagement) {

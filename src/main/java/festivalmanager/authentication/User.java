@@ -22,6 +22,7 @@ public class User {
 
 
 
+
 	@OneToOne //
 	private UserAccount userAccount;
 
@@ -98,4 +99,7 @@ public class User {
 	public void setFestival(Festival festival) {
 		this.festival = festival;
 	}
+
+
+
 }

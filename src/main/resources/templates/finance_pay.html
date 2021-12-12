@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+  <div class="container" th:each="festival : ${festivals}">
+    <a th:href="@{/festival/{id}(id=${festival.id})}">
+      <div class="row d-flex justify-content-center">
+        <div class="card shadow-lg" style="padding-top: 15px;">
+          <div class="card-body">
+            <th:block>
+              <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
+              <div class="container" th:each="finance">
+                <div class="row d-flex justify-content-center">
+                  <button type="submit" class="btn btn-primary" th:text="#{finance.payRent}">Miete abrechnen</button>
+                  <button type="submit" class="btn btn-primary" th:text="#{finance.payArtists}">Künstler abrechnen</button>
+                  <button type="submit" class="btn btn-primary" th:text="#{finance.payStaff}">Mitarbeiter abrechnen</button>
+                  <button type="submit" class="btn btn-primary" th:text="#{finance.payItems}">Inventar abrechnen</button>
+                  <button type="submit" class="btn btn-primary" th:text="#{finance.earnTicketSales}">Tickets abrechnen</button>
+                  <button type="submit" class="btn btn-primary" th:text="#{finance.earnCateringSales}">Catering abrechnen</button>
+                </div>
+              </div>
+            </th:block>
+          </div>
+        </div>
+      </div>
+      <br>
+    </a>
+  </div>
+</section>
+
+</body>
+</html>

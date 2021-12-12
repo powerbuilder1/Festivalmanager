@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
+      layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>Tickets</h1>
+                <div class="row d-flex justify-content-center">
+                    <form action="#" th:action="@{|/ticket/${id}/sale|}" th:object="${TicketorderForm}" method="post">
+                        <div class="field" th:classappend="${#fields.hasErrors('ticketItemId')} ? 'error' : ''">
+                            <label  for="ticketItemId"> Select ticket </label>
+                            <select type="text" th:field="*{ticketItemId}" class="form-select" id="ticketItemId">
+                                <option th:each="item: ${catalogTicket}" th:value="${item.id}"  th:text="${item.getName()}">
+
+                            </select>
+                        </div>
+                        <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                        <button type="submit" class="btn btn-primary">ADD TO CARD</button>
+                    </form>
+
+
+
+                </div>
+                    <div class="row d-flex justify-content-center">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Anzahl</th>
+                                <th scope="col">Preis</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each=" item : ${cart}">
+                                <th>
+                                <td th:text="${{item.productName}}"></td>
+                                <td th:text="${{item.quantity}}"></td>
+                                <td th:text="${item.getProduct().price}"></td>
+                                <td th:id="${item.getId().toString()}" th:text="${item.price}"></td>
+                                </th>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <div class="row d-flex justify-content-center">
+                    <form th:action="@{|/ticket/checkout|}" method="post">
+                        <button type="submit" class="btn btn-primary btn-lg"> Kaufen </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

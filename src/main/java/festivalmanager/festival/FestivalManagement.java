@@ -39,21 +39,24 @@ public class FestivalManagement {
 	 * @param stockEventListener
 	 */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
+            CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement,
+            CommunicationManagement communicationManagement) {
+        Assert.notNull(festivalRepository, "festivalRepository must not be null");
 					   CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement, CommunicationManagement communicationManagement, StockEventListener stockEventListener) {
 		Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
-		Assert.notNull(communicationManagement, "communicationManagement must not be null");
-		this.festivalRepository = festivalRepository;
+        Assert.notNull(communicationManagement, "userManagement must not be null");
+        this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
         this.cateringManagement = cateringManagement;
-		this.communicationManagement = communicationManagement;
         this.cateringManagement.setFestivalManagement(this);
         this.lineUpManagement = lineUpManagement;
         this.lineUpManagement.setFestivalManagement(this);
         this.userManagement = userManagement;
         this.userManagement.setFestivalManagement(this);
+        this.communicationManagement = communicationManagement;
 		this.stockEventListener = stockEventListener;
 		this.stockEventListener.setFestivalManagement(this);
     }
@@ -70,12 +73,12 @@ public class FestivalManagement {
         return this.cateringManagement;
     }
 
-	public CommunicationManagement getCommunicationManagement() {
-		return communicationManagement;
-	}
+    public CommunicationManagement getCommunicationManagement() {
+        return this.communicationManagement;
+    }
 
-	/**
-	 * Create a new festival
+    /**
+     * Create a new festival
      * 
      * @param festival
      * @return

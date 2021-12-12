@@ -1,17 +1,13 @@
-package festivalmanager.TicketTest;
+package festivalmanager.Ticket;
 
 import festivalmanager.festival.FestivalManagement;
-import festivalmanager.lineup.LineUpManagement;
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.DataInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
-
-import java.util.List;
 
 import static org.salespointframework.core.Currencies.EURO;
 

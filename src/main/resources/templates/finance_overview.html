@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+<section layout:fragment="content">
+    <div class="container" th:each="finance : ${finance}">
+        <div class="row">
+            <div class="col">
+                <h1>Finanzübersicht</h1>
+                <div class="row d-flex justify-content-center">
+                    <div class="card shadow-lg" style="padding-top: 15px;">
+                        <table class="table">
+                            <thead><tr>
+                                <th>Festival</th>
+                                <th>Kosten Location</th>
+                                <th>Kosten Künstler</th>
+                        <!--    <th>Kosten Angestellte</th>
+                                <th>Kosten Catering</th>
+                                <th>Einnahmen Tickets</th>
+                                <th>Einnahmen Catering</th>
+                                <th>Kosten gesamt</th> -->
+                            </tr></thead>
+                            <tbody><tr>
+                                <td>
+                                    <div>
+                                        <p th:text="${festival.getName()}">Festival 1</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p th:text="${location.getRent()}">10000</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p th:text="${lineup.getPrice()}">1000</p>
+                                    </div>
+                                </td>
+                        <!--    <td>
+                                    <div>
+                                        <p th:text="${finance.getStaffPrice()}">1000</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p th:text="${finance.getItemPrice()}">1000</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p th:text="${finance.getTicketProfit()}">1000</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p th:text="${finance.getItemProfit()}">1000</p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        <p th:text="${finance.getTotal()}">11000</p>
+                                    </div>
+                                </td> -->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

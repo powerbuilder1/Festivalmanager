@@ -36,11 +36,13 @@ public class ManagerManagement extends UserManagement {
 		switch (userForm.getPosition()){
 				case "Planning":
 				case "Catering":
+				case "Festivalleiter":
 					user.setPosition(userForm.getPosition());
 					break;
 				default:
 					throw new IllegalStateException("Unexpected value: " + userForm.getPosition());
 			}
+
 				user.setWorkPlace(userForm.getWorkPlace());
 			users.save(user);
 	}
