@@ -33,7 +33,7 @@ public class LineUpIntegrationTests {
 	@Test
 	void findsAllLineUps() {
 		Streamable<LineUp> lineUps = lineUpManagement.findAllLineUp();
-		assertThat(lineUps).hasSize(3);
+		assertThat(lineUps).hasSize(2);
 	}
 	@Test
 	void checkGetLineUpById() {
