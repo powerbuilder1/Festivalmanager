@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="container">
+            <div class="d-grid gap-3">
+                <a th:href="@{/finance_overview}" href="/finance_overview" class="btn btn-primary btn-lg" tabindex="-1" role="button">Finanzübersicht anzeigen</a>
+            </div>
+            <div class="d-grid gap-3">
+                <a th:href="@{/finance_pay}" href="/finance_pay" class="btn btn-primary btn-lg" tabindex="-1" role="button">Finanzen tätigen</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
