@@ -45,7 +45,12 @@ public class LineUp {
 		this.festivalIdentifier = festivalIdentifier;
 	}
 
-	public void addBandto(Band band) {
+	public void addBandto(Band band) throws Exception {
+		for( Band bands : SetofBands  ){
+			if (bands.getName1().equals(band.getName1()) | bands.getStage().equals(band.getStage())  ) {
+				throw new Exception( "It cannot be added to the lineup, sorry try with different inputs");
+			}
+		}
 		SetofBands.add(band);
 	}
 

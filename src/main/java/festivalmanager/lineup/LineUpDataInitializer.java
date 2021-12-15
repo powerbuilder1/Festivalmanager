@@ -1,6 +1,7 @@
 package festivalmanager.lineup;
 
 
+import java.util.Arrays;
 import java.util.List;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
@@ -36,12 +37,20 @@ public class LineUpDataInitializer implements DataInitializer {
 		Band band6 = new Band("Kendrick Lamar",Money.of(3000, EURO),"Buehne 1", "09:00 - 11:00");
 		LineUp lineUp1 = new LineUp(festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0) );
 		LineUp lineUp2 = new LineUp(festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0) );
-		lineUp1.addBandto(band1);
-		lineUp1.addBandto(band2);
-		lineUp1.addBandto(band3);
-		lineUp2.addBandto(band4);
-		lineUp2.addBandto(band5);
-		lineUp2.addBandto(band6);
+		for (Band band : Arrays.asList(band1, band2, band3)) {
+			try {
+				lineUp1.addBandto(band);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		for (Band band : Arrays.asList(band4, band5, band6)) {
+			try {
+				lineUp2.addBandto(band);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 		List.of(lineUp1,lineUp2).forEach(LineUpManagement::createLineUp);
 
 

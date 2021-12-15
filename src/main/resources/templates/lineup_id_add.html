@@ -45,13 +45,14 @@
       </div>
     </div>
   </div>
+  <div style="position: relative ; left:0px ; top:200px; background-color:yellow;">
   <form class="ui reply form" role="form" th:object="${bandform}" th:action="@{/lineup/{id}/addband(id=${lineup.id})}" method="post">
     <p class="ui negative message" th:if="${#fields.hasErrors('*')}">
       Einige Angaben sind nicht korrekt.
     </p>
     <div class="field" th:classappend="${#fields.hasErrors('name')} ? 'error' : ''">
       <label th:text="#{lineup.band.name.add}" for="name">Name</label>
-      <input type="text" th:field="*{name}" class="form-control" id="name">
+      <input type="text" th:field="*{name}" class="form-control" id="name" >
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('stage')} ? 'error' : ''">
       <label th:text="#{lineup.band.stage}" for="stage">Stage</label>
@@ -63,13 +64,14 @@
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('performanceHour')} ? 'error' : ''">
       <label th:text="#{lineup.band.performanceHour}" for="performanceHour">Performance Hour</label>
-      <input type="text" th:field="*{performanceHour}" class="form-control" id="performanceHour">
+      <input input type="text" th:field="*{performanceHour}" class="form-control" id="performanceHour">
     </div>
 
     <button type="submit" class="ui labeled icon button">
       <i class="icon edit"></i><span th:text="#{lineup.band.add}"> Add band to Line Up </span>
     </button>
   </form>
+  </div>
 
   <div class="row d-flex justify-content-center">
     <a href="/lineup/edit" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück </a>

@@ -56,12 +56,16 @@ public class LineUpManagement {
 		System.out.println("Welcome1");
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			System.out.println("Welcome");
-			lineUp.addBandto(
-					new Band(
-							bandForm.getName(),
-							Money.of(bandForm.getPrice(), Currencies.EURO),
-							bandForm.getStage(),
-							bandForm.getPerformanceHour()));
+			try {
+				lineUp.addBandto(
+						new Band(
+								bandForm.getName(),
+								Money.of(bandForm.getPrice(), Currencies.EURO),
+								bandForm.getStage(),
+								bandForm.getPerformanceHour()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			LineUpRepository.save(lineUp); });
 
 	}
