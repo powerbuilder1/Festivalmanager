@@ -52,6 +52,7 @@ public class Ticket extends Product {
 		this.festival = festival;
 	}
 
+
 	public TicketType getType() {
 		return type;
 	}

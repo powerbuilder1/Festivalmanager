@@ -4,6 +4,7 @@ import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.io.IOException;
 import com.itextpdf.io.source.ByteArrayOutputStream;
+import festivalmanager.Ticket.TicketRepository;
 import festivalmanager.TicketStock.TicketOrderForm;
 import festivalmanager.Ticket.TicketManagement;
 import festivalmanager.catering.CateringManagement;

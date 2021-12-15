@@ -53,7 +53,7 @@ public class LineUpDataInitializer implements DataInitializer {
 		}
 		for (LineUp lineUp : List.of(lineUp1, lineUp2)) {
 			try {
-				LineUpManagement.createLineUp(lineUp);
+				lineUpManagement.createLineUp(lineUp);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

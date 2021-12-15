@@ -8,25 +8,23 @@
 <body>
 <section layout:fragment="content">
     <div class="container">
-        <h1>Stock</h1>
+        <h1>TicketStock</h1>
         <table class="table">
             <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Name</th>
                 <th scope="col">Anzahl</th>
+                <th scope="col">Festival</th>
+
             </tr>
             </thead>
             <tbody>
-            <!--
-                            <tr th:if="${stock.empty}">
-                                <td colspan="2"> Out of stock </td>
-                            </tr>
-            -->
-            <tr th:each=" item : ${stock}">
+            <tr th:each=" item : ${tickets}">
                 <th></th>
                 <td th:text="${{item.product.name}}"></td>
                 <td th:text="${{item.quantity}}"></td>
+                <td th:text="${{item.getFestival().getName()}}"></td>
             </tr>
             </tbody>
         </table>

@@ -20,15 +20,18 @@ public class TicketStockController {
 		this.ticketStockManagement = ticketStockManagement;
 	}
 
-	// route to stock overview
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
-	@GetMapping(path = "/ticketstock")
-	public String getCurrentTicketStock(
-			Model model,
-			@LoggedIn Optional<UserAccount> userAccount
+	@GetMapping(path = "ticketstock")
+	String StockTicket(Model model,
+
+					   @LoggedIn Optional<UserAccount> userAccount
 	) {
-		// add current stock to model
-		model.addAttribute("stock", ticketStockManagement.getCurrentTicketStock(userAccount));
+
+		model.addAttribute("tickets", ticketStockManagement.getAllTicketStock());
+
 		return "ticketstock";
 	}
+
+	// route to stock overview
+
 }

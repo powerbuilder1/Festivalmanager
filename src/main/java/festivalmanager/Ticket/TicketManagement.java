@@ -35,6 +35,12 @@ public class TicketManagement {
 
 
 	}
+	public Streamable<Ticket> getAllTicketCatalog() {
+
+		return ticketRepository.findAll();
+
+
+	}
 
 
 }

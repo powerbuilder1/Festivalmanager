@@ -22,6 +22,14 @@ public class TicketInventoryItem extends UniqueInventoryItem {
 		this.festival = festival;
 	}
 
+	public Festival getFestival() {
+		return festival;
+	}
+
+	public void setFestival(Festival festival) {
+		this.festival = festival;
+	}
+
 	public TicketInventoryItem() {
 
 	}

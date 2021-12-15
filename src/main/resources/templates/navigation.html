@@ -35,6 +35,9 @@
                                 Management</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
+                            <a href="/ticketstock" th:href="@{/ticketstock}" class="nav-link">Ticket Stock</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
                             <a href="/catering/catalog" th:href="@{/catering/catalog}" class="nav-link">Catering
                                 Angebot</a>
                         </li>

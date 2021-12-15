@@ -47,11 +47,17 @@ public class LineUp {
 
 	public void addBandto(Band band) throws Exception {
 		for( Band bands : SetofBands  ){
-			if (bands.getName1().equals(band.getName1()) | bands.getStage().equals(band.getStage())  ) {
+			if (bands.getName1().equals(band.getName1()) | bands.getStage().equals(band.getStage())   ) {
 				throw new Exception( "It cannot be added to the lineup, sorry try with different inputs");
 			}
 		}
-		SetofBands.add(band);
+		if ( SetofBands.size() > this.festival.getLocation().getMaxStages() )
+		{
+			throw new Exception(" You can not add more bands to this festival");
+		}
+		else {
+			SetofBands.add(band);
+		}
 	}
 
 	public Festival getFestival() {

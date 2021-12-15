@@ -29,6 +29,11 @@ public class TicketStockManagement {
 		}
 		return null;
 	}
+	public Streamable<TicketInventoryItem> getAllTicketStock() {
+
+			return ticketStockInventory.findAll();
+
+	}
 
 	// Test
 	public void deleteAll() {
