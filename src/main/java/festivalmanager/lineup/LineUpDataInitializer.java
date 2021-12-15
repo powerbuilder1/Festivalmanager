@@ -51,11 +51,13 @@ public class LineUpDataInitializer implements DataInitializer {
 				e.printStackTrace();
 			}
 		}
-		List.of(lineUp1,lineUp2).forEach(LineUpManagement::createLineUp);
-
-
-
-
+		for (LineUp lineUp : List.of(lineUp1, lineUp2)) {
+			try {
+				LineUpManagement.createLineUp(lineUp);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 
 
 	}

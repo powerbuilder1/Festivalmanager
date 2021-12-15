@@ -99,7 +99,11 @@ public class LineUpController {
 			redirectAttributes.addFlashAttribute("error", result.toString());
 			return "redirect:/lineup/edit";
 		}
-		lineUpManagement.createLineUp(lineup);
+		try {
+			lineUpManagement.createLineUp(lineup);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "redirect:/lineup/edit";
 	}
 

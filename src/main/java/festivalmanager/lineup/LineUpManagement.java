@@ -38,11 +38,18 @@ public class LineUpManagement {
 	 * @param lineUp
 	 * @return
 	 */
-	public static LineUp createLineUp(LineUp lineUp) {
+	public static LineUp createLineUp(LineUp lineUp) throws Exception {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		if (lineUp.getFestival() == null) {
 			lineUp.setFestival(festivalManagement.findById(lineUp.getFestivalIdentifier()));
 			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());}
+		for (LineUp lineups: LineUpRepository.findAll() )
+		{
+			if (lineups.getId() == lineUp.getId())
+			{
+				throw new Exception(" THIS LINEUP ALREADY EXISTS");
+			}
+		}
 		return LineUpRepository.save(lineUp);
 	}
 	/**
@@ -113,7 +120,7 @@ public class LineUpManagement {
 		});
 	}
 
-	public LineUp createLineUp(Festival festival) {
+	public LineUp createLineUp(Festival festival) throws Exception {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);
 	}
