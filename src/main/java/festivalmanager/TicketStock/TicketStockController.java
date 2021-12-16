@@ -20,7 +20,7 @@ public class TicketStockController {
 		this.ticketStockManagement = ticketStockManagement;
 	}
 
-	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
+	@PreAuthorize("hasRole('BOSS')")
 	@GetMapping(path = "ticketstock")
 	String StockTicket(Model model,
 
@@ -31,6 +31,7 @@ public class TicketStockController {
 
 		return "ticketstock";
 	}
+
 
 	// route to stock overview
 

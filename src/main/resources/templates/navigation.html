@@ -34,8 +34,11 @@
                             <a href="/catering/management" th:href="@{/catering/management}" class="nav-link">Catering
                                 Management</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
+                        <li class="nav-item" sec:authorize="hasRole('BOSS')">
                             <a href="/ticketstock" th:href="@{/ticketstock}" class="nav-link">Ticket Stock</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="hasRole('BOSS')">
+                            <a href="/ticket/new" th:href="@{/ticket/new}" class="nav-link">New Ticket</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
                             <a href="/catering/catalog" th:href="@{/catering/catalog}" class="nav-link">Catering

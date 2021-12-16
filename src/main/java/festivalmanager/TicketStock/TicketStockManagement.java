@@ -3,7 +3,9 @@ package festivalmanager.TicketStock;
 import festivalmanager.Ticket.Ticket;
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
+import festivalmanager.catering.Food;
 import festivalmanager.festival.Festival;
+import festivalmanager.stock.FoodInventoryItem;
 import org.salespointframework.quantity.Quantity;
 import org.salespointframework.useraccount.UserAccount;
 import org.springframework.data.util.Streamable;
@@ -34,7 +36,10 @@ public class TicketStockManagement {
 			return ticketStockInventory.findAll();
 
 	}
-
+	// initialize new Inventory Item for a ticket of specific Festival
+	public void initializeNewTicketInInventory(Ticket ticketItem, double amount, Festival festival) {
+		ticketStockInventory.save(new TicketInventoryItem(ticketItem, Quantity.of(amount), festival));
+	}
 	// Test
 	public void deleteAll() {
 		ticketStockInventory.deleteAll();

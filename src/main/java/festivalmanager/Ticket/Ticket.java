@@ -52,6 +52,13 @@ public class Ticket extends Product {
 		this.festival = festival;
 	}
 
+	public double getPercentOf() {
+		return percentOf;
+	}
+
+	public void setPercentOf(double percentOf) {
+		this.percentOf = percentOf;
+	}
 
 	public TicketType getType() {
 		return type;
