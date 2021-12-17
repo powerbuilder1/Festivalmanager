@@ -63,6 +63,16 @@ public class LineUpManagement {
 		System.out.println("Welcome1");
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			System.out.println("Welcome");
+			for (Band bands: lineUp.getBands())
+			{
+				if ( bandForm.getStage().equals(bands.getStage())){
+					try {
+						throw new Exception("This Stage is already occupied by " + bands.getName1());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
 			try {
 				lineUp.addBandto(
 						new Band(

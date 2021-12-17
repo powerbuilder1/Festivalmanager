@@ -58,6 +58,10 @@ public class LineUpDataInitializer implements DataInitializer {
 				e.printStackTrace();
 			}
 		}
+		for (String stage: lineUp1.getStagesinLineUp())
+		{
+			System.out.println(stage);
+		}
 
 
 	}

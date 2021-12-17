@@ -71,7 +71,10 @@
         <div class="mb-3">
             <label for="bandedit.stage" class="form-label" th:text="#{lineup.band.stage}">stage
             </label>
-            <input type="text" th:field="*{bandedit.stage}" class="form-control " id="bandedit.stage">
+            <select type="text" th:field="*{bandedit.stage}" class="form-select" id="bandedit.stage">
+                <option th:each="stages: ${lineup.getStagesinLineUp()}" th:value="${stages}"  th:text="${stages.toString()}">
+
+            </select>
             <div th:if="${#fields.hasErrors('bandedit.stage')} " th:errors="*{bandedit.stage}">
                 <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
             </div>

@@ -89,6 +89,18 @@ public class LineUp {
 				return Uhrzeit ;
 	}
 
+	public ArrayList<String> getStagesinLineUp()
+	{
+		ArrayList<String> setOfStages = new ArrayList<>();
+		int sum = 1;
+		for ( int i =0; i<festival.getLocation().getMaxStages(); i++)
+		{
+			setOfStages.add("Buehne "+ sum);
+			sum = sum+1;
+		}
+		return setOfStages;
+	}
+
 	public long getId() {
 		return id;
 	}

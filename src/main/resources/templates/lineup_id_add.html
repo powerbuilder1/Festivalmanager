@@ -54,9 +54,15 @@
       <label th:text="#{lineup.band.name.add}" for="name">Name</label>
       <input type="text" th:field="*{name}" class="form-control" id="name" >
     </div>
-    <div class="field" th:classappend="${#fields.hasErrors('stage')} ? 'error' : ''">
-      <label th:text="#{lineup.band.stage}" for="stage">Stage</label>
-      <input type="text" th:field="*{stage}" class="form-control" id="stage">
+    <div class="mb-3">
+      <label for="stage" class="form-label" th:text="#{lineup.band.stage}">stage
+      </label>
+      <select type="text" th:field="*{stage}" class="form-select" id="stage">
+        <option th:each="stages: ${lineup.getStagesinLineUp()}" th:value="${stages}"  th:text="${stages.toString()}">
+      </select>
+      <div th:if="${#fields.hasErrors('stage')} " th:errors="*{stage}">
+        <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
+      </div>
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('price')} ? 'error' : ''">
       <label th:text="#{lineup.band.price}" for="price">Price</label>

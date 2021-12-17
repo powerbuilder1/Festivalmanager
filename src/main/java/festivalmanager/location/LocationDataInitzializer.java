@@ -36,7 +36,7 @@ public class LocationDataInitzializer implements DataInitializer {
                 new Location("Kraftwerk Mitte", 4000, 2, Money.of(2300000, EURO)),
                 new Location("Arteum", 1000, 5, Money.of(10000, EURO)),
                 new Location("Kreuzberg", 2000, 4, Money.of(20000, EURO)),
-                new Location("Mannheim", 3000, 5, Money.of(300000, EURO))).forEach(locationManagement::createLocation);
+                new Location("Mannheim", 3000, 6, Money.of(300000, EURO))).forEach(locationManagement::createLocation);
 
         // set example
         Location location = locationManagement.findAllByName("Hockenheimring").toList().get(0);
