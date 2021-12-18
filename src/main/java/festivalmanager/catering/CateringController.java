@@ -48,11 +48,11 @@ public class CateringController {
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/catalog/edit/{foodItem}")
 	public String getEditCatalogItem(
+			NewFoodItemForm form,
 			@PathVariable("foodItem") Food foodItem,
 			Model model
 			) {
 		model.addAttribute("item", foodItem);
-		model.addAttribute("foodItemForm", new NewFoodItemForm());
 		System.out.println(foodItem.getName());
 		System.out.println(foodItem.getPrice());
 		return "catalog_edit_item";
@@ -86,15 +86,13 @@ public class CateringController {
 	@PostMapping(path = "catering/editFromCatalog/{foodItem}")
 	public String editItemFromCatalog(
 			@PathVariable("foodItem") Food foodItem,
-			@Valid @ModelAttribute NewFoodItemForm foodItemForm,
-			Errors result,
-			RedirectAttributes redirectAttributes
+			@Valid NewFoodItemForm form,
+			Errors result
 	) {
 		if (result.hasErrors()) {
-			redirectAttributes.addFlashAttribute("error", result.toString());
 			return "redirect:/catering/catalog/edit/" + foodItem.getId();
 		}
-		cateringManagement.editItemFromCatalog(foodItem, foodItemForm);
+		cateringManagement.editItemFromCatalog(foodItem, form);
 		return "redirect:/catering/catalog";
 	}
 
