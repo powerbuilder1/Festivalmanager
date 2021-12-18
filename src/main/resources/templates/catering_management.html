@@ -11,27 +11,20 @@
         <h1>Catering Management</h1>
         <hr>
         <h2>Add Item to Catalog</h2>
-        <div class="row" th:if="${error}">
-            <div class="col-md-12">
-                <div class="alert alert-danger">
-                    <strong th:text="#{${error}}">Error!</strong>
-                </div>
-            </div>
-        </div>
-        <form action="#" th:action="@{/catering/addToFoodCatalog}" th:object="${foodItemForm}" method="post">
+        <form action="#" th:action="@{/catering/addToFoodCatalog}" th:object="${newFoodItemForm}" method="post">
             <div>
                 <p class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}"
-                           th:errorclass="fieldError">
-                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</p>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" th:field="*{name}">
+                <p th:if="${#fields.hasErrors('name')}"
+                   th:text="${#strings.listJoin(#fields.errors('name'), ', ')}"></p>
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
                 <input type="number" step="any" class="form-control" id="price" placeholder="Enter Price"
-                       th:field="*{price}" th:errorclass="fieldError">
-                <p class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Price
-                    Error</p>
+                       th:field="*{price}">
+                <p th:if="${#fields.hasErrors('price')}"
+                   th:text="${#strings.listJoin(#fields.errors('price'), ', ')}"></p>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
