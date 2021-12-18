@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,9 +28,8 @@ public class CateringController {
 
 	// route to catering management page
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
-	@GetMapping(path = "catering/management")
-	public String getCateringManagement(Model model) {
-		model.addAttribute("foodItemForm", new NewFoodItemForm());
+	@GetMapping(path = "catering/addToFoodCatalog")
+	public String getCateringManagement(NewFoodItemForm form) {
 		return "catering_management";
 	}
 
@@ -62,16 +62,14 @@ public class CateringController {
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/addToFoodCatalog")
 	public String addItemToCatalog(
-			@Valid @ModelAttribute NewFoodItemForm foodItemForm,
-			Errors result,
-			RedirectAttributes redirectAttributes,
-			@LoggedIn Optional<UserAccount> account
+			@LoggedIn Optional<UserAccount> account,
+			@Valid NewFoodItemForm form,
+			Errors result
 	) {
 		if (result.hasErrors()) {
-			redirectAttributes.addFlashAttribute("error", result.toString());
-			return "redirect:/catering/management";
+			return "catering_management";
 		}
-		cateringManagement.addItemToCatalog(foodItemForm, account);
+		cateringManagement.addItemToCatalog(form, account);
 		return "redirect:/";
 	}
 
