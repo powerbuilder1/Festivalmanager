@@ -9,21 +9,18 @@
 <section layout:fragment="content">
     <div class="container">
         <h1>Edit item</h1>
-        <div class="row" th:if="${error}">
-            <div class="col-md-12">
-                <div class="alert alert-danger">
-                    <strong th:text="#{${error}}">Error!</strong>
-                </div>
-            </div>
-        </div>
-        <form action="#" th:action="@{|/catering/editFromCatalog/${item.getId()}|}" th:object="${foodItemForm}" method="post">
+        <form action="#" th:action="@{|/catering/editFromCatalog/${item.getId()}|}" th:object="${newFoodItemForm}" method="post">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" id="name" th:placeholder="${item.getName()}" th:field="*{name}">
+                <p th:if="${#fields.hasErrors('name')}"
+                   th:text="${#strings.listJoin(#fields.errors('name'), ', ')}"></p>
             </div>
             <div class="form-group">
                 <label for="price">Price</label>
                 <input type="number" step="any" class="form-control" id="price" th:placeholder="${item.getPrice()}" th:field="*{price}">
+                <p th:if="${#fields.hasErrors('price')}"
+                   th:text="${#strings.listJoin(#fields.errors('price'), ', ')}"></p>
             </div>
 
             <script th:inline="javascript">
