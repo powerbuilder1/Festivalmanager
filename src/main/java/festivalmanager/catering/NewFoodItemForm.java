@@ -1,15 +1,13 @@
 package festivalmanager.catering;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class NewFoodItemForm {
 
 	@NotEmpty
-	@Size(min = 3)
 	private  String name;
 	@NotNull
+	@Positive
 	private Double price;
 
 	public NewFoodItemForm(String name, Double price) {
