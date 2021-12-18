@@ -1,12 +1,8 @@
 package festivalmanager.catering;
 
-import festivalmanager.festival.Festival;
-import org.springframework.validation.Errors;
-
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 
 public class NewFoodItemForm {
 
@@ -39,7 +35,4 @@ public class NewFoodItemForm {
 		this.price = price;
 	}
 
-	public void validate(Errors errors) {
-		// Complex validation goes here
-	}
 }
