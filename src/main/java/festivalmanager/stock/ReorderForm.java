@@ -1,14 +1,13 @@
 package festivalmanager.stock;
 
 import org.salespointframework.catalog.ProductIdentifier;
-import org.springframework.validation.Errors;
 
-import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
-public class ReorderForm implements Serializable {
-	private @NotEmpty ProductIdentifier foodItemId;
-	private @NotEmpty int amount;
+public class ReorderForm {
+	private @NotNull ProductIdentifier foodItemId;
+	private @NotNull @Positive int amount;
 
 	public ReorderForm(ProductIdentifier foodItemId, int amount) {
 		this.foodItemId = foodItemId;
@@ -34,7 +33,4 @@ public class ReorderForm implements Serializable {
 		this.amount = amount;
 	}
 
-	public void validate(Errors errors) {
-		// Complex validation goes here
-	}
 }
