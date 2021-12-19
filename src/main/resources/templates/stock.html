@@ -37,9 +37,13 @@
                         <select class="form-select" aria-label="Default select example" th:field="*{foodItemId}">
                             <option th:each=" item : ${stock}" th:value="${item.getProduct().getId()}" th:text="${item.getProduct().getName()}"></option>
                         </select>
+                        <p th:if="${#fields.hasErrors('foodItemId')}"
+                           th:text="${#strings.listJoin(#fields.errors('foodItemId'), ', ')}"></p>
                     </div>
                     <div class="col">
                         <input type="number" class="form-control" id="amount" th:field="*{amount}">
+                        <p th:if="${#fields.hasErrors('amount')}"
+                           th:text="${#strings.listJoin(#fields.errors('amount'), ', ')}"></p>
                     </div>
                     <div class="col">
                         <button type="submit" class="btn btn-primary">Reorder</button>
