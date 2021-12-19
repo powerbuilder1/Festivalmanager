@@ -33,7 +33,7 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-                <form action="#" th:action="@{|/catering/order|}" th:object="${orderForm}" method="post">
+                <form action="#" th:action="@{|/catering/order|}" th:object="${reorderForm}" method="post">
                     <div class="radio-toolbar">
                         <div class="inner">
                             <div th:each="item : ${catalog}" class="child">
@@ -75,6 +75,8 @@
                             <button type="submit" class="btn btn-primary">ADD TO CARD</button>
                         </div>
                     </div>
+                    <p th:if="${#fields.hasErrors('amount')}"
+                       th:text="${#strings.listJoin(#fields.errors('amount'), ', ')}"></p>
                 </form>
                 <p>&nbsp;</p>
             </div>
