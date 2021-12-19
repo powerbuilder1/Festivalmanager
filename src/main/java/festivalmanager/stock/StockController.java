@@ -1,19 +1,16 @@
 package festivalmanager.stock;
 
-import groovy.util.logging.Log;
-import org.salespointframework.inventory.UniqueInventory;
-import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.swing.text.html.Option;
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -31,13 +28,12 @@ public class StockController {
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "stock")
 	public String getCurrentStock(
+			ReorderForm form,
 			Model model,
 			@LoggedIn Optional<UserAccount> userAccount
 			) {
 		// add current stock to model
 		model.addAttribute("stock", stockManagment.getCurrentStock(userAccount));
-		// add reorderForm container to model
-		model.addAttribute("reorderForm", new ReorderForm());
 		return "stock";
 	}
 
@@ -51,9 +47,18 @@ public class StockController {
 
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "stock/reorder")
-	public String reorderItem(@ModelAttribute ReorderForm reorderForm) {
-		stockManagment.reorderItem(reorderForm);
-		return "redirect:/stock";
+	public String reorderItem(
+			@Valid ReorderForm form,
+			BindingResult result,
+			@LoggedIn Optional<UserAccount> userAccount,
+			Model model
+	) {
+		if (result.hasErrors()) {
+			model.addAttribute("stock", stockManagment.getCurrentStock(userAccount));
+			return "stock";
+		}
+		stockManagment.reorderItem(form);
+		return "redirect:/stock/";
 	}
 
 
