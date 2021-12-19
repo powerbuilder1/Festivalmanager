@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -27,6 +28,7 @@ import org.thymeleaf.context.WebContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.util.Optional;
 
 
@@ -45,7 +47,9 @@ public class OrderController {
 	private final FestivalManagement festivalManagement;
 	private final TemplateEngine templateEngine;
 
-	public OrderController(CateringManagement cateringManagement, CustomOrderManagement customOrderManagement, TicketManagement ticketManagement,TicketCustomOrderManagement ticketCustomOrderManagement,FestivalManagement festivalManagement,TemplateEngine templateEngine) {
+	public OrderController(CateringManagement cateringManagement, CustomOrderManagement customOrderManagement,
+						   TicketManagement ticketManagement,TicketCustomOrderManagement ticketCustomOrderManagement,
+						   FestivalManagement festivalManagement,TemplateEngine templateEngine) {
 		this.cateringManagement = cateringManagement;
 		this.customOrderManagement = customOrderManagement;
 		this.ticketManagement = ticketManagement;
@@ -63,11 +67,11 @@ public class OrderController {
 	@PreAuthorize("hasRole('CATERING')")
 	@GetMapping(path = "catering/sale")
 	String getCart(
+			ReorderForm form,
 			Model model,
 			@LoggedIn Optional<UserAccount> userAccount
 			) {
 		model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
-		model.addAttribute("orderForm", new ReorderForm());
 		return "catering";
 	}
 
@@ -88,11 +92,16 @@ public class OrderController {
 	@PostMapping(path = "catering/order")
 	String addFoodToCard(
 			@ModelAttribute Cart cart,
-			@ModelAttribute ReorderForm orderForm,
+			@Valid ReorderForm form,
+			BindingResult result,
+			Model model,
 			@LoggedIn Optional<UserAccount> userAccount
 			) {
-
-		customOrderManagement.addFoodToCard(cart, orderForm);
+		if (result.hasErrors()) {
+			model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
+			return "catering";
+		}
+		customOrderManagement.addFoodToCard(cart, form);
 
 		return "redirect:/catering/sale";
 	}
