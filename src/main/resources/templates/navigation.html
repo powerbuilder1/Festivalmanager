@@ -27,6 +27,9 @@
                         <li class="nav-item" sec:authorize="hasRole('PLANNING')">
                             <a href="/festival" th:href="@{/festival}" class="nav-link">Festival</a>
                         </li>
+                        <li class="nav-item" sec:authorize="hasAnyRole('BOSS', 'FESTIVALDIRECTOR')">
+                            <a href="/finance" th:href="@{/finance}" class="nav-link">Finanzen</a>
+                        </li>
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
                             <a href="/dashboard" th:href="@{/dashboard}" class="nav-link" th:text="#{manager.dashboard}">Kontrollzentrum</a>
                         </li>

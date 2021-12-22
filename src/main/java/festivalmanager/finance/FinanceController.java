@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
-@PreAuthorize("hasRole('BOSS')")
 public class FinanceController {
 	FinanceRepository financeRepository;
 	FestivalManagement festivalManagement;
@@ -24,17 +23,19 @@ public class FinanceController {
 		this.festivalRepository = festivalRepository;
 		this.locationManagement = locationManagement;
 	}
-
+	@PreAuthorize("hasAnyRole('BOSS', 'FESTIVALDIRECTOR')")
 	@GetMapping("/finance")
 	String finance(/*@PathVariable long id,*/ Model model) {
 		return "finance";
 	}
 
+	@PreAuthorize("hasAnyRole('BOSS', 'FESTIVALDIRECTOR')")
 	@GetMapping("/finance/overview")
 	String overview(/*@PathVariable long id,*/ Model model){
 		return "finance_overview";
 	}
 
+	@PreAuthorize("hasRole('BOSS')")
 	@GetMapping("finance/pay")
 	String pay(/*@PathVariable long id,*/ Model model){
 		return "finance_pay";
