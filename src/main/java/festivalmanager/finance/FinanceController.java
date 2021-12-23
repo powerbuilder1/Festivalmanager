@@ -1,5 +1,6 @@
 package festivalmanager.finance;
 
+import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalRepository;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -12,12 +13,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class FinanceController {
+	FinanceManagement financeManagement;
 	FinanceRepository financeRepository;
 	FestivalManagement festivalManagement;
 	FestivalRepository festivalRepository;
 	LocationManagement locationManagement;
 
-	public FinanceController(FinanceRepository financeRepository, FestivalManagement festivalManagement, FestivalRepository festivalRepository, LocationManagement locationManagement){
+	public FinanceController(FinanceManagement financeManagement,FinanceRepository financeRepository, FestivalManagement festivalManagement, FestivalRepository festivalRepository, LocationManagement locationManagement){
+		this.financeManagement = financeManagement;
 		this.financeRepository = financeRepository;
 		this.festivalManagement = festivalManagement;
 		this.festivalRepository = festivalRepository;
@@ -26,12 +29,17 @@ public class FinanceController {
 	@PreAuthorize("hasAnyRole('BOSS', 'FESTIVALDIRECTOR')")
 	@GetMapping("/finance")
 	String finance(/*@PathVariable long id,*/ Model model) {
+		model.addAttribute("finance",financeManagement.findAllFinances());
+		model.addAttribute("title","Finances");
 		return "finance";
 	}
 
 	@PreAuthorize("hasAnyRole('BOSS', 'FESTIVALDIRECTOR')")
-	@GetMapping("/finance/overview")
-	String overview(/*@PathVariable long id,*/ Model model){
+	@GetMapping("/finance/{id}/overview")
+	String overview(@PathVariable long id, Model model){
+		Festival festival = festivalManagement.findById(id);
+		model.addAttribute("finance",financeManagement.findAllFinances());
+		model.addAttribute("title","Finances");
 		return "finance_overview";
 	}
 
