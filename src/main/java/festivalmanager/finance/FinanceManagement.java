@@ -65,11 +65,19 @@ public class FinanceManagement {
 		festivalbalance.subtract(price);
 		return festivalbalance;
 	}
-	/*
+	/* Dem Staff wird nie ein Preis zugeschrieben
+
 	public Money payStaff(long festivalId){
 		Festival festival = festivalManagement.findById(festivalId);
 		User user = festivalManagement.getUserManagement().findById(festivalId);
-		user.getWorkPlace();
+		Streamable<Finance> balance= financeRepository.findAll();
+		Money festivalbalance=balance.toList().get(0).getBalance();
+		Money salery=Money.of(0,EURO);
+		for(User user:){
+			salery.add(user.getSalery);
+		}
+		festivalbalance.subtract(salery);
+		return festivalbalance;
 	} */
 
 	public Money payItems(long festivalId){
@@ -87,6 +95,14 @@ public class FinanceManagement {
 	public void earnTicketSales(long festivalId){}
 
 	public void earnCateringSales(long festivalId){}
+
+	public Money festivaltotal(long festivalId){
+		Festival festival = festivalManagement.findById(festivalId);
+		Streamable<Finance> balance= financeRepository.findAll();
+		Money festivalbalance=balance.toList().get(0).getBalance();
+		festivalbalance.add(payLocation(festivalId)).add(payArtists(festivalId)).subtract(payItems(festivalId));
+		return festivalbalance;
+	}
 
 	public Streamable<Finance> findAllFinances(){return financeRepository.findAll();}
 }
