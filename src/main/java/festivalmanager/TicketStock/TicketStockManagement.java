@@ -11,6 +11,7 @@ import org.salespointframework.useraccount.UserAccount;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Service
@@ -35,6 +36,10 @@ public class TicketStockManagement {
 
 			return ticketStockInventory.findAll();
 
+	}
+	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( Festival festival)
+	{
+		return ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().equals(festival));
 	}
 	// initialize new Inventory Item for a ticket of specific Festival
 	public void initializeNewTicketInInventory(Ticket ticketItem, double amount, Festival festival) {

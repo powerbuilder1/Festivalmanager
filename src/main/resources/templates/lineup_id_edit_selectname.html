@@ -46,9 +46,9 @@
             </div>
         </div>
     </div>
-    <div style="position: relative ; left:0px ; top:300px; background-color:yellow;">
+    <div style="position: relative ; left:0px ; top:100px; background-color:yellow;">
 
-        <form class="ui reply form" role="form" th:action="@{/lineup/{id}/editband (id=${lineup.id})}" method="post">
+        <form class="ui reply form" role="form" th:action="@{/lineup/{id}/editband/selectname (id=${lineup.id})}" method="post">
 
             <div class="mb-3">
                 <label for="name1" class="form-label" th:text="#{lineup.band.name.edit}">Name</label>
@@ -59,14 +59,10 @@
                     <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
                 </div>
             </div>
-            <h5 class="card-title " > Form  </h5>
-            <div class="mb-3">
-                <label for="bandedit.name" class="form-label" th:text="#{lineup.band.name}">Name</label>
-                <input type="text" th:field="*{bandedit.name}" class="form-control " id="bandedit.name">
-                <div th:if="${#fields.hasErrors('bandedit.name')} " th:errors="*{bandedit.name}">
-                    <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
-                </div>
-            </div>
+            <button type="submit" class="ui labeled icon button">
+                <i class="icon edit"></i><span> Select band to Edit </span>
+            </button>
+
         </form>
     </div>
 </section>

@@ -39,6 +39,13 @@
                 </div>
               </div>
             </td>
+            <td>
+              <div th:each="prices : ${lineup.getPriceOfBands()}">
+                <div>
+                  <p th:text="${prices}"></p>
+                </div>
+              </div>
+            </td>
           </tr>
           </tbody>
         </table>
@@ -70,7 +77,9 @@
     </div>
     <div class="field" th:classappend="${#fields.hasErrors('performanceHour')} ? 'error' : ''">
       <label th:text="#{lineup.band.performanceHour}" for="performanceHour">Performance Hour</label>
-      <input input type="text" th:field="*{performanceHour}" class="form-control" id="performanceHour">
+      <select input type="text" th:field="*{performanceHour}" class="form-control" id="performanceHour">
+        <option th:each="performancehour: ${lineup.getHoursofLineUp()}" th:value="${performancehour}" th:text="${performancehour.toString()}">
+      </select>
     </div>
 
     <button type="submit" class="ui labeled icon button">

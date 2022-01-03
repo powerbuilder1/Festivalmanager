@@ -81,6 +81,14 @@ public class LineUp {
 
 		return names;
 	}
+	public ArrayList<Double> getPriceOfBands() {
+		ArrayList<Double> prices = new ArrayList<>();
+		for (Band band : SetofBands) {
+			prices.add(band.getPrice().getNumber().doubleValueExact());
+		}
+
+		return prices;
+	}
 	public ArrayList<String> getLineupUhrzeiten() {
 		ArrayList<String> Uhrzeit = new ArrayList<>();
 		for (Band band: SetofBands) {
@@ -99,6 +107,20 @@ public class LineUp {
 			sum = sum+1;
 		}
 		return setOfStages;
+	}
+
+	public ArrayList<String> getHoursofLineUp()
+	{
+		ArrayList<String> getHours = new ArrayList<>();
+		int Hour1 = 1;
+		int Hour2 = 3;
+		for ( int i = 0; i<22; i++)
+		{
+			getHours.add(Hour1+":00 - "+Hour2+":00");
+			Hour1 = Hour1+1;
+			Hour2 = Hour2+1;
+		}
+		return getHours;
 	}
 
 	public long getId() {

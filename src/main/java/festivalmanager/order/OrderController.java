@@ -7,6 +7,7 @@ import com.itextpdf.io.source.ByteArrayOutputStream;
 import festivalmanager.Ticket.TicketRepository;
 import festivalmanager.TicketStock.TicketOrderForm;
 import festivalmanager.Ticket.TicketManagement;
+import festivalmanager.TicketStock.TicketStockManagement;
 import festivalmanager.catering.CateringManagement;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
@@ -42,6 +43,7 @@ public class OrderController {
 	ServletContext servletContext;
 	private final CateringManagement cateringManagement;
 	private final TicketManagement ticketManagement;
+	private final TicketStockManagement ticketStockManagement;
 	private final TicketCustomOrderManagement ticketCustomOrderManagement;
 	private final CustomOrderManagement customOrderManagement;
 	private final FestivalManagement festivalManagement;
@@ -49,13 +51,14 @@ public class OrderController {
 
 	public OrderController(CateringManagement cateringManagement, CustomOrderManagement customOrderManagement,
 						   TicketManagement ticketManagement,TicketCustomOrderManagement ticketCustomOrderManagement,
-						   FestivalManagement festivalManagement,TemplateEngine templateEngine) {
+						   FestivalManagement festivalManagement,TemplateEngine templateEngine, TicketStockManagement ticketStockManagement) {
 		this.cateringManagement = cateringManagement;
 		this.customOrderManagement = customOrderManagement;
 		this.ticketManagement = ticketManagement;
 		this.ticketCustomOrderManagement = ticketCustomOrderManagement;
 		this.festivalManagement = festivalManagement;
 		this.templateEngine = templateEngine;
+		this.ticketStockManagement = ticketStockManagement;
 	}
 
 
@@ -85,6 +88,7 @@ public class OrderController {
 		model.addAttribute("id",festival.getId());
 		model.addAttribute("catalogTicket", ticketManagement.getTicketCatalog(festival));
 		model.addAttribute("TicketorderForm", new TicketOrderForm());
+		model.addAttribute("ticketStock", ticketStockManagement.getTicketStockbyfestival(festival));
 		return "ticket_sale";
 	}
 

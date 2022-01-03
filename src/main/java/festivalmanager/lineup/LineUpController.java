@@ -7,6 +7,7 @@ import festivalmanager.festival.FestivalManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
 import org.javamoney.moneta.Money;
+import org.salespointframework.order.Cart;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,8 @@ public class LineUpController {
 	LineUpManagement lineUpManagement;
 
 	FestivalManagement festivalManagement;
+
+	BandForm bandForm = new BandForm();
 
 	LineUpController(LineUpManagement lineUpManagement, FestivalManagement festivalManagement) {
 		Assert.notNull(lineUpManagement, "lineupManagement must not be null");
@@ -75,11 +78,30 @@ public class LineUpController {
 		}
 
 		model.addAttribute("lineup", lineUp);
-		model.addAttribute("bandname", new Band());
-		model.addAttribute("bandedit", new BandForm());
+		model.addAttribute("bandname", bandForm);
+
+
+
 
 
 		return "lineup_id_edit";
+	}
+	@PreAuthorize("hasRole('PLANNING')")
+	@GetMapping("/lineup/{id}/edit/selectname")
+	String putValuesineditBandinLineUp (@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
+		LineUp lineUp = lineUpManagement.findById(id);
+		if (lineUp == null) {
+			redirectAttributes.addFlashAttribute("error", "LINEUP_NOT_FOUND");
+			return "redirect:/festivals";
+		}
+
+		model.addAttribute("lineup", lineUp);
+		model.addAttribute("bandname", new Band());
+
+
+
+
+		return "lineup_id_edit_selectname";
 	}
 
 	@PreAuthorize("hasRole('PLANNING')")
@@ -131,11 +153,25 @@ public class LineUpController {
 
 	@PreAuthorize("hasRole('PLANNING')")
 	@PostMapping("/lineup/{id}/editband")
-	public String editBand(@PathVariable long id,@RequestParam String name1, @ModelAttribute BandForm bandedit) {
+	public String editBand(@PathVariable long id, @ModelAttribute BandForm form) {
+		System.out.println(form.getName());
 
-		System.out.println(name1);
-		System.out.println(bandedit.getName());
-		lineUpManagement.updateBand (id,name1,bandedit);
+		lineUpManagement.updateBand (id,form);
+
+		return "redirect:/lineup/"+id+"/edit/selectname";
+
+	}
+
+	@PreAuthorize("hasRole('PLANNING')")
+	@PostMapping("/lineup/{id}/editband/selectname")
+	public String putvaluesBand(@PathVariable long id,@RequestParam String name1) {
+
+		Band foundBand = lineUpManagement.findBandByName(id, name1);
+		bandForm.setName(foundBand.getName1());
+		bandForm.setStage(foundBand.getStage());
+		bandForm.setPrice(foundBand.getPrice().getNumber().doubleValueExact());
+		bandForm.setPerformanceHour(foundBand.getPerformanceHour());
+
 
 		return "redirect:/lineup/"+id+"/edit";
 

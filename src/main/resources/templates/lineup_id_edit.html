@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns="http://www.w3.org/1999/html"
       layout:decorate="~{layout.html(title=${lineup.Festivalname})}">
 <head>
 </head>
@@ -15,6 +15,8 @@
                         <th scope="col">Uhrzeit</th>
                         <th scope="col">Bands</th>
                         <th scope="col">Bühnen</th>
+                        <th scope="col">Preis</th>
+
 
 
                     </tr></thead>
@@ -40,67 +42,64 @@
                                 </div>
                             </div>
                         </td>
+                        <td>
+                            <div th:each="prices : ${lineup.getPriceOfBands()}">
+                                <div>
+                                    <p th:text="${prices}"></p>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-    <div style="position: relative ; left:0px ; top:300px; background-color:yellow;">
+    <div style="position: relative ; left:0px ; top:75px; ">
 
     <form class="ui reply form" role="form" th:action="@{/lineup/{id}/editband (id=${lineup.id})}" method="post">
 
-        <div class="mb-3">
-            <label for="name1" class="form-label" th:text="#{lineup.band.name.edit}">Name</label>
-            <select type="text" th:field="*{bandname.name1}" class="form-select " id="name1">
-                <option th:each="bands: ${lineup.getBands()}" th:value="${bands.name1}"  th:text="${bands.getName1()}">
-            </select>
-            <div th:if="${#fields.hasErrors('bandname.name1')} " th:errors="*{bandname.name1}">
-                <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
-            </div>
-        </div>
-
         <h5 class="card-title " > Form  </h5>
         <div class="mb-3">
-            <label for="bandedit.name" class="form-label" th:text="#{lineup.band.name}">Name</label>
-            <input type="text" th:field="*{bandedit.name}" class="form-control " id="bandedit.name">
-            <div th:if="${#fields.hasErrors('bandedit.name')} " th:errors="*{bandedit.name}">
+            <label for="form.name" class="form-label" th:text="#{lineup.band.name}">Name</label>
+            <input type="text" th:field="*{bandname.name}"  class="form-control " id="form.name">
+            <div th:if="${#fields.hasErrors('bandname.name')} " th:errors="*{bandname.name}">
                 <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
             </div>
         </div>
         <div class="mb-3">
-            <label for="bandedit.stage" class="form-label" th:text="#{lineup.band.stage}">stage
+            <label for="form.stage" class="form-label" th:text="#{lineup.band.stage}">stage
             </label>
-            <select type="text" th:field="*{bandedit.stage}" class="form-select" id="bandedit.stage">
+            <select type="text" th:field="*{bandname.stage}" class="form-select" id="form.stage">
                 <option th:each="stages: ${lineup.getStagesinLineUp()}" th:value="${stages}"  th:text="${stages.toString()}">
 
             </select>
-            <div th:if="${#fields.hasErrors('bandedit.stage')} " th:errors="*{bandedit.stage}">
+            <div th:if="${#fields.hasErrors('bandname.stage')} " th:errors="*{bandname.stage}">
                 <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
             </div>
         </div>
-        <div class="field" th:classappend="${#fields.hasErrors('bandedit.price')} ? 'error' : ''">
-            <label th:text="#{lineup.band.price}" for="bandedit.price">Price</label>
-            <input type="number" step="any" th:field="*{bandedit.price}" class="form-control" id="bandedit.price">
+        <div class="field" th:classappend="${#fields.hasErrors('bandname.price')} ? 'error' : ''">
+            <label th:text="#{lineup.band.price}" for="form.price">Price</label>
+            <input type="number" step="any" th:field="*{bandname.price}" class="form-control" id="form.price">
         </div>
         <div class="mb-3">
-            <label for="bandedit.performanceHour" class="form-label" th:text="#{lineup.band.performanceHour}">Performance</label>
-            <input type="text" th:field="*{bandedit.performanceHour}" class="form-control " name="bandedit.performanceHour" id="bandedit.performanceHour">
-            <div th:if="${#fields.hasErrors('bandedit.performanceHour')} " th:errors="*{bandedit.performanceHour}">
+            <label for="form.performanceHour" class="form-label" th:text="#{lineup.band.performanceHour}">Performance</label>
+            <select input type="text" th:field="*{bandname.performanceHour}"  class="form-control" id="form.performanceHour">
+                <option th:each="performancehour: ${lineup.getHoursofLineUp()}" th:value="${performancehour}" th:text="${performancehour.toString()}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('bandname.performanceHour')} " th:errors="*{bandname.performanceHour}">
                 <p th:text="#{festival.not_empty} ">Das Feld darf nicht leer sein.</p>
             </div>
         </div>
-
-
-
+        <div>
         <button type="submit" class="ui labeled icon button">
             <i class="icon edit"></i><span th:text="#{lineup.band.edit}"> Edit band in Line Up </span>
         </button>
-
+        </div>
     </form>
     </div>
 
-    <div class="row d-flex justify-content-center">
+    <div style="position: relative ; left:0px ; top:170px; ">
         <a href="/lineup/edit" class="btn btn-primary btn-lg " tabindex="-1" role="button" >Zurück </a>
     </div>
 </section>

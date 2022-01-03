@@ -2,8 +2,6 @@ package festivalmanager.lineup;
 
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
-import festivalmanager.location.Location;
-import festivalmanager.location.LocationForm;
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.Currencies;
 import org.springframework.data.util.Streamable;
@@ -11,16 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import javax.money.CurrencyUnit;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @Transactional
 public class LineUpManagement {
 	private static LineUpRepository LineUpRepository;
 	private static FestivalManagement festivalManagement;
+	public Band wantedBand;
 
 	LineUpManagement(LineUpRepository LineUpRepository) {
 		Assert.notNull(LineUpRepository, "festivalRepository must not be null");
@@ -103,18 +100,17 @@ public class LineUpManagement {
 	 * edit an specific band in an specific LineUp
 	 *
 	 * @param id
-	 * @param Bandname
 	 * @param form
 	 * @return
 	 */
-	public void updateBand(long id, String Bandname, BandForm form) {
+	public void updateBand(long id, BandForm form) {
 
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 
 			Iterator itr = lineUp.getBands().iterator();
 			while (itr.hasNext()) {
 				Band editBand = (Band) itr.next();
-				if (editBand.getName1().equals(Bandname)) {
+				if (editBand.getName1().equals(form.getName())) {
 					editBand.setName1(form.getName());
 					editBand.setStage(form.getStage());
 					editBand.setPrice(Money.of(form.getPrice(), Currencies.EURO));
@@ -127,6 +123,24 @@ public class LineUpManagement {
 
 			LineUpRepository.save(lineUp);
 
+		});
+	}
+	public void putValuesinBandform ( long id, String name, BandForm bandForm)
+	{
+		System.out.println(id);
+		System.out.println(name);
+		LineUpRepository.findById(id).ifPresent(lineUp -> {
+			for (Band bands : lineUp.getBands())
+			{
+				if ( bands.getName1().equals(name))
+				{
+					System.out.println(bands.getName1());
+					bandForm.setName(bands.getName1());
+					bandForm.setStage(bands.getStage());
+					bandForm.setPrice(bands.getPrice().getNumber().doubleValueExact());
+					bandForm.setPerformanceHour(bands.getPerformanceHour());
+				}
+			}
 		});
 	}
 
@@ -150,6 +164,20 @@ public class LineUpManagement {
 	public LineUp findById(long id) {
 		return LineUpRepository.findById(id).orElse(null);
 	}
+
+	public Band findBandByName ( long id, String name ) {
+		LineUpRepository.findById(id).ifPresent(lineUp -> {
+			for (Band bands : lineUp.getBands())
+			{
+				if ( bands.getName1().equals(name))
+				{
+					wantedBand = bands;
+
+				}
+			}});
+	return wantedBand;
+	}
+
 
 
 }
