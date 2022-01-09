@@ -172,9 +172,8 @@ public class FestivalManagement {
      * @return
      */
     public boolean deleteById(long id) {
-        // ! TODO: resolve circular dependency with lineup
-        // TODO: check if festival contains lineup
-
+        // TODO: @Philipp remove all associated food
+        getLineUpManagement().deleteById(id);
         festivalRepository.deleteById(id);
         return true;
     }

@@ -178,6 +178,10 @@ public class LineUpManagement {
 	return wantedBand;
 	}
 
+	public void deleteById(long id)
+	{
+		LineUpRepository.deleteById(id);
+	}
 
 
 }
