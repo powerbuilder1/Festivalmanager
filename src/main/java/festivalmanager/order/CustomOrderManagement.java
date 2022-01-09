@@ -2,8 +2,10 @@ package festivalmanager.order;
 
 import festivalmanager.catering.Food;
 import festivalmanager.catering.FoodCatalog;
+import festivalmanager.festival.FestivalManagement;
 import festivalmanager.stock.ReorderForm;
 import org.salespointframework.order.Cart;
+import org.salespointframework.order.CartItem;
 import org.salespointframework.order.Order;
 import org.salespointframework.order.OrderManagement;
 import org.salespointframework.payment.Cash;
@@ -35,14 +37,14 @@ public class CustomOrderManagement {
 	public String buy(Cart cart, Optional<UserAccount> userAccount) {
 		return userAccount.map(account -> {
 			Order order = new Order(account, Cash.CASH);
-
 			cart.addItemsTo(order);
-
 			orderOrderManagement.payOrder(order);
-			orderOrderManagement.completeOrder(order);
-
-			cart.clear();
-
+			try {
+				orderOrderManagement.completeOrder(order);
+				cart.clear();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
 			return "redirect:/catering/sale";
 		}).orElse("redirect:/catering/sale");
 	}
