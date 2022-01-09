@@ -73,6 +73,9 @@
                     <form th:action="@{|/ticket/checkout|}" method="post">
                         <button type="submit" class="btn btn-primary btn-lg"> Kaufen </button>
                     </form>
+                    <form th:action="@{|/ticket/${id}/sale/delete|}" method="post">
+                        <button type="submit" class="btn btn-primary btn-lg"> WarenKorb löschen </button>
+                    </form>
                 </div>
             </div>
         </div>

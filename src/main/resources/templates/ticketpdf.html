@@ -38,7 +38,7 @@
         <tr th:each="item : ${cart}">
           <td class="pl-4 text-left" th:text="${{item.productName}}"></td>
           <td th:text="${item.getQuantity().toString()}"></td>
-          <td th:text="${item.price}"></td>
+          <td th:text="${item.getProduct().getPrice()}"></td>
           <td th:id="${item.getId().toString()}" th:text="${item.price}"></td>
         </tr>
         </tbody>

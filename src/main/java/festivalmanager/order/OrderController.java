@@ -122,6 +122,7 @@ public class OrderController {
 
 		return "redirect:/ticket/"+id+"/sale";
 	}
+
 	@PreAuthorize("hasRole('CATERING')")
 	@PostMapping(path = "catering/checkout")
 	String buy(
@@ -141,6 +142,17 @@ public class OrderController {
 		System.out.println(userAccount);
 		return ticketCustomOrderManagement.buyTicket(cart, userAccount);
 
+	}
+	@PreAuthorize("hasRole('CUSTOMER')")
+	@PostMapping(path = "/ticket/{id}/sale/delete")
+	String deleteTicket(
+			@PathVariable long id,
+			@ModelAttribute Cart cart,
+			@LoggedIn Optional<UserAccount> userAccount
+
+	) {
+		cart.clear();
+		return "redirect:/ticket/"+id+"/sale";
 	}
 
 	@PreAuthorize("hasRole('CUSTOMER')")
