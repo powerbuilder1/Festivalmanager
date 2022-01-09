@@ -3,16 +3,18 @@ package festivalmanager.location;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Positive;
 
 public class LocationForm {
 
     private final long id;
-    private final @NotEmpty int maxVisitors;
+    private final @Positive int maxVisitors;
 
-    private final @NotEmpty int maxStages;
+    private final @Positive int maxStages;
     private final @NotEmpty String name;
-    private final @NotEmpty double rent;
+    private final @DecimalMin("0.00") double rent;
 
     public LocationForm(int maxVisitors, int maxStages, String name, double rent, long id) {
         this.maxVisitors = maxVisitors;

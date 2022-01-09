@@ -1,5 +1,7 @@
 package festivalmanager.location;
 
+import javax.validation.Valid;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,7 +74,7 @@ public class LocationController {
 
     @PreAuthorize("hasRole('PLANNING')")
     @PostMapping("/location/{id}/edit")
-    String editLocation(@PathVariable long id, @ModelAttribute LocationForm form, Errors result,
+    String editLocation(@PathVariable long id, @ModelAttribute @Valid LocationForm form, Errors result,
             RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("error", result.toString());
