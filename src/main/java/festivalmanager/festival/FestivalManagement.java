@@ -197,9 +197,8 @@ public class FestivalManagement {
 
     public String publishById(long id) {
         Festival festival = findById(id);
-        Streamable<LineUp> lineups = lineUpManagement.findAllLineUp()
-                .filter(lineup -> lineup.getFestivalIdIdentifier() == id);
-        if (lineups.isEmpty()) {
+        LineUp lineUp = lineUpManagement.findById(id);
+        if (lineUp == null) {
             return "Festival has no lineups";
         }
 

@@ -103,6 +103,10 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
 
         for (Festival festival : festivals) {
             System.out.println("Checking for festival " + festival.toString());
+            if(festival.getId() == value.getId())
+            {
+                continue;
+            }
             try {
                 // already tested
                 Date beginDate = new SimpleDateFormat("yyyy-MM-dd").parse(value.getBeginDate());
@@ -111,7 +115,7 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
                 Date begin = new SimpleDateFormat("yyyy-MM-dd").parse(festival.getBeginDate());
                 Date end = new SimpleDateFormat("yyyy-MM-dd").parse(festival.getEndDate());
 
-                if (beginDate.before(begin) && endDate.after(begin)) {
+                if ((beginDate.before(begin) || beginDate.equals(begin)) && (endDate.after(begin) || endDate.equals(begin))) {
                     ctx.buildConstraintViolationWithTemplate(
                             "Location is already used in another festival (" + festival.getName()
                                     + ") during the time period of "
@@ -119,7 +123,7 @@ public class FestivalValidator implements ConstraintValidator<FestivalConstraint
                             .addConstraintViolation();
                     return false;
                 }
-                if (begin.before(beginDate) && end.after(beginDate)) {
+                if ((begin.before(beginDate) || begin.equals(beginDate)) && (end.after(beginDate) || end.equals(beginDate))) {
                     ctx.buildConstraintViolationWithTemplate(
                             "Location is already used in another festival (" + festival.getName()
                                     + ") during the time period of "
