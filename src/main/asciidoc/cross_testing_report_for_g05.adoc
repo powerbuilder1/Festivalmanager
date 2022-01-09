@@ -47,13 +47,13 @@ Es handelt sich um eine Browseranwendung zur Planung und Durchführung von Festi
 |http://localhost:8080/lineup/6/edit|-5|der Bandprice kann zu einem negativen Wert geändert werden| | Franz |
 |http://localhost:8080/lineup/6/edit|5,77777|der Bandprice kann einen Wert mit mehr als 2 Nachkommastellen annehmen|| Franz |
 |http://localhost:8080/festival/6| | Bild von Location kann nicht angezeigt werden obwohl Lageplan für diese Location erstellt wurde| |Conrad |
-|http://localhost:8080/catering/sale|21|Es tritt ein Serverfehler auf, wenn mehr Produkte im Warenkorb sind als im Lager und Verkaufen gedrückt wird.|Number of items requested by the OrderLine is greater than the number available in the Inventory. Please re-stock. | Philipp |
+|http://localhost:8080/catering/sale|21|Es tritt ein Serverfehler auf, wenn mehr Produkte im Warenkorb sind als im Lager und Verkaufen gedrückt wird.|Number of items requested by the OrderLine is greater than the number available in the Inventory. Please re-stock. | Philipp | behoben
 |http://localhost:8080/dashboard| |Das Menü ist nicht ohne Javascript nutzbar, wodurch das Personal nicht eingesehen / erstellt / bearbeitet werden kann || Aleksey |
 |http://localhost:8080/chat/room|19|Es ist nicht eindeutig erkennbar wer eine Nachricht gesendet hat, Anstatt des Namens des Senders steht nur "Sender" da | |Conrad |
 |http://localhost:8080/chat| |Ein neu erstellter Nutzer (Position: "Catering") kann nicht auf die Chaträume zugreifen und  dadurch keine Nachrichten lesen und schreiben || Philipp |
-|http://localhost:8080/catering/management|Name: Test, Price: -2 |Das Item mit negativem Preis wird in den Katalog aufgenommen |Add Item to catalog | Philipp |
-|http://localhost:8080/stock|Name: Bratwurst, Anzahl: -2 |Nachbestellen einer negativen Anzahl von Items ist nicht verboten| Stock | Philipp |
-|http://localhost:8080/catering/management | Ein leerer String als Name oder Price bzw. eine Zahl als Name führt zu einem Error (und nicht zu einer Warnung für den Nutzer) | org.springframework.validation.BeanPropertyBindingResult Error |  | Philipp |
+|http://localhost:8080/catering/management|Name: Test, Price: -2 |Das Item mit negativem Preis wird in den Katalog aufgenommen |Add Item to catalog | Philipp | behoben
+|http://localhost:8080/stock|Name: Bratwurst, Anzahl: -2 |Nachbestellen einer negativen Anzahl von Items ist nicht verboten| Stock | Philipp | behohen
+|http://localhost:8080/catering/management | Ein leerer String als Name oder Price bzw. eine Zahl als Name führt zu einem Error (und nicht zu einer Warnung für den Nutzer) | org.springframework.validation.BeanPropertyBindingResult Error |  | Philipp | behoben
 |===
 
 == Sonstiges
