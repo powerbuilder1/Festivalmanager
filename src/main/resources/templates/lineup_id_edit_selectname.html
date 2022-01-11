@@ -15,6 +15,7 @@
                         <th scope="col">Uhrzeit</th>
                         <th scope="col">Bands</th>
                         <th scope="col">Bühnen</th>
+                        <th scope="col">Preis</th>
 
 
                     </tr></thead>
@@ -37,6 +38,13 @@
                             <div th:each="stage : ${lineup.getStages()}">
                                 <div>
                                     <p th:text="${stage}"></p>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div th:each="prices : ${lineup.getPriceOfBands()}">
+                                <div>
+                                    <p th:text="${prices}"></p>
                                 </div>
                             </div>
                         </td>

@@ -14,7 +14,6 @@ public class TicketForm {
 		@Range(min=0, max=100)
 	  private int percentOf;
 		private long festivalIdentifier;
-		private FestivalManagement festivalManagement;
 
 
 	public TicketForm(String name, Festival festival, double price, Ticket.TicketType ticketType, int percentOf) {

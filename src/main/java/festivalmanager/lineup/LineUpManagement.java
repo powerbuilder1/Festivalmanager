@@ -70,14 +70,17 @@ public class LineUpManagement {
 					}
 				}
 			}
+
 			try {
-				lineUp.addBandto(
-						new Band(
-								bandForm.getName(),
-								Money.of(bandForm.getPrice(), Currencies.EURO),
-								bandForm.getStage(),
-								bandForm.getPerformanceHour()));
-			} catch (Exception e) {
+				if (bandForm.getPrice()>0 && bandForm.getName().isEmpty() == false) {
+					lineUp.addBandto(
+							new Band(
+									bandForm.getName(),
+									Money.of(bandForm.getPrice(), Currencies.EURO),
+									bandForm.getStage(),
+									bandForm.getPerformanceHour()));
+				}
+				} catch (Exception e) {
 				e.printStackTrace();
 			}
 			LineUpRepository.save(lineUp); });
@@ -111,11 +114,13 @@ public class LineUpManagement {
 			while (itr.hasNext()) {
 				Band editBand = (Band) itr.next();
 				if (editBand.getName1().equals(form.getName())) {
-					editBand.setName1(form.getName());
-					editBand.setStage(form.getStage());
-					editBand.setPrice(Money.of(form.getPrice(), Currencies.EURO));
-					editBand.setPerformanceHour(form.getPerformanceHour());
-					break;
+						editBand.setName1(form.getName());
+						editBand.setStage(form.getStage());
+						if (form.getPrice()>0)
+							editBand.setPrice(Money.of(form.getPrice(), Currencies.EURO));
+						editBand.setPerformanceHour(form.getPerformanceHour());
+						break;
+
 				} else {
 					System.out.println("This band has not been found");
 				}
@@ -123,24 +128,6 @@ public class LineUpManagement {
 
 			LineUpRepository.save(lineUp);
 
-		});
-	}
-	public void putValuesinBandform ( long id, String name, BandForm bandForm)
-	{
-		System.out.println(id);
-		System.out.println(name);
-		LineUpRepository.findById(id).ifPresent(lineUp -> {
-			for (Band bands : lineUp.getBands())
-			{
-				if ( bands.getName1().equals(name))
-				{
-					System.out.println(bands.getName1());
-					bandForm.setName(bands.getName1());
-					bandForm.setStage(bands.getStage());
-					bandForm.setPrice(bands.getPrice().getNumber().doubleValueExact());
-					bandForm.setPerformanceHour(bands.getPerformanceHour());
-				}
-			}
 		});
 	}
 
