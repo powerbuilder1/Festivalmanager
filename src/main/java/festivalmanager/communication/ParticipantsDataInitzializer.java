@@ -9,6 +9,10 @@ import org.springframework.util.Assert;
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
 
+/**
+ * @author Conrad
+ * ParticipantsDataInitzializer is a class that adds the connection between the dummy users and the dummy rooms
+ */
 @Order(51)
 @Component
 public class ParticipantsDataInitzializer implements DataInitializer {
@@ -16,14 +20,23 @@ public class ParticipantsDataInitzializer implements DataInitializer {
     private final CommunicationManagement communicationManagement;
     private final UserManagement userManagement;
 
+    /**
+     * constructor
+     * @param communicationManagement {@link CommunicationManagement} 
+     * @param userManagement {@link UserManagement}
+     */ 
     public ParticipantsDataInitzializer(CommunicationManagement communicationManagement,
-            UserManagement userManagement) {
+        UserManagement userManagement) {
         Assert.notNull(communicationManagement, "communicationManagement must not be null!");
         Assert.notNull(userManagement, "userManagement must not be null!");
         this.communicationManagement = communicationManagement;
         this.userManagement = userManagement;
     }
 
+    /**
+     * @see org.salespointframework.core.DataInitializer#initialize()
+     * initialize the connection between the dummy users and the dummy rooms
+     */
     @Override
     public void initialize() {
         // inits chat rooms
@@ -58,6 +71,10 @@ public class ParticipantsDataInitzializer implements DataInitializer {
         communicationManagement.joinRoom(system, room, "r");
     }
 
+    /**
+     * initzializes the catering message
+     * the manager and the catering staff can send messages in this group chat
+     */
     private void initCatering() {
         User manager = userManagement.findByName("manager");
         Streamable<User> catering = userManagement.findAll()
@@ -84,6 +101,10 @@ public class ParticipantsDataInitzializer implements DataInitializer {
         }
     }
 
+    /**
+     * initzializes the planning message
+     * the manager and the planning staff can send messages in this group chat
+     */
     private void initPlanning() {
         User manager = userManagement.findByName("manager");
         Streamable<User> planning = userManagement.findAll()
