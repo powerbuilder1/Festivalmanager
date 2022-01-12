@@ -10,6 +10,8 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 /**
+ * @author Conrad
+ * Festival validator
  * https://www.baeldung.com/spring-mvc-custom-validator
  */
 @Documented
