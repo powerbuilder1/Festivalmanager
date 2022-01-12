@@ -8,6 +8,11 @@ import org.springframework.util.Assert;
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
 
+/**
+ * @author Conrad
+ * ChatMessageDataInitializer class
+ * initzializes the database with some chat messages
+ */
 @Order(52)
 @Component
 public class ChatMessageDataInitializer implements DataInitializer {
@@ -15,6 +20,11 @@ public class ChatMessageDataInitializer implements DataInitializer {
     private final CommunicationManagement communicationManagement;
     private final UserManagement userManagement;
 
+    /**
+     * constructor
+     * @param communicationManagement {@link CommunicationManagement}
+     * @param userManagement {@link UserManagement}
+     */
     public ChatMessageDataInitializer(CommunicationManagement communicationManagement, UserManagement userManagement) {
         Assert.notNull(communicationManagement, "communicationManagement must not be null!");
         Assert.notNull(userManagement, "userManagement must not be null!");
@@ -22,6 +32,9 @@ public class ChatMessageDataInitializer implements DataInitializer {
         this.userManagement = userManagement;
     }
 
+    /**
+     * initzializes the database with some chat messages
+     */
     @Override
     public void initialize() {
         User user = userManagement.findByName("manager");
