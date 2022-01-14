@@ -77,6 +77,7 @@ public class ManagerController {
 			@PathVariable("user") Long id,
 			Model model) {
 		User user = userRepository.findById(id).get();
+		model.addAttribute("festivals", festivalManagement.findAllFestivals());
 		model.addAttribute("locations", locationManagement.findAllLocations().toList());
 		model.addAttribute("user", user);
 		model.addAttribute("userForm", new UserForm(user.getName(), user.getPassword(), user.getAddress(),
@@ -86,6 +87,7 @@ public class ManagerController {
 		System.out.println(user.getAddress());
 		System.out.println(user.getPosition());
 		System.out.println(user.getWorkPlace());
+
 		return "personal_edit";
 	}
 

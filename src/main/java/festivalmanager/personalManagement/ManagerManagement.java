@@ -37,6 +37,7 @@ public class ManagerManagement extends UserManagement {
 				case "Planning":
 				case "Catering":
 				case "Festivalleiter":
+				case "Security":
 					user.setPosition(userForm.getPosition());
 					break;
 				default:
@@ -44,6 +45,7 @@ public class ManagerManagement extends UserManagement {
 			}
 
 				user.setWorkPlace(userForm.getWorkPlace());
+		user.setFestival(festivalManagement.findById(userForm.getFestivalId()));
 			users.save(user);
 	}
 

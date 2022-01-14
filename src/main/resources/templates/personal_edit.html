@@ -2,30 +2,92 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 <head>
-  <meta charset="UTF-8">
+  <style>
+        body{
+        background: #2779e2;
+        }
+    </style>
 </head>
 <body>
-<section layout:fragment="content">
-  <div class="container">
-    <h1>Edit user</h1>
+<section layout:fragment="content" class="vh-100">
     <form action="#" th:action="@{|/dashboard/team/editUserById/${user.getId()}|}" th:object="${userForm}" method="post">
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" th:placeholder="${user.getAddress()}" th:field="*{address}">
-      </div>
-      <div class="form-group">
-        <label for="position" class="form-label">Position</label>
-        <input type="text"  class="form-control" id="position" placeholder="Catering/ Planning/ Festivalleiter"  th:field="*{position}">
-      </div>
-      <div class="form-group">
-        <label for="workplace" class="form-label" th:text="#{festival.location}">Work Place</label>
-        <select id="workplace" class="form-select" th:field="*{workPlace}" aria-label="Location Select">
-          <option th:each="location : ${locations}" th:value="${location.name}"
-                  th:text="${location.name}">
-        </select>
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-xl-9">
+
+            <h1 class="text-white mb-4">Edit User</h1>
+
+            <div class="ui negative message" th:if="${#fields.hasErrors('*')}">
+              <p>Einige Angaben sind nicht korrekt.</p>
+            </div>
+
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body">
+      <div class="row align-items-center pt-4 pb-3">
+        <div class="col-md-3 ps-5">
+          <h6 class="mb-0" th:text="#{register.address}">Address</h6>
+        </div>
+        <div class="col-md-9 pe-5">
+          <input class="form-control form-control-lg" id="address" name="address" th:field="*{address}" th:errorclass="fieldError" type="text" required="required"/><br/>
+          <div class="ui negative message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            <p>Die Adresse darf nicht leer sein.</p>
+          </div>
+        </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <hr class="mx-n3">
+
+      <div class="row align-items-center pt-4 pb-3">
+        <div class="col-md-3 ps-5">
+          <h6 class="mb-0" th:text="#{register.position}">Position</h6>
+        </div>
+        <div class="col-md-9 pe-5">
+          <input class="form-control form-control-lg" id="position" name="position" th:field="*{position}" placeholder="Catering/ Planning/ Security/ Festivalleiter" th:errorclass="fieldError" type="text" required="required"/><br/>
+          <div class="ui negative message" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            <p>Die Position darf nicht leer sein.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="mx-n3">
+
+
+      <div class="row align-items-center pt-4 pb-3">
+        <div class="col-md-3 ps-5">
+        <h6 class="mb-0" th:text="#{festival.location}">Work Place</h6>
+        </div>
+        <div class="col-md-9 pe-5">
+            <select id="workplace" class="form-select" th:field="*{workPlace}" aria-label="Location Select">
+              <option th:each="location : ${locations}" th:value="${location.name}"
+                  th:text="${location.name}">
+            </select>
+        </div>
+      </div>
+
+      <hr class="mx-n3">
+
+      <div class="row align-items-center pt-4 pb-3">
+        <div class="col-md-3 ps-5">
+          <h6 class="mb-0">Festival</h6>
+        </div>
+        <div class="col-md-9 pe-5">
+          <select class="form-select" aria-label="Default select example" th:field="*{festivalId}">
+            <option th:each=" festival : ${festivals}" th:value="${festival.id}" th:text="${festival.name}"></option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="mx-n3">
+
+      <div class="px-5 py-4">
+      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+        </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </section>
