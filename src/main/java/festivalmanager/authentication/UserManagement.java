@@ -1,5 +1,6 @@
 package festivalmanager.authentication;
 
+import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
@@ -146,6 +147,10 @@ public class UserManagement {
 
 	public User findById(long id) {
 		return users.findById(id).orElse(null);
+	}
+
+	public Streamable<User> findAllByName(String name) {
+		return users.findAll().filter(user -> user.getName().equals(name));
 	}
 
 	public User findByName(String name) {

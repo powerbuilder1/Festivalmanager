@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.stream.Collectors;
 
 @Controller
 @PreAuthorize("hasRole('BOSS')")
@@ -47,10 +48,16 @@ public class ManagerController {
 	}
 
 	@PostMapping("/new_personal")
-	String registerNew(@Valid UserForm form, Errors result) {
+	String registerNew(@ModelAttribute @Valid UserForm form, Errors result ,RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
-			return "new_personal";
+			redirectAttributes.addFlashAttribute("errors",
+					result.getAllErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList()));
+			return "redirect:/team";
+		}
+		if (!managerManagement.findAllByName(form.getName()).isEmpty()) {
+			redirectAttributes.addFlashAttribute("error", "PERSON_ALREADY_EXISTS");
+			return "redirect:/team";
 		}
 
 		// (｡◕‿◕｡)
@@ -60,6 +67,9 @@ public class ManagerController {
 		} else if (form.getPosition().equalsIgnoreCase("planning")) {
 			managerManagement.createPlanningStaff(form);
 		} else if (form.getPosition().equalsIgnoreCase("festivalleiter")) {
+			managerManagement.createFestivalDirector(form);
+		}
+		else if (form.getPosition().equalsIgnoreCase("security")) {
 			managerManagement.createFestivalDirector(form);
 		}
 		return "redirect:/team";

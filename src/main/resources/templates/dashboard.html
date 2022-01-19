@@ -14,13 +14,13 @@
                     <div class="position-sticky pt-3">
                         <ul class="list-unstyled ps-0">
                             <li class="mb-1">
-                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+                                <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false" th:text="#{dashboard.account}">
                                     Staff account
                                 </button>
                                 <div class="collapse" id="account-collapse">
                                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                        <li><a href="/new_personal" th:href="@{/new_personal}" class="link-dark rounded">New...</a></li>
-                                        <li><a href="/team" th:href="@{/team}" class="link-dark rounded">Team</a></li>
+                                        <li><a href="/new_personal" th:href="@{/new_personal}" class="link-dark rounded" th:text="#{dashboard.new}">New...</a></li>
+                                        <li><a href="/team" th:href="@{/team}" class="link-dark rounded" th:text="#{dashboard.team}">Team</a></li>
                                     </ul>
                                 </div>
                             </li>

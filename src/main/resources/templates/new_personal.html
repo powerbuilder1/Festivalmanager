@@ -74,7 +74,7 @@
                                 <h6 class="mb-0" th:text="#{register.position}">Position</h6>
                             </div>
                             <div class="col-md-9 pe-5">
-                                <input placeholder="Catering/ Planning/ Festivalleiter" class="form-control form-control-lg" id="position" name="position" th:field="*{position}" th:errorclass="fieldError" type="text"
+                                <input placeholder="Catering/ Planning/ Security/ Festivalleiter" class="form-control form-control-lg" id="position" name="position" th:field="*{position}" th:errorclass="fieldError" type="text"
                                        required="required"/><br/>
                                 <p th:if="${#fields.hasErrors('position')}" th:errors="*{position}">Die Position darf
                                     nicht leer sein.</p>
