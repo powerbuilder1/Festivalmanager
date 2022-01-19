@@ -7,8 +7,14 @@
 
 <body>
 <section layout:fragment="content">
-
   <div class="container-fluid">
+    <div class="row" th:if="${errors}">
+      <div class="col-md-12">
+        <div class="alert alert-danger">
+          <strong th:text="#{${errors}}">Error!</strong>
+        </div>
+      </div>
+    </div>
     <div class="row">
       <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="position-sticky pt-3">

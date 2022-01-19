@@ -9,6 +9,7 @@ import festivalmanager.location.LocationManagement;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -48,15 +49,15 @@ public class ManagerController {
 	}
 
 	@PostMapping("/new_personal")
-	String registerNew(@ModelAttribute @Valid UserForm form, Errors result ,RedirectAttributes redirectAttributes) {
+	String registerNew(@ModelAttribute @Valid UserForm form, Errors result, RedirectAttributes redirectAttributes) {
 
 		if (result.hasErrors()) {
-			redirectAttributes.addFlashAttribute("errors",
+			redirectAttributes.addFlashAttribute("error",
 					result.getAllErrors().stream().map(e -> e.getDefaultMessage()).collect(Collectors.toList()));
 			return "redirect:/team";
 		}
 		if (!managerManagement.findAllByName(form.getName()).isEmpty()) {
-			redirectAttributes.addFlashAttribute("error", "PERSON_ALREADY_EXISTS");
+			redirectAttributes.addFlashAttribute("errors", "PERSON_ALREADY_EXISTS");
 			return "redirect:/team";
 		}
 
