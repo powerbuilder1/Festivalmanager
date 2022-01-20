@@ -29,6 +29,10 @@ public class FestivalDataInitializer implements DataInitializer {
 
     @Override
     public void initialize() {
+        if(festivalManagement.findAllFestivals().iterator().hasNext()) {
+            return;
+        }
+
         log.info("Initializing data for {}", getClass().getSimpleName());
 
         List.of(new Festival("Weihnachtsfestival", locationManagement.findAllByName("Arteum").toList().get(0),

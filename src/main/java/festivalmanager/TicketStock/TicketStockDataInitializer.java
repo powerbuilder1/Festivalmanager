@@ -26,6 +26,9 @@ public class TicketStockDataInitializer implements DataInitializer {
 
 	@Override
 	public void initialize() {
+		if(inventory.findAll().iterator().hasNext()) {
+			return;
+		}
 		ticketCatalog.findAll().forEach(ticket -> {
 			if (inventory.findByProduct(ticket).isEmpty() && !festivalManagement.findAllFestivals().isEmpty()) {
 				inventory.save(new TicketInventoryItem(ticket, Quantity.of(ticket.getCount()), ticket.getFestival()));

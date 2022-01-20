@@ -35,6 +35,10 @@ public class UserDataInitializer implements DataInitializer {
 	@Override
 	public void initialize() {
 
+		// already initialized
+        if (userManagement.findAll().iterator().hasNext()) {
+            return;
+        }
 
 //		userAccountManagement.create("Catering", Password.UnencryptedPassword.of("123456"), Role.of("CATERING"));
 //		userAccountManagement.create("Planning", Password.UnencryptedPassword.of("123456"), Role.of("PLANNING"));

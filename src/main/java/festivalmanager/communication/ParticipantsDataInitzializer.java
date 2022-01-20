@@ -39,6 +39,10 @@ public class ParticipantsDataInitzializer implements DataInitializer {
      */
     @Override
     public void initialize() {
+        if(communicationManagement.getRoomRepository().findAll().iterator().hasNext()) {
+            return;
+        }
+
         // inits chat rooms
         initPublic();
         initCatering();

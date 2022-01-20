@@ -27,6 +27,10 @@ public class LineUpDataInitializer implements DataInitializer {
 	}
 	@Override
 	public void initialize() {
+		if(lineUpManagement.findAllLineUp().iterator().hasNext()) {
+			return;
+		}
+
 		log.info("Initializing data for {}", getClass().getSimpleName());
 		log.info("Creating default  entries.");
 		Band band1 = new Band("The Strokes", Money.of(2000, EURO),"Buehne 2", "14:00 - 16:00");
