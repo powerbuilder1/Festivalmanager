@@ -26,15 +26,95 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="entry : ${data}">
+                            <tr>
+                                <td>
+                                    <b>Bands</b>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr th:each="entry : ${bands}">
                                 <td scope="row">
-                                    <span th:text="${entry.key}"></span>
+                                    <span th:text="${#strings.substring(entry.key, 1, entry.key.length)}"></span>
                                 </td>
                                 <td>
                                     <span th:text="${entry.value.amount}"></span>
                                 </td>
                                 <td>
                                     <span th:text="${entry.value.price}"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Locations</b>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr th:each="entry : ${locations}">
+                                <td scope="row">
+                                    <span th:text="${#strings.substring(entry.key, 1, entry.key.length)}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${entry.value.amount}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${entry.value.price}"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Catering Ausgaben</b>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr th:text="entry : ${}">
+                                <span th:text="${#strings.substring(entry.key, 1, entry.key.length)}"></span>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Catering + Tickets</b>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                            </tr>
+                            <tr th:each="entry : ${rest}">
+                                <td scope="row">
+                                    <span th:text="${#strings.substring(entry.key, 1, entry.key.length)}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${entry.value.amount}"></span>
+                                </td>
+                                <td>
+                                    <span th:text="${entry.value.price}"></span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>Locations</b>
+                                </td>
+                                <td>
+                                    <hr>
+                                </td>
+                                <td>
+                                    <hr>
                                 </td>
                             </tr>
                             <tr>

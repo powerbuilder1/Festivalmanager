@@ -50,7 +50,7 @@ public class FinanceManagement {
         // update each time
         Location location = festivalManagement.findById(id).getLocation();
         long cents = moneyToLong(location.getRent());
-        finance.overwriteData("l" + location.getName(), 1, cents);
+        finance.overwriteData("l" + location.getName(), 1, -cents);
 
         // update line up
         LineUp lineUp = festivalManagement.getLineUpManagement().findById(id);
@@ -58,13 +58,13 @@ public class FinanceManagement {
         {
             String name = band.getName1();
             long price = moneyToLong(band.getPrice());
-            finance.overwriteData("b" + name, 1, price);
+            finance.overwriteData("b" + name, 1, -price);
         }
 
         // tickets and catering
         for (var entry : accountancyRepository.findAll().toList())
         {
-            finance.addData("Catering + Tickets", 1, moneyToLong(entry.getValue()));
+            finance.addData("xCatering + Tickets", 1, moneyToLong(entry.getValue()));
         }
 
 
