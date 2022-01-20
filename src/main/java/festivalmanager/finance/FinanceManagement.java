@@ -1,15 +1,11 @@
 package festivalmanager.finance;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.money.MonetaryAmount;
-import javax.persistence.TypedQuery;
-import javax.security.auth.login.AccountException;
 import javax.transaction.Transactional;
 
 import org.javamoney.moneta.Money;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -18,7 +14,6 @@ import festivalmanager.lineup.Band;
 import festivalmanager.lineup.LineUp;
 import festivalmanager.location.Location;
 
-import org.salespointframework.accountancy.*;
 
 @Service
 @Transactional
