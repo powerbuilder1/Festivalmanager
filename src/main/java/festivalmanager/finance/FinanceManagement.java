@@ -3,10 +3,13 @@ package festivalmanager.finance;
 import java.util.List;
 import java.util.Map;
 
+import javax.money.MonetaryAmount;
 import javax.persistence.TypedQuery;
+import javax.security.auth.login.AccountException;
 import javax.transaction.Transactional;
 
 import org.javamoney.moneta.Money;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -23,10 +26,13 @@ public class FinanceManagement {
 
     private FestivalManagement festivalManagement;
     private FinanceRepository financeRepository;
+    private AccountancyRepository accountancyRepository;
 
-    public FinanceManagement(FinanceRepository financeRepository) {
+    public FinanceManagement(FinanceRepository financeRepository, AccountancyRepository accountancyRepository) {
         Assert.notNull(financeRepository, "financeRepository must not be null");
+        Assert.notNull(accountancyRepository, "accountancyRepository must not be null");
         this.financeRepository = financeRepository;
+        this.accountancyRepository = accountancyRepository;
     }
 
     public void setFestivalManagement(FestivalManagement festivalManagement) {
@@ -60,20 +66,15 @@ public class FinanceManagement {
             finance.overwriteData("b" + name, 1, price);
         }
 
-        // tickets
-        
-
-
-
+        // tickets and catering
+        for (var entry : accountancyRepository.findAll().toList())
+        {
+            finance.addData("Catering + Tickets", 1, moneyToLong(entry.getValue()));
+        }
 
 
         return finance.getFinanceData();
     }
-
-    // public List<AccountancyEntry> getAccountancyEntries() {
-    //     // TypedQuery
-
-    // }
 
     public long getSum(long id)
     {
@@ -93,6 +94,15 @@ public class FinanceManagement {
     }
 
     public long moneyToLong(Money money)
+    {
+        String tmp = money.toString();
+        tmp = tmp.replace(".", "");
+        tmp = tmp.replace("EUR", "");
+        tmp = tmp.replace(" ", "");
+        long cents = Long.parseLong(tmp);
+        return cents;
+    }
+    public long moneyToLong(MonetaryAmount money)
     {
         String tmp = money.toString();
         tmp = tmp.replace(".", "");
