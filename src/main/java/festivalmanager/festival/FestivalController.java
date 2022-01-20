@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -73,7 +74,7 @@ public class FestivalController {
         return "festival";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival")
     String festivals(Model model) {
         model.addAttribute("festivals", festivalManagement.findAllFestivals());
@@ -81,7 +82,7 @@ public class FestivalController {
         return "festivals";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival/new")
     String newFestival(Model model) {
         model.addAttribute("festival", new Festival());
@@ -90,7 +91,7 @@ public class FestivalController {
         return "festival_new";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @PostMapping("/festival/new")
     String newFestival(@ModelAttribute @Valid Festival festival, Errors result, RedirectAttributes redirectAttributes) {
         if (result.hasErrors()) {
@@ -107,7 +108,7 @@ public class FestivalController {
         return "redirect:/festival";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival/{id}/edit")
     String editFestival(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Festival festival = festivalManagement.findById(id);
@@ -120,7 +121,7 @@ public class FestivalController {
         return "festival_edit";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @PostMapping("/festival/{id}/edit")
     String editFestival(@PathVariable long id, @ModelAttribute @Valid Festival festival, Errors result,
             RedirectAttributes redirectAttributes) {
@@ -134,7 +135,7 @@ public class FestivalController {
         return "redirect:/festival/" + id;
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival/{id}/delete")
     String deleteFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
         if (!festivalManagement.deleteById(id)) {
