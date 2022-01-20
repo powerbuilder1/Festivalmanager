@@ -10,7 +10,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/" th_href="@{/}">LOGO</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -21,20 +23,22 @@
                         <li class="nav-item" sec:authorize="hasAnyRole('PLANNING', 'CATERING', 'BOSS')">
                             <a href="/chat" th:href="@{/chat}" class="nav-link">Chat</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('PLANNING', 'BOSS')">
                             <a href="/locations" th:href="@{/locations}" class="nav-link">Locations</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('PLANNING', 'BOSS')">
                             <a href="/festival" th:href="@{/festival}" class="nav-link">Festival</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasAnyRole('BOSS', 'FESTIVALDIRECTOR')">
                             <a href="/finance" th:href="@{/finance}" class="nav-link">Finanzen</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
-                            <a href="/dashboard" th:href="@{/dashboard}" class="nav-link" th:text="#{manager.dashboard}">Kontrollzentrum</a>
+                            <a href="/dashboard" th:href="@{/dashboard}" class="nav-link"
+                                th:text="#{manager.dashboard}">Kontrollzentrum</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
-                            <a href="/catering/management" th:href="@{/catering/addToFoodCatalog}" class="nav-link">Catering
+                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR', 'BOSS')">
+                            <a href="/catering/management" th:href="@{/catering/addToFoodCatalog}"
+                                class="nav-link">Catering
                                 Management</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
@@ -43,23 +47,25 @@
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
                             <a href="/ticket/new" th:href="@{/ticket/new}" class="nav-link">New Ticket</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR', 'BOSS')">
                             <a href="/catering/catalog" th:href="@{/catering/catalog}" class="nav-link">Catering
                                 Angebot</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('FESTIVALDIRECTOR')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR', 'BOSS')">
                             <a href="/stock" th:href="@{/stock}" class="nav-link">Lager</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('CATERING')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('CATERING', 'BOSS')">
                             <a href="/catering/sale" th:href="@{/catering/sale}" class="nav-link">Sale</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasRole('PLANNING')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('PLANNING', 'BOSS')">
                             <a href="/lineup/edit" th:href="@{/lineup/edit}" class="nav-link">LineUp</a>
                         </li>
                     </ul>
                     <!--<a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}" href="/login">Login</a>-->
-                    <a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}" sec:authorize="!isAuthenticated()" href="/login" th:text="#{nav.login}">Login</a>
-                    <a class="nav-link active d-flex float-right" aria-current="page" sec:authorize="isAuthenticated()" th:href="@{/logout}" th:text="#{nav.logout}">Logout</a>
+                    <a class="nav-link active d-flex float-right" aria-current="page" th:href="@{/login}"
+                        sec:authorize="!isAuthenticated()" href="/login" th:text="#{nav.login}">Login</a>
+                    <a class="nav-link active d-flex float-right" aria-current="page" sec:authorize="isAuthenticated()"
+                        th:href="@{/logout}" th:text="#{nav.logout}">Logout</a>
 
                 </div>
 
