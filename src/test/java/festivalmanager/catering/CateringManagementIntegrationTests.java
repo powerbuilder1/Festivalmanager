@@ -104,9 +104,15 @@ public class CateringManagementIntegrationTests {
 		Streamable<Food> testFoodCatalog = cateringManagement.getCatalog(Optional.ofNullable(testUser.getUserAccount()));
 		assertThat(testFoodCatalog).hasSize(1);
 
+		Food result = testFoodCatalog.toList().get(0);
+		cateringManagement.editItemFromCatalog(result, testFoodItemFormEdit);
+
+		testFoodCatalog = cateringManagement.getCatalog(Optional.ofNullable(testUser.getUserAccount()));
+		assertThat(testFoodCatalog).hasSize(1);
+
+		result = testFoodCatalog.toList().get(0);
 
 		// check
-		Food result = testFoodCatalog.toList().get(0);
 		assertThat(testFoodItemFormEdit.getName().equals(result.getName()));
 		assertThat(Money.of(testFoodItemFormEdit.getPrice(), EURO).equals(result.getPrice()));
 
