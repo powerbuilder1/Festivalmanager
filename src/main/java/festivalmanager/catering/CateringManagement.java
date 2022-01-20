@@ -79,6 +79,10 @@ public class CateringManagement {
 		}
 	}
 
+	public FestivalManagement getFestivalManagement() {
+		return festivalManagement;
+	}
+
 	public Optional<Food> findProductById(ProductIdentifier productIdentifier) {
 		return foodCatalog.findById(productIdentifier);
 	}
