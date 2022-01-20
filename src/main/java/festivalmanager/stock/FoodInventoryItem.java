@@ -25,4 +25,13 @@ public class FoodInventoryItem extends UniqueInventoryItem {
 	public FoodInventoryItem() {
 
 	}
+
+	public Festival getFestival() {
+		return festival;
+	}
+
+	public long getFestivalId()
+	{
+		return festival.getId();
+	}
 }

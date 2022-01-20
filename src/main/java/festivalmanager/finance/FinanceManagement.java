@@ -107,4 +107,9 @@ public class FinanceManagement {
         return cents;
     }
 
+
+    public Finance getFinanceById(long id){
+        return financeRepository.findAll().filter(finance -> finance.getId() == id).toList().get(0);
+    }
+
 }

@@ -21,6 +21,7 @@ public class FoodDataInitializer implements DataInitializer {
 
 	@Override
 	public void initialize() {
+		if(!foodCatalog.findAll().isEmpty()) return;
 		System.out.println("IS EMPTY:" + festivalManagement.findAllFestivals().isEmpty());
 		if (!festivalManagement.findAllFestivals().isEmpty()) {
 			foodCatalog.save(new Food("Bratwurst", Money.of(10, Currencies.EURO), festivalManagement.findAllFestivals().toList().get(0)));

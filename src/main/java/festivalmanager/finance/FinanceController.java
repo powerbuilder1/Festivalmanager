@@ -43,6 +43,9 @@ public class FinanceController {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
         model.addAttribute("rest", rest);
 
+        Map<String, Data> catering = finance.entrySet().stream().filter(e -> e.getKey().startsWith("c"))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        model.addAttribute("catering", catering);
 
         model.addAttribute("sum", financeManagement.getSum(id));
         

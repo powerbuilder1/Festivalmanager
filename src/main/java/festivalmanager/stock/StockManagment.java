@@ -4,8 +4,10 @@ import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
 import festivalmanager.catering.Food;
 import festivalmanager.festival.Festival;
+import festivalmanager.festival.FestivalManagement;
+
+import org.javamoney.moneta.function.MonetaryQueries;
 import org.salespointframework.catalog.ProductIdentifier;
-import org.salespointframework.inventory.UniqueInventoryItem;
 import org.salespointframework.quantity.Quantity;
 import org.salespointframework.useraccount.UserAccount;
 import org.springframework.data.util.Streamable;
@@ -18,10 +20,15 @@ public class StockManagment {
 
 	private final StockInventory inventory;
 	private final UserManagement userManagement;
+	private FestivalManagement festivalManagement;
 
 	public StockManagment(StockInventory inventory, UserManagement userManagement) {
 		this.inventory = inventory;
 		this.userManagement = userManagement;
+	}
+
+	public void setFestivalManagement(FestivalManagement festivalManagement) {
+		this.festivalManagement = festivalManagement;
 	}
 
 	// get current stock
@@ -62,6 +69,9 @@ public class StockManagment {
 			inventory.save(uniqueInventoryItem);
 		});
 
+		long id = inventory.findByProductIdentifier(foodItemId).get().getFestivalId();
+		long price = inventory.findByProductIdentifier(foodItemId).get().getProduct().getPrice().query(MonetaryQueries.convertMinorPart());
+		festivalManagement.getFinanceManagement().getFinanceById(id).addData("cCatering Ausgaben", 1, -reorderForm.getAmount() * price);
 /*
 		Optional<UniqueInventoryItem> foodInventoryItem = inventory.findByProductIdentifier(foodItemId);
 		foodInventoryItem.ifPresent(uniqueInventoryItem

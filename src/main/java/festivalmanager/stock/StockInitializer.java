@@ -27,6 +27,9 @@ public class StockInitializer implements DataInitializer {
 
 	@Override
 	public void initialize() {
+		if(!foodCatalog.findAll().isEmpty()) return;
+		if(!inventory.findAll().isEmpty()) return;
+		if(inventory.findAll().iterator().hasNext()) return;
 		foodCatalog.findAll().forEach(food -> {
 			if (inventory.findByProduct(food).isEmpty() && !festivalManagement.findAllFestivals().isEmpty()) {
 				inventory.save(new FoodInventoryItem(food, Quantity.of(20), food.getFestival()));

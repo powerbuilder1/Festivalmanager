@@ -81,7 +81,7 @@
                                     <hr>
                                 </td>
                             </tr>
-                            <tr th:text="entry : ${}">
+                            <tr th:each="entry : ${catering}">
                                 <span th:text="${#strings.substring(entry.key, 1, entry.key.length)}"></span>
                             </tr>
                             <tr>
