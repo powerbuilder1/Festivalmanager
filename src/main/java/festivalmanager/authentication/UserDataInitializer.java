@@ -42,7 +42,7 @@ public class UserDataInitializer implements DataInitializer {
 		Long festivalId = festivalManagement.findAllFestivals().toList().get(0).getId();
 		Long festivalId1 = festivalManagement.findAllFestivals().toList().get(1).getId();
 
-		List.of(new UserForm("Hans", "123456", "Zuhause", "Customer",null, festivalId)).forEach(userManagement::createUser);
+		List.of(new UserForm("Ticketseller", "123456", "Zuhause", "Customer",null, festivalId)).forEach(userManagement::createUser);
 		List.of(new UserForm("Planning", "123456", "Zuhause", "Planning",null, festivalId)).forEach(userManagement::createPlanningStaff);
 		List.of(
 				new UserForm("Catering", "123456", "Zuhause", "Catering",null, festivalId),
