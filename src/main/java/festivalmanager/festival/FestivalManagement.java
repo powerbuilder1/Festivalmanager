@@ -13,6 +13,7 @@ import festivalmanager.lineup.LineUpManagement;
 import festivalmanager.location.Location;
 import festivalmanager.location.LocationManagement;
 import festivalmanager.communication.CommunicationManagement;
+import festivalmanager.finance.FinanceManagement;
 
 @Service
 @Transactional
@@ -27,6 +28,7 @@ public class FestivalManagement {
     private final UserManagement userManagement;
     private final CommunicationManagement communicationManagement;
     private final StockEventListener stockEventListener;
+    private final FinanceManagement financeManagement;
 
     /**
      * Constructor
@@ -41,13 +43,14 @@ public class FestivalManagement {
      */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
             CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement,
-            CommunicationManagement communicationManagement, StockEventListener stockEventListener) {
+            CommunicationManagement communicationManagement, StockEventListener stockEventListener, FinanceManagement financeManagement) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
         Assert.notNull(cateringManagement, "cateringManagement must not be null");
         Assert.notNull(lineUpManagement, "lineUpManagement must not be null");
         Assert.notNull(communicationManagement, "userManagement must not be null");
+        Assert.notNull(financeManagement, "financeManagement must not be null");
         this.festivalRepository = festivalRepository;
         this.locationManagement = locationManagement;
         this.cateringManagement = cateringManagement;
@@ -59,6 +62,8 @@ public class FestivalManagement {
         this.communicationManagement = communicationManagement;
         this.stockEventListener = stockEventListener;
         this.stockEventListener.setFestivalManagement(this);
+        this.financeManagement = financeManagement;
+        this.financeManagement.setFestivalManagement(this);
     }
 
     public LineUpManagement getLineUpManagement() {
@@ -75,6 +80,10 @@ public class FestivalManagement {
 
     public CommunicationManagement getCommunicationManagement() {
         return this.communicationManagement;
+    }
+    public FinanceManagement getFinanceManagement()
+    {
+        return this.financeManagement;
     }
 
     /**

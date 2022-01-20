@@ -1,77 +1,59 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout.html}">
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+
 <head>
 </head>
+
 <body>
-<section layout:fragment="content">
-    <div class="container" th:each="finance : ${finance}">
-        <div class="row">
-            <div class="col">
-                <h1>Finanzübersicht</h1>
-                <div class="row d-flex justify-content-center">
-                    <div class="card shadow-lg" style="padding-top: 15px;">
-                        <table class="table">
-                            <thead><tr>
-                                <th>Festival</th>
-                                <th>Kosten Location</th>
-                                <th>Kosten Künstler</th>
-                        <!--    <th>Kosten Angestellte</th> -->
-                                <th>Kosten Catering</th>
-                    <!--        <th>Einnahmen Tickets</th>
-                                <th>Einnahmen Catering</th>
-                                <th>Kosten gesamt</th> -->
-                            </tr></thead>
-                            <tbody><tr>
-                                <td>
-                                    <div>
-                                        <p th:text="${festival.${festival.id}.getName()}">Festival 1</p>
-                                    </div>
+    <section layout:fragment="content">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>Finanzen</h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    Name
+                                </th>
+                                <th scope="col">
+                                    Anzahl
+                                </th>
+                                <th scope="col">
+                                    Preis pro Einheit in €
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="entry : ${data}">
+                                <td scope="row">
+                                    <span th:text="${entry.key}"></span>
                                 </td>
                                 <td>
-                                    <div>
-                                        <p th:text="${location.${festival.id}.getRent()}">10000</p>
-                                    </div>
+                                    <span th:text="${entry.value.amount}"></span>
                                 </td>
                                 <td>
-                                    <div>
-                                        <p th:text="${finance.${festival.id}.getPrice()}">1000</p>
-                                    </div>
-                                </td>
-                        <!--    <td>
-                                    <div>
-                                        <p th:text="${finance.${festival.id}.getStaffPrice()}">1000</p>
-                                    </div>
-                                </td>   -->
-                                <td>
-                                    <div>
-                                        <p th:text="${finance.${festival.id}.getItemPrice()}">1000</p>
-                                    </div>
-                                </td>
-            <!--                <td>
-                                    <div>
-                                        <p th:text="${finance.${festival.id}.getTicketProfit()}">1000</p>
-                                    </div>
-                                </td>
-                                <td>
-                                    <div>
-                                        <p th:text="${finance.${festival.id}.getItemProfit()}">1000</p>
-                                    </div>
-                                </td> -->
-                                <td>
-                                    <div>
-                                        <p th:text="${finance.${festival.id}.getTotal()}">11000</p>
-                                    </div>
+                                    <span th:text="${entry.value.price}"></span>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                            <tr>
+                                <td scope="row">
+                                    Summe:
+                                </td>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <span th:text="${sum}"></span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </body>
+
 </html>

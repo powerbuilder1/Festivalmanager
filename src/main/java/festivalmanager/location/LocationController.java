@@ -24,14 +24,14 @@ public class LocationController {
         this.locationManagement = locationManagement;
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @GetMapping("/locations")
     String locations(Model model) {
         model.addAttribute("locations", locationManagement.findAllLocations());
         return "locations";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @GetMapping("/location/{id}")
     String location(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Location location = locationManagement.findById(id);
@@ -44,7 +44,7 @@ public class LocationController {
         return "location";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @GetMapping("/location/{id}/edit/image")
     String editImage(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Location location = locationManagement.findById(id);
@@ -58,7 +58,7 @@ public class LocationController {
         return "location_edit_locationmap";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @GetMapping("/location/{id}/edit")
     String editLocation(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Location location = locationManagement.findById(id);
@@ -72,7 +72,7 @@ public class LocationController {
         return "location_edit";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @PostMapping("/location/{id}/edit")
     String editLocation(@PathVariable long id, @ModelAttribute @Valid LocationForm form, Errors result,
             RedirectAttributes redirectAttributes) {
@@ -87,7 +87,7 @@ public class LocationController {
         return "redirect:/location/" + id + "/";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @GetMapping("/location/new")
     String newLocation(Model model) {
         model.addAttribute("location", new Location());
@@ -95,7 +95,7 @@ public class LocationController {
 
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @PostMapping("/location/new")
     String newLocation(@ModelAttribute("location") LocationForm form, Errors result,
             RedirectAttributes redirectAttributes) {
@@ -108,7 +108,7 @@ public class LocationController {
         return "redirect:/locations";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @GetMapping("/location/{id}/delete")
     String deleteLocation(@PathVariable long id, RedirectAttributes redirectAttributes) {
         if (!locationManagement.deleteById(id)) {
@@ -118,7 +118,7 @@ public class LocationController {
         return "redirect:/locations";
     }
 
-    @PreAuthorize("hasRole('PLANNING')")
+    @PreAuthorize("hasAnyRole('PLANNING', 'BOSS')")
     @PostMapping("/location/{id}/locationmap")
     String locationMap(@PathVariable long id, @RequestParam String data, @RequestParam String staticLink) {
         Location location = locationManagement.findById(id);
