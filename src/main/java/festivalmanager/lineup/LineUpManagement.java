@@ -167,7 +167,10 @@ public class LineUpManagement {
 
 	public void deleteById(long id)
 	{
-		LineUpRepository.deleteById(id);
+		if(LineUpRepository.findById(id).isPresent())
+		{
+			LineUpRepository.deleteById(id);
+		}
 	}
 
 
