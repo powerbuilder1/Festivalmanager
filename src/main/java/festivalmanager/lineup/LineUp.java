@@ -1,10 +1,8 @@
 package festivalmanager.lineup;
 import festivalmanager.festival.Festival;
-import org.javamoney.moneta.Money;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 @Entity
@@ -20,7 +18,7 @@ public class LineUp {
 	long id;
 
 	@OneToMany(cascade = CascadeType.ALL)
-	private List<Band> SetofBands = new ArrayList<Band>();
+	private List<Band> setOfBands = new ArrayList<Band>();
 
 	public LineUp() {
 
@@ -46,17 +44,16 @@ public class LineUp {
 	}
 
 	public void addBandto(Band band) throws Exception {
-		for( Band bands : SetofBands  ){
+		for( Band bands : setOfBands  ){
 			if (bands.getName1().equals(band.getName1()) | bands.getStage().equals(band.getStage())   ) {
 				throw new Exception( "It cannot be added to the lineup, sorry try with different inputs");
 			}
 		}
-		if ( SetofBands.size() > this.festival.getLocation().getMaxStages() )
-		{
+		if ( setOfBands.size() > this.festival.getLocation().getMaxStages() ) {
 			throw new Exception(" You can not add more bands to this festival");
 		}
 		else {
-			SetofBands.add(band);
+			setOfBands.add(band);
 		}
 	}
 
@@ -75,7 +72,7 @@ public class LineUp {
 
 	public ArrayList<String> getBandnames() {
 		ArrayList<String> names = new ArrayList<>();
-		for (Band band : SetofBands) {
+		for (Band band : setOfBands) {
 			names.add(band.getName1());
 		}
 
@@ -83,7 +80,7 @@ public class LineUp {
 	}
 	public ArrayList<Double> getPriceOfBands() {
 		ArrayList<Double> prices = new ArrayList<>();
-		for (Band band : SetofBands) {
+		for (Band band : setOfBands) {
 			prices.add(band.getPrice().getNumber().doubleValueExact());
 		}
 
@@ -91,18 +88,17 @@ public class LineUp {
 	}
 	public ArrayList<String> getLineupUhrzeiten() {
 		ArrayList<String> Uhrzeit = new ArrayList<>();
-		for (Band band: SetofBands) {
-				Uhrzeit.add(band.getPerformanceHour());
-			}
-				return Uhrzeit ;
+		for (Band band: setOfBands) {
+			Uhrzeit.add(band.getPerformanceHour());
+		}
+		return Uhrzeit ;
 	}
 
 	public ArrayList<String> getStagesinLineUp()
 	{
 		ArrayList<String> setOfStages = new ArrayList<>();
 		int sum = 1;
-		for ( int i =0; i<festival.getLocation().getMaxStages(); i++)
-		{
+		for ( int i =0; i<festival.getLocation().getMaxStages(); i++) {
 			setOfStages.add("Buehne "+ sum);
 			sum = sum+1;
 		}
@@ -114,8 +110,7 @@ public class LineUp {
 		ArrayList<String> getHours = new ArrayList<>();
 		int Hour1 = 1;
 		int Hour2 = 3;
-		for ( int i = 0; i<22; i++)
-		{
+		for ( int i = 0; i<22; i++) {
 			getHours.add(Hour1+":00 - "+Hour2+":00");
 			Hour1 = Hour1+1;
 			Hour2 = Hour2+1;
@@ -127,17 +122,17 @@ public class LineUp {
 		return id;
 	}
 
-	public String Festivalname(){
+	public String Festivalname() {
 		return festival.getName()+ " ---- Line UP";
 	}
 
 	public List<Band> getBands() {
-		return SetofBands;
+		return setOfBands;
 	}
 
 	public ArrayList<String> getStages() {
 		ArrayList<String> stages = new ArrayList<>();
-		for (Band band: SetofBands) {
+		for (Band band: setOfBands) {
 			stages.add(band.getStage());
 		}
 		return stages ;
@@ -152,8 +147,8 @@ public class LineUp {
 	}
 
 
-	public void setLineup(List<Band> SetofBands) {
-		this.SetofBands = SetofBands;
+	public void setLineup(List<Band> setOfBands) {
+		this.setOfBands = setOfBands;
 	}
 
 }

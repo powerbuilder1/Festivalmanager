@@ -2,14 +2,12 @@ package festivalmanager.personalManagement;
 
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserForm;
-import festivalmanager.authentication.UserManagement;
 import festivalmanager.authentication.UserRepository;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.location.LocationManagement;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -62,15 +60,14 @@ public class ManagerController {
 		}
 
 		// (｡◕‿◕｡)
-		// Falles alles in Ordnung ist legen wir einen Mitarbeiter an
+		// Falls alles in Ordnung ist legen wir einen Mitarbeiter an
 		if (form.getPosition().equalsIgnoreCase("catering")) {
 			managerManagement.createCateringStaff(form);
 		} else if (form.getPosition().equalsIgnoreCase("planning")) {
 			managerManagement.createPlanningStaff(form);
 		} else if (form.getPosition().equalsIgnoreCase("festivalleiter")) {
 			managerManagement.createFestivalDirector(form);
-		}
-		else if (form.getPosition().equalsIgnoreCase("security")) {
+		} else if (form.getPosition().equalsIgnoreCase("security")) {
 			managerManagement.createFestivalDirector(form);
 		}
 		return "redirect:/team";

@@ -17,7 +17,8 @@ public class TicketStockDataInitializer implements DataInitializer {
 
 
 
-	public TicketStockDataInitializer(TicketStockInventory inventory, TicketRepository ticketCatalog, FestivalManagement festivalManagement) {
+	public TicketStockDataInitializer(TicketStockInventory inventory,
+		TicketRepository ticketCatalog, FestivalManagement festivalManagement) {
 		this.inventory = inventory;
 		this.ticketCatalog = ticketCatalog;
 		this.festivalManagement = festivalManagement;

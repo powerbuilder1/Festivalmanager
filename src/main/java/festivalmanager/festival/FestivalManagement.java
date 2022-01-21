@@ -48,7 +48,8 @@ public class FestivalManagement {
      */
     FestivalManagement(FestivalRepository festivalRepository, LocationManagement locationManagement,
             CateringManagement cateringManagement, LineUpManagement lineUpManagement, UserManagement userManagement,
-            CommunicationManagement communicationManagement, StockEventListener stockEventListener, FinanceManagement financeManagement, StockManagment stockManagment) {
+            CommunicationManagement communicationManagement, StockEventListener stockEventListener,
+            FinanceManagement financeManagement, StockManagment stockManagment) {
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(festivalRepository, "festivalRepository must not be null");
         Assert.notNull(locationManagement, "locationManagement must not be null");
@@ -140,7 +141,7 @@ public class FestivalManagement {
     public Festival createFestival(String name, Location location, String beginDate, String endDate,
             String information, boolean isPublished) {
         Festival festival = new Festival(name, location, beginDate, endDate, information);
-        festival.setIsPublished(true);
+        festival.setIsPublished(isPublished);
         return createFestival(festival);
     }
 

@@ -24,10 +24,14 @@ public class FoodDataInitializer implements DataInitializer {
 		if(!foodCatalog.findAll().isEmpty()) return;
 		System.out.println("IS EMPTY:" + festivalManagement.findAllFestivals().isEmpty());
 		if (!festivalManagement.findAllFestivals().isEmpty()) {
-			foodCatalog.save(new Food("Bratwurst", Money.of(10, Currencies.EURO), festivalManagement.findAllFestivals().toList().get(0)));
-			foodCatalog.save(new Food("Bier", Money.of(1, Currencies.EURO), festivalManagement.findAllFestivals().toList().get(1)));
-			foodCatalog.save(new Food("Wiener", Money.of(3, Currencies.EURO), festivalManagement.findAllFestivals().toList().get(1)));
-			foodCatalog.save(new Food("Cola", Money.of(1, Currencies.EURO), festivalManagement.findAllFestivals().toList().get(1)));
+			foodCatalog.save(new Food("Bratwurst", Money.of(10, Currencies.EURO),
+				festivalManagement.findAllFestivals().toList().get(0)));
+			foodCatalog.save(new Food("Bier", Money.of(1, Currencies.EURO),
+				festivalManagement.findAllFestivals().toList().get(1)));
+			foodCatalog.save(new Food("Wiener", Money.of(3, Currencies.EURO),
+				festivalManagement.findAllFestivals().toList().get(1)));
+			foodCatalog.save(new Food("Cola", Money.of(1, Currencies.EURO),
+				festivalManagement.findAllFestivals().toList().get(1)));
 		}
 	}
 }

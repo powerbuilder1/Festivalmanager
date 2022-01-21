@@ -2,18 +2,14 @@ package festivalmanager.Ticket;
 
 import festivalmanager.TicketStock.TicketStockManagement;
 import festivalmanager.authentication.UserManagement;
-import festivalmanager.catering.Food;
-import festivalmanager.catering.NewFoodItemForm;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.Currencies;
-import org.salespointframework.useraccount.UserAccount;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import java.util.Optional;
 
 @Service
 public class TicketManagement {
@@ -22,7 +18,8 @@ public class TicketManagement {
 	private static FestivalManagement festivalManagement;
 	private final UserManagement userManagement;
 
-	TicketManagement(TicketRepository ticketRepository ,UserManagement userManagement, TicketStockManagement ticketStockManagement, FestivalManagement festivalManagement) {
+	TicketManagement(TicketRepository ticketRepository ,UserManagement userManagement,
+		TicketStockManagement ticketStockManagement, FestivalManagement festivalManagement) {
 		Assert.notNull(ticketRepository, "ticketRepository must not be null");
 		Assert.notNull(userManagement, "userManagement must not be null");
 		Assert.notNull(festivalManagement, "festivalManagement must not be null");
@@ -37,24 +34,20 @@ public class TicketManagement {
 
 	// get catalog
 	public Streamable<Ticket> getTicketCatalog(Festival festival) {
-
 		return ticketRepository.findTicketByFestival(festival);
-
-
 	}
 	// add ticket to stock
-	public void addTicketToCatalog(TicketForm ticketForm) throws Exception {
+	public void addTicketToCatalog(TicketForm ticketForm) throws IllegalStateException {
 
 		if (ticketForm.getFestival() == null) {
-			ticketForm.setFestival(festivalManagement.findById(ticketForm.getFestivalIdentifier()));}
+			ticketForm.setFestival(festivalManagement.findById(ticketForm.getFestivalIdentifier()));
+		}
 
 		double sum = 0;
-		for ( Ticket ticket : ticketRepository.findAll())
-		{
-			if (ticket.getFestival() == ticketForm.getFestival())
-				{
-					sum = sum + ticket.getPercentOf();
-				}
+		for ( Ticket ticket : ticketRepository.findAll()) {
+			if (ticket.getFestival() == ticketForm.getFestival()) {
+				sum = sum + ticket.getPercentOf();
+			}
 		}
 		sum = sum + ticketForm.getPercentOf();
 		if(sum <= 100) {
@@ -67,16 +60,12 @@ public class TicketManagement {
 		}
 		else
 		{
-			throw new Exception("There can not be more tickets than the maximal number of persons in the location , sorry");
+			throw new IllegalStateException("There can not be more tickets than the maximal number of persons in the location , sorry");
 		}
-		}
-
-		public Streamable<Ticket> getAllTicketCatalog() {
-
-		return ticketRepository.findAll();
-
-
 	}
 
-
+	public Streamable<Ticket> getAllTicketCatalog() {
+		return ticketRepository.findAll();
+	}
 }
+
