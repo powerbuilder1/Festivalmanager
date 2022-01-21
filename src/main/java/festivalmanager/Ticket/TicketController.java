@@ -47,9 +47,9 @@ public class TicketController  {
 	public String getNewTickets(Model model) {
 		model.addAttribute("TicketForm", new TicketForm());
 		model.addAttribute("festivals", festivalManagement.findAllFestivals());
-		model.addAttribute("ticketType1", Ticket.TicketType.CampingTicket );
-		model.addAttribute("ticketType2", Ticket.TicketType.TagesKarte );
-		model.addAttribute("ticketType3", Ticket.TicketType.AbendKasse );
+		model.addAttribute("ticketType1", Ticket.TicketType.campingTicket );
+		model.addAttribute("ticketType2", Ticket.TicketType.tagesKarte );
+		model.addAttribute("ticketType3", Ticket.TicketType.abendKasse );
 
 		return "ticket_new";
 	}
