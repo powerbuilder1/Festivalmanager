@@ -17,12 +17,17 @@ public class FoodInventoryItem extends UniqueInventoryItem {
 	@JoinColumn(name = "festival_id", nullable = false)
 	private Festival festival;
 
+	/**
+	 *
+	 * @param product
+	 * @param quantity
+	 * @param festival
+	 */
 	public FoodInventoryItem(Product product, Quantity quantity, Festival festival) {
 		super(product, quantity);
 		this.festival = festival;
 	}
 
 	public FoodInventoryItem() {
-
 	}
 }
