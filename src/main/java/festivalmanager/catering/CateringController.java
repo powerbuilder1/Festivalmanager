@@ -18,18 +18,31 @@ public class CateringController {
 
 	final private CateringManagement cateringManagement;
 
+	/**
+	 *
+	 * @param cateringManagement
+	 */
 	public CateringController(CateringManagement cateringManagement) {
 		this.cateringManagement = cateringManagement;
 	}
 
-	// route to catering management page
+	/**
+	 * route to catering management page
+	 * @param form
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/addToFoodCatalog")
 	public String getCateringManagement(NewFoodItemForm form) {
 		return "catering_management";
 	}
 
-	// route to catalog overview
+	/**
+	 * route to catalog overview
+	 * @param model
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/catalog")
 	public String getCatalog(
@@ -40,7 +53,13 @@ public class CateringController {
 		return "catalog";
 	}
 
-	// route to edit page for catalog items
+	/**
+	 * route to edit page for catalog items
+	 * @param form
+	 * @param foodItem
+	 * @param model
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "catering/catalog/edit/{foodItem}")
 	public String getEditCatalogItem(
@@ -54,7 +73,13 @@ public class CateringController {
 		return "catalog_edit_item";
 	}
 
-	// add item to FoodCatalog
+	/**
+	 * add item to FoodCatalog
+	 * @param account
+	 * @param form
+	 * @param result
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/addToFoodCatalog")
 	public String addItemToCatalog(
@@ -69,7 +94,11 @@ public class CateringController {
 		return "redirect:/catering/catalog";
 	}
 
-	// delete item from FoodCatalog
+	/**
+	 * delete item from FoodCatalog
+	 * @param foodItem
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/deleteFromCatalog/{foodItem}")
 	public String deleteItemFromCatalog(@PathVariable("foodItem") Food foodItem) {
@@ -77,7 +106,13 @@ public class CateringController {
 		return "redirect:/catering/catalog";
 	}
 
-	// edit item from FoodCatalog
+	/**
+	 * edit item from FoodCatalog
+	 * @param foodItem
+	 * @param form
+	 * @param result
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "catering/editFromCatalog/{foodItem}")
 	public String editItemFromCatalog(
@@ -90,18 +125,6 @@ public class CateringController {
 		}
 		cateringManagement.editItemFromCatalog(foodItem, form);
 		return "redirect:/catering/catalog";
-	}
-
-	@GetMapping(path = "catering/test")
-	public String test(
-			Model model,
-			@LoggedIn Optional<UserAccount> userAccount
-	) {
-		model.addAttribute("test", "LOL");
-		userAccount.ifPresent(account -> {
-			model.addAttribute("userAccount", account);
-		});
-		return "test";
 	}
 
 }
