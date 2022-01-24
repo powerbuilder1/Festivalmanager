@@ -1,11 +1,8 @@
 package festivalmanager.order;
 
-import festivalmanager.catering.Food;
 import festivalmanager.catering.FoodCatalog;
-import festivalmanager.festival.FestivalManagement;
 import festivalmanager.stock.ReorderForm;
 import org.salespointframework.order.Cart;
-import org.salespointframework.order.CartItem;
 import org.salespointframework.order.Order;
 import org.salespointframework.order.OrderManagement;
 import org.salespointframework.payment.Cash;
