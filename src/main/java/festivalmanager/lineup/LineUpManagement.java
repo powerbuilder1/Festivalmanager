@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.util.Iterator;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 @Transactional
@@ -23,7 +22,6 @@ public class LineUpManagement {
 		Assert.notNull(LineUpRepository, "festivalRepository must not be null");
 
 		this.LineUpRepository = LineUpRepository;
-
 	}
 
 	public void setFestivalManagement(FestivalManagement festivalManagement) {
@@ -40,10 +38,8 @@ public class LineUpManagement {
 		if (lineUp.getFestival() == null) {
 			lineUp.setFestival(festivalManagement.findById(lineUp.getFestivalIdentifier()));
 			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());}
-		for (LineUp lineups: LineUpRepository.findAll() )
-		{
-			if (lineups.getId() == lineUp.getId())
-			{
+		for (LineUp lineups: LineUpRepository.findAll() ) {
+			if (lineups.getId() == lineUp.getId()) {
 				throw new Exception(" THIS LINEUP ALREADY EXISTS");
 			}
 		}
@@ -60,8 +56,7 @@ public class LineUpManagement {
 		System.out.println("Welcome1");
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			System.out.println("Welcome");
-			for (Band bands: lineUp.getBands())
-			{
+			for (Band bands: lineUp.getBands()) {
 				if ( bandForm.getStage().equals(bands.getStage())){
 					try {
 						throw new Exception("This Stage is already occupied by " + bands.getName1());
@@ -80,10 +75,11 @@ public class LineUpManagement {
 									bandForm.getStage(),
 									bandForm.getPerformanceHour()));
 				}
-				} catch (Exception e) {
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			LineUpRepository.save(lineUp); });
+			LineUpRepository.save(lineUp); 
+		});
 
 	}
 	/**
@@ -97,7 +93,8 @@ public class LineUpManagement {
 		System.out.println(bandname);
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			lineUp.getBands().removeIf(filterBand -> filterBand.getName1().equals(bandname));
-			LineUpRepository.save(lineUp); });
+			LineUpRepository.save(lineUp);
+		});
 	}
 	/**
 	 * edit an specific band in an specific LineUp
@@ -109,7 +106,6 @@ public class LineUpManagement {
 	public void updateBand(long id, BandForm form) {
 
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
-
 			Iterator itr = lineUp.getBands().iterator();
 			while (itr.hasNext()) {
 				Band editBand = (Band) itr.next();
@@ -127,7 +123,6 @@ public class LineUpManagement {
 			}
 
 			LineUpRepository.save(lineUp);
-
 		});
 	}
 
@@ -161,14 +156,14 @@ public class LineUpManagement {
 					wantedBand = bands;
 
 				}
-			}});
-	return wantedBand;
+			}
+		});
+		return wantedBand;
 	}
 
-	public void deleteById(long id)
-	{
-		LineUpRepository.deleteById(id);
+	public void deleteById(long id) {
+		if(LineUpRepository.findById(id).isPresent()) {
+			LineUpRepository.deleteById(id);
+		}
 	}
-
-
 }

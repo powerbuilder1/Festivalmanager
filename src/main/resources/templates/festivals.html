@@ -1,5 +1,6 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
 </head>
@@ -37,16 +38,24 @@
                                     <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
                                     <p>
                                         <th:block th:with="sdf = ${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
-                                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
+                                            <span class="card-text"
+                                                th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
                                                 Datum</span> -
-                                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
+                                            <span class="card-text"
+                                                th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
                                                 Datum</span>
                                         </th:block>
                                     </p>
                                     <br>
-                                    <a th:href="@{|/festival/${festival.id}/edit|}"><img src="/resources/images/edit.png" style="width:64px;"></a>
-                                    <a th:href="@{|/festival/${festival.id}/delete|}"><img src="/resources/images/delete.png" style="width:64px;"></a>
-                                    <a th:unless="${festival.isPublished}" th:href="@{|/publish/${festival.id}|}"><img src="/resources/images/publish.png" style="width: 64px;"></a>
+                                    <a th:href="@{|/festival/${festival.id}/edit|}"><img
+                                            src="/resources/images/edit.png" style="width:64px;"></a>
+                                    <a th:href="@{|/festival/${festival.id}/delete|}"><img
+                                            src="/resources/images/delete.png" style="width:64px;"></a>
+                                    <a sec:authorize="hasAnyRole('BOSS', 'FESTIVALDIRECTOR')"
+                                        th:href="@{|/festival/${festival.id}/finance|}"><img
+                                            src="/resources/images/coin.png" style="width:64px;"></a>
+                                    <a th:unless="${festival.isPublished}" th:href="@{|/publish/${festival.id}|}"><img
+                                            src="/resources/images/publish.png" style="width: 64px;"></a>
                                 </div>
                             </div>
                         </div>

@@ -201,4 +201,16 @@ public class CommunicationManagement {
         participantsRepository.deleteAll(participantsRepository.findAll().filter(p -> p.getUser().equals(user)));
         chatMessageRepository.deleteAll(chatMessageRepository.findAll().filter(m -> m.getSender().equals(user)));
     }
+
+    public RoomRepository getRoomRepository() {
+        return roomRepository;
+    }
+
+    public ChatMessageRepository getChatMessageRepository() {
+        return chatMessageRepository;
+    }
+
+    public ParticipantsRepository getParticipantsRepository() {
+        return participantsRepository;
+    }
 }

@@ -1,17 +1,11 @@
 package festivalmanager.Ticket;
 
-import festivalmanager.catering.NewFoodItemForm;
-import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
-import org.salespointframework.order.Cart;
-import org.salespointframework.order.Order;
-import org.salespointframework.order.OrderManagement;
 import org.salespointframework.useraccount.UserAccount;
 import org.salespointframework.useraccount.web.LoggedIn;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.Assert;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,7 +21,8 @@ public class TicketController  {
 	private TicketManagement ticketManagement;
 	private FestivalManagement festivalManagement;
 
-	public TicketController( TicketRepository ticketRepository, TicketManagement ticketManagement, FestivalManagement festivalManagement) {
+	public TicketController( TicketRepository ticketRepository, 
+		TicketManagement ticketManagement, FestivalManagement festivalManagement) {
 
 		this.ticketManagement = ticketManagement;
 		this.ticketRepository = ticketRepository;
@@ -47,9 +42,9 @@ public class TicketController  {
 	public String getNewTickets(Model model) {
 		model.addAttribute("TicketForm", new TicketForm());
 		model.addAttribute("festivals", festivalManagement.findAllFestivals());
-		model.addAttribute("ticketType1", Ticket.TicketType.CampingTicket );
-		model.addAttribute("ticketType2", Ticket.TicketType.TagesKarte );
-		model.addAttribute("ticketType3", Ticket.TicketType.AbendKasse );
+		model.addAttribute("ticketType1", Ticket.TicketType.campingTicket );
+		model.addAttribute("ticketType2", Ticket.TicketType.tagesKarte );
+		model.addAttribute("ticketType3", Ticket.TicketType.abendKasse );
 
 		return "ticket_new";
 	}

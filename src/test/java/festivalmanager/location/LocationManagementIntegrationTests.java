@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.*;
 
 import static org.salespointframework.core.Currencies.*;
 
-import javax.annotation.meta.Exhaustive;
 
 import org.javamoney.moneta.Money;
 import org.junit.jupiter.api.Test;
@@ -13,15 +12,30 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.util.Streamable;
 
+import festivalmanager.AbstractIntegrationTests;
+
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LocationManagementIntegrationTests {
+public class LocationManagementIntegrationTests extends AbstractIntegrationTests {
 
     @Autowired
     private LocationManagement locationManagement;
 
+    /**
+     * Make sure the test location(s) don't exist before the test
+     * @param name
+     */
+    void deleteLocation(String name) {
+        Streamable<Location> locations = locationManagement.findAllByName(name);
+        for(Location location : locations)
+        {
+            locationManagement.deleteById(location.getId());
+        }
+    }
+
     @Test
     void createLocation() {
+        deleteLocation("TestLocation");
         LocationForm form = new LocationForm(12, 1, "TestLocation", 500, 200);
         locationManagement.createLocation(form);
         assertThat(locationManagement.findAllByName(form.getName())).hasSize(1);
@@ -30,21 +44,23 @@ public class LocationManagementIntegrationTests {
     @Test
     void findsAllLocations() {
         Streamable<Location> locations = locationManagement.findAllLocations();
-        assertThat(locations).hasSize(5);
+        assertThat(locations).hasSizeGreaterThan(-1);
     }
 
     @Test
     void checkLocationContent() {
+        String name = "somerandomnameforthistest";
+        deleteLocation(name);
         // add test location
-        locationManagement.createLocation("Test", 200, 10, Money.of(500, EURO));
+        locationManagement.createLocation(name, 200, 10, Money.of(500, EURO));
 
         // find location
-        Streamable<Location> locations = locationManagement.findAllByName("Test");
+        Streamable<Location> locations = locationManagement.findAllByName(name);
         assertThat(locations).hasSize(1);
 
         // check its contents
         Location location = locations.toList().get(0);
-        assertThat(location.getName()).isEqualTo("Test");
+        assertThat(location.getName()).isEqualTo(name);
         assertThat(location.getMaxVisitors() == 200);
         assertThat(location.getMaxStages() == 10);
         assertThat(location.getRent().isEqualTo(Money.of(500, EURO)));

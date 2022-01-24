@@ -32,6 +32,9 @@ public class RoomDataInitializer implements DataInitializer {
      */
     @Override
     public void initialize() {
+        if(communicationManagement.getRoomRepository().findAll().iterator().hasNext()) {
+            return;
+        }
         List.of("Catering", "public", "Planning").forEach(communicationManagement::createRoom);
     }
 

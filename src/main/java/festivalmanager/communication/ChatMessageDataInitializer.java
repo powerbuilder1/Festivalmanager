@@ -37,6 +37,10 @@ public class ChatMessageDataInitializer implements DataInitializer {
      */
     @Override
     public void initialize() {
+        if(communicationManagement.getChatMessageRepository().findAll().iterator().hasNext()) {
+            return;
+        }
+
         User user = userManagement.findByName("manager");
         if (user == null) {
             System.out.println("initMessages: manager not found");

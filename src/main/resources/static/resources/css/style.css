@@ -43,4 +43,9 @@ body {
 }
 
 
+.logo-image {
+    width: 60px;
+    /* make rounded corners for every browser */
+    border-radius: 50%;
 
+}

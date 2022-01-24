@@ -4,7 +4,6 @@ import com.itextpdf.html2pdf.ConverterProperties;
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.io.IOException;
 import com.itextpdf.io.source.ByteArrayOutputStream;
-import festivalmanager.Ticket.TicketRepository;
 import festivalmanager.TicketStock.TicketOrderForm;
 import festivalmanager.Ticket.TicketManagement;
 import festivalmanager.TicketStock.TicketStockManagement;
@@ -50,8 +49,9 @@ public class OrderController {
 	private final TemplateEngine templateEngine;
 
 	public OrderController(CateringManagement cateringManagement, CustomOrderManagement customOrderManagement,
-						   TicketManagement ticketManagement,TicketCustomOrderManagement ticketCustomOrderManagement,
-						   FestivalManagement festivalManagement,TemplateEngine templateEngine, TicketStockManagement ticketStockManagement) {
+			TicketManagement ticketManagement,TicketCustomOrderManagement ticketCustomOrderManagement,
+			FestivalManagement festivalManagement,TemplateEngine templateEngine,
+			TicketStockManagement ticketStockManagement) {
 		this.cateringManagement = cateringManagement;
 		this.customOrderManagement = customOrderManagement;
 		this.ticketManagement = ticketManagement;
@@ -67,7 +67,7 @@ public class OrderController {
 		return new Cart();
 	}
 
-	@PreAuthorize("hasRole('CATERING')")
+	@PreAuthorize("hasAnyRole('CATERING', 'BOSS')")
 	@GetMapping(path = "catering/sale")
 	String getCart(
 			ReorderForm form,
@@ -78,7 +78,7 @@ public class OrderController {
 		return "catering";
 	}
 
-	@PreAuthorize("hasRole('CUSTOMER')")
+	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@GetMapping(path = "ticket/{id}/sale")
 	String getCartTicket(@PathVariable long id,
 			Model model,
@@ -110,7 +110,7 @@ public class OrderController {
 		return "redirect:/catering/sale";
 	}
 
-	@PreAuthorize("hasRole('CUSTOMER')")
+	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@PostMapping(path = "/ticket/{id}/sale")
 	String addtTicketToCart(@PathVariable long id,
 			@ModelAttribute Cart cart,
@@ -132,7 +132,7 @@ public class OrderController {
 		return customOrderManagement.buy(cart, userAccount);
 	}
 
-	@PreAuthorize("hasRole('CUSTOMER')")
+	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@PostMapping(path = "ticket/checkout")
 	String buyTicket(
 			@ModelAttribute Cart cart,
@@ -143,7 +143,7 @@ public class OrderController {
 		return ticketCustomOrderManagement.buyTicket(cart, userAccount);
 
 	}
-	@PreAuthorize("hasRole('CUSTOMER')")
+	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@PostMapping(path = "/ticket/{id}/sale/delete")
 	String deleteTicket(
 			@PathVariable long id,
@@ -155,9 +155,10 @@ public class OrderController {
 		return "redirect:/ticket/"+id+"/sale";
 	}
 
-	@PreAuthorize("hasRole('CUSTOMER')")
+	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@RequestMapping(path = "/pdf")
-	public ResponseEntity<?> getPDF(HttpServletRequest request, Cart cart, HttpServletResponse response,@LoggedIn Optional<UserAccount> userAccount) throws IOException {
+	public ResponseEntity<?> getPDF(HttpServletRequest request, Cart cart, HttpServletResponse response,
+		@LoggedIn Optional<UserAccount> userAccount) throws IOException {
 
 		/* Do Business Logic*/
 		/* Create HTML using Thymeleaf template Engine */

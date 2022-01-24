@@ -11,7 +11,7 @@ import javax.persistence.*;
 public class Ticket extends Product {
 
 	public static enum TicketType {
-		AbendKasse, CampingTicket, TagesKarte;
+		abendKasse, campingTicket, tagesKarte;
 	}
 
 	@ManyToOne

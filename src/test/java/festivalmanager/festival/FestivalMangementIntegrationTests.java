@@ -24,14 +24,40 @@ public class FestivalMangementIntegrationTests {
     @Autowired
     private LocationManagement locationManagement;
 
+    /**
+     * Make sure the test festivals(s) don't exist before the test
+     * @param name
+     */
+    void deleteFestival(String name) {
+        Streamable<Festival> festivals = festivalManagement.findAllByName(name);
+        for(Festival festival : festivals)
+        {
+            festivalManagement.deleteById(festival.getId());
+        }
+    }
+
+    /**
+     * Make sure the test location(s) don't exist before the test
+     * @param name
+     */
+    void deleteLocation(String name) {
+        Streamable<Location> locations = locationManagement.findAllByName(name);
+        for(Location location : locations)
+        {
+            locationManagement.deleteById(location.getId());
+        }
+    }
+
     @Test
     void findsAllFestivals() {
         Streamable<Festival> festivals = festivalManagement.findAllFestivals();
-        assertThat(festivals).hasSize(2);
+        assertThat(festivals).hasSizeGreaterThan(-1);
     }
 
     @Test
     void checkFestivalContent() {
+        deleteFestival("Test");
+        deleteLocation("Test");
         // create test entries
         Location location = locationManagement.createLocation("Test", 200, 10, Money.of(500, EURO));
         Festival festival = festivalManagement.createFestival("Test", location, "2022-10-10", "2022-11-11",
@@ -52,7 +78,8 @@ public class FestivalMangementIntegrationTests {
 
     @Test
     void checkGetFestivalById() {
-
+        deleteFestival("TestID");
+        deleteLocation("TestID");
         // create test entries
         Location location = locationManagement.createLocation("TestID", 200, 10, Money.of(500, EURO));
         Festival festival = festivalManagement.createFestival("TestID", location, "2022-10-10", "2022-11-11",
