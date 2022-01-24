@@ -22,6 +22,11 @@ public class StockManagment {
 	private final UserManagement userManagement;
 	private FestivalManagement festivalManagement;
 
+	/**
+	 *
+	 * @param inventory
+	 * @param userManagement
+	 */
 	public StockManagment(StockInventory inventory, UserManagement userManagement) {
 		this.inventory = inventory;
 		this.userManagement = userManagement;
@@ -31,7 +36,11 @@ public class StockManagment {
 		this.festivalManagement = festivalManagement;
 	}
 
-	// get current stock
+	/**
+	 * get current stock
+	 * @param userAccount
+	 * @return
+	 */
 	public Streamable<FoodInventoryItem> getCurrentStock(Optional<UserAccount> userAccount) {
 		if (userAccount.isPresent()) {
 			User user = userManagement.findUserByUserAccount(userAccount.get());
@@ -40,28 +49,37 @@ public class StockManagment {
 		return null;
 	}
 
-	// delete all inventory items for a specific FoodItem
+	/**
+	 * delete all inventory items for a specific FoodItem
+	 * @param inventoryItem
+	 */
 	public void deleteAllInventoryItems(FoodInventoryItem inventoryItem) {
 		inventory.delete(inventoryItem);
 	}
 
-	// find a UniqueInventoryItem by Food-Product
+	/**
+	 * find a FoodInventoryItem by Food-Product
+	 * @param foodItem
+	 * @return
+	 */
 	public Optional<FoodInventoryItem> findByProduct(Food foodItem) {
 		return inventory.findByProduct(foodItem);
 	}
 
-	// initialize new Inventory Item for a specific Food-Product
+	/**
+	 * initialize new Inventory Item for a specific Food-Product
+	 * @param foodItem
+	 * @param amount
+	 * @param festival
+	 */
 	public void initializeInventoryItem(Food foodItem, double amount, Festival festival) {
 		inventory.save(new FoodInventoryItem(foodItem, Quantity.of(amount), festival));
 	}
 
-
-
-	// Test
-	public void deleteAll() {
-		inventory.deleteAll();
-	}
-
+	/**
+	 * reorder specific FoodItem
+	 * @param reorderForm
+	 */
 	public void reorderItem(ReorderForm reorderForm) {
 		ProductIdentifier foodItemId = reorderForm.getFoodItemId();
 		inventory.findByProductIdentifier(foodItemId).ifPresent(uniqueInventoryItem -> {
@@ -72,10 +90,5 @@ public class StockManagment {
 		long id = inventory.findByProductIdentifier(foodItemId).get().getFestivalId();
 		long price = inventory.findByProductIdentifier(foodItemId).get().getProduct().getPrice().query(MonetaryQueries.convertMinorPart());
 		festivalManagement.getFinanceManagement().getFinanceById(id).addData("cCatering Ausgaben", 1, -reorderForm.getAmount() * price);
-/*
-		Optional<UniqueInventoryItem> foodInventoryItem = inventory.findByProductIdentifier(foodItemId);
-		foodInventoryItem.ifPresent(uniqueInventoryItem
-				-> uniqueInventoryItem.increaseQuantity(Quantity.of(reorderForm.getAmount())));
-*/
 	}
 }
