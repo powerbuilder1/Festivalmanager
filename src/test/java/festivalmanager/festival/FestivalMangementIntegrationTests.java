@@ -74,6 +74,10 @@ public class FestivalMangementIntegrationTests {
         assertThat(result.getBeginDate()).isEqualTo(festival.getBeginDate());
         assertThat(result.getEndDate()).isEqualTo(festival.getEndDate());
         assertThat(result.getInformation()).isEqualTo(festival.getInformation());
+
+        // delete test entries
+        deleteFestival("Test");
+        deleteLocation("Test");
     }
 
     @Test
@@ -88,6 +92,10 @@ public class FestivalMangementIntegrationTests {
         Festival result = festivalManagement.findById(festival.getId());
         assertThat(result != null);
         assertThat(result.getName().equals(festival.getName()));
+
+        // delete test entries
+        deleteFestival("TestID");
+        deleteLocation("TestID");
     }
 
 }
