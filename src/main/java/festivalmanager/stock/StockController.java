@@ -19,12 +19,21 @@ public class StockController {
 	final private StockManagment stockManagment;
 
 
+	/**
+	 *
+	 * @param stockManagment
+	 */
 	public StockController(StockManagment stockManagment) {
 		this.stockManagment = stockManagment;
 	}
 
-
-	// route to stock overview
+	/**
+	 * route to stock overview
+	 * @param form
+	 * @param model
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@GetMapping(path = "stock")
 	public String getCurrentStock(
@@ -37,7 +46,11 @@ public class StockController {
 		return "stock";
 	}
 
-	// delete all inventory Items for a specific FoodItem
+	/**
+	 * delete all inventory Items for a specific FoodItem
+	 * @param inventoryItem
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "stock/deleteAllInventoryItems/{inventoryItem}")
 	public String deleteAllInventoryItems(@PathVariable FoodInventoryItem inventoryItem) {
@@ -45,6 +58,14 @@ public class StockController {
 		return "stock";
 	}
 
+	/**
+	 * reorder a specific FoodItem
+	 * @param form
+	 * @param result
+	 * @param userAccount
+	 * @param model
+	 * @return
+	 */
 	@PreAuthorize("hasRole('FESTIVALDIRECTOR')")
 	@PostMapping(path = "stock/reorder")
 	public String reorderItem(
@@ -60,13 +81,4 @@ public class StockController {
 		stockManagment.reorderItem(form);
 		return "redirect:/stock/";
 	}
-
-
-	 //TEST
-	@PostMapping(path = "stock/test/deleteAll")
-	public String deleteAll() {
-		stockManagment.deleteAll();
-		return "stock";
-	}
-
 }
