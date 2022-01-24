@@ -16,10 +16,18 @@ public class StockEventListener {
 		this.festivalManagement = null;
 	}
 
+	/**
+	 * setter for festivalManagement
+	 * @param festivalManagement
+	 */
 	public void setFestivalManagement(FestivalManagement festivalManagement) {
 		this.festivalManagement = festivalManagement;
 	}
 
+	/**
+	 * event listener for StockShort event
+	 * @param event
+	 */
 	@EventListener
 	public void handleEvent(InventoryEvents.StockShort event) {
 
@@ -40,5 +48,4 @@ public class StockEventListener {
 					event.getCurrentQuantity() + " of " + food.getName() + " are in Stock.", room);
 		});
 	}
-
 }
