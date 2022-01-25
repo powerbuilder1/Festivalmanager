@@ -37,7 +37,7 @@
                             <a href="/dashboard" th:href="@{/dashboard}" class="nav-link"
                                 th:text="#{manager.dashboard}">Kontrollzentrum</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR', 'BOSS')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR')">
                             <a href="/catering/management" th:href="@{/catering/addToFoodCatalog}"
                                 class="nav-link">Catering
                                 Management</a>
@@ -48,14 +48,14 @@
                         <li class="nav-item" sec:authorize="hasRole('BOSS')">
                             <a href="/ticket/new" th:href="@{/ticket/new}" class="nav-link">New Ticket</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR', 'BOSS')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR')">
                             <a href="/catering/catalog" th:href="@{/catering/catalog}" class="nav-link">Catering
                                 Angebot</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR', 'BOSS')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('FESTIVALDIRECTOR')">
                             <a href="/stock" th:href="@{/stock}" class="nav-link">Lager</a>
                         </li>
-                        <li class="nav-item" sec:authorize="hasAnyRole('CATERING', 'BOSS')">
+                        <li class="nav-item" sec:authorize="hasAnyRole('CATERING')">
                             <a href="/catering/sale" th:href="@{/catering/sale}" class="nav-link">Sale</a>
                         </li>
                         <li class="nav-item" sec:authorize="hasAnyRole('PLANNING', 'BOSS')">

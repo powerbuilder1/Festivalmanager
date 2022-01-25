@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout.html}">
 
 <head>
 </head>
@@ -17,65 +18,74 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="card shadow-lg" style="padding-top: 15px; margin-top: 15px;">
-                    <img class="card-img-top shadow-lg" src="https://www.tagesspiegel.de/images/rock-concert-/27425484/4-format6001.jpg" alt="Card image cap">
+                    <img class="card-img-top shadow-lg"
+                        src="https://www.tagesspiegel.de/images/rock-concert-/27425484/4-format6001.jpg"
+                        alt="Card image cap">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${festival.name}">Festival 1</h5>
                         <p class="card-text" th:text="${festival.information}">
                         </p>
                         <th:block th:with="sdf = ${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
-                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
+                            <span class="card-text"
+                                th:text="${#dates.format(sdf.parse(festival.beginDate), 'dd.MM.yyyy')}">Start
                                 Datum</span> -
-                            <span class="card-text" th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
+                            <span class="card-text"
+                                th:text="${#dates.format(sdf.parse(festival.endDate), 'dd.MM.yyyy')}">End
                                 Datum</span>
                         </th:block>
                         <br>
                         <div>
                             <p>Location: <span th:text="${festival.location.name}"></span></p>
-                            <img th:src="@{|/image/location_${festival.location.id}.png|}" width="200px">
+                            <!-- <img th:src="@{|/image/location_${festival.location.id}.png|}" width="200px"> -->
+                            <img th:src="${festival.location.staticImage}" alt="Location Map">
                         </div>
                         <br />
                     </div>
-                    <div class="card-body" th:each="lineup : ${lineup}" >
+                    <div class="card-body" th:each="lineup : ${lineup}">
                         <div class="row">
                             <div class="col">
                                 <h1><span th:text="${lineup.Festivalname}"> Festival 1</span></h1>
                                 <table class="table">
-                                    <thead><tr>
-                                        <th scope="col">Uhrzeit</th>
-                                        <th scope="col">Bands</th>
-                                        <th scope="col">Bühnen</th>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Uhrzeit</th>
+                                            <th scope="col">Bands</th>
+                                            <th scope="col">Bühnen</th>
 
-                                    </tr></thead>
-                                    <tbody> <tr  th:each="lineup : ${lineup}">
-                                        <td>
-                                            <div th:each="hour : ${lineup.getLineupUhrzeiten()}">
-                                                <div>
-                                                    <p th:text="${hour}"></p>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="lineup : ${lineup}">
+                                            <td>
+                                                <div th:each="hour : ${lineup.getLineupUhrzeiten()}">
+                                                    <div>
+                                                        <p th:text="${hour}"></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div th:each="band : ${lineup.getBandnames()}">
-                                                <div>
-                                                    <p th:text="${band}"></p>
+                                            </td>
+                                            <td>
+                                                <div th:each="band : ${lineup.getBandnames()}">
+                                                    <div>
+                                                        <p th:text="${band}"></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div th:each="stage : ${lineup.getStages()}">
-                                                <div>
-                                                    <p th:text="${stage}"></p>
+                                            </td>
+                                            <td>
+                                                <div th:each="stage : ${lineup.getStages()}">
+                                                    <div>
+                                                        <p th:text="${stage}"></p>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div class="d-grid gap-3">
-                        <a th:href="@{|/ticket/${festival.id}/sale|}" href="/ticket/sale" class="btn btn-primary btn-lg " tabindex="-1" role="button">Tickets Kaufen</a>
+                        <a th:href="@{|/ticket/${festival.id}/sale|}" href="/ticket/sale"
+                            class="btn btn-primary btn-lg " tabindex="-1" role="button">Tickets Kaufen</a>
                     </div>
                 </div>
             </div>

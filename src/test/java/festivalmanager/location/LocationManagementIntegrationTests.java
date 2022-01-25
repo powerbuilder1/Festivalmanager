@@ -39,6 +39,7 @@ public class LocationManagementIntegrationTests extends AbstractIntegrationTests
         LocationForm form = new LocationForm(12, 1, "TestLocation", 500, 200);
         locationManagement.createLocation(form);
         assertThat(locationManagement.findAllByName(form.getName())).hasSize(1);
+        deleteLocation("TestLocation");
     }
 
     @Test
@@ -64,11 +65,12 @@ public class LocationManagementIntegrationTests extends AbstractIntegrationTests
         assertThat(location.getMaxVisitors() == 200);
         assertThat(location.getMaxStages() == 10);
         assertThat(location.getRent().isEqualTo(Money.of(500, EURO)));
+        deleteLocation(name);
     }
 
     @Test
     void checkGetLocationById() {
-
+        deleteLocation("TestID");
         // add test location
         Location location = locationManagement.createLocation("TestID", 200, 10, Money.of(500, EURO));
 
@@ -76,5 +78,6 @@ public class LocationManagementIntegrationTests extends AbstractIntegrationTests
         Location result = locationManagement.findById(location.getId());
         assertThat(result != null);
         assertThat(location.getName().equals("TestID"));
+        deleteLocation("TestID");
     }
 }

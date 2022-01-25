@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 
 import java.util.List;
+/**
+ * A {@link DataInitializer} implementation that will create dummy data for the application on application startup.
+ * @see DataInitializer
+ */
 
 @Order(30)
 @Component
@@ -27,6 +31,10 @@ public class UserDataInitializer implements DataInitializer {
 		this.userManagement = userManagement;
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * @see org.salespointframework.core.DataInitializer#initialize()
+	 */
 	@Override
 	public void initialize() {
 
