@@ -11,8 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "data")
-public class Data
-{
+public class Data {
     @Id
     @GeneratedValue
     @Column(name = "id")
@@ -28,8 +27,7 @@ public class Data
     /**
      * Constructor
      */
-    public Data()
-    {
+    public Data() {
         this.name = "";
         this.amount = 0;
         this.price = 0;
@@ -40,8 +38,7 @@ public class Data
      * @param amount of the Entry
      * @param price of the Entry (per unit)
      */
-    public Data(String name, long amount, long price)
-    {
+    public Data(String name, long amount, long price) {
         this.name = name;
         this.amount = amount;
         this.price = price;

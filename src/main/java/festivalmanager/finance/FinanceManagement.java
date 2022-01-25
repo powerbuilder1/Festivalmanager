@@ -55,8 +55,7 @@ public class FinanceManagement {
         }
 
         Finance finance = financeRepository.findById(id).orElse(null);
-        if(finance == null)
-        {
+        if(finance == null) {
             finance = financeRepository.save(new Finance(id));
         }
 
@@ -68,16 +67,14 @@ public class FinanceManagement {
 
         // update line up
         LineUp lineUp = festivalManagement.getLineUpManagement().findById(id);
-        for(Band band : lineUp.getBands())
-        {
+        for(Band band : lineUp.getBands()) {
             String name = band.getName1();
             long price = moneyToLong(band.getPrice());
             finance.overwriteData("b" + name, 1, -price);
         }
 
         // tickets and catering
-        for (var entry : accountancyRepository.findAll().toList())
-        {
+        for (var entry : accountancyRepository.findAll().toList()) {
             finance.addData("xCatering + Tickets", 1, moneyToLong(entry.getValue()));
         }
 
@@ -90,8 +87,7 @@ public class FinanceManagement {
      * @param id of the festival
      * @return sum of costs and income
      */
-    public long getSum(long id)
-    {
+    public long getSum(long id) {
         if(festivalManagement.findById(id) == null) {
             return 0;
         }
@@ -99,8 +95,7 @@ public class FinanceManagement {
         Map<String, Data> financeData = getFinance(id);
         long sum = 0;
 
-        for(var entry : financeData.entrySet())
-        {
+        for(var entry : financeData.entrySet()) {
             sum += entry.getValue().price * entry.getValue().amount;
         }
 
@@ -112,8 +107,7 @@ public class FinanceManagement {
      * @param money
      * @return
      */
-    public long moneyToLong(Money money)
-    {
+    public long moneyToLong(Money money) {
         String tmp = money.toString();
         tmp = tmp.replace(".", "");
         tmp = tmp.replace("EUR", "");
@@ -126,8 +120,7 @@ public class FinanceManagement {
      * @param money
      * @return
      */
-    public long moneyToLong(MonetaryAmount money)
-    {
+    public long moneyToLong(MonetaryAmount money) {
         String tmp = money.toString();
         tmp = tmp.replace(".", "");
         tmp = tmp.replace("EUR", "");

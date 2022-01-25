@@ -32,8 +32,7 @@ public class Finance {
     private Map<String, Data> dataMap;
 
     //default constructor
-    public Finance()
-    {
+    public Finance() {
         this.id = 0;
         dataMap = new HashMap<String, Data>();
     }
@@ -53,15 +52,11 @@ public class Finance {
      * @param amount of the data
      * @param price of the data (per unit)
      */
-    public void addData(String name, long amount, long price)
-    {
-        if (this.dataMap.get(name) != null)
-        {
+    public void addData(String name, long amount, long price) {
+        if (this.dataMap.get(name) != null) {
             this.dataMap.get(name).amount += amount;
             this.dataMap.get(name).price += price;
-        }
-        else
-        {
+        } else {
             this.dataMap.put(name, new Data(name, amount, price));
         }
     }
@@ -71,8 +66,7 @@ public class Finance {
      * @param name
      * @return
      */
-    public boolean hasData(String name)
-    {
+    public boolean hasData(String name) {
         return this.dataMap.get(name) != null;
     }
 
@@ -82,8 +76,7 @@ public class Finance {
      * @param amount of the data
      * @param price of the data (per unit)
      */
-    public void overwriteData(String name, long amount, long price)
-    {
+    public void overwriteData(String name, long amount, long price) {
         this.dataMap.put(name, new Data(name, amount, price));
     }
 
@@ -91,8 +84,7 @@ public class Finance {
      * Returns the data
      * @return {@link Map}<{@link String}, {@link Data}> {Name | Data with this name}
      */
-    public Map<String, Data> getFinanceData()
-    {
+    public Map<String, Data> getFinanceData() {
         return this.dataMap;
     }
 
@@ -113,7 +105,7 @@ public class Finance {
     }
 
     /**
-     * Setter of dataMap
+     * Setter for dataMap
      * @param dataMap
      */
     public void setDataMap(Map<String,Data> dataMap) {
