@@ -12,4 +12,5 @@ public interface StockInventory extends UniqueInventory <FoodInventoryItem> {
 	 * @return
 	 */
 	Streamable<FoodInventoryItem> findFoodInventoryItemsByFestival(Festival festival);
+	void deleteFoodInventoryItemsByFestival_Id(Long festivalId);
 }
