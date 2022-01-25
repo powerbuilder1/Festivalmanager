@@ -190,7 +190,9 @@ public class FestivalManagement {
      * @return
      */
     public boolean deleteById(long id) {
-        // TODO: @Philipp remove all associated food
+		cateringManagement.deleteFoodsByFestival_Id(id);
+		stockManagment.deleteFoodInventoryItemsByFestivalId(id);
+		userManagement.deleteUsersByFestivalId(id);
         getLineUpManagement().deleteById(id);
         festivalRepository.deleteById(id);
         return true;

@@ -39,15 +39,34 @@ public class CateringManagementIntegrationTests {
 	@Autowired
 	private LocationManagement locationManagement;
 
+	void deleteLocation(String name) {
+		Streamable<Location> locations = locationManagement.findAllByName(name);
+		for(Location location : locations)
+		{
+			locationManagement.deleteById(location.getId());
+		}
+	}
+
+	void deleteFestival(String name) {
+		Streamable<Festival> festivals = festivalManagement.findAllByName(name);
+		for(Festival festival : festivals)
+		{
+			festivalManagement.deleteById(festival.getId());
+		}
+	}
+
 	@Test
 	void checkAddItemFromCatalog() {
+		deleteFestival("Test");
+		deleteLocation("Test");
+		userManagement.deleteUsersByName("TestCateringUser1");
 		// create test data
 		Location location = locationManagement.createLocation("Test", 200, 10, Money.of(500, EURO));
 		Festival festival = festivalManagement.createFestival("Test", location, "2022-10-10", "2022-11-11", "Test Information");
 
 		User testUser = userManagement.createCateringStaff(
 				new UserForm(
-						"TestCateringUser",
+						"TestCateringUser1",
 						"123",
 						"TestAddress",
 						"Catering",
@@ -73,6 +92,9 @@ public class CateringManagementIntegrationTests {
 
 	@Test
 	void checkEditItemFromCatalog() {
+		deleteFestival("Test");
+		deleteLocation("Test");
+		userManagement.deleteUsersByName("TestCateringUser2");
 		// create test data
 		// add new test Food item to Catalog
 		Location location = locationManagement.createLocation("Test", 200, 10, Money.of(500, EURO));
@@ -80,7 +102,7 @@ public class CateringManagementIntegrationTests {
 
 		User testUser = userManagement.createCateringStaff(
 				new UserForm(
-						"TestCateringUser",
+						"TestCateringUser2",
 						"123",
 						"TestAddress",
 						"Catering",
@@ -120,6 +142,9 @@ public class CateringManagementIntegrationTests {
 
 	@Test
 	void checkDeleteItemFromCatalog() {
+		deleteFestival("Test");
+		deleteLocation("Test");
+		userManagement.deleteUsersByName("TestCateringUser3");
 		// create test data
 		// add new test Food item to Catalog
 		Location location = locationManagement.createLocation("Test", 200, 10, Money.of(500, EURO));
@@ -127,7 +152,7 @@ public class CateringManagementIntegrationTests {
 
 		User testUser = userManagement.createCateringStaff(
 				new UserForm(
-						"TestCateringUser",
+						"TestCateringUser3",
 						"123",
 						"TestAddress",
 						"Catering",
