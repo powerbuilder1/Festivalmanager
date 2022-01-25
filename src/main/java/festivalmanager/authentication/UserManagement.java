@@ -241,8 +241,30 @@ public class UserManagement {
 		return users.findUserByUserAccount(useraccount);
 	}
 
+	/**
+	 * delete user by UserId
+	 * @param id
+	 */
 	public void deleteById(long id) {
 		users.deleteById(id);
 	}
 
+	/**
+	 * delete all users working for the festival with the specific id
+	 * @param festivalId
+	 */
+	public void deleteUsersByFestivalId(Long festivalId) {
+		users.findUsersByFestival_Id(festivalId).ifPresent(user -> {
+			userAccounts.delete(user.getUserAccount());
+		});
+		users.deleteUsersByFestival_Id(festivalId);
+	}
+
+	/**
+	 * delete user by name
+	 * @param name
+	 */
+	public void deleteUsersByName(String name) {
+		users.deleteUsersByName(name);
+	}
 }
