@@ -16,6 +16,12 @@ public class ErrorController {
         // default constructor
     }
 
+    /**
+     * Returns error page
+     * @param request
+     * @param model
+     * @return string of the template
+     */
     @GetMapping("/error")
     String error(HttpServletRequest request, Model model) {
         return "error";
