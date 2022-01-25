@@ -14,17 +14,30 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+/**
+ * @author Conrad
+ * Controller for Strorage Service
+ */
 @Controller
 public class StorageController {
 
     private final StorageService storageService;
 
+    /**
+     * Default constructor
+     * @param storageService
+     */
     @Autowired
     public StorageController(StorageService storageService) {
         Assert.notNull(storageService, "storageService must not be null");
         this.storageService = storageService;
     }
 
+    /**
+     * Error handler for File Not Found
+     * @param exc
+     * @return
+     */
     @ExceptionHandler(StorageFileNotFoundException.class)
     public ResponseEntity<?> handleStorageFileNotFound(StorageFileNotFoundException exc) {
         return ResponseEntity.notFound().build();
@@ -44,6 +57,11 @@ public class StorageController {
         return "redirect:/locations";
     }
 
+    /**
+     * Get route for images
+     * @param name
+     * @return
+     */
     @GetMapping("/image/{name}")
     public ResponseEntity<Resource> serveImage(@PathVariable String name) {
         Resource file = storageService.loadAsResource(name);

@@ -2,6 +2,10 @@ package festivalmanager.storage;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * @author Conrad
+ * Storage properties
+ */
 @ConfigurationProperties("storage")
 public class StorageProperties {
 

@@ -16,16 +16,27 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * @author Conrad
+ * Storage solution based on the file system
+ */
 @Service
 public class FileSystemStorageService implements StorageService {
 
     private final Path rootLocation;
 
+    /**
+     * Default constructor
+     * @param properties
+     */
     @Autowired
     public FileSystemStorageService(StorageProperties properties) {
         this.rootLocation = Paths.get(properties.getLocation());
     }
 
+    /**
+     * Init function
+     */
     @Override
     public void init() {
         try {
@@ -36,6 +47,11 @@ public class FileSystemStorageService implements StorageService {
 
     }
 
+    /**
+     * Stores a file with the given filename
+     * @param file
+     * @param filename
+     */
     @Override
     public void store(MultipartFile file, String filename) {
         try {
@@ -58,6 +74,9 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    /**
+     * loads all files
+     */
     @Override
     public Stream<Path> loadAll() {
         try {
@@ -68,11 +87,19 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    /**
+     * loads a file with the given filename
+     * @param filename
+     */
     @Override
     public Path load(String filename) {
         return rootLocation.resolve(filename);
     }
 
+    /**
+     * loads a file as a resource
+     * @param filename
+     */
     @Override
     public Resource loadAsResource(String filename) {
         try {
@@ -93,6 +120,9 @@ public class FileSystemStorageService implements StorageService {
         }
     }
 
+    /**
+     * deletes all files
+     */
     @Override
     public void deleteAll() {
         FileSystemUtils.deleteRecursively(rootLocation.toFile());
