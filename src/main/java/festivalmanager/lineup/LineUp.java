@@ -44,15 +44,14 @@ public class LineUp {
 	}
 
 	public void addBandto(Band band) throws Exception {
-		for( Band bands : setOfBands  ){
-			if (bands.getName1().equals(band.getName1()) | bands.getStage().equals(band.getStage())   ) {
+		for( Band bands : setOfBands) {
+			if (bands.getName1().equals(band.getName1()) | bands.getStage().equals(band.getStage())) {
 				throw new Exception( "It cannot be added to the lineup, sorry try with different inputs");
 			}
 		}
-		if ( setOfBands.size() > this.festival.getLocation().getMaxStages() ) {
+		if ( setOfBands.size() > this.festival.getLocation().getMaxStages()) {
 			throw new Exception(" You can not add more bands to this festival");
-		}
-		else {
+		} else {
 			setOfBands.add(band);
 		}
 	}
@@ -94,8 +93,7 @@ public class LineUp {
 		return Uhrzeit ;
 	}
 
-	public ArrayList<String> getStagesinLineUp()
-	{
+	public ArrayList<String> getStagesinLineUp() {
 		ArrayList<String> setOfStages = new ArrayList<>();
 		int sum = 1;
 		for ( int i =0; i<festival.getLocation().getMaxStages(); i++) {
@@ -105,8 +103,7 @@ public class LineUp {
 		return setOfStages;
 	}
 
-	public ArrayList<String> getHoursofLineUp()
-	{
+	public ArrayList<String> getHoursofLineUp() {
 		ArrayList<String> getHours = new ArrayList<>();
 		int Hour1 = 1;
 		int Hour2 = 3;

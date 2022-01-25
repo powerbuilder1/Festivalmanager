@@ -58,7 +58,7 @@ public class LineUpManagement {
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			System.out.println("Welcome");
 			for (Band bands: lineUp.getBands()) {
-				if ( bandForm.getStage().equals(bands.getStage())){
+				if ( bandForm.getStage().equals(bands.getStage())) {
 					try {
 						throw new Exception("This Stage is already occupied by " + bands.getName1());
 					} catch (Exception e) {
@@ -105,7 +105,6 @@ public class LineUpManagement {
 	 * @return
 	 */
 	public void updateBand(long id, BandForm form) {
-
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			Iterator itr = lineUp.getBands().iterator();
 			while (itr.hasNext()) {
@@ -151,10 +150,8 @@ public class LineUpManagement {
 
 	public Band findBandByName ( long id, String name ) {
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
-			for (Band bands : lineUp.getBands())
-			{
-				if ( bands.getName1().equals(name))
-				{
+			for (Band bands : lineUp.getBands()) {
+				if ( bands.getName1().equals(name)) {
 					wantedBand = bands;
 
 				}

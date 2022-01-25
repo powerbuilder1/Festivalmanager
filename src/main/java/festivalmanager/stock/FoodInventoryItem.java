@@ -35,8 +35,7 @@ public class FoodInventoryItem extends UniqueInventoryItem {
 		return festival;
 	}
 
-	public long getFestivalId()
-	{
+	public long getFestivalId() {
 		return festival.getId();
 	}
 }

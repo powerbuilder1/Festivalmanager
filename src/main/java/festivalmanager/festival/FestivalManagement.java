@@ -90,8 +90,7 @@ public class FestivalManagement {
     public CommunicationManagement getCommunicationManagement() {
         return this.communicationManagement;
     }
-    public FinanceManagement getFinanceManagement()
-    {
+    public FinanceManagement getFinanceManagement() {
         return this.financeManagement;
     }
 
