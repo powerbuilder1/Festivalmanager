@@ -57,9 +57,7 @@ public class TicketManagement {
 					ticketForm.getTicketType(), ticketForm.getFestival(), ticketForm.getPercentOf()));
 
 			ticketStockManagement.initializeNewTicketInInventory(ticketItem, ticketItem.count, ticketForm.getFestival());
-		}
-		else
-		{
+		} else {
 			throw new IllegalStateException("There can not be more tickets than the maximal number of persons in the location , sorry");
 		}
 	}

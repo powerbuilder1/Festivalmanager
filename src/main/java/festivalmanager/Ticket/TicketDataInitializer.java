@@ -45,22 +45,19 @@ public class TicketDataInitializer implements DataInitializer {
 
 		LOG.info("Creating default catalog entries.");
 		if (!festivalManagement.findAllFestivals().isEmpty()) {
-			ticketRepository.save(new Ticket("Abendkasse", Money.of(10, EURO), Ticket.TicketType.abendKasse,
+			ticketRepository.save(new Ticket("Abendkasse", Money.of(10, EURO), Ticket.TicketType.ABENDKASSE,
 				festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0), 30));
-			ticketRepository.save(new Ticket("Campingticket", Money.of(10, EURO), Ticket.TicketType.campingTicket,
+			ticketRepository.save(new Ticket("Campingticket", Money.of(10, EURO), Ticket.TicketType.CAMPINGTICKET,
 				festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0), 40));
-			ticketRepository.save(new Ticket("Tages Karte", Money.of(10, EURO), Ticket.TicketType.tagesKarte,
+			ticketRepository.save(new Ticket("Tages Karte", Money.of(10, EURO), Ticket.TicketType.TAGESKARTE,
 				festivalManagement.findAllByName("Weihnachtsfestival").toList().get(0), 30));
-			ticketRepository.save(new Ticket("Abendkasse", Money.of(10, EURO), Ticket.TicketType.abendKasse,
+			ticketRepository.save(new Ticket("Abendkasse", Money.of(10, EURO), Ticket.TicketType.ABENDKASSE,
 				festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0), 30));
-			ticketRepository.save(new Ticket("CampingTicket", Money.of(10, EURO), Ticket.TicketType.campingTicket,
+			ticketRepository.save(new Ticket("CampingTicket", Money.of(10, EURO), Ticket.TicketType.CAMPINGTICKET,
 				festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0), 40));
-			ticketRepository.save(new Ticket("Tages Karte", Money.of(10, EURO), Ticket.TicketType.tagesKarte,
+			ticketRepository.save(new Ticket("Tages Karte", Money.of(10, EURO), Ticket.TicketType.TAGESKARTE,
 				festivalManagement.findAllByName("Maifeld Derby 2021").toList().get(0), 30));
 		}
-
-
 	}
-
-	}
+}
 

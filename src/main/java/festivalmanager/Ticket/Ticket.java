@@ -3,7 +3,6 @@ package festivalmanager.Ticket;
 import festivalmanager.festival.Festival;
 import org.javamoney.moneta.Money;
 import org.salespointframework.catalog.Product;
-import org.salespointframework.catalog.ProductIdentifier;
 
 import javax.persistence.*;
 
@@ -11,7 +10,7 @@ import javax.persistence.*;
 public class Ticket extends Product {
 
 	public static enum TicketType {
-		abendKasse, campingTicket, tagesKarte;
+		ABENDKASSE, CAMPINGTICKET, TAGESKARTE;
 	}
 
 	@ManyToOne
