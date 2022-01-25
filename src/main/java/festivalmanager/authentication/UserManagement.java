@@ -165,4 +165,8 @@ public class UserManagement {
 		return users.findUserByUserAccount(useraccount);
 	}
 
+	public void deleteById(long id) {
+		users.deleteById(id);
+	}
+
 }

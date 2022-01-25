@@ -11,6 +11,6 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	@Override
 	Streamable<User> findAll();
 
-
 	User findUserByUserAccount(UserAccount userAccount);
+
 }
