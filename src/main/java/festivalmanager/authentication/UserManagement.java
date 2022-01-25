@@ -28,6 +28,14 @@ public class UserManagement {
 	protected final UserAccountManagement userAccounts;
 	protected static FestivalManagement festivalManagement;
 
+	/**
+	 * Creates a new {@link UserManagement} with the given {@link UserRepository} and
+	 * {@link UserAccountManagement}.
+	 *
+	 * @param users must not be {@literal null}.
+	 * @param userAccounts must not be {@literal null}.
+	 */
+
 	protected UserManagement(UserRepository users, UserAccountManagement userAccounts) {
 
 		Assert.notNull(users, "UserRepository must not be null!");
@@ -42,6 +50,13 @@ public class UserManagement {
 		this.festivalManagement = festivalManagement;
 	}
 
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
+
 	public User createUser(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -54,7 +69,12 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
-
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
 	public User createBoss(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -68,7 +88,12 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
-
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
 	public User createPlanningStaff(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -83,7 +108,12 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
-
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
 	public User createCateringStaff(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -98,7 +128,12 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
-
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
 	public User createSystem(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -112,7 +147,12 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
-
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
 	public User createFestivalDirector(UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -126,7 +166,12 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
-
+	/**
+	 * Creates a new {@link User} using the information given in the {@link UserForm}.
+	 *
+	 * @param form must not be {@literal null}.
+	 * @return the new {@link User} instance.
+	 */
 	public User createSecurityStaff (UserForm form) {
 
 		Assert.notNull(form, "Registration form must not be null!");
@@ -141,18 +186,43 @@ public class UserManagement {
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
 		return users.save(user);
 	}
+
+	/**
+	 * Returns all {@link User}s currently available in the system.
+	 *
+	 * @return all {@link User} entities.
+	 */
 	public Streamable<User> findAll() {
 		return users.findAll();
 	}
+
+	/**
+	 * Returns all {@link User}s  with matching {@param id} currently available in the system.
+	 * @param id must not be {@literal null}.
+	 * @return all {@link User} entities.
+	 */
 
 	public User findById(long id) {
 		return users.findById(id).orElse(null);
 	}
 
+	/**
+	 * Returns all users with the given name
+	 *
+	 * @param name
+	 * @return
+	 */
+
 	public Streamable<User> findAllByName(String name) {
 		return users.findAll().filter(user -> user.getName().equals(name));
 	}
 
+	/**
+	 * Returns the user with the given name
+	 *
+	 * @param name
+	 * @return
+	 */
 	public User findByName(String name) {
 		Streamable<User> userList = users.findAll().filter(user -> user.getName().equals(name));
 		if (!userList.isEmpty()) {
@@ -161,6 +231,12 @@ public class UserManagement {
 		return null;
 	}
 
+	/**
+	 * Returns the user with the user account
+	 *
+	 * @param useraccount
+	 * @return
+	 */
 	public User findUserByUserAccount(UserAccount useraccount) {
 		return users.findUserByUserAccount(useraccount);
 	}

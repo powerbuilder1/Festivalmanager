@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import javax.validation.Valid;
 import java.util.stream.Collectors;
 
@@ -26,6 +25,15 @@ public class ManagerController {
 	private final LocationManagement locationManagement;
 	private final FestivalManagement festivalManagement;
 
+	/**
+	 * Creates a new {@link ManagerController} with the given {@link ManagerManagement},
+	 * {@link UserRepository} , {@link LocationManagement}, {@link FestivalManagement}
+	 *
+	 * @param managerManagement must not be {@literal null}.
+	 * @param userRepository must not be {@literal null}.
+	 * @param locationManagement must not be {@literal null}.
+	 * @param festivalManagement must not be {@literal null}.
+	 */
 	public ManagerController(ManagerManagement managerManagement, UserRepository userRepository,
 			LocationManagement locationManagement, FestivalManagement festivalManagement) {
 		this.managerManagement = managerManagement;
@@ -33,19 +41,34 @@ public class ManagerController {
 		this.locationManagement = locationManagement;
 		this.festivalManagement = festivalManagement;
 	}
-
+	/**
+	 * route to manager's dashboard
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/dashboard")
 	String dashboard(Model model) {
 		return "dashboard";
 
 	}
 
+	/**
+	 * route to the team overview
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/team")
 	String team(Model model) {
 		model.addAttribute("userList", managerManagement.findAll());
 		return "team";
 	}
-
+	/**
+	 * After filling the {@link UserForm} with valid data , a new user is created
+	 * @param form
+	 * @param result
+	 * @param redirectAttributes
+	 * @return
+	 */
 	@PostMapping("/new_personal")
 	String registerNew(@ModelAttribute @Valid UserForm form, Errors result, RedirectAttributes redirectAttributes) {
 
@@ -59,7 +82,6 @@ public class ManagerController {
 			return "redirect:/team";
 		}
 
-		// (｡◕‿◕｡)
 		// Falls alles in Ordnung ist legen wir einen Mitarbeiter an
 		if (form.getPosition().equalsIgnoreCase("catering")) {
 			managerManagement.createCateringStaff(form);
@@ -72,14 +94,24 @@ public class ManagerController {
 		}
 		return "redirect:/team";
 	}
-
+	/**
+	 * route to create a new user
+	 * @param model
+	 * @param userForm
+	 * @return
+	 */
 	@GetMapping("/new_personal")
 	String register(Model model, UserForm userForm) {
 		model.addAttribute("festivals", festivalManagement.findAllFestivals());
 		model.addAttribute("locations", locationManagement.findAllLocations().toList());
 		return "new_personal";
 	}
-
+	/**
+	 * route to change user information
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping(path = "dashboard/team/personal_edit/{user}")
 	public String getUser(
 			@PathVariable("user") Long id,
@@ -99,6 +131,13 @@ public class ManagerController {
 		return "personal_edit";
 	}
 
+	/**
+	 * edit user by id from {@link UserRepository}
+	 * @param id
+	 * @param userForm
+	 * @param model
+	 * @return
+	 */
 	@PostMapping(path = "/dashboard/team/editUserById/{user}")
 	public String editUserById(
 			@PathVariable("user") long id,
@@ -106,11 +145,15 @@ public class ManagerController {
 			Model model
 
 	) {
-		// checks auf null
 		managerManagement.editUser(userRepository.findById(id).get(), userForm);
 		return "redirect:/team";
 	}
 
+	/**
+	 * delete user by id from {@link UserRepository}
+	 * @param id
+	 * @return
+	 */
 	@PostMapping(path = "/dashboard/team/deleteUserById/{user}")
 	public String deleteUserById(@PathVariable("user") Long id) {
 		// remove person from chats
