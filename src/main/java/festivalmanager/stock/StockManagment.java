@@ -91,4 +91,8 @@ public class StockManagment {
 		long price = inventory.findByProductIdentifier(foodItemId).get().getProduct().getPrice().query(MonetaryQueries.convertMinorPart());
 		festivalManagement.getFinanceManagement().getFinanceById(id).addData("cCatering Ausgaben", 1, -reorderForm.getAmount() * price);
 	}
+
+	public void deleteFoodInventoryItemsByFestivalId(Long festivalId) {
+		inventory.deleteFoodInventoryItemsByFestival_Id(festivalId);
+	}
 }

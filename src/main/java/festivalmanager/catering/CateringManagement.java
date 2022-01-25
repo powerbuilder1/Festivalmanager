@@ -115,4 +115,12 @@ public class CateringManagement {
 	public Optional<Food> findProductById(ProductIdentifier productIdentifier) {
 		return foodCatalog.findById(productIdentifier);
 	}
+
+	/**
+	 * delete food items from catalog by festivalId
+	 * @param festivalId
+	 */
+	public void deleteFoodsByFestival_Id(Long festivalId) {
+		foodCatalog.deleteFoodsByFestival_Id(festivalId);
+	}
 }
