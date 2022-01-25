@@ -213,6 +213,11 @@ public class FestivalManagement {
         return festivalRepository.save(festival);
     }
 
+    /**
+     * Publishes the festival with the given identifier
+     * @param id the identifier of the festival
+     * @return
+     */
     public String publishById(long id) {
         Festival festival = findById(id);
         LineUp lineUp = lineUpManagement.findById(id);

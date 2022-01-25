@@ -20,6 +20,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import festivalmanager.location.LocationManagement;
 
+/**
+ * Controller for the festival.
+ *
+ */
 @Controller
 public class FestivalController {
 
@@ -27,6 +31,12 @@ public class FestivalController {
     LocationManagement locationManagement;
     LineUpManagement lineUpManagement;
 
+    /**
+     * Constructor for the FestivalController.
+     * @param festivalManagement
+     * @param locationManagement
+     * @param lineUpManagement
+     */
     FestivalController(FestivalManagement festivalManagement, LocationManagement locationManagement,
             LineUpManagement lineUpManagement) {
         Assert.notNull(festivalManagement, "festivalManagement must not be null");
@@ -36,6 +46,12 @@ public class FestivalController {
         this.lineUpManagement = lineUpManagement;
     }
 
+
+/**
+ * Returns html template with all published festivals
+ * @param model
+ * @return string of html template
+ */
     @GetMapping("/")
     String index(Model model) {
         model.addAttribute("festivals", festivalManagement.findAllPublishedFestivals());
@@ -43,6 +59,12 @@ public class FestivalController {
         return "index";
     }
 
+    /**
+     * Publishes a festival
+     * @param id of the festival
+     * @param redirectAttributes
+     * @return
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/publish/{id}")
     String publishFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
@@ -54,6 +76,13 @@ public class FestivalController {
         return "redirect:/festival";
     }
 
+    /**
+     * Returns html template with the selected festival
+     * @param id of the festival
+     * @param model
+     * @param redirectAttributes
+     * @return string of html template
+     */
     @GetMapping("/festival/{id}")
     String festival(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
         Festival festival = festivalManagement.findById(id);
@@ -74,6 +103,11 @@ public class FestivalController {
         return "festival";
     }
 
+    /**
+     * Returns html template with all festivals
+     * @param model
+     * @return
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival")
     String festivals(Model model) {
@@ -82,6 +116,11 @@ public class FestivalController {
         return "festivals";
     }
 
+    /**
+     * Returns html template for creating a new festival
+     * @param model
+     * @return
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival/new")
     String newFestival(Model model) {
@@ -91,6 +130,13 @@ public class FestivalController {
         return "festival_new";
     }
 
+    /**
+     * Post mapping for creating a new festival
+     * @param festival to be created
+     * @param result Errors of the form
+     * @param redirectAttributes
+     * @return string of html template
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @PostMapping("/festival/new")
     String newFestival(@ModelAttribute @Valid Festival festival, Errors result, RedirectAttributes redirectAttributes) {
@@ -108,6 +154,13 @@ public class FestivalController {
         return "redirect:/festival";
     }
 
+    /**
+     * Returns html template for editing a festival
+     * @param id of the festival
+     * @param model 
+     * @param redirectAttributes
+     * @return string of html template
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival/{id}/edit")
     String editFestival(@PathVariable long id, Model model, RedirectAttributes redirectAttributes) {
@@ -121,6 +174,14 @@ public class FestivalController {
         return "festival_edit";
     }
 
+    /**
+     * Post mapping for editing a festival
+     * @param id of the festival
+     * @param festival to be edited
+     * @param result Errors of the form
+     * @param redirectAttributes
+     * @return string of html template
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @PostMapping("/festival/{id}/edit")
     String editFestival(@PathVariable long id, @ModelAttribute @Valid Festival festival, Errors result,
@@ -135,6 +196,12 @@ public class FestivalController {
         return "redirect:/festival/" + id;
     }
 
+    /**
+     * Returns html template for deleting a festival
+     * @param id
+     * @param redirectAttributes
+     * @return
+     */
     @PreAuthorize("hasAnyRole('BOSS', 'PLANNING')")
     @GetMapping("/festival/{id}/delete")
     String deleteFestival(@PathVariable long id, RedirectAttributes redirectAttributes) {
