@@ -32,6 +32,7 @@ public class ManagerManagement extends UserManagement {
 	 * @param user
 	 */
 	public void deleteUser(User user) {
+				userAccounts.delete(user.getUserAccount());
 				users.deleteById(user.getId());
 	}
 
