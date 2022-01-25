@@ -20,6 +20,11 @@ public class FestivalDataInitializer implements DataInitializer {
     private final FestivalManagement festivalManagement;
     private final LocationManagement locationManagement;
 
+    /**
+     * Constructor for the FestivalDataInitializer.
+     * @param festivalManagement the festival management
+     * @param locationManagement the location management
+     */
     public FestivalDataInitializer(FestivalManagement festivalManagement, LocationManagement locationManagement) {
         Assert.notNull(festivalManagement, "festivalManagement must not be null!");
         Assert.notNull(locationManagement, "locationManagement must not be null!");
@@ -27,6 +32,9 @@ public class FestivalDataInitializer implements DataInitializer {
         this.locationManagement = locationManagement;
     }
 
+    /**
+     * Initializes the festivals if no data is present.
+     */
     @Override
     public void initialize() {
         if(festivalManagement.findAllFestivals().iterator().hasNext()) {
