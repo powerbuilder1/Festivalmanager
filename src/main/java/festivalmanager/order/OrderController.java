@@ -156,7 +156,7 @@ public class OrderController {
 	}
 
 	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
-	@RequestMapping(path = "/pdf")
+	@GetMapping(path = "/pdf")
 	public ResponseEntity<?> getPDF(HttpServletRequest request, Cart cart, HttpServletResponse response,
 		@LoggedIn Optional<UserAccount> userAccount) throws IOException {
 
