@@ -11,4 +11,5 @@ public interface FoodCatalog extends Catalog<Food> {
 	 * @return
 	 */
 	Streamable<Food> findFoodsByFestival(Festival festival);
+	void deleteFoodsByFestival_Id(Long festivalId);
 }
