@@ -37,7 +37,8 @@ public class LineUpManagement {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		if (lineUp.getFestival() == null) {
 			lineUp.setFestival(festivalManagement.findById(lineUp.getFestivalIdentifier()));
-			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());}
+			lineUp.setId((festivalManagement.findById(lineUp.getFestivalIdentifier())).getId());
+		}
 		for (LineUp lineups: LineUpRepository.findAll() ) {
 			if (lineups.getId() == lineUp.getId()) {
 				throw new Exception(" THIS LINEUP ALREADY EXISTS");
@@ -112,8 +113,9 @@ public class LineUpManagement {
 				if (editBand.getName1().equals(form.getName())) {
 						editBand.setName1(form.getName());
 						editBand.setStage(form.getStage());
-						if (form.getPrice()>0)
+						if (form.getPrice()>0) {
 							editBand.setPrice(Money.of(form.getPrice(), Currencies.EURO));
+						}
 						editBand.setPerformanceHour(form.getPerformanceHour());
 						break;
 
