@@ -10,6 +10,9 @@ import org.springframework.data.util.Streamable;
  */
 public interface FinanceRepository extends CrudRepository<Finance, Long> {
 
+    /** 
+     * @return all {@link Finance}s
+    */
     @Override
     Streamable<Finance> findAll();
 

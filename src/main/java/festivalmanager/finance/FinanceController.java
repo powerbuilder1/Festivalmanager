@@ -18,11 +18,21 @@ public class FinanceController {
     
     private final FinanceManagement financeManagement;
 
+    /**
+     * Constructor
+     * @param financeManagement for accessing the finances
+     */
     public FinanceController(FinanceManagement financeManagement) {
         Assert.notNull(financeManagement, "financeManagement must not be null");
         this.financeManagement = financeManagement;
     }
 
+    /**
+     * Show the finances
+     * @param model
+     * @param id of the festival
+     * @return string of template
+     */
     @PreAuthorize("hasRole('BOSS')")
     @GetMapping("/festival/{id}/finance")
     public String getFinance(Model model, @PathVariable Long id) {

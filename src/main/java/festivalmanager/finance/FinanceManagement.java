@@ -23,6 +23,11 @@ public class FinanceManagement {
     private FinanceRepository financeRepository;
     private AccountancyRepository accountancyRepository;
 
+    /**
+     * Constructor
+     * @param financeRepository for accessing the finances
+     * @param accountancyRepository for accessing the accountancy history (orders)
+     */
     public FinanceManagement(FinanceRepository financeRepository, AccountancyRepository accountancyRepository) {
         Assert.notNull(financeRepository, "financeRepository must not be null");
         Assert.notNull(accountancyRepository, "accountancyRepository must not be null");
@@ -30,10 +35,19 @@ public class FinanceManagement {
         this.accountancyRepository = accountancyRepository;
     }
 
+    /**
+     * sets the FestivalManagement
+     * @param festivalManagement for accessing the festivals
+     */
     public void setFestivalManagement(FestivalManagement festivalManagement) {
 		this.festivalManagement = festivalManagement;
 	}
     
+    /**
+     * Returns the finances of the festival
+     * @param id
+     * @return Map<{@link String}, {@link Data}>
+     */
     public Map<String, Data> getFinance(long id) {
         
         if(festivalManagement.findById(id) == null) {
@@ -71,6 +85,11 @@ public class FinanceManagement {
         return finance.getFinanceData();
     }
 
+    /**
+     * Returns the sum of the finances for a festival
+     * @param id of the festival
+     * @return sum of costs and income
+     */
     public long getSum(long id)
     {
         if(festivalManagement.findById(id) == null) {
@@ -88,6 +107,11 @@ public class FinanceManagement {
         return sum;
     }
 
+    /**
+     * returns the long representation of Money
+     * @param money
+     * @return
+     */
     public long moneyToLong(Money money)
     {
         String tmp = money.toString();
@@ -97,6 +121,11 @@ public class FinanceManagement {
         long cents = Long.parseLong(tmp);
         return cents;
     }
+    /**
+     * returns the long representation of MonetaryAmount
+     * @param money
+     * @return
+     */
     public long moneyToLong(MonetaryAmount money)
     {
         String tmp = money.toString();

@@ -13,6 +13,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 
+/**
+ * Finance entry
+ */
 @Entity
 @Table(name = "finance")
 public class Finance {
@@ -35,11 +38,21 @@ public class Finance {
         dataMap = new HashMap<String, Data>();
     }
 
+    /**
+     * Constructor
+     * @param id of the festival and finance
+     */
     public Finance(long id) {
         this.id = id;
         dataMap = new HashMap<String, Data>();
     }
 
+    /**
+     * Add data to a entry
+     * @param name of the data
+     * @param amount of the data
+     * @param price of the data (per unit)
+     */
     public void addData(String name, long amount, long price)
     {
         if (this.dataMap.get(name) != null)
@@ -53,33 +66,56 @@ public class Finance {
         }
     }
 
+    /**
+     * Returns wether the data entry already exists
+     * @param name
+     * @return
+     */
     public boolean hasData(String name)
     {
         return this.dataMap.get(name) != null;
     }
 
+    /**
+     * Overwrites the data
+     * @param name of the data
+     * @param amount of the data
+     * @param price of the data (per unit)
+     */
     public void overwriteData(String name, long amount, long price)
     {
         this.dataMap.put(name, new Data(name, amount, price));
     }
 
+    /**
+     * Returns the data
+     * @return {@link Map}<{@link String}, {@link Data}> {Name | Data with this name}
+     */
     public Map<String, Data> getFinanceData()
     {
         return this.dataMap;
     }
 
+    /**
+     * Returns the id
+     * @return id
+     */
     public long getId() {
         return this.id;
     }
 
+    /**
+     * Sets the id
+     * @param id
+     */
     public void setId(long id) {
         this.id = id;
     }
 
-    public Map<String,Data> getDataMap() {
-        return this.dataMap;
-    }
-
+    /**
+     * Setter of dataMap
+     * @param dataMap
+     */
     public void setDataMap(Map<String,Data> dataMap) {
         this.dataMap = dataMap;
     }
