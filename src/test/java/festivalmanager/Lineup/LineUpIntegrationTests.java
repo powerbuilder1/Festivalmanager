@@ -122,6 +122,7 @@ public class LineUpIntegrationTests {
 		deleteFestival("TestID");
 		deleteLocation("TestID");
 	}
+	/*
 	@Test
 	void checkBands() throws Exception {
 
@@ -155,8 +156,7 @@ public class LineUpIntegrationTests {
 		deleteLocation("Test");
 
 	}
-
-
+	*/
 
 }
 
