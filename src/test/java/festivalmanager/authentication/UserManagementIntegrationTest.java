@@ -1,5 +1,6 @@
 package festivalmanager.authentication;
 
+import festivalmanager.AbstractIntegrationTests;
 import festivalmanager.catering.CateringManagement;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.util.Streamable;
 import org.springframework.test.annotation.DirtiesContext;
+import javax.transaction.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.salespointframework.core.Currencies.EURO;
@@ -20,7 +22,8 @@ import static org.salespointframework.core.Currencies.EURO;
 @SpringBootTest
 @AutoConfigureMockMvc
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class UserManagementIntegrationTest {
+@Transactional
+public class UserManagementIntegrationTest extends AbstractIntegrationTests {
 
 	@Autowired
 	private FestivalManagement festivalManagement;
