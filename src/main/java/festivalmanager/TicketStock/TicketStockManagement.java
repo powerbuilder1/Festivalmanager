@@ -37,11 +37,11 @@ public class TicketStockManagement {
 	}
 	/**
 	 * get all current stocks by festival
-	* @param festival
+	* @param name
 	 * @return
 	 */
-	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( Festival festival){
-		return ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().equals(festival));
+	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( String name ){
+		return ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().getName().equals(name));
 	}
 
 	/**
