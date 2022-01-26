@@ -17,21 +17,39 @@ public class TicketInventoryItem extends UniqueInventoryItem {
 	@JoinColumn(name = "festival_id", nullable = false)
 	private Festival festival;
 
+	/**
+	 * Constructor
+	 *
+	 * @param product
+	 * @param quantity
+	 * @param festival
+	 */
 	public TicketInventoryItem(Product product,Quantity quantity, Festival festival) {
 		super(product, quantity);
 		this.festival = festival;
 	}
+	/**
+	 * default constructor
+	 */
+	public TicketInventoryItem() {
 
+	}
+	/**
+	 * getter for festival
+	 * @return
+	 */
 	public Festival getFestival() {
 		return festival;
 	}
 
+	/**
+	 * setter for festival
+	 * @param festival
+	 */
 	public void setFestival(Festival festival) {
 		this.festival = festival;
 	}
 
-	public TicketInventoryItem() {
 
-	}
 }
 

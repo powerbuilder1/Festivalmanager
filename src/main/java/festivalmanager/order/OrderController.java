@@ -47,7 +47,17 @@ public class OrderController {
 	private final CustomOrderManagement customOrderManagement;
 	private final FestivalManagement festivalManagement;
 	private final TemplateEngine templateEngine;
+	/**
+	 * Constructor OrderController
+	 * @param cateringManagement
+	 * @param customOrderManagement
+	 * @param ticketManagement
+	 * @param ticketCustomOrderManagement
+	 * @param festivalManagement
+	 * @param templateEngine
+	 * @param ticketStockManagement
 
+	 */
 	public OrderController(CateringManagement cateringManagement, CustomOrderManagement customOrderManagement,
 			TicketManagement ticketManagement,TicketCustomOrderManagement ticketCustomOrderManagement,
 			FestivalManagement festivalManagement,TemplateEngine templateEngine,
@@ -61,12 +71,21 @@ public class OrderController {
 		this.ticketStockManagement = ticketStockManagement;
 	}
 
-
+	/**
+	 * initialize cart of the session
+	 * @return
+	 */
 	@ModelAttribute("cart")
 	Cart initializeCart() {
 		return new Cart();
 	}
-
+	/**
+	 * route to template which shows which food items will be sold
+	 * @param form
+	 * @param model
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasAnyRole('CATERING', 'BOSS')")
 	@GetMapping(path = "catering/sale")
 	String getCart(
@@ -77,7 +96,13 @@ public class OrderController {
 		model.addAttribute("catalog", cateringManagement.getCatalog(userAccount));
 		return "catering";
 	}
-
+	/**
+	 * route to template which shows which ticket items of a festival will be sold
+	 * @param id of the festival chosen
+	 * @param model
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@GetMapping(path = "ticket/{id}/sale")
 	String getCartTicket(@PathVariable long id,
@@ -91,7 +116,15 @@ public class OrderController {
 		model.addAttribute("ticketStock", ticketStockManagement.getTicketStockbyfestival(festival));
 		return "ticket_sale";
 	}
-
+	/**
+	 * add food items of a festival to the cart of the session
+	 * @param cart
+	 * @param form
+	 * @param result
+	 * @param model
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasRole('CATERING')")
 	@PostMapping(path = "catering/order")
 	String addFoodToCard(
@@ -109,7 +142,14 @@ public class OrderController {
 
 		return "redirect:/catering/sale";
 	}
+	/**
+	 * add ticket items of a festival to the cart of the session
+	 * @param cart
+	 * @param ticketOrderForm
+	 * @param userAccount
 
+	 * @return
+	 */
 	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@PostMapping(path = "/ticket/{id}/sale")
 	String addtTicketToCart(@PathVariable long id,
@@ -122,7 +162,12 @@ public class OrderController {
 
 		return "redirect:/ticket/"+id+"/sale";
 	}
-
+	/**
+	 * buy food items of a festival found in the cart of the session
+	 * @param cart
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasRole('CATERING')")
 	@PostMapping(path = "catering/checkout")
 	String buy(
@@ -131,7 +176,12 @@ public class OrderController {
 	) {
 		return customOrderManagement.buy(cart, userAccount);
 	}
-
+	/**
+	 * buy ticket items of a festival found in the cart of the session
+	 * @param cart
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@PostMapping(path = "ticket/checkout")
 	String buyTicket(
@@ -143,6 +193,12 @@ public class OrderController {
 		return ticketCustomOrderManagement.buyTicket(cart, userAccount);
 
 	}
+	/**
+	 * delete all ticket items of a festival found in the cart of the session
+	 * @param cart
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@PostMapping(path = "/ticket/{id}/sale/delete")
 	String deleteTicket(
@@ -154,7 +210,14 @@ public class OrderController {
 		cart.clear();
 		return "redirect:/ticket/"+id+"/sale";
 	}
-
+	/**
+	 * give an invoice of the selled tickets
+	 * @param request
+	 * @param response
+	 * @param cart
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasAnyRole('CUSTOMER', 'BOSS')")
 	@GetMapping(path = "/pdf")
 	public ResponseEntity<?> getPDF(HttpServletRequest request, Cart cart, HttpServletResponse response,

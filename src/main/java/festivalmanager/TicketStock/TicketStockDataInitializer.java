@@ -16,7 +16,13 @@ public class TicketStockDataInitializer implements DataInitializer {
 	private final FestivalManagement festivalManagement;
 
 
+	/**
+	 * Constructor for the TicketStockDataInitializer.
+	 * @param inventory
+	 * @param ticketCatalog
+	 * @param festivalManagement
 
+	 */
 	public TicketStockDataInitializer(TicketStockInventory inventory,
 		TicketRepository ticketCatalog, FestivalManagement festivalManagement) {
 		this.inventory = inventory;
@@ -24,7 +30,9 @@ public class TicketStockDataInitializer implements DataInitializer {
 		this.festivalManagement = festivalManagement;
 
 	}
-
+	/**
+	 * Initializes the ticket items with the tickets found in the ticket catalog
+	 */
 	@Override
 	public void initialize() {
 		if(inventory.findAll().iterator().hasNext()) {

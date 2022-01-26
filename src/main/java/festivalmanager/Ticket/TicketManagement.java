@@ -17,7 +17,15 @@ public class TicketManagement {
 	private static TicketStockManagement ticketStockManagement;
 	private static FestivalManagement festivalManagement;
 	private final UserManagement userManagement;
+	/**
+	 * Constructor
+	 *
+	 * @param ticketRepository
+	 * @param userManagement
+	 * @param ticketStockManagement
+	 * @param festivalManagement
 
+	 */
 	TicketManagement(TicketRepository ticketRepository ,UserManagement userManagement,
 		TicketStockManagement ticketStockManagement, FestivalManagement festivalManagement) {
 		Assert.notNull(ticketRepository, "ticketRepository must not be null");
@@ -32,11 +40,20 @@ public class TicketManagement {
 
 	}
 
-	// get catalog
+	/**
+	 * get catalog of tickets by a festival
+
+	 * @param festival
+	 * @return
+	 */
 	public Streamable<Ticket> getTicketCatalog(Festival festival) {
 		return ticketRepository.findTicketByFestival(festival);
 	}
-	// add ticket to stock
+	/**
+	 * add item to stock of tickets of a festival
+	 * @param ticketForm
+
+	 */
 	public void addTicketToCatalog(TicketForm ticketForm) throws IllegalStateException {
 
 		if (ticketForm.getFestival() == null) {
@@ -58,10 +75,13 @@ public class TicketManagement {
 
 			ticketStockManagement.initializeNewTicketInInventory(ticketItem, ticketItem.count, ticketForm.getFestival());
 		} else {
-			throw new IllegalStateException("There can not be more tickets than the maximal number of persons in the location , sorry");
+			throw new IllegalStateException("There can not be more tickets than the maximal number of persons in the location");
 		}
 	}
-
+	/**
+	 * get catalog of tickets of all the festivals
+	 * @return
+	 */
 	public Streamable<Ticket> getAllTicketCatalog() {
 		return ticketRepository.findAll();
 	}

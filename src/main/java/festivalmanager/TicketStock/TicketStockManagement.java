@@ -15,33 +15,46 @@ import java.util.Optional;
 public class TicketStockManagement {
 	private final TicketStockInventory ticketStockInventory;
 	private final UserManagement userManagement;
+	/**
+	 * Constructor
+	 *
+	 * @param ticketStockInventory
+	 * @param userManagement
 
+	 */
 	public TicketStockManagement(TicketStockInventory ticketStockInventory, UserManagement userManagement) {
 		this.ticketStockInventory = ticketStockInventory;
 		this.userManagement = userManagement;
 	}
 
-	// get current stock
-	public Streamable<TicketInventoryItem> getCurrentTicketStock(Optional<UserAccount> userAccount) {
-		if (userAccount.isPresent()) {
-			User user = userManagement.findUserByUserAccount(userAccount.get());
-			return ticketStockInventory.findTicketInventoryItemByFestival(user.getFestival());
-		}
-		return null;
-	}
+	/**
+	 * get all current stocks of all festivals
+
+	 * @return
+	 */
 	public Streamable<TicketInventoryItem> getAllTicketStock() {
 			return ticketStockInventory.findAll();
 	}
+	/**
+	 * get all current stocks by festival
+	* @param festival
+	 * @return
+	 */
 	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( Festival festival){
 		return ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().equals(festival));
 	}
-	// initialize new Inventory Item for a ticket of specific Festival
+
+	/**
+	 * initialize new Inventory Item for a ticket of specific Festival
+	 * @param ticketItem
+	 * @param amount
+	 * @param festival
+
+	 * @return
+	 */
 	public void initializeNewTicketInInventory(Ticket ticketItem, double amount, Festival festival) {
 		ticketStockInventory.save(new TicketInventoryItem(ticketItem, Quantity.of(amount), festival));
 	}
-	// Test
-	public void deleteAll() {
-		ticketStockInventory.deleteAll();
-	}
+
 }
 

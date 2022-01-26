@@ -19,12 +19,21 @@ public class LineUpDataInitializer implements DataInitializer {
 	private final Logger log = LoggerFactory.getLogger(festivalmanager.lineup.LineUpDataInitializer.class);
 	private final LineUpManagement lineUpManagement;
 	private final FestivalManagement festivalManagement;
+	/**
+	 * Constructor for the LineUpDataInitializer.
+	 * @param lineUpManagement the lineUp management
+	 * @param festivalManagement the festival management
 
+	 */
 	LineUpDataInitializer (LineUpManagement lineUpManagement,FestivalManagement festivalManagement) {
 		Assert.notNull(lineUpManagement, "festivalManagement must not be null!");
 		this.lineUpManagement = lineUpManagement;
 		this.festivalManagement = festivalManagement;
 	}
+
+	/**
+	 * Initializes the festivals if no data is present.
+	 */
 	@Override
 	public void initialize() {
 		if(lineUpManagement.findAllLineUp().iterator().hasNext()) {

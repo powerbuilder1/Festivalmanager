@@ -17,13 +17,22 @@ public class LineUpManagement {
 	private static LineUpRepository LineUpRepository;
 	private static FestivalManagement festivalManagement;
 	public Band wantedBand;
+	/**
+	 * Constructor LineUpManagement
+	 *
+	 * @param LineUpRepository
 
+	 */
 	LineUpManagement(LineUpRepository LineUpRepository) {
 		Assert.notNull(LineUpRepository, "festivalRepository must not be null");
 
 		this.LineUpRepository = LineUpRepository;
 	}
-
+	/**
+	 * setter
+	 *
+	 * @param festivalManagement the festivalmanagement to set {@link FestivalManagement}
+	 */
 	public void setFestivalManagement(FestivalManagement festivalManagement) {
 		this.festivalManagement = festivalManagement;
 	}
@@ -33,7 +42,7 @@ public class LineUpManagement {
 	 * @param lineUp
 	 * @return
 	 */
-	public static LineUp createLineUp(LineUp lineUp) throws Exception {
+	public static LineUp createLineUp(LineUp lineUp) throws IllegalStateException {
 		Assert.notNull(lineUp, "lineUp must not be null");
 		if (lineUp.getFestival() == null) {
 			lineUp.setFestival(festivalManagement.findById(lineUp.getFestivalIdentifier()));
@@ -41,7 +50,7 @@ public class LineUpManagement {
 		}
 		for (LineUp lineups: LineUpRepository.findAll() ) {
 			if (lineups.getId() == lineUp.getId()) {
-				throw new Exception(" THIS LINEUP ALREADY EXISTS");
+				throw new IllegalStateException(" THIS LINEUP ALREADY EXISTS");
 			}
 		}
 		return LineUpRepository.save(lineUp);
@@ -60,7 +69,7 @@ public class LineUpManagement {
 			for (Band bands: lineUp.getBands()) {
 				if ( bandForm.getStage().equals(bands.getStage())) {
 					try {
-						throw new Exception("This Stage is already occupied by " + bands.getName1());
+						throw new IllegalStateException("This Stage is already occupied by " + bands.getName1());
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -126,7 +135,11 @@ public class LineUpManagement {
 			LineUpRepository.save(lineUp);
 		});
 	}
-
+	/**
+	 * create a new LineUp for a specific festival
+	 * @param festival
+	 * @return
+	 */
 	public LineUp createLineUp(Festival festival) throws Exception {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);
@@ -147,7 +160,11 @@ public class LineUpManagement {
 	public LineUp findById(long id) {
 		return LineUpRepository.findById(id).orElse(null);
 	}
-
+	/**
+	 * Finds a band in a LineUp with the given name
+	 * @param id
+	 * @return
+	 */
 	public Band findBandByName ( long id, String name ) {
 		LineUpRepository.findById(id).ifPresent(lineUp -> {
 			for (Band bands : lineUp.getBands()) {
@@ -159,7 +176,11 @@ public class LineUpManagement {
 		});
 		return wantedBand;
 	}
-
+	/**
+	 * delete a band of a LineUp with the given id
+	 * @param id
+	 * @return
+	 */
 	public void deleteById(long id) {
 		if(LineUpRepository.findById(id).isPresent()) {
 			LineUpRepository.deleteById(id);

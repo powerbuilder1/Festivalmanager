@@ -21,7 +21,12 @@ public class TicketDataInitializer implements DataInitializer {
 	private final FestivalManagement festivalManagement;
 
 
+	/**
+	 * Constructor for the TicketDataInitializer
+	 * @param ticketRepository the ticket repository
+	 * @param festivalManagement the festival management
 
+	 */
 	TicketDataInitializer(TicketRepository ticketRepository, FestivalManagement festivalManagement) {
 
 		Assert.notNull(ticketRepository, "TicketRepository must not be null!");
@@ -36,7 +41,9 @@ public class TicketDataInitializer implements DataInitializer {
 
 	}
 
-
+	/**
+	 * Initializes the tickets if no data is present.
+	 */
 	@Override
 	public void initialize() {
 		if (ticketRepository.findAll().iterator().hasNext()) {

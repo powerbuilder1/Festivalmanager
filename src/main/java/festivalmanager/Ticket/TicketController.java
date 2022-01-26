@@ -20,7 +20,13 @@ public class TicketController  {
 	private TicketRepository ticketRepository;
 	private TicketManagement ticketManagement;
 	private FestivalManagement festivalManagement;
+	/**
+	 * Controller
+	 * @param ticketManagement
+	 * @param ticketRepository
+	 * @param festivalManagement
 
+	 */
 	public TicketController( TicketRepository ticketRepository, 
 		TicketManagement ticketManagement, FestivalManagement festivalManagement) {
 
@@ -28,15 +34,13 @@ public class TicketController  {
 		this.ticketRepository = ticketRepository;
 		this.festivalManagement = festivalManagement;
 	}
-	@GetMapping("/ticket")
 
-	String Tickets(Model model) {
-		model.addAttribute("ticket", ticketRepository.findAll());
-		model.addAttribute("title", "Tickets");
+	/**
+	 * route to overview of a page where the manager can add tickets to an specific festival
+	 * @param model
+	 * @return
+	 */
 
-		return "ticket";
-	}
-	// route to catering management page
 	@PreAuthorize("hasRole('BOSS')")
 	@GetMapping(path = "ticket/new")
 	public String getNewTickets(Model model) {
@@ -48,6 +52,15 @@ public class TicketController  {
 
 		return "ticket_new";
 	}
+	/**
+	 * add ticket to a Festival
+	 * @param ticketForm
+	 * @param result
+	 * @param redirectAttributes
+	 * @param account
+
+	 * @return
+	 */
 	@PreAuthorize("hasRole('BOSS')")
 	@PostMapping(path = "ticket/addTicket")
 	public String addTicketToCatalog(

@@ -18,7 +18,9 @@ public class ReorderForm {
 		this.foodItemId = foodItemId;
 		this.amount = amount;
 	}
-
+	/**
+	 * default constructor
+	 */
 	public ReorderForm() {
 	}
 

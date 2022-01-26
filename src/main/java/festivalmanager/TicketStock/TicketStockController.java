@@ -16,10 +16,20 @@ public class TicketStockController {
 	final private TicketStockManagement ticketStockManagement;
 
 
+	/**
+	 * Constructor
+	 * @param ticketStockManagement
+	 */
 	public TicketStockController(TicketStockManagement ticketStockManagement) {
 		this.ticketStockManagement = ticketStockManagement;
 	}
 
+	/**
+	 * route to stock overview
+	 * @param model
+	 * @param userAccount
+	 * @return
+	 */
 	@PreAuthorize("hasRole('BOSS')")
 	@GetMapping(path = "ticketstock")
 	String StockTicket(Model model,
