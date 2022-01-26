@@ -10,6 +10,7 @@ import festivalmanager.festival.FestivalManagement;
 import festivalmanager.lineup.Band;
 import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
+import org.assertj.core.api.Assert;
 import org.javamoney.moneta.Money;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,7 +123,42 @@ public class LineUpIntegrationTests {
 		deleteFestival("TestID");
 		deleteLocation("TestID");
 	}
-	/*
+	@Test
+	void checkNumberOfBandsInLineUp() throws Exception {
+
+		deleteFestival("TestBands");
+		deleteLocation("TestBands");
+
+		// create test entries
+		Location location = locationManagement.createLocation("TestBands", 200, 10, Money.of(500, EURO));
+		Festival festival = festivalManagement.createFestival("TestBands", location, "2022-10-10", "2022-11-11",
+				"Test Information");
+		Band band = new Band("TestBand1", Money.of(2000, EURO), "Buehne 1", "09:00 - 11:00");
+		Band band1 = new Band("TestBand2", Money.of(2000, EURO), "Buehne 2", "11:00 - 13:00");
+		Band band2 = new Band("TestBand3", Money.of(2000, EURO), "Buehne 3", "13:00 - 15:00");
+		Band band3 = new Band("TestBand4", Money.of(2000, EURO), "Buehne 4", "15:00 - 17:00");
+
+		LineUp lineUp = new LineUp(festivalManagement.findAllByName("TestBands").toList().get(0));
+		lineUp.addBandto(band);
+		lineUp.addBandto(band1);
+		lineUp.addBandto(band2);
+		lineUp.addBandto(band3);
+
+		lineUpManagement.createLineUp(lineUp);
+
+		Streamable<LineUp> lineups = lineUpManagement.findLineUpByFestivalName("TestBands");
+		LineUp result = lineups.toList().get(0);
+		assertThat(result != null);
+		assertThat(result.getBands().size()).isEqualTo(lineUp.getBands().size());
+		assertThat(result.getBands().equals(lineUp.getBands()));
+		assertThat(result.getStages()).isEqualTo(lineUp.getStages());
+		assertThat(result.getBandnames()).isEqualTo(lineUp.getBandnames());
+		assertThat(result.getLineupUhrzeiten()).isEqualTo(lineUp.getLineupUhrzeiten());
+
+
+
+	}
+
 	@Test
 	void checkBands() throws Exception {
 
@@ -156,7 +192,7 @@ public class LineUpIntegrationTests {
 		deleteLocation("Test");
 
 	}
-	*/
+
 
 }
 

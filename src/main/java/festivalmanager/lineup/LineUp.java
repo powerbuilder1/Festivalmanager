@@ -20,7 +20,7 @@ public class LineUp {
 	private @Id
 	long id;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Band> setOfBands = new ArrayList<Band>();
 
 	/**

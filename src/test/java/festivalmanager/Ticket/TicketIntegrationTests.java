@@ -87,13 +87,6 @@ public class TicketIntegrationTests {
 		assertThat(result.getProduct().getName().equals(ticketStock.getName()));
 		assertThat(result.getProduct().getPrice().equals(ticketStock.getPrice()));
 
-
-
-
-
-
-
-
 	}
 
 
