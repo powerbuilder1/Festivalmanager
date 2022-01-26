@@ -28,9 +28,7 @@ import static org.salespointframework.core.Currencies.EURO;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-@Transactional
-public class ManagerManagementIntegrationTest extends AbstractIntegrationTests {
+public class ManagerManagementIntegrationTest{
 
 	@Autowired
 	private FestivalManagement festivalManagement;
