@@ -142,7 +142,7 @@ public class LineUpManagement {
 	 * @param festival
 	 * @return
 	 */
-	public LineUp createLineUp(Festival festival) throws Exception {
+	public LineUp createLineUp(Festival festival) throws IllegalStateException {
 		LineUp lineUp = new LineUp(festival);
 		return createLineUp(lineUp);
 	}

@@ -8,6 +8,7 @@ import festivalmanager.AbstractIntegrationTests;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.lineup.Band;
+import festivalmanager.lineup.BandForm;
 import festivalmanager.lineup.LineUp;
 import festivalmanager.lineup.LineUpManagement;
 import org.assertj.core.api.Assert;
@@ -124,7 +125,7 @@ public class LineUpIntegrationTests {
 		deleteLocation("TestID");
 	}
 	@Test
-	void checkNumberOfBandsInLineUp() throws Exception {
+	void checkBandsInLineUp() throws Exception {
 
 		deleteFestival("TestBands");
 		deleteLocation("TestBands");
@@ -155,6 +156,8 @@ public class LineUpIntegrationTests {
 		assertThat(result.getBandnames()).isEqualTo(lineUp.getBandnames());
 		assertThat(result.getLineupUhrzeiten()).isEqualTo(lineUp.getLineupUhrzeiten());
 
+		deleteFestival("TestBands");
+		deleteLocation("TestBands");
 
 
 	}
@@ -162,16 +165,16 @@ public class LineUpIntegrationTests {
 	@Test
 	void checkBands() throws Exception {
 
-		deleteFestival("TestBands");
-		deleteLocation("TestBands");
+		deleteFestival("TestOnlyBand");
+		deleteLocation("TestOnlyBand");
 
 		// create test entries
-		Location location = locationManagement.createLocation("TestBands", 200, 10, Money.of(500, EURO));
-		Festival festival = festivalManagement.createFestival("TestBands", location, "2022-10-10", "2022-11-11",
+		Location location = locationManagement.createLocation("TestOnlyBand", 200, 10, Money.of(500, EURO));
+		Festival festival = festivalManagement.createFestival("TestOnlyBand", location, "2022-10-10", "2022-11-11",
 				"Test Information");
-		Band band = new Band("TestBand",Money.of(2000, EURO),"Buehne 2", "09:00 - 11:00");
+		Band band = new Band("TestOnlyBand",Money.of(2000, EURO),"Buehne 2", "09:00 - 11:00");
 
-		LineUp lineUp =  new LineUp(festivalManagement.findAllByName("TestBands").toList().get(0) );
+		LineUp lineUp =  new LineUp(festivalManagement.findAllByName("TestOnlyBand").toList().get(0) );
 		lineUp.addBandto(band);
 
 		lineUpManagement.createLineUp(lineUp);
@@ -188,10 +191,137 @@ public class LineUpIntegrationTests {
 
 		// delete test entries
 
-		deleteFestival("Test");
-		deleteLocation("Test");
+		deleteFestival("TestBands");
+		deleteLocation("TestBands");
 
 	}
+	@Test
+	void checkAddBandstoLineUp() throws Exception {
+
+		deleteFestival("TestAddBands");
+		deleteLocation("TestAddBands");
+
+		// create test entries
+		Location location = locationManagement.createLocation("TestAddBands", 300, 15, Money.of(500, EURO));
+		Festival festival = festivalManagement.createFestival("TestAddBands", location, "2022-10-10", "2022-11-11",
+				"Test Information");
+		Band band = new Band("TestBand1", Money.of(2000, EURO), "Buehne 1", "09:00 - 11:00");
+		Band band1 = new Band("TestBand2", Money.of(2000, EURO), "Buehne 2", "11:00 - 13:00");
+		LineUp lineUp = new LineUp(festivalManagement.findAllByName("TestAddBands").toList().get(0));
+		lineUp.addBandto(band);
+		lineUp.addBandto(band1);
+
+		lineUpManagement.createLineUp(lineUp);
+		Band addedBand = new Band("AddedBand", Money.of(2000, EURO), "Buehne 3", "13:00 - 14:00");
+		BandForm addedBandForm = new BandForm( addedBand.getName1(),addedBand.getPrice().getNumber().doubleValueExact(),addedBand.getStage(),addedBand.getPerformanceHour(), addedBand.getId());
+		lineUpManagement.addBand(lineUp.getId(),addedBandForm);
+
+		System.out.println(lineUp.getBands().size());
+
+		Streamable<LineUp> lineups = lineUpManagement.findLineUpByFestivalName("TestAddBands");
+		LineUp result = lineups.toList().get(0);
+		assertThat(result != null);
+
+		Band addedBandResult = lineUpManagement.findBandByName(result.getId(),addedBand.getName1());
+
+		assertThat(addedBandResult.equals(addedBand));
+
+
+		deleteFestival("TestAddBands");
+		deleteLocation("TestAddBands");
+
+
+	}
+	@Test
+	void checkDeleteBandsFromLineUp() throws Exception {
+
+		deleteFestival("TestDeleteBands");
+		deleteLocation("TestDeleteBands");
+
+		// create test entries
+		Location location = locationManagement.createLocation("TestDeleteBands", 400, 10, Money.of(550, EURO));
+		Festival festival = festivalManagement.createFestival("TestDeleteBands", location, "2022-10-10", "2022-11-11",
+				"Test Information");
+		Band band = new Band("TestDelBand1", Money.of(2000, EURO), "Buehne 1", "09:00 - 11:00");
+		Band band1 = new Band("TestDelBand2", Money.of(2000, EURO), "Buehne 2", "11:00 - 13:00");
+		Band band2 = new Band("TestDelBand3", Money.of(2000, EURO), "Buehne 3", "13:00 - 15:00");
+
+		LineUp lineUp = new LineUp(festivalManagement.findAllByName("TestDeleteBands").toList().get(0));
+		lineUp.addBandto(band);
+		lineUp.addBandto(band1);
+		lineUp.addBandto(band2);
+
+		lineUpManagement.createLineUp(lineUp);
+
+		lineUpManagement.deleteBand(lineUp.getId(), band.getName1());
+
+		Streamable<LineUp> lineups = lineUpManagement.findLineUpByFestivalName("TestDeleteBands");
+		LineUp result = lineups.toList().get(0);
+		assertThat(result != null);
+
+		for (Band wantedBand : result.getBands())
+		{
+			assertThat(wantedBand.equals(band)== false);
+		}
+
+
+
+
+		deleteFestival("TestDelBands");
+		deleteLocation("TestDelBands");
+
+
+	}
+	@Test
+	void checkEditBandsFromLineUp() throws Exception {
+
+		deleteFestival("TestEditBands");
+		deleteLocation("TestEditBands");
+
+		// create test entries
+		Location location = locationManagement.createLocation("TestEditBands", 400, 10, Money.of(550, EURO));
+		Festival festival = festivalManagement.createFestival("TestEditBands", location, "2022-10-10", "2022-11-11",
+				"Test Information");
+		Band band = new Band("TestEdBand1", Money.of(2000, EURO), "Buehne 1", "09:00 - 11:00");
+		Band band1 = new Band("TestEdBand2", Money.of(2000, EURO), "Buehne 2", "11:00 - 13:00");
+		Band band2 = new Band("TestEdBand3", Money.of(2000, EURO), "Buehne 3", "13:00 - 15:00");
+
+		LineUp lineUp = new LineUp(festivalManagement.findAllByName("TestEditBands").toList().get(0));
+		lineUp.addBandto(band);
+		lineUp.addBandto(band1);
+		lineUp.addBandto(band2);
+
+		lineUpManagement.createLineUp(lineUp);
+		BandForm editedBandForm = new BandForm( band.getName1(),2000 ,"Buehne 4","15:00 - 17:00", band.getId());
+
+
+
+		lineUpManagement.updateBand(lineUp.getId(), editedBandForm);
+
+		Streamable<LineUp> lineups = lineUpManagement.findLineUpByFestivalName("TestEditBands");
+		LineUp result = lineups.toList().get(0);
+		assertThat(result != null);
+
+		Band editedBandResult = lineUpManagement.findBandByName(result.getId(),band.getName1());
+		assertThat(editedBandResult.getName1().equals(editedBandForm.getName()));
+		assertThat((editedBandResult.getPrice().getNumber().doubleValueExact())).isEqualTo(editedBandForm.getPrice());
+		assertThat((editedBandResult.getPerformanceHour().equals(editedBandForm.getPerformanceHour())));
+		assertThat((editedBandResult.getStage().equals(editedBandForm.getStage())));
+		assertThat((editedBandResult.getId().equals(editedBandForm.getId())));
+
+
+
+
+
+
+
+
+		deleteFestival("TestEditBands");
+		deleteLocation("TestEditBands");
+
+
+	}
+
 
 
 }
