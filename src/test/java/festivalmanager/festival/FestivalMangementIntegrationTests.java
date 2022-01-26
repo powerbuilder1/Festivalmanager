@@ -93,6 +93,7 @@ public class FestivalMangementIntegrationTests {
         assertThat(result != null);
         assertThat(result.getName().equals(festival.getName()));
 
+
         // delete test entries
         deleteFestival("TestID");
         deleteLocation("TestID");

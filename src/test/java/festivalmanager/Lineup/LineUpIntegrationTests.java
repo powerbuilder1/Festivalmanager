@@ -76,8 +76,10 @@ public class LineUpIntegrationTests {
 				"Test Information");
 		Band band = new Band("Test",Money.of(2000, EURO),"Buehne 1", "09:00 - 11:00");
 
-		LineUp lineUp = lineUpManagement.createLineUp(festival);
+		LineUp lineUp =  new LineUp(festivalManagement.findAllByName("Test").toList().get(0) );
 		lineUp.addBandto(band);
+
+		lineUpManagement.createLineUp(lineUp);
 
 
 		// find test entries
@@ -115,6 +117,39 @@ public class LineUpIntegrationTests {
 		// delete test entries
 		deleteFestival("TestID");
 		deleteLocation("TestID");
+	}
+	@Test
+	void checkBands() throws Exception {
+
+		deleteFestival("TestBands");
+		deleteLocation("TestBands");
+
+		// create test entries
+		Location location = locationManagement.createLocation("TestBands", 200, 10, Money.of(500, EURO));
+		Festival festival = festivalManagement.createFestival("TestBands", location, "2022-10-10", "2022-11-11",
+				"Test Information");
+		Band band = new Band("TestBand",Money.of(2000, EURO),"Buehne 2", "09:00 - 11:00");
+
+		LineUp lineUp =  new LineUp(festivalManagement.findAllByName("TestBands").toList().get(0) );
+		lineUp.addBandto(band);
+
+		lineUpManagement.createLineUp(lineUp);
+
+
+		// find test entries
+		Band bands = lineUpManagement.findBandByName(lineUp.getId(),band.name1);
+		assertThat(bands.equals(band));
+		assertThat(bands.getName1()).isEqualTo(band.getName1());
+		assertThat(bands.getStage()).isEqualTo(band.getStage());
+		assertThat(bands.getPerformanceHour()).isEqualTo(band.getPerformanceHour());
+		assertThat(bands.getPrice()).isEqualTo(band.getPrice());
+
+
+		// delete test entries
+
+		deleteFestival("Test");
+		deleteLocation("Test");
+
 	}
 
 
