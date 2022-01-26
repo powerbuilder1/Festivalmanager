@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 
 import static org.salespointframework.core.Currencies.*;
 
+import festivalmanager.AbstractIntegrationTests;
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
 import festivalmanager.lineup.Band;
@@ -22,9 +23,12 @@ import festivalmanager.location.LocationManagement;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 
+import javax.transaction.Transactional;
+
 @SpringBootTest
 @AutoConfigureMockMvc
-public class LineUpIntegrationTests {
+@Transactional
+public class LineUpIntegrationTests extends AbstractIntegrationTests {
 
 	@Autowired
 	private LineUpManagement lineUpManagement;
