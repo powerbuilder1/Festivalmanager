@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class LineUp {
 
-	@OneToOne
+	@OneToOne (fetch = FetchType.EAGER)
 	private Festival festival;
 	private long festivalIdentifier;
 	private long festivalIdIdentifier;
