@@ -12,11 +12,7 @@ import org.springframework.data.util.Streamable;
  */
 public interface TicketRepository extends Catalog<Ticket> {
 
-	/**
-	 * Returns tickets of an specific festival
-	 * @return Streamable of Tickets
-	 */
-	Streamable<Ticket> findTicketByFestival(Festival festival);
+
 	/**
 	 * Returns all Ticket
 	 * @return Streamable of all Tickets

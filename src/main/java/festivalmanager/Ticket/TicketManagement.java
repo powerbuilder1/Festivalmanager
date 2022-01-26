@@ -43,11 +43,11 @@ public class TicketManagement {
 	/**
 	 * get catalog of tickets by a festival
 
-	 * @param festival
+	 * @param name
 	 * @return
 	 */
-	public Streamable<Ticket> getTicketCatalog(Festival festival) {
-		return ticketRepository.findTicketByFestival(festival);
+	public Streamable<Ticket> getTicketCatalog(String name) {
+		return ticketRepository.findAll().filter(ticket -> ticket.getFestival().getName().equals(name));
 	}
 	/**
 	 * add item to stock of tickets of a festival

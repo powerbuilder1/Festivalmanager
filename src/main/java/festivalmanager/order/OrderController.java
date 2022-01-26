@@ -111,7 +111,7 @@ public class OrderController {
 	) {
 		Festival festival = festivalManagement.findById(id);
 		model.addAttribute("id",festival.getId());
-		model.addAttribute("catalogTicket", ticketManagement.getTicketCatalog(festival));
+		model.addAttribute("catalogTicket", ticketManagement.getTicketCatalog(festival.getName()));
 		model.addAttribute("TicketorderForm", new TicketOrderForm());
 		model.addAttribute("ticketStock", ticketStockManagement.getTicketStockbyfestival(festival));
 		return "ticket_sale";
