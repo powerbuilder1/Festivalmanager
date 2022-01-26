@@ -23,12 +23,12 @@ import festivalmanager.location.LocationManagement;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 
+import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@Transactional
-public class LineUpIntegrationTests extends AbstractIntegrationTests {
+public class LineUpIntegrationTests {
 
 	@Autowired
 	private LineUpManagement lineUpManagement;

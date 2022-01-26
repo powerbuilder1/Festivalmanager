@@ -68,12 +68,6 @@ public class Festival {
     private Set<Food> catalogFoodItems;
 
     /**
-     * the lineup of the festival {@link LineUp}
-     */
-	@OneToOne(mappedBy = "festival", fetch = FetchType.LAZY)
-	private LineUp lineup;
-
-	/**
 	 * the food inventory items of the festival {@link Set<FoodInventoryItem>}
 	 */
     @OneToMany(mappedBy = "festival")
