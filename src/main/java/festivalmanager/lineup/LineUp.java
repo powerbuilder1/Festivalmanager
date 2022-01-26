@@ -169,6 +169,12 @@ public class LineUp {
 		return festival.getName()+ " ---- Line UP";
 	}
 
+
+	/**
+	 * string of the name of the festival assigned to an specific LineUp
+	 * @return
+	 */
+	public String getFestivalName() { return festival.getName(); };
 	/**
 	 * getter for the bands in the LineUp
 	 * @return

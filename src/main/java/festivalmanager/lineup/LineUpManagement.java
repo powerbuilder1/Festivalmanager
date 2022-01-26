@@ -2,6 +2,7 @@ package festivalmanager.lineup;
 
 import festivalmanager.festival.Festival;
 import festivalmanager.festival.FestivalManagement;
+import festivalmanager.location.Location;
 import org.javamoney.moneta.Money;
 import org.salespointframework.core.Currencies;
 import org.springframework.data.util.Streamable;
@@ -17,6 +18,7 @@ public class LineUpManagement {
 	private static LineUpRepository LineUpRepository;
 	private static FestivalManagement festivalManagement;
 	public Band wantedBand;
+
 	/**
 	 * Constructor LineUpManagement
 	 *
@@ -177,6 +179,14 @@ public class LineUpManagement {
 		return wantedBand;
 	}
 	/**
+	 * find lineup by festival
+	 * @param name
+	 * @return
+	 */
+	public Streamable<LineUp> findLineUpByFestivalName ( String name ) {
+		return LineUpRepository.findAll().filter(lineup -> lineup.getFestivalName().equals(name));
+	}
+	/**
 	 * delete a band of a LineUp with the given id
 	 * @param id
 	 * @return
@@ -185,5 +195,7 @@ public class LineUpManagement {
 		if(LineUpRepository.findById(id).isPresent()) {
 			LineUpRepository.deleteById(id);
 		}
+
 	}
+
 }
