@@ -13,6 +13,8 @@ import festivalmanager.authentication.User;
 import festivalmanager.catering.Food;
 import festivalmanager.location.Location;
 import festivalmanager.stock.FoodInventoryItem;
+import festivalmanager.lineup.LineUp;
+import org.hibernate.annotations.NotFoundAction;
 
 import java.util.Set;
 
@@ -66,8 +68,14 @@ public class Festival {
     private Set<Food> catalogFoodItems;
 
     /**
-     * the tickets of the festival {@link Set<Ticket>}
+     * the lineup of the festival {@link LineUp}
      */
+	@OneToOne(mappedBy = "festival", fetch = FetchType.LAZY)
+	private LineUp lineup;
+
+	/**
+	 * the food inventory items of the festival {@link Set<FoodInventoryItem>}
+	 */
     @OneToMany(mappedBy = "festival")
     private Set<Ticket> tickets;
 

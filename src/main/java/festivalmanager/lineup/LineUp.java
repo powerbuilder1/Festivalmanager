@@ -1,5 +1,7 @@
 package festivalmanager.lineup;
 import festivalmanager.festival.Festival;
+import org.hibernate.annotations.NotFoundAction;
+import org.hibernate.mapping.ToOne;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 @Entity
 public class LineUp {
 
-	@OneToOne
+	@OneToOne (optional=true)
 	private Festival festival;
 	private long festivalIdentifier;
 	private long festivalIdIdentifier;
