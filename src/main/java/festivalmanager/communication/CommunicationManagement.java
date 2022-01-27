@@ -101,6 +101,22 @@ public class CommunicationManagement {
         return true;
     }
 
+    /**
+     * adds a user to a room
+     * @param user the user {@link User}
+     * @param String the name of the room {@link Room}
+     * @param access the access eq r/w/rw {@link Access}
+     * @return
+     */
+    public boolean joinRoom(User user, String room, String access) {
+        Assert.notNull(user, "user must not be null");
+        Assert.notNull(access, "access must not be null");
+        Assert.isTrue(access.length() > 0, "access must not be empty");
+        Room r = createRoom(room);
+        participantsRepository.save(new Participants(user, r, access));
+        return true;
+    }
+
         /**
      * adds a user to a room
      * @param userId the id of the user {@link Long}

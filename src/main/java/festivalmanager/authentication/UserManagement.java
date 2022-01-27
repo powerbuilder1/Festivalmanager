@@ -1,6 +1,6 @@
 package festivalmanager.authentication;
 
-import festivalmanager.festival.Festival;
+import festivalmanager.communication.Room;
 import festivalmanager.festival.FestivalManagement;
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
@@ -86,7 +86,28 @@ public class UserManagement {
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
-		return users.save(user);
+
+		User _user = users.save(user);
+
+		Room room = festivalManagement.getCommunicationManagement().findRoomByName("Planning");
+		if(room != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "Planning", "rw");
+		}
+		Room room2 = festivalManagement.getCommunicationManagement().findRoomByName("Catering");
+		if(room2 != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room2, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "Catering", "rw");
+		}
+		Room room3 = festivalManagement.getCommunicationManagement().findRoomByName("public");
+		if(room3 != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room3, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "public", "rw");
+		}
+		return _user;
 	}
 	/**
 	 * Creates a new {@link User} using the information given in the {@link UserForm}.
@@ -106,7 +127,17 @@ public class UserManagement {
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
-		return users.save(user);
+		
+		User _user = users.save(user);
+
+		// add user to chat group
+		Room room = festivalManagement.getCommunicationManagement().findRoomByName("Planning");
+		if(room != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "Planning", "rw");
+		}
+		return _user;
 	}
 	/**
 	 * Creates a new {@link User} using the information given in the {@link UserForm}.
@@ -126,7 +157,19 @@ public class UserManagement {
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
-		return users.save(user);
+
+
+		User _user = users.save(user);
+
+		// add user to chat group
+		Room room = festivalManagement.getCommunicationManagement().findRoomByName("Catering");
+		if(room != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "Catering", "rw");
+		}
+
+		return _user;
 	}
 	/**
 	 * Creates a new {@link User} using the information given in the {@link UserForm}.
@@ -145,7 +188,17 @@ public class UserManagement {
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
-		return users.save(user);
+
+		User _user = users.save(user);
+
+		Room room = festivalManagement.getCommunicationManagement().findRoomByName("public");
+		if(room != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "public", "rw");
+		}
+
+		return _user;
 	}
 	/**
 	 * Creates a new {@link User} using the information given in the {@link UserForm}.
@@ -164,7 +217,22 @@ public class UserManagement {
 		user.setName(form.getName());
 		user.setPosition(form.getPosition());
 		user.setFestival(festivalManagement.findById(form.getFestivalId()));
-		return users.save(user);
+
+		User _user = users.save(user);
+
+		Room room = festivalManagement.getCommunicationManagement().findRoomByName("Planning");
+		if(room != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "Planning", "rw");
+		}
+		Room room2 = festivalManagement.getCommunicationManagement().findRoomByName("Catering");
+		if(room2 != null) {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, room2, "rw");
+		} else {
+			festivalManagement.getCommunicationManagement().joinRoom(_user, "Catering", "rw");
+		}
+		return _user;
 	}
 	/**
 	 * Creates a new {@link User} using the information given in the {@link UserForm}.
