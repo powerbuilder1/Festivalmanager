@@ -23,9 +23,12 @@ public class TicketStockManagement {
 	 *
 	 * @param ticketStockInventory
 	 * @param userManagement
+	 * @param communicationManagement
+
 
 	 */
-	public TicketStockManagement(TicketStockInventory ticketStockInventory, UserManagement userManagement, CommunicationManagement communicationManagement) {
+	public TicketStockManagement(TicketStockInventory ticketStockInventory, UserManagement userManagement,
+								 CommunicationManagement communicationManagement) {
 		this.ticketStockInventory = ticketStockInventory;
 		this.userManagement = userManagement;
 		this.communicationManagement = communicationManagement;
@@ -45,24 +48,20 @@ public class TicketStockManagement {
 	 * @return
 	 */
 	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( String name ){
-		Streamable<TicketInventoryItem> ticketStockOfFestival = ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().getName().equals(name));
+		Streamable<TicketInventoryItem> ticketStock = ticketStockInventory.findAll().filter(ticket -> ticket.getFestival().getName().equals(name));
 
 		User userTicket = userManagement.findByName("manager");
 		Room room = communicationManagement.findRoomByName("public");
 
-		for (TicketInventoryItem ticketsOfStock : ticketStockOfFestival)
-		{
+		for (TicketInventoryItem ticketsOfStock : ticketStock) {
 
 			if (ticketsOfStock.getQuantity().toString().equals("0")) {
 
-				communicationManagement.sendMessage(userTicket,"there is no more tickets of "+ticketsOfStock.getProduct().getName() +" of the Festival "+ ticketsOfStock.getFestival().getName(),room);
+				communicationManagement.sendMessage(userTicket," no more tickets of "+ticketsOfStock.getProduct().getName() +" of the Festival "+ ticketsOfStock.getFestival().getName(),room);
 
 			}
-
-
 		}
-
-		return ticketStockOfFestival;
+		return ticketStock;
 	}
 
 	/**
