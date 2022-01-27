@@ -1,7 +1,12 @@
 package festivalmanager.authentication;
 
+import festivalmanager.communication.CommunicationManagement;
 import festivalmanager.communication.Room;
 import festivalmanager.festival.FestivalManagement;
+
+import java.util.Optional;
+import java.util.stream.Stream;
+
 import org.salespointframework.useraccount.Password;
 import org.salespointframework.useraccount.Role;
 import org.salespointframework.useraccount.UserAccount;
@@ -314,6 +319,11 @@ public class UserManagement {
 	 * @param id
 	 */
 	public void deleteById(long id) {
+		User user = users.findById(id).orElse(null);
+		if(user != null) {
+			userAccounts.delete(user.getUserAccount());
+		}
+		festivalManagement.getCommunicationManagement().removeEverywhere(user);
 		users.deleteById(id);
 	}
 
@@ -322,10 +332,16 @@ public class UserManagement {
 	 * @param festivalId
 	 */
 	public void deleteUsersByFestivalId(Long festivalId) {
-		users.findUsersByFestival_Id(festivalId).ifPresent(user -> {
-			userAccounts.delete(user.getUserAccount());
-		});
-		users.deleteUsersByFestival_Id(festivalId);
+		while(true) {
+			Optional<User> user = users.findUsersByFestival_Id(festivalId);
+			if(user.isPresent()) {
+				festivalManagement.getCommunicationManagement().removeEverywhere(user.get());
+				userAccounts.delete(user.get().getUserAccount());
+				users.delete(user.get());
+			} else {
+				break;
+			}
+		}
 	}
 
 	/**
@@ -333,6 +349,9 @@ public class UserManagement {
 	 * @param name
 	 */
 	public void deleteUsersByName(String name) {
-		users.deleteUsersByName(name);
+		Streamable<User> _users = users.findAll().filter(user -> user.getName().equals(name));
+		for(User user : _users) {
+			this.deleteById(user.getId());
+		}
 	}
 }
