@@ -3,6 +3,8 @@ package festivalmanager.TicketStock;
 import festivalmanager.Ticket.Ticket;
 import festivalmanager.authentication.User;
 import festivalmanager.authentication.UserManagement;
+import festivalmanager.communication.CommunicationManagement;
+import festivalmanager.communication.Room;
 import festivalmanager.festival.Festival;
 import org.salespointframework.quantity.Quantity;
 import org.salespointframework.useraccount.UserAccount;
@@ -15,6 +17,7 @@ import java.util.Optional;
 public class TicketStockManagement {
 	private final TicketStockInventory ticketStockInventory;
 	private final UserManagement userManagement;
+	private final CommunicationManagement communicationManagement;
 	/**
 	 * Constructor
 	 *
@@ -22,9 +25,10 @@ public class TicketStockManagement {
 	 * @param userManagement
 
 	 */
-	public TicketStockManagement(TicketStockInventory ticketStockInventory, UserManagement userManagement) {
+	public TicketStockManagement(TicketStockInventory ticketStockInventory, UserManagement userManagement, CommunicationManagement communicationManagement) {
 		this.ticketStockInventory = ticketStockInventory;
 		this.userManagement = userManagement;
+		this.communicationManagement = communicationManagement;
 	}
 
 	/**
@@ -41,7 +45,24 @@ public class TicketStockManagement {
 	 * @return
 	 */
 	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( String name ){
-		return ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().getName().equals(name));
+		Streamable<TicketInventoryItem> ticketStockOfFestival = ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().getName().equals(name));
+
+		User userTicket = userManagement.findByName("Ticketseller");
+
+		Room room = communicationManagement.findRoomByName("public");
+
+		for (TicketInventoryItem ticketsOfStock : ticketStockOfFestival)
+		{
+			if (ticketsOfStock.getQuantity() != null) {
+
+				communicationManagement.sendMessage(userTicket,"there is no more tickets of"+ticketsOfStock.getProduct().getName(),room);
+
+			}
+
+
+		}
+
+		return ticketStockOfFestival;
 	}
 
 	/**
@@ -52,6 +73,7 @@ public class TicketStockManagement {
 
 	 * @return
 	 */
+
 	public void initializeNewTicketInInventory(Ticket ticketItem, double amount, Festival festival) {
 		ticketStockInventory.save(new TicketInventoryItem(ticketItem, Quantity.of(amount), festival));
 	}

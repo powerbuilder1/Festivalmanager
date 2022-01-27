@@ -72,7 +72,7 @@ public class LineUpIntegrationTests {
 
 	@Test
 	void checkLineUpContent() throws Exception {
-
+		deleteLineUp("Test");
 		deleteFestival("Test");
 		deleteLocation("Test");
 
@@ -99,7 +99,7 @@ public class LineUpIntegrationTests {
 
 
 		// delete test entries
-
+		deleteLineUp("Test");
 		deleteFestival("Test");
 		deleteLocation("Test");
 
@@ -107,6 +107,7 @@ public class LineUpIntegrationTests {
 
 	@Test
 	void checkGetLineUpById() throws Exception {
+		deleteLineUp("TestID");
 		deleteFestival("TestID");
 		deleteLocation("TestID");
 
@@ -121,11 +122,13 @@ public class LineUpIntegrationTests {
 		assertThat(result.getId()).isEqualTo(lineUp.getId());
 
 		// delete test entries
+		deleteLineUp("TestID");
 		deleteFestival("TestID");
 		deleteLocation("TestID");
 	}
 	@Test
 	void checkBandsInLineUp() throws Exception {
+		deleteLineUp("TestBands");
 
 		deleteFestival("TestBands");
 		deleteLocation("TestBands");
@@ -156,6 +159,7 @@ public class LineUpIntegrationTests {
 		assertThat(result.getBandnames()).isEqualTo(lineUp.getBandnames());
 		assertThat(result.getLineupUhrzeiten()).isEqualTo(lineUp.getLineupUhrzeiten());
 
+		deleteLineUp("TestBands");
 		deleteFestival("TestBands");
 		deleteLocation("TestBands");
 
@@ -164,6 +168,7 @@ public class LineUpIntegrationTests {
 
 	@Test
 	void checkBands() throws Exception {
+		deleteLineUp("TestOnlyBand");
 
 		deleteFestival("TestOnlyBand");
 		deleteLocation("TestOnlyBand");
@@ -190,13 +195,14 @@ public class LineUpIntegrationTests {
 
 
 		// delete test entries
-
-		deleteFestival("TestBands");
-		deleteLocation("TestBands");
+		deleteLineUp("TestOnlyBand");
+		deleteFestival("TestOnlyBand");
+		deleteLocation("TestOnlyBand");
 
 	}
 	@Test
 	void checkAddBandstoLineUp() throws Exception {
+		deleteLineUp("TestAddBands");
 
 		deleteFestival("TestAddBands");
 		deleteLocation("TestAddBands");
@@ -226,6 +232,7 @@ public class LineUpIntegrationTests {
 
 		assertThat(addedBandResult.equals(addedBand));
 
+		deleteLineUp("TestAddBands");
 
 		deleteFestival("TestAddBands");
 		deleteLocation("TestAddBands");
@@ -234,6 +241,7 @@ public class LineUpIntegrationTests {
 	}
 	@Test
 	void checkDeleteBandsFromLineUp() throws Exception {
+		deleteLineUp("TestDeleteBands");
 
 		deleteFestival("TestDeleteBands");
 		deleteLocation("TestDeleteBands");
@@ -266,15 +274,17 @@ public class LineUpIntegrationTests {
 
 
 
+		deleteLineUp("TestDeleteBands");
 
-		deleteFestival("TestDelBands");
-		deleteLocation("TestDelBands");
+		deleteFestival("TestDeleteBands");
+		deleteLocation("TestDeleteBands");
 
 
 	}
 	@Test
 	void checkEditBandsFromLineUp() throws Exception {
 
+		deleteLineUp("TestEditBands");
 		deleteFestival("TestEditBands");
 		deleteLocation("TestEditBands");
 
@@ -315,7 +325,7 @@ public class LineUpIntegrationTests {
 
 
 
-
+		deleteLineUp("TestEditBands");
 		deleteFestival("TestEditBands");
 		deleteLocation("TestEditBands");
 
