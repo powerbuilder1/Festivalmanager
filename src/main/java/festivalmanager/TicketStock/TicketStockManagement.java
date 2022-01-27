@@ -47,15 +47,15 @@ public class TicketStockManagement {
 	public Streamable<TicketInventoryItem> getTicketStockbyfestival ( String name ){
 		Streamable<TicketInventoryItem> ticketStockOfFestival = ticketStockInventory.findAll().filter(ticketStock -> ticketStock.getFestival().getName().equals(name));
 
-		User userTicket = userManagement.findByName("Ticketseller");
-
+		User userTicket = userManagement.findByName("manager");
 		Room room = communicationManagement.findRoomByName("public");
 
 		for (TicketInventoryItem ticketsOfStock : ticketStockOfFestival)
 		{
-			if (ticketsOfStock.getQuantity() != null) {
 
-				communicationManagement.sendMessage(userTicket,"there is no more tickets of"+ticketsOfStock.getProduct().getName(),room);
+			if (ticketsOfStock.getQuantity().toString().equals("0")) {
+
+				communicationManagement.sendMessage(userTicket,"there is no more tickets of "+ticketsOfStock.getProduct().getName() +" of the Festival "+ ticketsOfStock.getFestival().getName(),room);
 
 			}
 

@@ -89,7 +89,10 @@ public class TicketIntegrationTests {
 
 		deleteTickets("TestTickets");
 		deleteFestival("TestTickets");
-		deleteLocation("TestTickests");
+		deleteLocation("TestTickets");
+		deleteTickets("TestTicket2");
+		deleteFestival("TestTicket2");
+		deleteLocation("TestTicket2");
 
 
 		// create test entries
@@ -113,7 +116,10 @@ public class TicketIntegrationTests {
 
 		deleteTickets("TestTickets");
 		deleteFestival("TestTickets");
-		deleteLocation("TestTickests");
+		deleteLocation("TestTickets");
+		deleteTickets("TestTicket2");
+		deleteFestival("TestTicket2");
+		deleteLocation("TestTicket2");
 
 
 
